@@ -64,6 +64,39 @@ export interface Breakpoint {
   meta: ReviewMeta;
 }
 
+export type SusceptibilityDomain = "Bacteria" | "Yeast" | "Filamentous fungi" | "Anaerobes" | "Fastidious bacteria" | "Rapid AST" | "Mycobacteria";
+
+export interface StandardCatalogEntry {
+  id: string;
+  domain: SusceptibilityDomain;
+  authority: Standard;
+  document: string;
+  edition: string;
+  effectiveDate: string;
+  purpose: string;
+  sourceId: string;
+  implementationStatus: "Architecture ready" | "Planned";
+}
+
+export type ForecastPrediction = "Resistance strongly expected" | "Activity may be retained" | "Cannot infer" | "Mechanism-dependent caution";
+
+export interface BcidForecast {
+  id: string;
+  organismGroup: string;
+  geneId: string;
+  markerLabel: string;
+  mechanismId: string;
+  drugOrClass: string;
+  prediction: ForecastPrediction;
+  confidence: "High" | "Moderate" | "Context dependent";
+  rationale: string;
+  exceptions: string;
+  requiresAst: true;
+  sourceIds: string[];
+  guidanceVersion: string;
+  meta: ReviewMeta;
+}
+
 export interface IntrinsicPattern {
   id: string;
   organismId: string;
@@ -83,5 +116,4 @@ export interface CaseStudy {
   explanation: string;
   learningPoint: string;
 }
-
 
