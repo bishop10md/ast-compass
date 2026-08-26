@@ -1,21 +1,25 @@
-import type { Antibiotic } from "./types";
+import type { Antibiotic, SusceptibilityDomain } from "./types";
+
+const a = (id: string, name: string, className: string, short: string, domains: SusceptibilityDomain[] = ["Bacteria"]): Antibiotic => ({ id, name, className, short, domains });
 
 export const antibiotics: Antibiotic[] = [
-  { id: "ampicillin", name: "Ampicillin", className: "Aminopenicillin", short: "AMP" },
-  { id: "ceftriaxone", name: "Ceftriaxone", className: "Third-generation cephalosporin", short: "CRO" },
-  { id: "ceftazidime", name: "Ceftazidime", className: "Antipseudomonal cephalosporin", short: "CAZ" },
-  { id: "cefepime", name: "Cefepime", className: "Fourth-generation cephalosporin", short: "FEP" },
-  { id: "meropenem", name: "Meropenem", className: "Carbapenem", short: "MEM" },
-  { id: "ertapenem", name: "Ertapenem", className: "Carbapenem", short: "ETP" },
-  { id: "ciprofloxacin", name: "Ciprofloxacin", className: "Fluoroquinolone", short: "CIP" },
-  { id: "gentamicin", name: "Gentamicin", className: "Aminoglycoside", short: "GEN" },
-  { id: "trim_sulfa", name: "Trimethoprim-sulfamethoxazole", className: "Folate pathway inhibitor", short: "SXT" },
-  { id: "oxacillin", name: "Oxacillin", className: "Antistaphylococcal penicillin", short: "OXA" },
-  { id: "cefoxitin", name: "Cefoxitin screen", className: "Cephamycin / surrogate", short: "FOX" },
-  { id: "vancomycin", name: "Vancomycin", className: "Glycopeptide", short: "VAN" },
-  { id: "erythromycin", name: "Erythromycin", className: "Macrolide", short: "ERY" },
-  { id: "clindamycin", name: "Clindamycin", className: "Lincosamide", short: "CLI" },
-  { id: "colistin", name: "Colistin", className: "Polymyxin", short: "CST" },
+  a("penicillin", "Penicillin", "Natural penicillin", "PEN"), a("ampicillin", "Ampicillin", "Aminopenicillin", "AMP"), a("amoxicillin", "Amoxicillin", "Aminopenicillin", "AMX"),
+  a("amox_clav", "Amoxicillin-clavulanate", "β-lactam/β-lactamase inhibitor", "AMC"), a("amp_sulb", "Ampicillin-sulbactam", "β-lactam/β-lactamase inhibitor", "SAM"), a("pip_tazo", "Piperacillin-tazobactam", "Antipseudomonal penicillin/inhibitor", "TZP"),
+  a("oxacillin", "Oxacillin", "Antistaphylococcal penicillin", "OXA"), a("cefoxitin", "Cefoxitin screen", "Cephamycin / surrogate", "FOX"),
+  a("cefazolin", "Cefazolin", "First-generation cephalosporin", "CFZ"), a("cefuroxime", "Cefuroxime", "Second-generation cephalosporin", "CXM"), a("cefotaxime", "Cefotaxime", "Third-generation cephalosporin", "CTX"), a("ceftriaxone", "Ceftriaxone", "Third-generation cephalosporin", "CRO"), a("ceftazidime", "Ceftazidime", "Antipseudomonal cephalosporin", "CAZ"), a("cefepime", "Cefepime", "Fourth-generation cephalosporin", "FEP"), a("ceftaroline", "Ceftaroline", "Anti-MRSA cephalosporin", "CPT"),
+  a("aztreonam", "Aztreonam", "Monobactam", "ATM"), a("ertapenem", "Ertapenem", "Carbapenem", "ETP"), a("imipenem", "Imipenem", "Carbapenem", "IPM"), a("meropenem", "Meropenem", "Carbapenem", "MEM"), a("doripenem", "Doripenem", "Carbapenem", "DOR"),
+  a("caz_avi", "Ceftazidime-avibactam", "Cephalosporin/inhibitor", "CZA"), a("cef_tol_tazo", "Ceftolozane-tazobactam", "Cephalosporin/inhibitor", "C/T"), a("mero_vabor", "Meropenem-vaborbactam", "Carbapenem/inhibitor", "MEV"), a("imi_rel", "Imipenem-cilastatin-relebactam", "Carbapenem/inhibitor", "I-R"), a("cefiderocol", "Cefiderocol", "Siderophore cephalosporin", "FDC"),
+  a("amikacin", "Amikacin", "Aminoglycoside", "AMK"), a("gentamicin", "Gentamicin", "Aminoglycoside", "GEN"), a("tobramycin", "Tobramycin", "Aminoglycoside", "TOB"), a("plazomicin", "Plazomicin", "Aminoglycoside", "PLZ"),
+  a("ciprofloxacin", "Ciprofloxacin", "Fluoroquinolone", "CIP"), a("levofloxacin", "Levofloxacin", "Fluoroquinolone", "LVX"), a("moxifloxacin", "Moxifloxacin", "Fluoroquinolone", "MXF"), a("nalidixic", "Nalidixic acid", "Quinolone", "NAL"),
+  a("trim_sulfa", "Trimethoprim-sulfamethoxazole", "Folate pathway inhibitor", "SXT"), a("trimethoprim", "Trimethoprim", "Folate pathway inhibitor", "TMP"),
+  a("tetracycline", "Tetracycline", "Tetracycline", "TET"), a("doxycycline", "Doxycycline", "Tetracycline", "DOX"), a("minocycline", "Minocycline", "Tetracycline", "MIN"), a("tigecycline", "Tigecycline", "Glycylcycline", "TGC"), a("eravacycline", "Eravacycline", "Fluorocycline", "ERV"),
+  a("azithromycin", "Azithromycin", "Macrolide", "AZM"), a("clarithromycin", "Clarithromycin", "Macrolide", "CLR", ["Bacteria", "Mycobacteria"]), a("erythromycin", "Erythromycin", "Macrolide", "ERY"), a("clindamycin", "Clindamycin", "Lincosamide", "CLI"),
+  a("chloramphenicol", "Chloramphenicol", "Phenicols", "CHL"), a("rifampin", "Rifampin", "Rifamycin", "RIF", ["Bacteria", "Mycobacteria"]), a("fosfomycin", "Fosfomycin", "Phosphonic acid derivative", "FOS"), a("nitrofurantoin", "Nitrofurantoin", "Nitrofuran", "NIT"),
+  a("colistin", "Colistin", "Polymyxin", "CST"), a("polymyxin_b", "Polymyxin B", "Polymyxin", "PMB"),
+  a("vancomycin", "Vancomycin", "Glycopeptide", "VAN"), a("teicoplanin", "Teicoplanin", "Glycopeptide", "TEC"), a("daptomycin", "Daptomycin", "Lipopeptide", "DAP"), a("linezolid", "Linezolid", "Oxazolidinone", "LZD"), a("tedizolid", "Tedizolid", "Oxazolidinone", "TZD"), a("quinu_dalfo", "Quinupristin-dalfopristin", "Streptogramin", "Q-D"),
+  a("metronidazole", "Metronidazole", "Nitroimidazole", "MTZ", ["Anaerobes"]), a("clinda_ana", "Clindamycin (anaerobes)", "Lincosamide", "CLI", ["Anaerobes"]),
+  a("fluconazole", "Fluconazole", "Triazole antifungal", "FLC", ["Yeast"]), a("voriconazole", "Voriconazole", "Triazole antifungal", "VOR", ["Yeast", "Filamentous fungi"]), a("posaconazole", "Posaconazole", "Triazole antifungal", "POS", ["Yeast", "Filamentous fungi"]), a("isavuconazole", "Isavuconazole", "Triazole antifungal", "ISA", ["Yeast", "Filamentous fungi"]), a("itraconazole", "Itraconazole", "Triazole antifungal", "ITR", ["Yeast", "Filamentous fungi"]),
+  a("anidulafungin", "Anidulafungin", "Echinocandin", "ANI", ["Yeast"]), a("caspofungin", "Caspofungin", "Echinocandin", "CAS", ["Yeast", "Filamentous fungi"]), a("micafungin", "Micafungin", "Echinocandin", "MCF", ["Yeast", "Filamentous fungi"]), a("amphotericin_b", "Amphotericin B", "Polyene antifungal", "AMB", ["Yeast", "Filamentous fungi"]), a("flucytosine", "Flucytosine", "Antimetabolite antifungal", "5FC", ["Yeast"]),
+  a("isoniazid", "Isoniazid", "Antimycobacterial", "INH", ["Mycobacteria"]), a("ethambutol", "Ethambutol", "Antimycobacterial", "EMB", ["Mycobacteria"]), a("pyrazinamide", "Pyrazinamide", "Antimycobacterial", "PZA", ["Mycobacteria"]), a("bedaquiline", "Bedaquiline", "Antimycobacterial", "BDQ", ["Mycobacteria"]), a("clofazimine", "Clofazimine", "Antimycobacterial", "CFZ", ["Mycobacteria"]),
 ];
-
 
