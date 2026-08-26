@@ -119,3 +119,14 @@ export interface CaseStudy {
   learningPoint: string;
 }
 
+export interface LearningModule {
+  id: string;
+  number: string;
+  title: string;
+  duration: string;
+  objective: string;
+  sections: { heading: string; body: string; takeaway: string }[];
+  checkpoint: { question: string; choices: string[]; answer: number; explanation: string };
+  sourceIds: string[];
+}
+
