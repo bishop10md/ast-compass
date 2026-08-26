@@ -9,4 +9,5 @@ export { cases } from "./cases";
 export { references } from "./references";
 export { standardCatalog } from "./standardCatalog";
 export { bcidForecasts } from "./bcidForecasts";
+export { learningModules } from "./learningModules";
 
