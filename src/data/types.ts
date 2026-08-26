@@ -13,7 +13,8 @@ export interface Organism {
   id: string;
   name: string;
   group: string;
-  gram: "positive" | "negative";
+  gram: "positive" | "negative" | "fungal" | "acid-fast";
+  domains?: SusceptibilityDomain[];
   aliases: string[];
 }
 
@@ -22,6 +23,7 @@ export interface Antibiotic {
   name: string;
   className: string;
   short: string;
+  domains?: SusceptibilityDomain[];
 }
 
 export interface Mechanism {
