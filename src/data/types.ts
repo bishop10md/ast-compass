@@ -63,6 +63,11 @@ export interface Breakpoint {
   siteRestriction: string;
   dosageNote: string;
   sourceId: string;
+  sourceIds?: string[];
+  availability?: "Clinical breakpoint available" | "No clinical breakpoint available" | "ECOFF only" | "Research / tentative criteria" | "Not applicable";
+  categoryMeaning?: string;
+  specimenRestriction?: string;
+  lastVerified?: string;
   meta: ReviewMeta;
 }
 
@@ -85,14 +90,18 @@ export type ForecastPrediction = "Resistance strongly expected" | "Activity may 
 export interface BcidForecast {
   id: string;
   organismGroup: string;
+  organism?: string;
   geneId: string;
   markerLabel: string;
   mechanismId: string;
+  antimicrobialClass: string;
   drugOrClass: string;
   prediction: ForecastPrediction;
-  confidence: "High" | "Moderate" | "Context dependent";
+  confidence: "High" | "Moderate" | "Low" | "Context dependent";
   rationale: string;
   exceptions: string;
+  doesNotTellYou: string[];
+  whyItMatters: string;
   requiresAst: true;
   sourceIds: string[];
   guidanceVersion: string;
@@ -129,4 +138,3 @@ export interface LearningModule {
   checkpoint: { question: string; choices: string[]; answer: number; explanation: string };
   sourceIds: string[];
 }
-
