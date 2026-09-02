@@ -1,2 +1,8 @@
+https://astcompass.netlify.app/* https://astcompass.com/:splat 301!
+/detective /learn/detective 301
+/learning /learn/topics 301
+/genes /resistance/gene-to-phenotype 301
+/phenotype /resistance/phenotype-to-mechanism 301
+/expected-phenotypes /resistance/expected-phenotypes 301
 /* /index.html 200
 

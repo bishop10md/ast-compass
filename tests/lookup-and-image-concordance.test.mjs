@@ -148,7 +148,8 @@ test("BCID multiplex workflow supports many-to-many results without forced attri
   const ui = await readFile(new URL("../src/features/BcidForecast.tsx", import.meta.url), "utf8");
   const compatibility = await readFile(new URL("../src/data/bcid2Compatibility.ts", import.meta.url), "utf8");
   const combined = await readFile(new URL("../src/data/bcidCombinedForecasts.ts", import.meta.url), "utf8");
-  assert.match(ui, /useState<string\[\]>\(\["e-coli"\]\)/);
+  assert.match(ui, /useState<string\[\]>\(example\?\.organismIds \|\| \["e-coli"\]\)/);
+  assert.match(ui, /ast-bcid-example/);
   assert.match(ui, /Detected organism\(s\)/);
   assert.match(ui, /Detected resistance marker\(s\)/);
   assert.match(ui, /MULTIPLEX ATTRIBUTION CAUTION/);
@@ -161,4 +162,3 @@ test("BCID multiplex workflow supports many-to-many results without forced attri
   assert.match(combined, /k-pneumoniae-group:ctx-m\+kpc/);
   assert.match(combined, /no reviewed combined forecast is available/i);
 });
-
