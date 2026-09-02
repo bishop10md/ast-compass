@@ -14,3 +14,4 @@ export { bcid2CompatibilityRules, assessBcidPairs, getCompatibilityRule, getMark
 export { getCombinedForecast } from "./bcidCombinedForecasts";
 export * from "./rapidDiagnosticTypes";
 export { learningModules } from "./learningModules";
+export { contentReviewMeta, type ContentReviewMeta, type ContentReviewStatus } from "./contentReview";
