@@ -71,7 +71,7 @@ test("Supabase client and services never expose a service-role credential", asyn
   assert.match(image, /crypto\.randomUUID\(\)/);
 });
 
-test("BCID2 panel definition contains the complete 43-target manufacturer menu", async () => {
+test("BCID panel definition contains the complete 43-target manufacturer menu", async () => {
   const source = await readFile(new URL("../src/data/bcid2Panel.ts", import.meta.url), "utf8");
   const organismRows = source.match(/^  target\(.*$/gm) || [];
   const markerRows = source.match(/^  marker\(/gm) || [];
@@ -86,7 +86,7 @@ test("BCID2 panel definition contains the complete 43-target manufacturer menu",
   assert.match(source, /resistanceTargets: 10/);
 });
 
-test("BCID2 group hierarchy and five distinct carbapenemases are preserved", async () => {
+test("BCID group hierarchy and five distinct carbapenemases are preserved", async () => {
   const source = await readFile(new URL("../src/data/bcid2Panel.ts", import.meta.url), "utf8");
   for (const parent of ["enterobacterales", "staphylococcus-spp", "streptococcus-spp"]) assert.match(source, new RegExp('"' + parent + '"'));
   for (const marker of ["IMP", "KPC", "NDM", "OXA-48-like", "VIM"]) assert.match(source, new RegExp('"' + marker + '"'));
@@ -108,7 +108,7 @@ test("BCID workflow uses panel targets and keeps conservative result boundaries"
   assert.match(css, /@media\(max-width:760px\).*bcid-workflow\{grid-template-columns:1fr\}/s);
 });
 
-test("BCID2 compatibility is a dedicated bidirectional data layer", async () => {
+test("BCID compatibility is a dedicated bidirectional data layer", async () => {
   const compatibility = await readFile(new URL("../src/data/bcid2Compatibility.ts", import.meta.url), "utf8");
   const panel = await readFile(new URL("../src/data/bcid2Panel.ts", import.meta.url), "utf8");
   const forecasts = await readFile(new URL("../src/data/bcidForecasts.ts", import.meta.url), "utf8");
@@ -119,7 +119,7 @@ test("BCID2 compatibility is a dedicated bidirectional data layer", async () => 
   assert.doesNotMatch(forecasts, /getMarkersForOrganism/);
 });
 
-test("BCID2 compatibility excludes biologically unrelated selector combinations", async () => {
+test("BCID compatibility excludes biologically unrelated selector combinations", async () => {
   const source = await readFile(new URL("../src/data/bcid2Compatibility.ts", import.meta.url), "utf8");
   assert.match(source, /rule\("s-aureus", "meca-c-mrej"\)/);
   assert.match(source, /rule\("s-epidermidis", "meca-c"\)/);
@@ -161,4 +161,15 @@ test("BCID multiplex workflow supports many-to-many results without forced attri
   assert.match(combined, /getCombinedForecast/);
   assert.match(combined, /k-pneumoniae-group:ctx-m\+kpc/);
   assert.match(combined, /no reviewed combined forecast is available/i);
+});
+
+test("unified experience removes global mode state and keeps progressive disclosure", async () => {
+  const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
+  const bcid = await readFile(new URL("../src/features/BcidForecast.tsx", import.meta.url), "utf8");
+  assert.doesNotMatch(app, /ast-mode|className="modebar"|mode-\$\{mode\}|>Learning mode<|>Bench mode</);
+  assert.doesNotMatch(styles, /modebar|mode-bench|mode-learning/);
+  assert.match(app, /ONE SCIENTIFIC EXPERIENCE/);
+  assert.match(bcid, /Disclosure title="Organism–marker attribution"/);
+  assert.match(bcid, /Disclosure title="Mechanism details"/);
 });
