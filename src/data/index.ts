@@ -10,7 +10,7 @@ export { references } from "./references";
 export { standardCatalog } from "./standardCatalog";
 export { bcidForecasts } from "./bcidForecasts";
 export { bcid2Panel, bcid2Targets, bcid2Markers, bcid2AssociationRules, bcid2PanelMetadata } from "./bcid2Panel";
+export { bcid2CompatibilityRules, assessBcidPairs, getCompatibilityRule, getMarkersForOrganism, getOrganismsForMarker, isCompatibleBcidPair } from "./bcid2Compatibility";
+export { getCombinedForecast } from "./bcidCombinedForecasts";
 export * from "./rapidDiagnosticTypes";
 export { learningModules } from "./learningModules";
-
-

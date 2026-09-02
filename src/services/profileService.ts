@@ -1,0 +1,3 @@
+import { requireAuthenticatedUser } from "./authUser";
+export async function getMyProfile() { const { client } = await requireAuthenticatedUser(); const { data, error } = await client.from("profiles").select().single(); if (error) throw new Error("Profile could not be loaded."); return data; }
+export async function updateMyProfile(displayName: string) { const { client, user } = await requireAuthenticatedUser(); const { data, error } = await client.from("profiles").update({ display_name: displayName, updated_at: new Date().toISOString() }).eq("id", user.id).select().single(); if (error) throw new Error("Profile could not be updated."); return data; }

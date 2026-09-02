@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import SearchableSelect from "../components/SearchableSelect";
 import { analyzeConcordance, antimicrobialOptions, markerOptions, organismOptions, parseAstText, parseMeasurement, summarizeConcordance, type AstCategory, type AstResultRow, type ConcordanceResult } from "./concordanceEngine";
+import { screenPhiText, type PhiScreeningResult } from "./phi-screening-core.mjs";
+import { useAuth } from "../auth/AuthContext";
+import { saveImageAnalysis } from "../services/imageService";
 
 declare global {
   interface Window {
@@ -27,6 +30,7 @@ const loadOcr = async () => {
 };
 
 export default function ImageConcordanceAnalyzer() {
+  const auth = useAuth();
   const [workflow, setWorkflow] = useState<"image" | "manual">("image");
   const [organismId, setOrganismId] = useState("");
   const [marker, setMarker] = useState("");
@@ -35,6 +39,9 @@ export default function ImageConcordanceAnalyzer() {
   const [previewUrl, setPreviewUrl] = useState("");
   const [ocrText, setOcrText] = useState("");
   const [ocrStatus, setOcrStatus] = useState("");
+  const [phiScreen, setPhiScreen] = useState<PhiScreeningResult | null>(null);
+  const [screening, setScreening] = useState(false);
+  const [saveStatus, setSaveStatus] = useState("");
   const [rows, setRows] = useState<AstResultRow[]>([emptyRow()]);
   const [confirmed, setConfirmed] = useState(false);
   const [results, setResults] = useState<ConcordanceResult[]>([]);
@@ -48,14 +55,31 @@ export default function ImageConcordanceAnalyzer() {
   const updateRow = (id: string, change: Partial<AstResultRow>) => { setRows((current) => current.map((row) => row.id === id ? { ...row, ...change } : row)); resetAnalysis(); };
   const removeImage = () => {
     if (previewUrl) URL.revokeObjectURL(previewUrl);
-    setFile(null); setPreviewUrl(""); setOcrText(""); setOcrStatus(""); setRows([emptyRow()]); resetAnalysis();
+    setFile(null); setPreviewUrl(""); setOcrText(""); setOcrStatus(""); setPhiScreen(null); setPhiAcknowledged(false); setRows([emptyRow()]); resetAnalysis();
     if (inputRef.current) inputRef.current.value = "";
   };
-  const selectFile = (next: File | null) => {
+  const selectFile = async (next: File | null) => {
     if (!next) return;
     if (!/^image\/(jpeg|png|webp)$/.test(next.type)) { setOcrStatus("Choose a JPG, JPEG, PNG, or WEBP image."); return; }
+    if (next.size > 10 * 1024 * 1024) { setOcrStatus("Image rejected. Maximum size is 10 MB."); return; }
     if (previewUrl) URL.revokeObjectURL(previewUrl);
-    setFile(next); setPreviewUrl(URL.createObjectURL(next)); setOcrStatus(""); setRows([]); setOcrText(""); resetAnalysis();
+    setFile(null); setPreviewUrl(""); setPhiScreen(null); setPhiAcknowledged(false); setScreening(true); setOcrStatus("Checking image privacy…"); setRows([]); setOcrText(""); resetAnalysis();
+    try {
+      const ocr = await loadOcr();
+      const response = await ocr.recognize(next, "eng", { logger: (message) => { if (message.progress) setOcrStatus(`Checking image privacy · ${Math.round(message.progress * 100)}%`); } });
+      let barcode = false, face = false;
+      const image = await createImageBitmap(next);
+      const BarcodeDetectorClass = (window as unknown as { BarcodeDetector?: new () => { detect: (source: ImageBitmap) => Promise<unknown[]> } }).BarcodeDetector;
+      const FaceDetectorClass = (window as unknown as { FaceDetector?: new () => { detect: (source: ImageBitmap) => Promise<unknown[]> } }).FaceDetector;
+      if (BarcodeDetectorClass) barcode = (await new BarcodeDetectorClass().detect(image)).length > 0;
+      if (FaceDetectorClass) face = (await new FaceDetectorClass().detect(image)).length > 0;
+      image.close();
+      const result = screenPhiText(response.data.text, { barcode, face, poorImageQuality: response.data.text.trim().length < 8 });
+      setPhiScreen(result);
+      if (result.status !== "clear") { setOcrStatus("Image rejected before analysis. Choose a cropped or fully redacted image."); if (inputRef.current) inputRef.current.value = ""; return; }
+      setFile(next); setPreviewUrl(URL.createObjectURL(next)); setOcrText(response.data.text); setOcrStatus("Privacy screen passed. Confirm the image is de-identified before continuing.");
+    } catch { setPhiScreen(screenPhiText("", { ocrFailure: true })); setOcrStatus("Image cannot be verified. Screening failed closed; choose another clear, de-identified image."); if (inputRef.current) inputRef.current.value = ""; }
+    finally { setScreening(false); }
   };
   const extract = async () => {
     if (!file) return;
@@ -81,13 +105,15 @@ export default function ImageConcordanceAnalyzer() {
       <div className="analyzer-context"><SearchableSelect label="Organism" required value={organismId} onChange={(value) => { setOrganismId(value); resetAnalysis(); }} options={organismOptions} placeholder="Search organism or alias…"/><SearchableSelect label="Resistance marker" required value={marker} onChange={(value) => { setMarker(value); resetAnalysis(); }} options={markerOptions} placeholder="Search marker or alias…"/></div>
     </section>
     {workflow === "image" && <section className="image-step panel">
-      <div className="phi-notice"><b>STOP: use deidentified images only</b><p>Remove patient names, medical record numbers, dates of birth, accession numbers, barcodes, facility identifiers, and other protected health information before selecting a file. AST Compass cannot guarantee PHI detection.</p><label><input type="checkbox" checked={phiAcknowledged} onChange={(event) => setPhiAcknowledged(event.target.checked)}/> I confirm this image is deidentified and contains no PHI.</label></div>
-      <div className={`upload-zone ${!phiAcknowledged ? "disabled" : ""}`}><input ref={inputRef} type="file" accept="image/jpeg,image/png,image/webp" disabled={!phiAcknowledged} onChange={(event) => selectFile(event.target.files?.[0] || null)}/><b>{file ? file.name : "Select an AST image"}</b><span>JPG, JPEG, PNG, or WEBP · held only for this browser session</span></div>
-      {previewUrl && <div className="image-review"><div><img src={previewUrl} alt="Local preview of the selected deidentified AST result"/><button className="secondary" type="button" onClick={removeImage}>Remove image</button></div><div><button className="primary" type="button" onClick={extract}>Extract possible AST rows</button><p className="ocr-status" aria-live="polite">{ocrStatus}</p><label>Extracted text<textarea value={ocrText} onChange={(event) => { setOcrText(event.target.value); resetAnalysis(); }} placeholder="OCR text appears here. You may correct it before parsing."/></label><button className="secondary" type="button" onClick={parseEditedText}>Parse edited text</button></div></div>}
+      <div className="phi-notice"><b>IMPORTANT — DO NOT UPLOAD PHI</b><p>Only select de-identified educational or training material. Remove patient names, MRNs, dates of birth, patient-associated dates, accession/specimen identifiers, addresses, phone numbers, barcodes, QR codes, labels, faces, and every other identifier.</p><small>Automated screening reduces risk but cannot guarantee detection of every identifier. It is not a legal de-identification certification.</small></div>
+      <div className={`upload-zone ${screening ? "disabled" : ""}`}><input ref={inputRef} type="file" accept="image/jpeg,image/png,image/webp" disabled={screening} onChange={(event) => void selectFile(event.target.files?.[0] || null)}/><b>{screening ? "Checking image privacy…" : file ? file.name : "Select an AST image for privacy screening"}</b><span>JPG, JPEG, PNG, or WEBP · maximum 10 MB · no permanent storage before screening</span></div>
+      {phiScreen && <div className={`phi-screen-result ${phiScreen.status}`} aria-live="polite"><b>{phiScreen.status === "clear" ? "PRIVACY SCREEN PASSED" : phiScreen.status === "unable-to-screen" ? "IMAGE CANNOT BE VERIFIED" : "IMAGE REJECTED — POSSIBLE PHI DETECTED"}</b>{phiScreen.findings.length > 0 && <><p>Detected risk categories:</p><ul>{phiScreen.findings.map((finding) => <li key={finding.type}>{finding.type.replace(/-/g, " ")}</li>)}</ul></>}<p>{phiScreen.status === "clear" ? "No obvious patient identifiers were detected. You must still confirm de-identification." : "Remove, crop, or redact the identified regions and choose the modified image again. There is no override."}</p>{phiScreen.status !== "clear" && <button className="secondary" type="button" onClick={removeImage}>Choose another image</button>}</div>}
+      {phiScreen?.status === "clear" && <label className="phi-confirm"><input type="checkbox" checked={phiAcknowledged} onChange={(event) => setPhiAcknowledged(event.target.checked)}/> I confirm that this image is de-identified and contains no PHI.</label>}
+      {previewUrl && <div className="image-review"><div><img src={previewUrl} alt="Local preview of the selected deidentified AST result"/><button className="secondary" type="button" onClick={removeImage}>Remove image</button></div><div><button className="primary" type="button" disabled={!phiAcknowledged} onClick={extract}>Continue to AST extraction</button><p className="ocr-status" aria-live="polite">{ocrStatus}</p><label>Extracted text<textarea value={ocrText} onChange={(event) => { setOcrText(event.target.value); resetAnalysis(); }} placeholder="OCR text appears here. You may correct it before parsing."/></label><button className="secondary" type="button" disabled={!phiAcknowledged} onClick={parseEditedText}>Parse edited text</button></div></div>}
     </section>}
     <ReviewTable rows={rows} updateRow={updateRow} removeRow={(id) => { setRows((current) => current.filter((row) => row.id !== id)); resetAnalysis(); }} addRow={() => { setRows((current) => [...current, emptyRow()]); resetAnalysis(); }} lowConfidence={lowConfidence}/>
     <section className="confirmation-step panel"><label><input type="checkbox" checked={confirmed} onChange={(event) => { setConfirmed(event.target.checked); setResults([]); }}/> I reviewed the image (if used), organism, marker, antimicrobial names, MIC/zone strings, and categories. The table is accurate for this learning exercise.</label><button className="primary" disabled={!confirmed || !organismId || !marker || !validRows.length} onClick={analyze}>Analyze confirmed results →</button>{(!organismId || !marker) && <small>Select both an organism and resistance marker before analysis.</small>}</section>
-    {!!results.length && <AnalysisResults results={results} summary={summary}/>} 
+    {!!results.length && <><AnalysisResults results={results} summary={summary}/><section className="panel save-work"><h2>Save this analysis for later</h2><p>{auth.user ? "The privacy-screened image and verified analysis will be stored in your private AST Compass workspace." : "Create an account or sign in to save this work across devices. Guest analysis remains temporary."}</p><button className="primary" type="button" disabled={!file || phiScreen?.status !== "clear" || !phiAcknowledged} onClick={() => { if (!auth.user) { sessionStorage.setItem("ast-guest-image-analysis", JSON.stringify({ organismId, marker, rows, results })); setSaveStatus("Guest work preserved for this session. Sign in to save permanently."); return; } if (!file || !phiScreen) return; void saveImageAnalysis(file, phiScreen, { organismIds: [organismId], markerIds: [marker], extractedResults: ocrText, correctedResults: rows, concordanceResults: results }).then(() => setSaveStatus("Saved to My AST Compass ✓")).catch(() => setSaveStatus("The private image analysis could not be saved.")); }}>Save this image to my account</button>{saveStatus && <p aria-live="polite">{saveStatus}</p>}</section></>}
     <div className="concordance-safety bottom"><b>VERIFY BEFORE USE</b><span>Educational concordance is not susceptibility interpretation. EUCAST “I” means susceptible, increased exposure; category meaning depends on the selected current standard and method.</span></div>
   </>;
 }
@@ -102,4 +128,3 @@ function ReviewTable({ rows, updateRow, removeRow, addRow, lowConfidence }: { ro
 function AnalysisResults({ results, summary }: { results: ConcordanceResult[]; summary: ReturnType<typeof summarizeConcordance> }) {
   return <section className="analysis-step"><div className="summary-grid">{Object.entries(summary).map(([label, count]) => <div className={`summary-card ${label.toLowerCase().replace(/\s+/g, "-")}`} key={label}><b>{count}</b><span>{label}</span></div>)}</div><div className="panel"><div className="review-heading"><div><p className="eyebrow">Educational comparison</p><h2>Concordance analysis</h2></div><span>{results.length} reviewed result{results.length === 1 ? "" : "s"}</span></div><div className="analysis-list">{results.map((result) => <article key={result.id}><div><div><b>{result.antimicrobial}</b><span>{result.measurement || "No measurement"} · {result.category}</span></div><strong className={`assessment ${result.assessment.toLowerCase().replace(/\s+/g, "-")}`}>{result.assessment}</strong></div><p>{result.rationale}</p>{(result.assessment === "Discordant" || result.assessment === "Investigate") && <details><summary>Troubleshooting prompts</summary><ul>{result.troubleshooting.map((item) => <li key={item}>{item}</li>)}</ul></details>}</article>)}</div></div></section>;
 }
-

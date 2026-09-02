@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { learningModules, references } from "../data";
+import { useAuth } from "../auth/AuthContext";
+import { saveLearningProgress } from "../services/learningService";
 
 export default function LearningCenter() {
+  const auth = useAuth();
   const [activeId, setActiveId] = useState(learningModules[0].id);
   const [choice, setChoice] = useState<number | null>(null);
   const [completed, setCompleted] = useState<string[]>(() => { try { return JSON.parse(localStorage.getItem("ast-learning-complete") || "[]"); } catch { return []; } });
   const module = learningModules.find((m) => m.id === activeId)!;
   const selectModule = (id: string) => { setActiveId(id); setChoice(null); scrollTo({ top: 260, behavior: "smooth" }); };
-  const complete = () => { const next = completed.includes(module.id) ? completed : [...completed, module.id]; setCompleted(next); localStorage.setItem("ast-learning-complete", JSON.stringify(next)); };
+  const complete = () => { const next = completed.includes(module.id) ? completed : [...completed, module.id]; setCompleted(next); localStorage.setItem("ast-learning-complete", JSON.stringify(next)); if (auth.user) void saveLearningProgress(module.id, 100, true); };
   const nextModule = () => { const index = learningModules.findIndex((m) => m.id === module.id); selectModule(learningModules[(index + 1) % learningModules.length].id); };
   return <>
     <div className="page-head"><p className="eyebrow">Interactive learning center</p><h1>Learn the reasoning behind AST</h1><p>Open each module, study the short lessons, answer the checkpoint, and track progress on this device.</p></div>
