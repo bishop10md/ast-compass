@@ -1,7 +1,7 @@
 import type { BcidCompatibility, BcidCompatibilityRule, BcidPairAssessment } from "./rapidDiagnosticTypes";
 
 const sources = ["ref-bcid2-ifu", "ref-idsa"];
-const rule = (organismId: string, markerId: string, compatibility: BcidCompatibility = "primary", explanation = "Reviewed as a relevant BIOFIRE BCID2 organism–marker interpretation context."): BcidCompatibilityRule => ({ organismId, markerId, compatibility, explanation, sourceIds: sources });
+const rule = (organismId: string, markerId: string, compatibility: BcidCompatibility = "primary", explanation = "Reviewed as a relevant BCID organism–marker interpretation context."): BcidCompatibilityRule => ({ organismId, markerId, compatibility, explanation, sourceIds: sources });
 
 const enterobacterales = ["e-cloacae-complex", "e-coli", "k-aerogenes", "k-oxytoca", "k-pneumoniae-group", "proteus-spp", "salmonella-spp", "s-marcescens"];
 const enterobacteralesMarkers = ["ctx-m", "imp", "kpc", "ndm", "oxa-48-like", "vim", "mcr-1"];
