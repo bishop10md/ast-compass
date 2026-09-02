@@ -44,12 +44,12 @@ test("PHI screening rejects identifiers and passes AST-only text", () => {
   assert.equal(screenPhiText("Report date 05/17/2026").status, "possible-phi");
 });
 
-test("account architecture is optional, provider-backed, and owner scoped", async () => {
+test("account architecture is optional, email-enabled, and owner scoped", async () => {
   const account = await readFile(new URL("../src/features/AccountWorkspace.tsx", import.meta.url), "utf8");
   const auth = await readFile(new URL("../src/auth/AuthContext.tsx", import.meta.url), "utf8");
   const migration = await readFile(new URL("../supabase/migrations/20260901_private_workspace.sql", import.meta.url), "utf8");
   assert.match(account, /Continue as a guest for full educational access/);
-  assert.match(account, /Continue with Google/);
+  assert.doesNotMatch(account, /Continue with Google/);
   assert.match(auth, /signInWithPassword/);
   assert.match(auth, /resetPasswordForEmail/);
   assert.match(migration, /enable row level security/g);
