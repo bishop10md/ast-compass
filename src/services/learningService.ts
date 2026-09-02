@@ -1,0 +1,2 @@
+import { requireAuthenticatedUser } from "./authUser";
+export async function saveLearningProgress(moduleId: string, progress: number, completed: boolean) { const { client, user } = await requireAuthenticatedUser(); const { data, error } = await client.from("learning_progress").upsert({ user_id: user.id, module_id: moduleId, progress, completed, updated_at: new Date().toISOString() }, { onConflict: "user_id,module_id" }).select().single(); if (error) throw new Error("Learning progress could not be synchronized."); return data; }

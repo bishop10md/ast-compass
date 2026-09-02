@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { filterSearchOptions, sortAlphabetically } from "../src/utils/search-core.mjs";
 import { parseMeasurement } from "../src/features/measurement-core.mjs";
+import { screenPhiText } from "../src/features/phi-screening-core.mjs";
 
 test("alphabetical sorting is case-insensitive and does not mutate input", () => {
   const source = [{ label: "vanA/B" }, { label: "CTX-M" }, { label: "mecA/C" }];
@@ -25,10 +26,49 @@ test("MIC operators are preserved and parsed", () => {
 test("image workflow keeps the PHI gate and human confirmation contract", async () => {
   const source = await readFile(new URL("../src/features/ImageConcordanceAnalyzer.tsx", import.meta.url), "utf8");
   assert.match(source, /contains no PHI/);
+  assert.match(source, /Checking image privacy/);
+  assert.match(source, /phiScreen\.status !== "clear"/);
   assert.match(source, /disabled=\{!phiAcknowledged\}/);
   assert.match(source, /Human confirmation required/);
-  assert.match(source, /session/);
+  assert.match(source, /no permanent storage before screening/);
   assert.match(source, /image\/jpeg,image\/png,image\/webp/);
+});
+
+test("PHI screening rejects identifiers and passes AST-only text", () => {
+  for (const text of ["Patient: Jane Smith", "MRN: 12345678", "DOB: 05/17/1982", "Phone 312-555-1212", "jane@example.com", "Accession # AB-12345", "123 Main Street"]) assert.notEqual(screenPhiText(text).status, "clear", text);
+  assert.equal(screenPhiText("Escherichia coli\nCeftriaxone <=1 S\nMeropenem >=16 R\nCTX-M detected").status, "clear");
+  assert.equal(screenPhiText("", { barcode: true }).status, "phi-detected");
+  assert.equal(screenPhiText("", { face: true }).status, "phi-detected");
+  assert.equal(screenPhiText("", { ocrFailure: true }).status, "unable-to-screen");
+  assert.equal(screenPhiText("", { scannerUnavailable: true }).status, "unable-to-screen");
+  assert.equal(screenPhiText("Report date 05/17/2026").status, "possible-phi");
+});
+
+test("account architecture is optional, provider-backed, and owner scoped", async () => {
+  const account = await readFile(new URL("../src/features/AccountWorkspace.tsx", import.meta.url), "utf8");
+  const auth = await readFile(new URL("../src/auth/AuthContext.tsx", import.meta.url), "utf8");
+  const migration = await readFile(new URL("../supabase/migrations/20260901_private_workspace.sql", import.meta.url), "utf8");
+  assert.match(account, /Continue as a guest for full educational access/);
+  assert.match(account, /Continue with Google/);
+  assert.match(auth, /signInWithPassword/);
+  assert.match(auth, /resetPasswordForEmail/);
+  assert.match(migration, /enable row level security/g);
+  assert.match(migration, /auth\.uid\(\) = user_id/);
+  assert.match(migration, /ast-images/);
+  assert.match(migration, /phi_screening_status.*'clear'/s);
+});
+
+test("Supabase client and services never expose a service-role credential", async () => {
+  const client = await readFile(new URL("../src/lib/supabase.ts", import.meta.url), "utf8");
+  const env = await readFile(new URL("../.env.example", import.meta.url), "utf8");
+  const analysis = await readFile(new URL("../src/services/analysisService.ts", import.meta.url), "utf8");
+  const image = await readFile(new URL("../src/services/imageService.ts", import.meta.url), "utf8");
+  assert.match(client, /VITE_SUPABASE_PUBLISHABLE_KEY/);
+  assert.doesNotMatch(`${client}\n${env}\n${analysis}\n${image}`, /VITE_SUPABASE_SERVICE_ROLE_KEY/);
+  assert.match(analysis, /requireAuthenticatedUser/);
+  assert.match(image, /phi\.status !== "clear"/);
+  assert.match(image, /createSignedUrl\(storagePath, 300\)/);
+  assert.match(image, /crypto\.randomUUID\(\)/);
 });
 
 test("BCID2 panel definition contains the complete 43-target manufacturer menu", async () => {
@@ -60,11 +100,64 @@ test("BCID workflow uses panel targets and keeps conservative result boundaries"
   assert.match(source, /bcid2Panel\.targets\.map/);
   assert.doesNotMatch(source, /new Set\(bcidForecasts\.map/);
   assert.match(source, /Absence of a panel marker does not establish susceptibility/);
-  assert.match(source, /No antifungal resistance marker is included/);
-  assert.match(source, /No reviewed organism–marker forecast is currently available/);
+  assert.match(source, /NO ORGANISM-SPECIFIC BCID2 AMR MARKER AVAILABLE/);
+  assert.match(source, /No reviewed forecast is available for this exact combination/);
   assert.match(source, /GENE-TO-ORGANISM ATTRIBUTION CAUTION/);
   const forecastLookup = source.slice(source.indexOf("function forecastsFor"), source.indexOf("export default function"));
-  assert.ok(forecastLookup.indexOf("const exact = bcidForecasts.filter") < forecastLookup.indexOf("if (target.parentId)"));
+  assert.ok(forecastLookup.indexOf("const exact = bcidForecasts.filter") < forecastLookup.indexOf("const parent = target.parentId"));
   assert.match(css, /@media\(max-width:760px\).*bcid-workflow\{grid-template-columns:1fr\}/s);
 });
 
+test("BCID2 compatibility is a dedicated bidirectional data layer", async () => {
+  const compatibility = await readFile(new URL("../src/data/bcid2Compatibility.ts", import.meta.url), "utf8");
+  const panel = await readFile(new URL("../src/data/bcid2Panel.ts", import.meta.url), "utf8");
+  const forecasts = await readFile(new URL("../src/data/bcidForecasts.ts", import.meta.url), "utf8");
+  assert.match(compatibility, /getMarkersForOrganism/);
+  assert.match(compatibility, /getOrganismsForMarker/);
+  assert.match(compatibility, /isCompatibleBcidPair/);
+  assert.doesNotMatch(panel, /getMarkersForOrganism/);
+  assert.doesNotMatch(forecasts, /getMarkersForOrganism/);
+});
+
+test("BCID2 compatibility excludes biologically unrelated selector combinations", async () => {
+  const source = await readFile(new URL("../src/data/bcid2Compatibility.ts", import.meta.url), "utf8");
+  assert.match(source, /rule\("s-aureus", "meca-c-mrej"\)/);
+  assert.match(source, /rule\("s-epidermidis", "meca-c"\)/);
+  assert.match(source, /rule\("e-faecium", "vana-b"\)/);
+  assert.match(source, /\["imp", "kpc", "ndm", "vim"\].*"p-aeruginosa"/s);
+  assert.doesNotMatch(source, /rule\("e-coli", "meca-c/);
+  assert.doesNotMatch(source, /rule\("e-coli", "vana-b"/);
+  assert.doesNotMatch(source, /rule\("s-aureus", "ctx-m"/);
+  assert.doesNotMatch(source, /rule\("e-faecium", "kpc"/);
+  assert.doesNotMatch(source, /rule\("s-pneumoniae",/);
+});
+
+test("BCID selector supports reverse filtering and smart incompatible resets", async () => {
+  const source = await readFile(new URL("../src/features/BcidForecast.tsx", import.meta.url), "utf8");
+  assert.match(source, /Start with/i);
+  assert.match(source, /getOrganismsForMarker/);
+  assert.match(source, /getMarkersForOrganism/);
+  assert.match(source, /setMarkerIds\(\(current\) => current\.filter\(\(id\) => allowed\.has\(id\)\)\)/);
+  assert.match(source, /Show advanced\/conditional marker associations/);
+  assert.match(source, /NO ORGANISM-SPECIFIC BCID2 AMR MARKER AVAILABLE/);
+  assert.match(source, /Absence of a panel marker does not establish susceptibility/);
+  assert.doesNotMatch(source, />Susceptible</);
+});
+
+test("BCID multiplex workflow supports many-to-many results without forced attribution", async () => {
+  const ui = await readFile(new URL("../src/features/BcidForecast.tsx", import.meta.url), "utf8");
+  const compatibility = await readFile(new URL("../src/data/bcid2Compatibility.ts", import.meta.url), "utf8");
+  const combined = await readFile(new URL("../src/data/bcidCombinedForecasts.ts", import.meta.url), "utf8");
+  assert.match(ui, /useState<string\[\]>\(\["e-coli"\]\)/);
+  assert.match(ui, /Detected organism\(s\)/);
+  assert.match(ui, /Detected resistance marker\(s\)/);
+  assert.match(ui, /MULTIPLEX ATTRIBUTION CAUTION/);
+  assert.match(ui, /Attribution matrix/);
+  assert.match(ui, /Primary · uncertain attribution/);
+  assert.match(ui, /Showing the union of BCID2 markers relevant to all selected organisms/);
+  assert.match(compatibility, /assessBcidPairs/);
+  assert.match(compatibility, /compatibleOrganisms\.length === 1/);
+  assert.match(combined, /getCombinedForecast/);
+  assert.match(combined, /k-pneumoniae-group:ctx-m\+kpc/);
+  assert.match(combined, /no reviewed combined forecast is available/i);
+});
