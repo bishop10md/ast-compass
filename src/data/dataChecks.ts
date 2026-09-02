@@ -14,9 +14,9 @@ export function runDataChecks() {
   if (!bcidForecasts.every((record) => record.antimicrobialClass && record.doesNotTellYou.length && record.sourceIds.length)) failures.push("BCID grouping, limitations, or sources are incomplete.");
   const bacterialTargets = bcid2Panel.targets.filter((target) => target.category !== "Yeast");
   const yeastTargets = bcid2Panel.targets.filter((target) => target.category === "Yeast");
-  if (bacterialTargets.length !== 26 || yeastTargets.length !== 7 || bcid2Panel.markers.length !== 10) failures.push("BCID2 panel target counts do not match the verified manufacturer menu.");
-  if (!["enterobacterales", "staphylococcus-spp", "streptococcus-spp"].every((parentId) => bcid2Panel.targets.some((target) => target.parentId === parentId))) failures.push("BCID2 organism hierarchy is incomplete.");
-  if (!["imp", "kpc", "ndm", "oxa-48-like", "vim"].every((markerId) => bcid2Panel.markers.some((marker) => marker.id === markerId))) failures.push("BCID2 carbapenemase targets are incomplete.");
+  if (bacterialTargets.length !== 26 || yeastTargets.length !== 7 || bcid2Panel.markers.length !== 10) failures.push("BCID panel target counts do not match the verified manufacturer menu.");
+  if (!["enterobacterales", "staphylococcus-spp", "streptococcus-spp"].every((parentId) => bcid2Panel.targets.some((target) => target.parentId === parentId))) failures.push("BCID organism hierarchy is incomplete.");
+  if (!["imp", "kpc", "ndm", "oxa-48-like", "vim"].every((markerId) => bcid2Panel.markers.some((marker) => marker.id === markerId))) failures.push("BCID carbapenemase targets are incomplete.");
   const keys = new Set<string>();
   for (const record of bcidForecasts) {
     const key = `${record.organism || record.organismGroup}|${record.markerLabel}|${record.drugOrClass}`;

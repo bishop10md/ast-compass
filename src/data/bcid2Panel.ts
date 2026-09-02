@@ -53,13 +53,13 @@ export const bcid2Markers: BcidResistanceMarker[] = [
 ];
 
 export const bcid2AssociationRules: PanelAssociationRule[] = [
-  { organismId: "enterobacterales", markerId: "ctx-m", association: "Potential association", explanation: "CTX-M is a BCID2 ESBL target reported in a compatible Enterobacterales context. A monomicrobial result supports association, but phenotypic AST remains required.", sourceIds: ["ref-bcid2-ifu", "ref-idsa"] },
-  { organismId: "e-coli", markerId: "ctx-m", association: "Strongly associated in this BCID context", explanation: "In a monomicrobial E. coli BCID2 result, CTX-M is strongly associated with the detected Enterobacterales target. This is still a pre-AST molecular association, not proof of the complete phenotype.", sourceIds: ["ref-bcid2-ifu", "ref-idsa"] },
+  { organismId: "enterobacterales", markerId: "ctx-m", association: "Potential association", explanation: "CTX-M is a BCID ESBL target reported in a compatible Enterobacterales context. A monomicrobial result supports association, but phenotypic AST remains required.", sourceIds: ["ref-bcid2-ifu", "ref-idsa"] },
+  { organismId: "e-coli", markerId: "ctx-m", association: "Strongly associated in this BCID context", explanation: "In a monomicrobial E. coli BCID result, CTX-M is strongly associated with the detected Enterobacterales target. This is still a pre-AST molecular association, not proof of the complete phenotype.", sourceIds: ["ref-bcid2-ifu", "ref-idsa"] },
   { organismId: "e-cloacae-complex", markerId: "ctx-m", association: "Potential association", explanation: "CTX-M supports an ESBL mechanism, while Enterobacter cloacae complex also has important chromosomal AmpC biology.", sourceIds: ["ref-bcid2-ifu", "ref-idsa"] },
-  { organismId: "enterobacterales", markerId: "kpc", association: "Potential association", explanation: "KPC can be associated with a detected Enterobacterales target in the appropriate BCID2 context; isolation and AST are needed for attribution and phenotype.", sourceIds: ["ref-bcid2-ifu", "ref-idsa"] },
+  { organismId: "enterobacterales", markerId: "kpc", association: "Potential association", explanation: "KPC can be associated with a detected Enterobacterales target in the appropriate BCID context; isolation and AST are needed for attribution and phenotype.", sourceIds: ["ref-bcid2-ifu", "ref-idsa"] },
   { organismId: "k-pneumoniae-group", markerId: "kpc", association: "Strongly associated in this BCID context", explanation: "A monomicrobial Klebsiella pneumoniae group plus KPC result supports a strong pre-AST organism–marker association.", sourceIds: ["ref-bcid2-ifu", "ref-idsa"] },
-  ...["imp", "ndm", "oxa-48-like", "vim"].map((markerId) => ({ organismId: "enterobacterales", markerId, association: "Potential association" as const, explanation: "The carbapenemase target may be associated with the detected Enterobacterales target in a monomicrobial BCID2 result; culture and AST remain necessary.", sourceIds: ["ref-bcid2-ifu", "ref-idsa"] })),
-  { organismId: "s-aureus", markerId: "meca-c-mrej", association: "Strongly associated in this BCID context", explanation: "The combined mecA/C and MREJ target is the BCID2 MRSA-associated marker context for Staphylococcus aureus.", sourceIds: ["ref-bcid2-ifu"] },
+  ...["imp", "ndm", "oxa-48-like", "vim"].map((markerId) => ({ organismId: "enterobacterales", markerId, association: "Potential association" as const, explanation: "The carbapenemase target may be associated with the detected Enterobacterales target in a monomicrobial BCID result; culture and AST remain necessary.", sourceIds: ["ref-bcid2-ifu", "ref-idsa"] })),
+  { organismId: "s-aureus", markerId: "meca-c-mrej", association: "Strongly associated in this BCID context", explanation: "The combined mecA/C and MREJ target is the BCID MRSA-associated marker context for Staphylococcus aureus.", sourceIds: ["ref-bcid2-ifu"] },
   { organismId: "staphylococcus-spp", markerId: "meca-c", association: "Potential association", explanation: "mecA/C may support methicillin resistance in a compatible Staphylococcus context, but species and manufacturer reporting rules must be reviewed.", sourceIds: ["ref-bcid2-ifu"] },
   { organismId: "e-faecalis", markerId: "vana-b", association: "Potential association", explanation: "vanA/B may be associated with the detected Enterococcus faecalis target; expression and phenotypic AST remain important.", sourceIds: ["ref-bcid2-ifu"] },
   { organismId: "e-faecium", markerId: "vana-b", association: "Potential association", explanation: "vanA/B may be associated with the detected Enterococcus faecium target; expression and phenotypic AST remain important.", sourceIds: ["ref-bcid2-ifu"] },
@@ -67,7 +67,7 @@ export const bcid2AssociationRules: PanelAssociationRule[] = [
 
 export const bcid2PanelMetadata = {
   manufacturer: "bioMérieux / BioFire Diagnostics",
-  panel: "BIOFIRE Blood Culture Identification 2 (BCID2) Panel",
+  panel: "BIOFIRE Blood Culture Identification 2 (BCID) Panel",
   sampleType: "Positive blood culture",
   totalTargets: 43,
   bacterialTargets: 26,
@@ -79,7 +79,7 @@ export const bcid2PanelMetadata = {
 
 export const bcid2Panel: RapidDiagnosticPanel = {
   id: "biofire-bcid2",
-  shortName: "BIOFIRE BCID2",
+  shortName: "BIOFIRE BCID",
   name: bcid2PanelMetadata.panel,
   manufacturer: bcid2PanelMetadata.manufacturer,
   sampleType: bcid2PanelMetadata.sampleType,

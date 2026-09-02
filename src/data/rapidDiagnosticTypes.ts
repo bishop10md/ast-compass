@@ -4,7 +4,7 @@ export interface RapidDiagnosticTarget { id: string; name: string; category: Bci
 export type BcidPanelTarget = RapidDiagnosticTarget;
 export interface RapidDiagnosticMarker { id: string; label: string; category: "Carbapenemase" | "ESBL" | "Colistin resistance" | "Methicillin resistance" | "Vancomycin resistance"; mechanismId?: string; mechanismFamily?: "Serine carbapenemase" | "Metallo-beta-lactamase" }
 export type BcidResistanceMarker = RapidDiagnosticMarker;
-export type MarkerAssociation = "Strongly associated in this BCID context" | "Potential association" | "Organism attribution uncertain" | "Not a typical BCID2 interpretation context" | "Not applicable";
+export type MarkerAssociation = "Strongly associated in this BCID context" | "Potential association" | "Organism attribution uncertain" | "Not a typical BCID interpretation context" | "Not applicable";
 export type BcidCompatibility = "primary" | "possible" | "not-applicable";
 export interface BcidCompatibilityRule { organismId: string; markerId: string; compatibility: BcidCompatibility; explanation: string; sourceIds: string[] }
 export interface BcidDetectedResult { organismIds: string[]; markerIds: string[] }
