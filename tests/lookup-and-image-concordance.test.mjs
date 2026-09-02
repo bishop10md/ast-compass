@@ -173,3 +173,13 @@ test("unified experience removes global mode state and keeps progressive disclos
   assert.match(bcid, /Disclosure title="Organism–marker attribution"/);
   assert.match(bcid, /Disclosure title="Mechanism details"/);
 });
+
+test("global search is limited to structured AST Compass content", async () => {
+  const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
+  assert.match(app, /Search AST Compass/);
+  assert.match(app, /AST COMPASS ONLY/);
+  assert.match(app, /Search is limited to content within AST Compass/);
+  assert.match(app, /breakpoints\.map/);
+  assert.match(app, /intrinsicPatterns\.map/);
+  assert.doesNotMatch(app, /Ask science|Ask AST Compass|science-assistant|Generate answer|askScience/);
+});
