@@ -97,7 +97,9 @@ test("BCID group hierarchy and five distinct carbapenemases are preserved", asyn
 test("BCID workflow uses panel targets and keeps conservative result boundaries", async () => {
   const source = await readFile(new URL("../src/features/BcidForecast.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("../src/concordance.css", import.meta.url), "utf8");
-  assert.match(source, /bcid2Panel\.targets\.map/);
+  assert.match(source, /const bacterialTargets = bcid2Panel\.targets\.filter/);
+  assert.match(source, /target\.category !== "Yeast"/);
+  assert.match(source, /26 bacteria · 10 AMR targets/);
   assert.doesNotMatch(source, /new Set\(bcidForecasts\.map/);
   assert.match(source, /Absence of a panel marker does not establish susceptibility/);
   assert.match(source, /NO ORGANISM-SPECIFIC BCID AMR MARKER AVAILABLE/);
