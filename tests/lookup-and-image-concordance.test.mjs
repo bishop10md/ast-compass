@@ -100,7 +100,7 @@ test("BCID workflow uses panel targets and keeps conservative result boundaries"
   assert.match(source, /bcid2Panel\.targets\.map/);
   assert.doesNotMatch(source, /new Set\(bcidForecasts\.map/);
   assert.match(source, /Absence of a panel marker does not establish susceptibility/);
-  assert.match(source, /NO ORGANISM-SPECIFIC BCID2 AMR MARKER AVAILABLE/);
+  assert.match(source, /NO ORGANISM-SPECIFIC BCID AMR MARKER AVAILABLE/);
   assert.match(source, /No reviewed forecast is available for this exact combination/);
   assert.match(source, /GENE-TO-ORGANISM ATTRIBUTION CAUTION/);
   const forecastLookup = source.slice(source.indexOf("function forecastsFor"), source.indexOf("export default function"));
@@ -139,7 +139,7 @@ test("BCID selector supports reverse filtering and smart incompatible resets", a
   assert.match(source, /getMarkersForOrganism/);
   assert.match(source, /setMarkerIds\(\(current\) => current\.filter\(\(id\) => allowed\.has\(id\)\)\)/);
   assert.match(source, /Show advanced\/conditional marker associations/);
-  assert.match(source, /NO ORGANISM-SPECIFIC BCID2 AMR MARKER AVAILABLE/);
+  assert.match(source, /NO ORGANISM-SPECIFIC BCID AMR MARKER AVAILABLE/);
   assert.match(source, /Absence of a panel marker does not establish susceptibility/);
   assert.doesNotMatch(source, />Susceptible</);
 });
@@ -154,7 +154,7 @@ test("BCID multiplex workflow supports many-to-many results without forced attri
   assert.match(ui, /MULTIPLEX ATTRIBUTION CAUTION/);
   assert.match(ui, /Attribution matrix/);
   assert.match(ui, /Primary · uncertain attribution/);
-  assert.match(ui, /Showing the union of BCID2 markers relevant to all selected organisms/);
+  assert.match(ui, /Showing the union of BCID markers relevant to all selected organisms/);
   assert.match(compatibility, /assessBcidPairs/);
   assert.match(compatibility, /compatibleOrganisms\.length === 1/);
   assert.match(combined, /getCombinedForecast/);
