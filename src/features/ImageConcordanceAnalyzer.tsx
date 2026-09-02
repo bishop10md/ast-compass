@@ -4,6 +4,7 @@ import { analyzeConcordance, antimicrobialOptions, markerOptions, organismOption
 import { screenPhiText, type PhiScreeningResult } from "./phi-screening-core.mjs";
 import { useAuth } from "../auth/AuthContext";
 import { saveImageAnalysis } from "../services/imageService";
+import { captureError, trackEvent } from "../lib/telemetry";
 
 declare global {
   interface Window {
@@ -76,9 +77,10 @@ export default function ImageConcordanceAnalyzer() {
       image.close();
       const result = screenPhiText(response.data.text, { barcode, face, poorImageQuality: response.data.text.trim().length < 8 });
       setPhiScreen(result);
-      if (result.status !== "clear") { setOcrStatus("Image rejected before analysis. Choose a cropped or fully redacted image."); if (inputRef.current) inputRef.current.value = ""; return; }
+      if (result.status !== "clear") { trackEvent("phi_screen_blocked", { page: "/concordance/image", feature_name: "image_concordance", success_or_failure: "blocked" }); setOcrStatus("Image rejected before analysis. Choose a cropped or fully redacted image."); if (inputRef.current) inputRef.current.value = ""; return; }
+      trackEvent("phi_screen_passed", { page: "/concordance/image", feature_name: "image_concordance", success_or_failure: "success" });
       setFile(next); setPreviewUrl(URL.createObjectURL(next)); setOcrText(response.data.text); setOcrStatus("Privacy screen passed. Confirm the image is de-identified before continuing.");
-    } catch { setPhiScreen(screenPhiText("", { ocrFailure: true })); setOcrStatus("Image cannot be verified. Screening failed closed; choose another clear, de-identified image."); if (inputRef.current) inputRef.current.value = ""; }
+    } catch (error) { captureError(error, { feature_name: "image_concordance", success_or_failure: "failure" }); setPhiScreen(screenPhiText("", { ocrFailure: true })); setOcrStatus("Image cannot be verified. Screening failed closed; choose another clear, de-identified image."); if (inputRef.current) inputRef.current.value = ""; }
     finally { setScreening(false); }
   };
   const extract = async () => {
@@ -92,10 +94,10 @@ export default function ImageConcordanceAnalyzer() {
       setRows(parsed.length ? parsed : [emptyRow()]);
       setOcrStatus(parsed.length ? `${parsed.length} possible AST row${parsed.length === 1 ? "" : "s"} found. Review every field below.` : "No complete rows were recognized. Edit the extracted text or enter results manually.");
       resetAnalysis();
-    } catch (error) { setOcrStatus(error instanceof Error ? error.message : "OCR is unavailable. Use manual entry instead."); }
+    } catch (error) { captureError(error, { feature_name: "image_concordance", success_or_failure: "failure" }); setOcrStatus(error instanceof Error ? error.message : "OCR is unavailable. Use manual entry instead."); }
   };
   const parseEditedText = () => { const parsed = parseAstText(ocrText); setRows(parsed.length ? parsed : [emptyRow()]); setOcrStatus(parsed.length ? `${parsed.length} possible row${parsed.length === 1 ? "" : "s"} parsed. Human review is required.` : "No known antimicrobial rows found. Continue with manual entry."); resetAnalysis(); };
-  const analyze = () => { if (!confirmed || !organismId || !marker || !validRows.length) return; setResults(analyzeConcordance(organismId, marker, validRows)); };
+  const analyze = () => { if (!confirmed || !organismId || !marker || !validRows.length) return; const next = analyzeConcordance(organismId, marker, validRows); setResults(next); trackEvent("image_concordance_completed", { page: "/concordance/image", feature_name: "image_concordance", result_count: next.length, success_or_failure: "success" }); };
 
   return <>
     <div className="page-head"><p className="eyebrow">Image + manual review workflow</p><h1>AST Image Concordance Analyzer</h1><p>Convert a deidentified AST image or manually entered result table into a human-reviewed educational concordance exercise.</p></div>
@@ -130,3 +132,4 @@ function AnalysisResults({ results, summary }: { results: ConcordanceResult[]; s
   const overall = concern > concordant ? "Potential discordance identified" : concordant > 0 ? "Largely concordant" : "Inference remains limited";
   return <section className="analysis-step"><div className="overall-summary panel"><p className="eyebrow">Overall concordance</p><h2>{overall}</h2><p>{results.length} antimicrobial result{results.length === 1 ? "" : "s"} reviewed</p><div className="summary-grid">{Object.entries(summary).filter(([, count]) => count > 0).map(([label, count]) => <div className={`summary-card ${label.toLowerCase().replace(/\s+/g, "-")}`} key={label}><b>{count}</b><span>{label}</span></div>)}</div></div><div className="panel"><div className="review-heading"><div><p className="eyebrow">Educational comparison</p><h2>Detailed concordance analysis</h2></div><span>{results.length} reviewed result{results.length === 1 ? "" : "s"}</span></div><div className="analysis-list">{results.map((result) => <article key={result.id}><div><div><b>{result.antimicrobial}</b><span>{result.measurement || "No measurement"} · {result.category}</span></div><strong className={`assessment ${result.assessment.toLowerCase().replace(/\s+/g, "-")}`}>{result.assessment}</strong></div><p>{result.rationale}</p>{(result.assessment === "Discordant" || result.assessment === "Investigate") && <details><summary>Troubleshooting prompts</summary><ul>{result.troubleshooting.map((item) => <li key={item}>{item}</li>)}</ul></details>}</article>)}</div></div></section>;
 }
+
