@@ -1,7 +1,7 @@
 import type { BcidCompatibility, BcidCompatibilityRule, BcidPairAssessment } from "./rapidDiagnosticTypes";
 
 const sources = ["ref-bcid2-ifu", "ref-idsa"];
-const rule = (organismId: string, markerId: string, compatibility: BcidCompatibility = "primary", explanation = "Reviewed as a relevant BIOFIRE BCID2 organism–marker interpretation context."): BcidCompatibilityRule => ({ organismId, markerId, compatibility, explanation, sourceIds: sources });
+const rule = (organismId: string, markerId: string, compatibility: BcidCompatibility = "primary", explanation = "Reviewed as a relevant BCID organism–marker interpretation context."): BcidCompatibilityRule => ({ organismId, markerId, compatibility, explanation, sourceIds: sources });
 
 const enterobacterales = ["e-cloacae-complex", "e-coli", "k-aerogenes", "k-oxytoca", "k-pneumoniae-group", "proteus-spp", "salmonella-spp", "s-marcescens"];
 const enterobacteralesMarkers = ["ctx-m", "imp", "kpc", "ndm", "oxa-48-like", "vim", "mcr-1"];
@@ -35,3 +35,4 @@ export const assessBcidPairs = (organismIds: string[], markerIds: string[]): Bci
   if (!match || match.compatibility === "not-applicable") return { organismId, markerId, compatibility: "not-applicable", attribution: "not-applicable", explanation: "Not applicable in this BCID2 interpretation context." };
   return { organismId, markerId, compatibility: match.compatibility, attribution: compatibleOrganisms.length === 1 ? "clear-context" : "ambiguous", explanation: compatibleOrganisms.length === 1 ? "Among the selected organisms, this marker is relevant to this organism context." : "This marker is compatible with more than one selected organism; the multiplex result alone may not establish attribution." };
 }));
+
