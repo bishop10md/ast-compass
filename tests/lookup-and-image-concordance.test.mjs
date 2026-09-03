@@ -38,6 +38,9 @@ test("image workflow keeps the PHI gate and human confirmation contract", async 
   assert.match(source, /createWorker\("eng",1/);
   assert.match(source, /1600\/Math\.max/);
   assert.match(source, /Loading OCR language data/);
+  assert.match(source, /assign S, I, R, SDD, or NS to at least one antimicrobial row/);
+  assert.match(source, /Only rows with a reviewed susceptibility category will be analyzed/);
+  assert.doesNotMatch(source, /disabled=\{!confirmed\|\|!organismId\|\|!marker\|\|!validRows\.length\}/);
   assert.match(source, /Run Image Pipeline Self-Test/);
   assert.match(source, /import\.meta\.env\.DEV/);
 });
