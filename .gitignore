@@ -8,3 +8,6 @@ work/
 *.tsbuildinfo
 vite.config.js
 vite.config.d.ts
+.video_deps/
+video-tools/
+tmp-video-review/
