@@ -128,6 +128,31 @@ export interface CaseStudy {
   learningPoint: string;
 }
 
+export type AstDetectiveTopic = "AST Fundamentals" | "Breakpoints" | "Intrinsic Resistance" | "ESBL" | "AmpC" | "Carbapenemases" | "MRSA" | "VRE" | "BCID" | "Concordance" | "Troubleshooting" | "Quality Control";
+export type AstDetectiveDifficulty = "Foundation" | "Intermediate" | "Advanced";
+export type AstDetectiveQuestionType = "multiple-choice" | "select-all" | "case-interpretation" | "concordance" | "mechanism-identification" | "best-explanation" | "troubleshooting" | "cannot-infer";
+export interface AstDetectiveQuestion {
+  id: string;
+  title: string;
+  topic: AstDetectiveTopic;
+  subtopic?: string;
+  difficulty: AstDetectiveDifficulty;
+  type: AstDetectiveQuestionType;
+  learningObjective: string;
+  organismIds?: string[];
+  antimicrobialIds?: string[];
+  markerIds?: string[];
+  stem: string;
+  choices: { id: string; text: string }[];
+  correctChoiceIds: string[];
+  explanation: string;
+  incorrectExplanations?: Record<string, string>;
+  teachingPoint: string;
+  sourceIds: string[];
+  reviewStatus: "Draft" | "Reviewed" | "Verified";
+  prerequisiteTopic?: string;
+}
+
 export interface LearningModule {
   id: string;
   number: string;

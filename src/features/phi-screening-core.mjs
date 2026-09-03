@@ -1,4 +1,4 @@
-export const PHI_SCREENING_VERSION = "1.0.0";
+export const PHI_SCREENING_VERSION = "1.1.0";
 
 const rules = [
   ["medical-record-number", /\b(?:mrn|medical\s*record)\s*[:#-]?\s*[a-z0-9-]{4,}\b/i],
@@ -15,11 +15,15 @@ const rules = [
 
 export function screenPhiText(text, signals = {}) {
   if (signals.scannerUnavailable || signals.ocrFailure || signals.poorImageQuality) return { status: "unable-to-screen", confidence: 0, findings: [], screeningVersion: PHI_SCREENING_VERSION };
-  const findings = rules.filter(([, pattern]) => pattern.test(text || "")).map(([type]) => ({ type, confidence: .94 }));
+  const normalized = String(text || "").replace(/[≥≤]/g, "").trim();
+  const findings = rules.filter(([, pattern]) => pattern.test(normalized)).map(([type]) => ({ type, confidence: .94 }));
   if (signals.barcode) findings.push({ type: "barcode-or-qr-code", confidence: .99 });
   if (signals.face) findings.push({ type: "face", confidence: .99 });
-  const ambiguousDate = !findings.length && /\b\d{1,2}[\/-]\d{1,2}[\/-]\d{2,4}\b/.test(text || "");
+  const astLine = /\b(?:S|I|R|SDD|NS)\b|\b(?:MIC|panel|well|instrument|cef|penem|cillin|floxacin|cycline|mycin|azole|CTX-M|KPC|NDM|VIM|IMP|mecA|vanA)\b/i;
+  const ambiguousDate = !findings.length && /\b\d{1,2}[\/-]\d{1,2}[\/-]\d{2,4}\b/.test(normalized);
   if (ambiguousDate) findings.push({ type: "patient-date", confidence: .62 });
+  const longNumber = !findings.length && /\b\d{7,14}\b/.test(normalized) && !normalized.split(/\r?\n/).some((line) => astLine.test(line) && /\b\d{7,14}\b/.test(line));
+  if (longNumber) findings.push({ type: "other-potential-identifier", confidence: .55 });
   const definite = findings.some((item) => item.confidence >= .9);
   return { status: definite ? "phi-detected" : findings.length ? "possible-phi" : "clear", confidence: findings.length ? Math.max(...findings.map((item) => item.confidence)) : .86, findings, screeningVersion: PHI_SCREENING_VERSION };
 }

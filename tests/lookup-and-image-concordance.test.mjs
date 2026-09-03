@@ -26,12 +26,17 @@ test("MIC operators are preserved and parsed", () => {
 test("image workflow keeps the PHI gate and human confirmation contract", async () => {
   const source = await readFile(new URL("../src/features/ImageConcordanceAnalyzer.tsx", import.meta.url), "utf8");
   assert.match(source, /contains no PHI/);
-  assert.match(source, /Checking image privacy/);
-  assert.match(source, /phiScreen\.status !== "clear"/);
-  assert.match(source, /disabled=\{!phiAcknowledged\}/);
+  assert.match(source, /ImagePipelineStatus/);
+  assert.match(source, /phi-detected/);
+  assert.match(source, /possible-phi/);
+  assert.match(source, /detector-unavailable/);
+  assert.match(source, /disabled=\{!ack\}/);
   assert.match(source, /Human confirmation required/);
   assert.match(source, /no permanent storage before screening/);
   assert.match(source, /image\/jpeg,image\/png,image\/webp/);
+  assert.match(source, /Retry analysis/);
+  assert.match(source, /Run Image Pipeline Self-Test/);
+  assert.match(source, /import\.meta\.env\.DEV/);
 });
 
 test("PHI screening rejects identifiers and passes AST-only text", () => {
@@ -42,6 +47,8 @@ test("PHI screening rejects identifiers and passes AST-only text", () => {
   assert.equal(screenPhiText("", { ocrFailure: true }).status, "unable-to-screen");
   assert.equal(screenPhiText("", { scannerUnavailable: true }).status, "unable-to-screen");
   assert.equal(screenPhiText("Report date 05/17/2026").status, "possible-phi");
+  assert.equal(screenPhiText("CEFTRIAXONE 64 R\nMEROPENEM <=0.25 S\nPanel 12345678").status, "clear");
+  assert.equal(screenPhiText("12345678").status, "possible-phi");
 });
 
 test("account architecture is optional, email-enabled, and owner scoped", async () => {
