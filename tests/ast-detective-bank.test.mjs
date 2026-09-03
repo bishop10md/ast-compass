@@ -1,0 +1,14 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+const source=readFileSync(new URL("../src/data/astDetectiveQuestions.ts",import.meta.url),"utf8");
+const questions=source.split(/\r?\n/).map(x=>x.trim()).filter(x=>x.startsWith('["AD')&&(x.endsWith('],')||x.endsWith(']'))).map(x=>{const [id,topic,difficulty,type,title,stem,choices,correct,explanation,teachingPoint,sourceIds]=JSON.parse(x.endsWith(',')?x.slice(0,-1):x);return{id,topic,difficulty,type,title,stem,choices,correct,explanation,teachingPoint,sourceIds,objective:`Explain ${title.toLowerCase()} in an AST reasoning workflow.`}});
+const countBy=key=>Object.fromEntries([...new Set(questions.map(q=>q[key]))].sort().map(value=>[value,questions.filter(q=>q[key]===value).length]));
+const unique=(values,label)=>assert.equal(new Set(values).size,values.length,`${label} must be unique`);
+const tokens=text=>new Set(text.toLowerCase().replace(/[^a-z0-9 ]/g," ").split(/\s+/).filter(word=>word.length>3));
+const similarity=(a,b)=>{const A=tokens(a),B=tokens(b),intersection=[...A].filter(x=>B.has(x)).length,union=new Set([...A,...B]).size;return union?intersection/union:0};
+test("AST Detective has exactly 100 fixed reviewable questions",()=>{assert.equal(questions.length,100);unique(questions.map(q=>q.id),"IDs");unique(questions.map(q=>q.stem),"stems");unique(questions.map(q=>JSON.stringify(q.choices)),"answer sets");unique(questions.map(q=>q.objective),"learning objectives");for(const q of questions){assert.ok(q.explanation);assert.ok(q.teachingPoint);assert.ok(q.sourceIds.length);assert.ok(q.correct>=0&&q.correct<q.choices.length);}});
+test("topic distribution matches the approved plan",()=>assert.deepEqual(countBy("topic"),{"AST Fundamentals":10,"AmpC":8,"BCID":10,"Breakpoints":10,"Carbapenemases":12,"Concordance":8,"ESBL":8,"Intrinsic Resistance":10,"MRSA":7,"Quality Control":5,"Troubleshooting":5,"VRE":7}));
+test("difficulty distribution is exact",()=>assert.deepEqual(countBy("difficulty"),{Advanced:25,Foundation:30,Intermediate:45}));
+test("no stems exceed the similarity threshold",()=>{const flagged=[];for(let i=0;i<questions.length;i++)for(let j=i+1;j<questions.length;j++){const score=similarity(questions[i].stem,questions[j].stem);if(score>=.82)flagged.push(`${questions[i].id}/${questions[j].id}:${score.toFixed(2)}`)}assert.deepEqual(flagged,[]);});
+test("bank is versioned and every new item is Draft",()=>{assert.match(source,/AST_DETECTIVE_BANK_VERSION = "1\.0-draft"/);assert.match(source,/reviewStatus:"Draft"/);assert.doesNotMatch(source,/reviewStatus:"(?:Reviewed|Verified)"/);});

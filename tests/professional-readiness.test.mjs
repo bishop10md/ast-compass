@@ -20,7 +20,7 @@ test("password recovery completion uses provider-supported updateUser", () => {
 
 test("permanent image persistence fails closed pending server gate", () => {
   assert.match(read("src/services/imageService.ts"), /Permanent image saving is unavailable/);
-  assert.match(read("src/features/ImageConcordanceAnalyzer.tsx"), /Client-side screening cannot authorize permanent storage/);
+  assert.match(read("src/features/ImageConcordanceAnalyzer.tsx"), /Uploaded images are not permanently saved/);
   assert.match(read("src/security/phiServerGate.ts"), /Server-side PHI screening is not configured/);
 });
 

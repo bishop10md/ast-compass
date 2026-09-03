@@ -6,6 +6,7 @@ export { genes } from "./genes";
 export { breakpoints } from "./breakpoints";
 export { intrinsicPatterns } from "./intrinsicPatterns";
 export { cases } from "./cases";
+export { astDetectiveQuestions, AST_DETECTIVE_BANK_VERSION } from "./astDetectiveQuestions";
 export { references } from "./references";
 export { standardCatalog } from "./standardCatalog";
 export { bcidForecasts } from "./bcidForecasts";
