@@ -39,6 +39,12 @@ test("image workflow keeps the PHI gate and human confirmation contract", async 
   assert.match(source, /import\.meta\.env\.DEV/);
 });
 
+test("production CSP permits the pinned OCR worker and language data", async () => {
+  const config = await readFile(new URL("../netlify.toml", import.meta.url), "utf8");
+  assert.match(config, /worker-src 'self' blob: https:\/\/cdn\.jsdelivr\.net/);
+  assert.match(config, /connect-src 'self' https:\/\/cdn\.jsdelivr\.net https:\/\/tessdata\.projectnaptha\.com/);
+});
+
 test("PHI screening rejects identifiers and passes AST-only text", () => {
   for (const text of ["Patient: Jane Smith", "MRN: 12345678", "DOB: 05/17/1982", "Phone 312-555-1212", "jane@example.com", "Accession # AB-12345", "123 Main Street"]) assert.notEqual(screenPhiText(text).status, "clear", text);
   assert.equal(screenPhiText("Escherichia coli\nCeftriaxone <=1 S\nMeropenem >=16 R\nCTX-M detected").status, "clear");
