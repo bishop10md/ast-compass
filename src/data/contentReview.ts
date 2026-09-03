@@ -5,7 +5,12 @@ export type ContentReviewMeta = {
   sourceIds: string[];
   lastReviewed?: string;
   reviewedBy?: string;
+  reviewerQualification?: string;
+  sourceVersion?: string;
   independentlyVerifiedBy?: string;
+  verificationDate?: string;
+  evidenceSourceIds?: string[];
+  contentVersion?: string;
   notes?: string;
 };
 
@@ -18,4 +23,3 @@ export const contentReviewMeta: Record<string, ContentReviewMeta> = {
   resistanceLibrary: { status: "Demo", sourceIds: ["ref-clsi", "ref-idsa"] },
   learningCenter: { status: "Demo", sourceIds: ["ref-clsi", "ref-eucast"] },
 };
-

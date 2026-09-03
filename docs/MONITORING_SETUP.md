@@ -32,4 +32,3 @@ Session replay is intentionally not initialized. Do not enable it for AST Compas
 - Use Netlify function logs and alerts for feedback or future secure server functions. Log only success/failure, duration bucket, and generic error category—never request bodies.
 - Use the Supabase dashboard for authentication/database health. Application errors may use generic labels such as `auth_signin_failed`, `analysis_save_failed`, `history_fetch_failed`, and `image_save_failed`; never send credentials, tokens, email addresses, connection strings, or private rows.
 - Telemetry is optional and fails silently. AST Compass scientific tools and accounts continue working if either monitoring service is unavailable.
-

@@ -17,6 +17,6 @@ export default async (request) => {
     const answer = data.output?.flatMap((item) => item.content || []).find((item) => item.type === "output_text")?.text;
     if (!answer) throw new Error("No answer was returned.");
     return new Response(JSON.stringify({ answer }), { status: 200, headers });
-  } catch (error) { return new Response(JSON.stringify({ error: error instanceof Error ? error.message : "The science assistant is temporarily unavailable." }), { status: 500, headers }); }
+  } catch { return new Response(JSON.stringify({ error: "The science assistant is temporarily unavailable." }), { status: 500, headers }); }
 };
 

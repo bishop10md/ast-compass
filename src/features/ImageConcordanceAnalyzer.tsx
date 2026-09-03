@@ -2,8 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import SearchableSelect from "../components/SearchableSelect";
 import { analyzeConcordance, antimicrobialOptions, markerOptions, organismOptions, parseAstText, parseMeasurement, summarizeConcordance, type AstCategory, type AstResultRow, type ConcordanceResult } from "./concordanceEngine";
 import { screenPhiText, type PhiScreeningResult } from "./phi-screening-core.mjs";
-import { useAuth } from "../auth/AuthContext";
-import { saveImageAnalysis } from "../services/imageService";
 import { captureError, trackEvent } from "../lib/telemetry";
 
 declare global {
@@ -31,7 +29,6 @@ const loadOcr = async () => {
 };
 
 export default function ImageConcordanceAnalyzer() {
-  const auth = useAuth();
   const [workflow, setWorkflow] = useState<"image" | "manual">("image");
   const [organismId, setOrganismId] = useState("");
   const [marker, setMarker] = useState("");
@@ -42,7 +39,6 @@ export default function ImageConcordanceAnalyzer() {
   const [ocrStatus, setOcrStatus] = useState("");
   const [phiScreen, setPhiScreen] = useState<PhiScreeningResult | null>(null);
   const [screening, setScreening] = useState(false);
-  const [saveStatus, setSaveStatus] = useState("");
   const [rows, setRows] = useState<AstResultRow[]>([emptyRow()]);
   const [confirmed, setConfirmed] = useState(false);
   const [results, setResults] = useState<ConcordanceResult[]>([]);
@@ -115,7 +111,7 @@ export default function ImageConcordanceAnalyzer() {
     </section>}
     <ReviewTable rows={rows} updateRow={updateRow} removeRow={(id) => { setRows((current) => current.filter((row) => row.id !== id)); resetAnalysis(); }} addRow={() => { setRows((current) => [...current, emptyRow()]); resetAnalysis(); }} lowConfidence={lowConfidence}/>
     <section className="confirmation-step panel"><label><input type="checkbox" checked={confirmed} onChange={(event) => { setConfirmed(event.target.checked); setResults([]); }}/> I reviewed the image (if used), organism, marker, antimicrobial names, MIC/zone strings, and categories. The table is accurate for this learning exercise.</label><button className="primary" disabled={!confirmed || !organismId || !marker || !validRows.length} onClick={analyze}>Analyze confirmed results →</button>{(!organismId || !marker) && <small>Select both an organism and resistance marker before analysis.</small>}</section>
-    {!!results.length && <><AnalysisResults results={results} summary={summary}/><section className="panel save-work"><h2>Save this analysis for later</h2><p>{auth.user ? "The privacy-screened image and verified analysis will be stored in your private AST Compass workspace." : "Create an account or sign in to save this work across devices. Guest analysis remains temporary."}</p><button className="primary" type="button" disabled={!file || phiScreen?.status !== "clear" || !phiAcknowledged} onClick={() => { if (!auth.user) { sessionStorage.setItem("ast-guest-image-analysis", JSON.stringify({ organismId, marker, rows, results })); setSaveStatus("Guest work preserved for this session. Sign in to save permanently."); return; } if (!file || !phiScreen) return; void saveImageAnalysis(file, phiScreen, { organismIds: [organismId], markerIds: [marker], extractedResults: ocrText, correctedResults: rows, concordanceResults: results }).then(() => setSaveStatus("Saved to My AST Compass ✓")).catch(() => setSaveStatus("The private image analysis could not be saved.")); }}>Save this image to my account</button>{saveStatus && <p aria-live="polite">{saveStatus}</p>}</section></>}
+    {!!results.length && <><AnalysisResults results={results} summary={summary}/><section className="panel save-work session-only-note"><h2>Session-only analysis</h2><p>This analysis is processed for the current session and is not added to a persistent personal history.</p><small>Uploaded images are not permanently saved. Client-side screening cannot authorize permanent storage, and the PHI screening safeguards remain active.</small></section></>}
     <div className="concordance-safety bottom"><b>VERIFY BEFORE USE</b><span>Educational concordance is not susceptibility interpretation. EUCAST “I” means susceptible, increased exposure; category meaning depends on the selected current standard and method.</span></div>
   </>;
 }
@@ -132,4 +128,3 @@ function AnalysisResults({ results, summary }: { results: ConcordanceResult[]; s
   const overall = concern > concordant ? "Potential discordance identified" : concordant > 0 ? "Largely concordant" : "Inference remains limited";
   return <section className="analysis-step"><div className="overall-summary panel"><p className="eyebrow">Overall concordance</p><h2>{overall}</h2><p>{results.length} antimicrobial result{results.length === 1 ? "" : "s"} reviewed</p><div className="summary-grid">{Object.entries(summary).filter(([, count]) => count > 0).map(([label, count]) => <div className={`summary-card ${label.toLowerCase().replace(/\s+/g, "-")}`} key={label}><b>{count}</b><span>{label}</span></div>)}</div></div><div className="panel"><div className="review-heading"><div><p className="eyebrow">Educational comparison</p><h2>Detailed concordance analysis</h2></div><span>{results.length} reviewed result{results.length === 1 ? "" : "s"}</span></div><div className="analysis-list">{results.map((result) => <article key={result.id}><div><div><b>{result.antimicrobial}</b><span>{result.measurement || "No measurement"} · {result.category}</span></div><strong className={`assessment ${result.assessment.toLowerCase().replace(/\s+/g, "-")}`}>{result.assessment}</strong></div><p>{result.rationale}</p>{(result.assessment === "Discordant" || result.assessment === "Investigate") && <details><summary>Troubleshooting prompts</summary><ul>{result.troubleshooting.map((item) => <li key={item}>{item}</li>)}</ul></details>}</article>)}</div></div></section>;
 }
-

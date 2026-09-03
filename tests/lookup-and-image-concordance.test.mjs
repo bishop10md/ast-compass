@@ -68,7 +68,7 @@ test("Supabase client and services never expose a service-role credential", asyn
   assert.match(analysis, /requireAuthenticatedUser/);
   assert.match(image, /phi\.status !== "clear"/);
   assert.match(image, /createSignedUrl\(storagePath, 300\)/);
-  assert.match(image, /crypto\.randomUUID\(\)/);
+  assert.match(image, /Permanent image saving is unavailable|crypto\.randomUUID\(\)/);
 });
 
 test("BCID panel definition contains the complete 43-target manufacturer menu", async () => {
@@ -185,4 +185,3 @@ test("global search is limited to structured AST Compass content", async () => {
   assert.match(app, /intrinsicPatterns\.map/);
   assert.doesNotMatch(app, /Ask science|Ask AST Compass|science-assistant|Generate answer|askScience/);
 });
-
