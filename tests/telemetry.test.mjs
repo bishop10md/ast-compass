@@ -26,3 +26,10 @@ test("application error boundary reports technical failures without exposing det
   assert.match(boundary, /Send feedback/);
   assert.doesNotMatch(boundary, /error\.stack|JSON\.stringify\(error\)|environment variable|API key/i);
 });
+
+test("Sentry payloads redact exception messages and omit the message-bearing first stack line", async () => {
+  const source = await readFile(new URL("../src/lib/telemetry.ts", import.meta.url), "utf8");
+  assert.match(source, /value: "Application error captured"/);
+  assert.match(source, /exception\.stack\?\.split\("\\n"\)\.slice\(1, 30\)/);
+  assert.doesNotMatch(source, /value: String\(exception\.message/);
+});

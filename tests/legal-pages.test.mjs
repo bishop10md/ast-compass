@@ -22,3 +22,11 @@ test("legal pages preserve No-PHI and educational-use boundaries without guarant
   assert.doesNotMatch(legal, /100% secure|unhackable|guaranteed protection/i);
   assert.match(legal, /Governing-law and jurisdiction provisions will be established/);
 });
+
+test("unknown routes render an intentional noindex not-found state", async () => {
+  const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
+  assert.match(app, /\| "notFound"/);
+  assert.match(app, /\|\| "notFound"/);
+  assert.match(app, /Page not found\./);
+  assert.match(app, /page === "notFound" \|\| page === "promo" \? "noindex,follow" : "index,follow"/);
+});
