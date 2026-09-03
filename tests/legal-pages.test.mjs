@@ -28,5 +28,5 @@ test("unknown routes render an intentional noindex not-found state", async () =>
   assert.match(app, /\| "notFound"/);
   assert.match(app, /\|\| "notFound"/);
   assert.match(app, /Page not found\./);
-  assert.match(app, /page === "notFound" \|\| page === "promo" \? "noindex,follow" : "index,follow"/);
+  assert.match(app, /page === "notFound" \|\| page === "promo" \|\| page === "promoPhone" \? "noindex,follow" : "index,follow"/);
 });

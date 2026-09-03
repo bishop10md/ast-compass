@@ -26,3 +26,17 @@ test("promo sequence has seven timed scenes and recording controls", async () =>
   assert.match(promo, />Full Screen</);
   assert.equal((promo.match(/promo-scene /g) || []).length, 7);
 });
+
+test("phone promo uses real screenshots and remains outside primary navigation", async () => {
+  const app = await readFile(new URL("../src/App.tsx", import.meta.url), "utf8");
+  const promo = await readFile(new URL("../src/features/PromoPhone.tsx", import.meta.url), "utf8");
+  assert.match(app, /promoPhone: "\/promo-phone"/);
+  assert.match(app, /page === "promoPhone" && <PromoPhone\/>/);
+  const nav = app.slice(app.indexOf("const nav ="), app.indexOf("return <div", app.indexOf("const nav =")));
+  assert.doesNotMatch(nav, /promoPhone|promo-phone/);
+  for (const name of ["home.png", "resistance.jpeg", "bcid.jpeg", "mechanism.jpeg", "learn.jpeg", "breakpoints.jpeg"]) assert.match(promo, new RegExp(name));
+  assert.match(promo, /Recording Mode/);
+  assert.match(promo, /SCENE_MS = 4000/);
+  assert.match(promo, /A compass, not an autopilot\./);
+  assert.equal((promo.match(/src: "\/promo-phone\//g) || []).length, 6);
+});
