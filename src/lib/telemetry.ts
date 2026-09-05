@@ -1,7 +1,8 @@
 import { APP_VERSION } from "../config/version";
+import { getAstPlatform } from "./platform";
 const PRIVATE_ROUTES = ["/concordance/image", "/my-images", "/history", "/dashboard", "/settings", "/signin", "/create-account", "/auth/callback"];
 const BLOCKED_KEYS = /email|username|password|token|authorization|cookie|session|filename|image|ocr|mic|barcode|qr|phi|patient|storage|signed.?url|feedback|comment|analysis|input|table/i;
-const ALLOWED_PROPERTIES = new Set(["page", "feature_name", "guest_or_authenticated", "device_category", "screen_size_category", "app_version", "success_or_failure", "duration_bucket", "result_count", "content_status", "route", "release"]);
+const ALLOWED_PROPERTIES = new Set(["page", "feature_name", "guest_or_authenticated", "device_category", "screen_size_category", "app_version", "platform", "success_or_failure", "duration_bucket", "result_count", "content_status", "route", "release"]);
 type SafeValue = string | number | boolean | null;
 export type TelemetryProperties = Record<string, SafeValue | undefined>;
 
@@ -13,7 +14,7 @@ const deviceCategory = () => innerWidth < 700 ? "mobile" : innerWidth < 1100 ? "
 const anonymousId = () => { const key = "ast-telemetry-session"; let id = sessionStorage.getItem(key); if (!id) { id = crypto.randomUUID(); sessionStorage.setItem(key, id); } return id; };
 export const sanitizeTelemetryProperties = (properties: TelemetryProperties = {}) => Object.fromEntries(Object.entries(properties).filter(([key, value]) => ALLOWED_PROPERTIES.has(key) && !BLOCKED_KEYS.test(key) && ["string", "number", "boolean"].includes(typeof value)).map(([key, value]) => [key, typeof value === "string" ? value.slice(0, 120) : value]));
 const sanitize = sanitizeTelemetryProperties;
-const base = () => ({ page: route(), feature_name: featureForRoute(), device_category: deviceCategory(), screen_size_category: deviceCategory(), app_version: APP_VERSION });
+const base = () => ({ page: route(), feature_name: featureForRoute(), device_category: deviceCategory(), screen_size_category: deviceCategory(), app_version: APP_VERSION, platform: getAstPlatform() });
 
 async function posthog(event: string, properties: TelemetryProperties) {
   const key = import.meta.env.VITE_POSTHOG_KEY;

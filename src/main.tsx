@@ -10,6 +10,7 @@ import { runDataChecks } from './data/dataChecks'
 import { AuthProvider } from './auth/AuthContext'
 import AppErrorBoundary from './components/AppErrorBoundary'
 import { captureError, initTelemetry } from './lib/telemetry'
+import { initializeNativeShell, registerAstServiceWorker } from './lib/platform'
 import '@fontsource/dm-sans/400.css'
 import '@fontsource/dm-sans/500.css'
 import '@fontsource/dm-sans/600.css'
@@ -18,5 +19,5 @@ import '@fontsource/manrope/500.css'
 import '@fontsource/manrope/600.css'
 import '@fontsource/manrope/700.css'
 import '@fontsource/manrope/800.css'
-try { runDataChecks(); initTelemetry() } catch (error) { captureError(error, { feature_name: "application_initialization", success_or_failure: "failure" }) }
+try { runDataChecks(); initTelemetry(); registerAstServiceWorker(); void initializeNativeShell().catch((error) => captureError(error, { feature_name: "native_shell", success_or_failure: "failure" })) } catch (error) { captureError(error, { feature_name: "application_initialization", success_or_failure: "failure" }) }
 createRoot(document.getElementById('root')!).render(<StrictMode><AppErrorBoundary><AuthProvider><App /></AuthProvider></AppErrorBoundary></StrictMode>)

@@ -1,1 +1,43 @@
-{"name":"ast-compass","private":true,"version":"0.4.5","type":"module","scripts":{"dev":"vite --config vite.config.mjs --configLoader runner","build":"tsc -b && vite build --config vite.config.mjs --configLoader runner && node scripts/postbuild.mjs","preview":"vite preview --config vite.config.mjs --configLoader runner","check":"tsc -b --pretty false","test":"node --test tests/*.test.mjs","report:detective":"node scripts/export-ast-detective-bank.mjs","audit:prod":"pnpm audit --prod","sbom":"pnpm list --prod --json > sbom.dependencies.json"},"dependencies":{"@fontsource/dm-sans":"5.2.7","@fontsource/manrope":"5.2.7","@supabase/supabase-js":"2.57.4","@tesseract.js-data/eng":"1.0.0","lucide-react":"^0.468.0","react":"^19.0.0","react-dom":"^19.0.0","tesseract.js":"5.1.1","tesseract.js-core":"5.1.1"},"devDependencies":{"@types/react":"^19.0.0","@types/react-dom":"^19.0.0","@vitejs/plugin-react":"^4.3.4","typescript":"~5.7.2","vite":"^6.0.5"}}
+{
+  "name": "ast-compass",
+  "private": true,
+  "version": "0.4.5",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config vite.config.mjs --configLoader runner",
+    "build": "tsc -b && vite build --config vite.config.mjs --configLoader runner && node scripts/postbuild.mjs",
+    "preview": "vite preview --config vite.config.mjs --configLoader runner",
+    "check": "tsc -b --pretty false",
+    "test": "node --test tests/*.test.mjs",
+    "mobile:sync": "pnpm build && cap sync",
+    "mobile:copy": "pnpm build && cap copy",
+    "android": "pnpm mobile:sync && cap open android",
+    "ios": "pnpm mobile:sync && cap open ios",
+    "report:detective": "node scripts/export-ast-detective-bank.mjs",
+    "audit:prod": "pnpm audit --prod",
+    "sbom": "pnpm list --prod --json > sbom.dependencies.json"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.5.1",
+    "@capacitor/app": "8.1.1",
+    "@capacitor/core": "8.5.1",
+    "@capacitor/ios": "8.5.1",
+    "@fontsource/dm-sans": "5.2.7",
+    "@fontsource/manrope": "5.2.7",
+    "@supabase/supabase-js": "2.57.4",
+    "@tesseract.js-data/eng": "1.0.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tesseract.js": "5.1.1",
+    "tesseract.js-core": "5.1.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.5.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.5"
+  }
+}
