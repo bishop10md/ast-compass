@@ -60,7 +60,7 @@ button,select,summary,input:not([type="checkbox"]):not([type="radio"]){min-heigh
 .app>header{padding-right:max(28px,calc((100% - 1260px)/2),var(--safe-right));padding-left:max(28px,calc((100% - 1260px)/2),var(--safe-left))}
 .app>main{padding-right:max(28px,var(--safe-right));padding-left:max(28px,var(--safe-left))}
 .app>footer{padding-right:max(28px,calc((100% - 1204px)/2),var(--safe-right));padding-bottom:calc(30px + var(--safe-bottom));padding-left:max(28px,calc((100% - 1204px)/2),var(--safe-left))}
-.app>footer nav a{display:inline-flex;align-items:center;min-height:36px;color:var(--green);text-underline-offset:3px}
+.app{display:flex;flex-direction:column}.app>.safety-banner{order:0}.app>header{order:1}.app>main{order:2;width:100%;flex:1 0 auto}.app>.site-footer{order:3;width:100%;margin-top:auto}.app>footer nav a{display:inline-flex;align-items:center;min-height:36px;color:var(--green);text-underline-offset:3px}
 .offline-indicator{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:12px;padding:calc(10px + var(--safe-top)) calc(18px + var(--safe-right)) 10px calc(18px + var(--safe-left));border-bottom:1px solid #e1b96f;background:#fff0cf;color:#6f501d;font-size:12px;font-weight:700}
 .offline-indicator button{min-height:36px;padding:6px 12px;border:1px solid #9b6b1e;border-radius:7px;background:#fff8e9;color:#795518;font-weight:800}
 @media(max-width:760px){.app>main{padding-right:max(18px,var(--safe-right));padding-left:max(18px,var(--safe-left))}.app>footer nav{display:flex;flex-wrap:wrap;gap:4px 10px}.app>footer nav span[aria-hidden="true"]{display:none}.offline-indicator{align-items:flex-start;justify-content:space-between}}
