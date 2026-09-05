@@ -89,3 +89,11 @@ test("mobile readiness artifacts and native identity assets exist", () => {
     "ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png",
   ]) assert.ok(existsSync(new URL(`../${path}`, import.meta.url)), `${path} should exist`);
 });
+
+test("Image Concordance offers user-initiated Android camera capture", () => {
+  const analyzer = read("src/features/ImageConcordanceAnalyzer.tsx");
+  assert.match(analyzer, /Take photo/);
+  assert.match(analyzer, /capture="environment"/);
+  assert.match(analyzer, /IMPORTANT — DO NOT UPLOAD PHI/);
+  assert.match(analyzer, /I confirm that this image is de-identified and contains no PHI/);
+});
