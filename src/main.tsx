@@ -10,5 +10,13 @@ import { runDataChecks } from './data/dataChecks'
 import { AuthProvider } from './auth/AuthContext'
 import AppErrorBoundary from './components/AppErrorBoundary'
 import { captureError, initTelemetry } from './lib/telemetry'
+import '@fontsource/dm-sans/400.css'
+import '@fontsource/dm-sans/500.css'
+import '@fontsource/dm-sans/600.css'
+import '@fontsource/dm-sans/700.css'
+import '@fontsource/manrope/500.css'
+import '@fontsource/manrope/600.css'
+import '@fontsource/manrope/700.css'
+import '@fontsource/manrope/800.css'
 try { runDataChecks(); initTelemetry() } catch (error) { captureError(error, { feature_name: "application_initialization", success_or_failure: "failure" }) }
 createRoot(document.getElementById('root')!).render(<StrictMode><AppErrorBoundary><AuthProvider><App /></AuthProvider></AppErrorBoundary></StrictMode>)

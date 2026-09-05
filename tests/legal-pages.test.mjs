@@ -8,9 +8,10 @@ test("privacy and terms are public routes with canonical metadata and footer acc
   assert.match(app, /terms: "\/terms"/);
   assert.match(app, /Privacy Policy \| AST Compass/);
   assert.match(app, /Terms of Use \| AST Compass/);
-  assert.match(app, /go\("privacy"\)/);
-  assert.match(app, /go\("terms"\)/);
-  assert.match(app, /go\("feedback"\)/);
+  assert.match(app, /\['privacy','Privacy'\]/);
+  assert.match(app, /\['terms','Terms'\]/);
+  assert.match(app, /\['feedback','Feedback'\]/);
+  assert.match(app, /href=\{routes\[id\]\}/);
 });
 
 test("legal pages preserve No-PHI and educational-use boundaries without guarantees", async () => {

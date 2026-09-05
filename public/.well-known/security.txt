@@ -1,0 +1,5 @@
+Contact: https://astcompass.com/feedback
+Expires: 2027-09-04T23:59:59Z
+Canonical: https://astcompass.com/.well-known/security.txt
+Preferred-Languages: en
+Policy: https://astcompass.com/trust

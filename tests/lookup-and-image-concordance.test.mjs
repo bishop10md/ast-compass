@@ -35,7 +35,7 @@ test("image workflow keeps the PHI gate and human confirmation contract", async 
   assert.match(source, /no permanent storage before screening/);
   assert.match(source, /image\/jpeg,image\/png,image\/webp/);
   assert.match(source, /Retry analysis/);
-  assert.match(source, /createWorker\("eng",1/);
+  assert.match(source, /createAstOcrWorker/);
   assert.match(source, /1600\/Math\.max/);
   assert.match(source, /Loading OCR language data/);
   assert.match(source, /assign S, I, R, SDD, or NS to at least one antimicrobial row/);
@@ -45,11 +45,12 @@ test("image workflow keeps the PHI gate and human confirmation contract", async 
   assert.match(source, /import\.meta\.env\.DEV/);
 });
 
-test("production CSP permits the pinned OCR worker and language data", async () => {
+test("production CSP permits first-party OCR worker and language data", async () => {
   const config = await readFile(new URL("../netlify.toml", import.meta.url), "utf8");
-  assert.match(config, /worker-src 'self' blob: https:\/\/cdn\.jsdelivr\.net/);
+  assert.match(config, /worker-src 'self' blob:/);
   assert.match(config, /script-src 'self' 'wasm-unsafe-eval'/);
-  assert.match(config, /connect-src 'self' https:\/\/cdn\.jsdelivr\.net https:\/\/tessdata\.projectnaptha\.com/);
+  assert.doesNotMatch(config, /cdn\.jsdelivr\.net|tessdata\.projectnaptha\.com/);
+  assert.match(await readFile(new URL("../scripts/postbuild.mjs", import.meta.url), "utf8"), /dist\/ocr\/lang\/eng\.traineddata\.gz/);
 });
 
 test("PHI screening rejects identifiers and passes AST-only text", () => {
