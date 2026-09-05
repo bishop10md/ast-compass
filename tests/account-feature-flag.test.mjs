@@ -17,7 +17,9 @@ test("public analyses are session-only and account-free", () => {
   const message = "This analysis is processed for the current session and is not added to a persistent personal history.";
   assert.ok(read("src/features/BcidForecast.tsx").includes(message));
   assert.ok(read("src/features/ImageConcordanceAnalyzer.tsx").includes(message));
-  assert.match(read("src/features/Feedback.tsx"), /accountStatus:signedIn\?"Authenticated":"Public session"/);
+  assert.match(read("src/features/Feedback.tsx"), /accountStatus:signedIn\?"Authenticated":"Guest"/);
+  assert.match(read("supabase/migrations/20260902_private_feedback.sql"), /account_status='Guest'/);
+  assert.match(read("src/services/feedbackService.ts"), /app_version:APP_VERSION/);
 });
 
 test("legal pages describe current public access and future accounts", () => {
