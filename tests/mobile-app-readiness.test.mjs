@@ -60,8 +60,12 @@ test("native navigation accepts only canonical app links and preserves Android b
 });
 
 test("safe-area, network, telemetry, and build contracts are present", () => {
-  assert.match(read("src/styles.css"), /env\(safe-area-inset-top/);
-  assert.match(read("src/styles.css"), /env\(safe-area-inset-bottom/);
+  const styles = read("src/styles.css");
+  assert.match(styles, /env\(safe-area-inset-top/);
+  assert.match(styles, /env\(safe-area-inset-bottom/);
+  assert.match(styles, /\.app>header nav\{display:none;position:absolute/);
+  assert.doesNotMatch(styles, /(?<!header )nav\{display:none;position:absolute/);
+  assert.match(read("src/App.tsx"), /className="site-footer"/);
   assert.match(read("src/components/NetworkStatus.tsx"), /AST Compass is offline/);
   assert.match(read("src/lib/telemetry.ts"), /platform: getAstPlatform\(\)/);
   const pkg = JSON.parse(read("package.json"));
