@@ -16,7 +16,7 @@ export async function initializeNativeShell() {
   await CapacitorApp.addListener("appUrlOpen", ({ url }) => {
     try {
       const parsed = new URL(url);
-      if (parsed.protocol === "https:" && parsed.hostname === "astcompass.com" && allowedPath(parsed.pathname)) {
+      if (parsed.protocol === "https:" && ["www.astcompass.com", "astcompass.com"].includes(parsed.hostname) && allowedPath(parsed.pathname)) {
         history.pushState({}, "", `${parsed.pathname}${parsed.search}${parsed.hash}`);
         dispatchEvent(new PopStateEvent("popstate"));
       }

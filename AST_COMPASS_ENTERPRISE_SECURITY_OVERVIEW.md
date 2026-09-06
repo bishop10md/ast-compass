@@ -5,7 +5,7 @@ Audience: hospital, university, school, and enterprise IT/security teams
 
 ## Purpose and boundary
 
-AST Compass is an educational antimicrobial susceptibility and resistance-learning platform at `https://astcompass.com`. It does not provide patient-specific treatment recommendations, authorize laboratory reporting, replace validated procedures, or claim clinical validation.
+AST Compass is an educational antimicrobial susceptibility and resistance-learning platform at `https://www.astcompass.com`. It does not provide patient-specific treatment recommendations, authorize laboratory reporting, replace validated procedures, or claim clinical validation.
 
 ## Hosting and transport
 
@@ -54,7 +54,7 @@ Current Chrome, Edge, Firefox, and Safari are intended. If optional barcode or f
 
 ## Contact and disclosure
 
-Use `https://astcompass.com/feedback` for security and privacy reports. `https://astcompass.com/.well-known/security.txt` publishes the same real contact route. No inactive `security@astcompass.com` address is claimed.
+Use `https://www.astcompass.com/feedback` for security and privacy reports. `https://www.astcompass.com/.well-known/security.txt` publishes the same real contact route. No inactive `security@astcompass.com` address is claimed.
 
 ## Known limitations
 

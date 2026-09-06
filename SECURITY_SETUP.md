@@ -23,8 +23,8 @@ For an optional owner-only Google Sheets archive, synchronize this table from a 
 
 ## Exact redirect configuration
 
-- Supabase Site URL: `https://astcompass.com`
-- Supabase additional redirect URL: `https://astcompass.com/auth/callback`
+- Supabase Site URL: `https://www.astcompass.com`
+- Supabase additional redirect URL: `https://www.astcompass.com/auth/callback`
 - Local redirect URL: `http://localhost:5173/auth/callback`
 - Google Cloud authorized redirect URI: use the exact Supabase callback URI displayed by Supabase for the Google provider; do not use a wildcard.
 

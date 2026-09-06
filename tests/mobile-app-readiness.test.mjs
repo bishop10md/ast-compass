@@ -53,7 +53,7 @@ test("Capacitor has a minimal HTTPS-only native shell", () => {
 test("native navigation accepts only canonical app links and preserves Android back", () => {
   const platform = read("src/lib/platform.ts");
   assert.match(platform, /parsed\.protocol === "https:"/);
-  assert.match(platform, /parsed\.hostname === "astcompass\.com"/);
+  assert.match(platform, /\["www\.astcompass\.com", "astcompass\.com"\]\.includes\(parsed\.hostname\)/);
   assert.match(platform, /history\.back\(\)/);
   assert.match(platform, /CapacitorApp\.minimizeApp\(\)/);
   assert.match(platform, /Capacitor\.isNativePlatform\(\)/);

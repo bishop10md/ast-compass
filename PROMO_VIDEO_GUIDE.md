@@ -2,7 +2,7 @@
 
 ## How to record the AST Compass ad
 
-1. Open `https://astcompass.com/promo` after the promo route is deployed.
+1. Open `https://www.astcompass.com/promo` after the promo route is deployed.
 2. Use **Chrome desktop responsive mode** and select a 9:16 viewport, ideally 1080 × 1920. Desktop recording gives the most consistent frame, cursor control, and clean audio workflow. An iPhone or Android screen recording also works, but device chrome and notifications are harder to control.
 3. Hide bookmarks and unrelated tabs. Turn off notifications.
 4. Start the screen recorder.

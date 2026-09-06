@@ -1,7 +1,7 @@
 # AST Compass Enterprise Network Readiness Audit
 
 Audit date: 2026-09-04  
-Production domain: https://astcompass.com  
+Production domain: https://www.astcompass.com
 Scope: source, built client, Netlify configuration, production DNS/TLS/redirect observations, browser network dependencies, uploads, privacy boundaries, indexing, and external reputation workflow.
 
 ## Executive summary
@@ -113,7 +113,7 @@ The browser uses only the designed public Supabase client configuration. No raw 
 
 ## Netlify, redirects, and public endpoints
 
-- Canonical production domain is `https://astcompass.com`.
+- Canonical production domain is `https://www.astcompass.com`.
 - HTTP, `www`, and old Netlify aliases use direct canonical redirects without an observed loop.
 - SPA fallback remains configured.
 - Preview/development and promo routes should remain noindexed and should be rechecked in deployed previews.

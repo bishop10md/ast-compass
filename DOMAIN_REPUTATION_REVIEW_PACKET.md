@@ -13,12 +13,12 @@ Audit date: 2026-09-04
 | Downloads | Same-origin static assets and an optional promotional MP4; no automatic executable downloads |
 | File uploads | De-identified educational JPEG/PNG/WebP images only; 10 MB maximum; browser-local processing |
 | HTTPS | Yes |
-| Privacy | https://astcompass.com/privacy |
-| Terms | https://astcompass.com/terms |
-| About | https://astcompass.com/about |
-| Trust | https://astcompass.com/trust |
-| Evidence | https://astcompass.com/references |
-| Contact | https://astcompass.com/feedback |
+| Privacy | https://www.astcompass.com/privacy |
+| Terms | https://www.astcompass.com/terms |
+| About | https://www.astcompass.com/about |
+| Trust | https://www.astcompass.com/trust |
+| References | https://www.astcompass.com/references |
+| Contact | https://www.astcompass.com/feedback |
 
 ## Current reputation status
 

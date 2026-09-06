@@ -5,7 +5,13 @@
 
 [[redirects]]
   from = "https://astcompass.netlify.app/*"
-  to = "https://astcompass.com/:splat"
+  to = "https://www.astcompass.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://astcompass.com/*"
+  to = "https://www.astcompass.com/:splat"
   status = 301
   force = true
 

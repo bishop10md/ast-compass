@@ -1,7 +1,7 @@
 # AST Compass Professional-Readiness Audit
 
 Audit date: September 2, 2026  
-Production application: https://astcompass.com  
+Production application: https://www.astcompass.com
 Repository reviewed: React/Vite application in `ast-compass-web`  
 Scope note: The Breakpoint Engine scientific logic and data were inspected but not modified.
 
@@ -185,7 +185,7 @@ Privacy, Terms, Feedback, No-PHI, educational-use, independence, manufacturer no
 
 ## SEO / Domain
 
-`https://astcompass.com` is canonical in metadata, sitemap, robots, and runtime page tags. The Netlify subdomain has a forced permanent redirect. Major routes have titles/descriptions, and legacy routes are preserved. Add a social image, favicon/app icons, and a real 404 response strategy if server-rendered status codes become important. The SPA currently serves `index.html` with HTTP 200 for client-side 404s.
+`https://www.astcompass.com` is canonical in metadata, sitemap, robots, and runtime page tags. The bare domain and Netlify subdomain have forced permanent redirects. Major routes have titles/descriptions, and legacy routes are preserved. Add a social image, favicon/app icons, and a real 404 response strategy if server-rendered status codes become important. The SPA currently serves `index.html` with HTTP 200 for client-side 404s.
 
 ## Testing
 

@@ -24,7 +24,7 @@ Platform projects contain only build metadata, icons, splash assets, signing con
 
 ## Navigation and links
 
-Canonical routes remain HTTPS routes under `https://astcompass.com`. In-app links use normal application navigation. A native `appUrlOpen` hook accepts only the canonical host and maps its path, query, and hash into the shared router. Other hosts are not allow-listed inside the WebView. External evidence/source links remain HTTPS links with a separate browsing context and `rel="noreferrer"`.
+Canonical routes remain HTTPS routes under `https://www.astcompass.com`. In-app links use normal application navigation. A native `appUrlOpen` hook accepts the canonical `www` host and the redirecting bare-domain host, then maps its path, query, and hash into the shared router. Other hosts are not allow-listed inside the WebView. External evidence/source links remain HTTPS links with a separate browsing context and `rel="noreferrer"`.
 
 Future Android App Links require a production `/.well-known/assetlinks.json` containing the final package certificate fingerprint. Future iOS Universal Links require a production `/.well-known/apple-app-site-association` containing the final Apple Team ID and bundle ID. Do not publish either file until release signing identifiers are final and verified.
 

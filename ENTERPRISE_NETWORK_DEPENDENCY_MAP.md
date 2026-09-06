@@ -1,7 +1,7 @@
 # AST Compass Enterprise Network Dependency Map
 
 Audit date: 2026-09-04  
-Production: https://astcompass.com
+Production: https://www.astcompass.com
 
 This inventory distinguishes automatic browser traffic from links a user deliberately opens. It reflects the hardened source in this release; production must be rechecked after deployment.
 
