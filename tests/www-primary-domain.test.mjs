@@ -9,7 +9,8 @@ test("www.astcompass.com is canonical across runtime and static metadata", () =>
   const html = read("index.html");
   const sitemap = read("public/sitemap.xml");
   const robots = read("public/robots.txt");
-  assert.match(app, /https:\/\/www\.astcompass\.com\$\{routes\[page\]\}/);
+  assert.match(app, /const canonicalPath = selectedTopic/);
+  assert.match(app, /https:\/\/www\.astcompass\.com\$\{canonicalPath\}/);
   assert.match(html, /rel="canonical" href="https:\/\/www\.astcompass\.com\/"/);
   assert.doesNotMatch(sitemap, /<loc>https:\/\/astcompass\.com/);
   assert.match(sitemap, /<loc>https:\/\/www\.astcompass\.com\//);
@@ -23,4 +24,3 @@ test("bare and Netlify hosts permanently redirect to the www primary domain", ()
   assert.match(redirects, /https:\/\/astcompass\.netlify\.app\/\* https:\/\/www\.astcompass\.com\/:splat 301!/);
   assert.match(netlify, /from = "https:\/\/astcompass\.com\/\*"[\s\S]*?to = "https:\/\/www\.astcompass\.com\/:splat"/);
 });
-
