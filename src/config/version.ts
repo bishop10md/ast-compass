@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.4.4";
+export const APP_VERSION = "0.4.5";
 export const BCID_ENGINE_VERSION = "bcid2-compatibility-1.0";
 export const CONCORDANCE_ENGINE_VERSION = "concordance-1.0";
 export const IMAGE_CONCORDANCE_ENGINE_VERSION = "image-concordance-1.0";

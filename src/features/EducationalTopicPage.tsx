@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import type { EducationalTopic } from "../data/educationalTopics";
+import ScientificIssueLink from "../components/ScientificIssueLink";
+import { trackReferenceViewed } from "../lib/productAnalytics";
 
 type Source = { id: string; short: string; title: string; owner: string; url: string; note: string };
 
@@ -64,11 +66,12 @@ export default function EducationalTopicPage({ topic, sources, relatedTopics, on
     </aside>
     <section className="topic-sources" aria-labelledby="topic-sources-title">
       <div><p className="eyebrow">Traceable learning</p><h2 id="topic-sources-title">Sources and further reading</h2></div>
-      <div>{sources.map((source) => <article key={source.id}><div><span>{source.short}</span><h3>{source.title}</h3><p>{source.owner}</p><small>{source.note}</small></div><a href={source.url} target="_blank" rel="noreferrer">View source ↗</a></article>)}</div>
+      <div>{sources.map((source) => <article key={source.id}><div><span>{source.short}</span><h3>{source.title}</h3><p>{source.owner}</p><small>{source.note}</small></div><a href={source.url} target="_blank" rel="noreferrer" onClick={() => trackReferenceViewed(source.id)}>View source ↗</a></article>)}</div>
     </section>
     <section className="related-topics" aria-labelledby="related-topics-title">
       <p className="eyebrow">Continue learning</p><h2 id="related-topics-title">Related AST Compass guides</h2>
       <div>{relatedTopics.map((related) => <a key={related.slug} href={`/learn/topics/${related.slug}`} onClick={(event) => { event.preventDefault(); onNavigate(`/learn/topics/${related.slug}`); }}><b>{related.title}</b><span>{related.description}</span><em>Read guide →</em></a>)}</div>
     </section>
+    <div className="mechanism-actions"><ScientificIssueLink contentId={`learning-topic-${topic.slug}`} onNavigate={onNavigate}/></div>
   </article>;
 }

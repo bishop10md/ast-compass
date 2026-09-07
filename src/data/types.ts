@@ -9,6 +9,20 @@ export interface ReviewMeta {
   sourceIds: string[];
 }
 
+/**
+ * Optional source identity for future governed breakpoint records. Keeping the
+ * document explicit prevents CLSI M100, CLSI M45, EUCAST, FDA, and local
+ * criteria from being merged or treated as interchangeable. Existing records
+ * remain unchanged until licensed source review is complete.
+ */
+export interface BreakpointSourceIdentity {
+  organization: string;
+  document: string;
+  editionOrVersion: string;
+  publicationOrUpdateDate?: string;
+  sourceId: string;
+}
+
 export interface Organism {
   id: string;
   name: string;
@@ -63,6 +77,7 @@ export interface Breakpoint {
   siteRestriction: string;
   dosageNote: string;
   sourceId: string;
+  sourceIdentity?: BreakpointSourceIdentity;
   sourceIds?: string[];
   availability?: "Clinical breakpoint available" | "No clinical breakpoint available" | "ECOFF only" | "Research / tentative criteria" | "Not applicable";
   categoryMeaning?: string;

@@ -1,8 +1,10 @@
 import { APP_VERSION } from "../config/version";
 import { getAstPlatform } from "./platform";
 const PRIVATE_ROUTES = ["/concordance/image", "/my-images", "/history", "/dashboard", "/settings", "/signin", "/create-account", "/auth/callback"];
-const BLOCKED_KEYS = /email|username|password|token|authorization|cookie|session|filename|image|ocr|mic|barcode|qr|phi|patient|storage|signed.?url|feedback|comment|analysis|input|table/i;
-const ALLOWED_PROPERTIES = new Set(["page", "feature_name", "guest_or_authenticated", "device_category", "screen_size_category", "app_version", "platform", "success_or_failure", "duration_bucket", "result_count", "content_status", "route", "release"]);
+const BLOCKED_KEYS = /email|username|password|token|authorization|cookie|session|filename|image|ocr|barcode|qr|phi|patient|storage|signed.?url|feedback|comment|analysis|input|table|(?:^|_)mic(?:$|_)/i;
+const ALLOWED_PROPERTIES = new Set(["page", "feature_name", "guest_or_authenticated", "device_category", "screen_size_category", "app_version", "platform", "success_or_failure", "duration_bucket", "result_count", "content_status", "route", "release", "organism_id", "antimicrobial_id", "marker_id", "mechanism_id", "reference_id", "standard_id", "workflow_id", "satisfaction_response"]);
+const STRUCTURED_ID_PROPERTIES = new Set(["organism_id", "antimicrobial_id", "marker_id", "mechanism_id", "reference_id", "standard_id", "workflow_id", "satisfaction_response"]);
+const SAFE_STRUCTURED_ID = /^[a-z0-9][a-z0-9_-]{0,63}$/;
 type SafeValue = string | number | boolean | null;
 export type TelemetryProperties = Record<string, SafeValue | undefined>;
 
@@ -12,7 +14,7 @@ const route = () => location.pathname;
 const featureForRoute = (path = route()) => path.startsWith("/bcid") ? "bcid" : path.startsWith("/concordance/image") ? "image_concordance" : path.startsWith("/concordance") ? "concordance" : path.startsWith("/breakpoints") ? "breakpoints" : path.startsWith("/resistance") ? "resistance" : path.startsWith("/learn") ? "learn" : path.replace(/^\//, "") || "home";
 const deviceCategory = () => innerWidth < 700 ? "mobile" : innerWidth < 1100 ? "tablet" : "desktop";
 const anonymousId = () => { const key = "ast-telemetry-session"; let id = sessionStorage.getItem(key); if (!id) { id = crypto.randomUUID(); sessionStorage.setItem(key, id); } return id; };
-export const sanitizeTelemetryProperties = (properties: TelemetryProperties = {}) => Object.fromEntries(Object.entries(properties).filter(([key, value]) => ALLOWED_PROPERTIES.has(key) && !BLOCKED_KEYS.test(key) && ["string", "number", "boolean"].includes(typeof value)).map(([key, value]) => [key, typeof value === "string" ? value.slice(0, 120) : value]));
+export const sanitizeTelemetryProperties = (properties: TelemetryProperties = {}) => Object.fromEntries(Object.entries(properties).filter(([key, value]) => ALLOWED_PROPERTIES.has(key) && !BLOCKED_KEYS.test(key) && ["string", "number", "boolean"].includes(typeof value) && (!STRUCTURED_ID_PROPERTIES.has(key) || (typeof value === "string" && SAFE_STRUCTURED_ID.test(value)))).map(([key, value]) => [key, typeof value === "string" ? value.slice(0, 120) : value]));
 const sanitize = sanitizeTelemetryProperties;
 const base = () => ({ page: route(), feature_name: featureForRoute(), device_category: deviceCategory(), screen_size_category: deviceCategory(), app_version: APP_VERSION, platform: getAstPlatform() });
 

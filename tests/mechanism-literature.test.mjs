@@ -12,7 +12,9 @@ const ids = ["esbl", "ampc", "serine_carb", "mbl", "pbp2a", "van_target", "mlsb"
 
 test("every mechanism card opens a dedicated detail route", () => {
   assert.match(app, /className="mechanism-card"/);
-  assert.match(app, /View overview and literature/);
+  assert.match(app, /Explore mechanism/);
+  assert.match(app, /Typical phenotype \/ important pattern/);
+  assert.match(app, /mechanism-family/);
   assert.match(app, /page === "mechanism"/);
   assert.match(app, /MechanismDetailPage/);
 });

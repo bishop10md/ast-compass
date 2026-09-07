@@ -18,3 +18,17 @@ export { learningModules } from "./learningModules";
 export { contentReviewMeta, type ContentReviewMeta, type ContentReviewStatus } from "./contentReview";
 export { educationalTopics, educationalTopicBySlug, type EducationalTopic, type EducationalTopicSection } from "./educationalTopics";
 export { mechanismLiterature, mechanismLiteratureFor, type MechanismLiteratureMeta } from "./mechanismLiterature";
+export {
+  aiScientificContentStatement,
+  clinicalContextBoundary,
+  representedStandardScopes,
+  scientificReviewStatusDefinitions,
+  scientificSourceHierarchy,
+  scientificUpdateWorkflow,
+  unsupportedStandardMessage,
+  type GovernedScientificContent,
+  type ScientificChangeHistoryEntry,
+  type ScientificContentType,
+  type ScientificGovernanceRecord,
+  type ScientificStandardReference,
+} from "./scientificGovernance";

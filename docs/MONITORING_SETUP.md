@@ -8,7 +8,7 @@ Monitoring code is privacy-minimized and remains inactive until the public proje
 2. Create a Browser JavaScript project named **AST Compass**. The application-level boundary and shared telemetry layer already capture React, unhandled JavaScript, initialization, workflow, and sanitized application errors.
 3. Copy the project's public DSN.
 4. In Netlify → AST Compass → Site configuration → Environment variables, add `VITE_SENTRY_DSN` with the DSN. Apply it to Production; use distinct projects or DSNs later for Preview if desired.
-5. Confirm Sentry's production environment displays as `production` and releases display as `ast-compass@0.4.4`.
+5. Confirm Sentry's production environment displays as `production` and releases display as `ast-compass@0.4.5`.
 6. In Sentry Alerts, create email alerts for: a new issue; an issue seen more than 5 times in 5 minutes; error spikes; and repeated errors tagged `feature_name` as `bcid`, `concordance`, `image_concordance`, `account`, or `feedback`.
 7. Add an uptime monitor for `https://www.astcompass.com` and enable email notification when unavailable. Add Slack later through Sentry Integrations if desired.
 8. After deployment, test one controlled, non-sensitive production error, verify its route/feature/release tags, and confirm the email arrives. Remove the controlled test immediately afterward.
