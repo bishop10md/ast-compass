@@ -40,6 +40,19 @@ export interface Antibiotic {
   domains?: SusceptibilityDomain[];
 }
 
+/** Recognition metadata is not authority to interpret an MIC or prescribe a drug. */
+export interface CanonicalAntimicrobial extends Antibiotic {
+  canonicalId: string;
+  displayName: string;
+  abbreviation: string;
+  drugClass: string;
+  aliases: string[];
+  sourceIds: string[];
+  reviewStatus: "Draft" | "Reviewed" | "Verified";
+  breakpointAvailability: "PENDING AUTHORITATIVE SOURCE REVIEW";
+  notes: string[];
+}
+
 export interface Mechanism {
   id: string;
   name: string;

@@ -1,5 +1,35 @@
 export type OcrProgress = { status: string; progress: number };
-export type AstOcrWorker = { recognize(file: File): Promise<{ data: { text: string; confidence?: number } }>; terminate(): Promise<unknown> };
+
+export type AstOcrBbox = { x0: number; y0: number; x1: number; y1: number };
+export type AstOcrWord = { text: string; confidence: number; bbox?: AstOcrBbox };
+export type AstOcrLine = { text: string; confidence: number; bbox?: AstOcrBbox; words?: AstOcrWord[] };
+export type AstOcrSource = File | Blob | HTMLCanvasElement | ImageData | OffscreenCanvas;
+export type AstOcrOptions = {
+  rectangle?: { left: number; top: number; width: number; height: number };
+  rotateAuto?: boolean;
+  rotateRadians?: number;
+};
+export type AstOcrOutput = {
+  text?: boolean;
+  blocks?: boolean;
+  tsv?: boolean;
+  hocr?: boolean;
+};
+export type AstOcrRecognition = {
+  data: {
+    text: string;
+    confidence?: number;
+    lines?: AstOcrLine[];
+    words?: AstOcrWord[];
+    rotateRadians?: number | null;
+    tsv?: string | null;
+  };
+};
+export type AstOcrWorker = {
+  recognize(source: AstOcrSource, options?: AstOcrOptions, output?: AstOcrOutput): Promise<AstOcrRecognition>;
+  setParameters?(parameters: Record<string, string>): Promise<unknown>;
+  terminate(): Promise<unknown>;
+};
 
 type TesseractBrowserApi = {
   createWorker(language: string, oem?: number, options?: {

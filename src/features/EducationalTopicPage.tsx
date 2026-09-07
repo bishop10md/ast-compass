@@ -1,6 +1,9 @@
+import { PRODUCTION_ORIGIN } from "../config/production";
 import { useEffect } from "react";
 import type { EducationalTopic } from "../data/educationalTopics";
 import ScientificIssueLink from "../components/ScientificIssueLink";
+import ContentStatus from "../components/ContentStatus";
+import { contentReviewMeta } from "../data/contentReview";
 import { trackReferenceViewed } from "../lib/productAnalytics";
 
 type Source = { id: string; short: string; title: string; owner: string; url: string; note: string };
@@ -20,10 +23,10 @@ export default function EducationalTopicPage({ topic, sources, relatedTopics, on
       "@type": ["Article", "LearningResource"],
       headline: topic.title,
       description: topic.description,
-      url: `https://astcompass.com/learn/topics/${topic.slug}`,
+      url: `${PRODUCTION_ORIGIN}/learn/topics/${topic.slug}`,
       isAccessibleForFree: true,
       educationalUse: ["self study", "professional education"],
-      publisher: { "@type": "Organization", name: "AST Compass", url: "https://astcompass.com/" },
+      publisher: { "@type": "Organization", name: "AST Compass", url: `${PRODUCTION_ORIGIN}/` },
       citation: sources.map((source) => source.url),
       about: topic.aliases,
     });
@@ -43,10 +46,7 @@ export default function EducationalTopicPage({ topic, sources, relatedTopics, on
       <p className="eyebrow">{topic.eyebrow}</p>
       <h1>{topic.title}</h1>
       <p>{topic.description}</p>
-      <div className="content-status" aria-label="Scientific content status: Demo">
-        <span className="review-badge demo">DEMO</span>
-        <span>Educational content; not validated for clinical use.</span>
-      </div>
+      <ContentStatus meta={contentReviewMeta.learningCenter}/>
     </header>
     <section className="topic-summary" aria-labelledby="topic-summary-title">
       <div><p className="eyebrow">In brief</p><h2 id="topic-summary-title">Connect the finding to its context</h2><p>{topic.summary}</p></div>

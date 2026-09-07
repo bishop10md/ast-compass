@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AST Compass rendered fixture harness</title>
+    <style>
+      :root { color: #102f2b; background: #edf3f0; font-family: Arial, Helvetica, sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+      header { padding: 24px clamp(18px, 4vw, 56px); color: #fff; background: #123f39; }
+      header h1 { margin: 0 0 8px; font-size: clamp(1.5rem, 3vw, 2.4rem); }
+      header p { max-width: 74ch; margin: 0; line-height: 1.5; }
+      main { width: min(1500px, 100%); margin: 0 auto; padding: 28px clamp(16px, 3vw, 40px) 56px; }
+      .notice { padding: 16px 18px; border-left: 5px solid #d68b24; background: #fff3d5; line-height: 1.5; }
+      .fixture-list { display: grid; gap: 28px; margin-top: 28px; }
+      article { overflow: hidden; border: 1px solid #b9ccc6; border-radius: 14px; background: #fff; box-shadow: 0 8px 24px rgba(16, 47, 43, 0.08); }
+      .fixture-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; padding: 18px 20px; }
+      .fixture-heading h2 { margin: 0 0 6px; font-size: 1.2rem; }
+      .fixture-heading p { margin: 0; color: #49635e; }
+      .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+      button { min-height: 44px; padding: 9px 15px; border: 1px solid #176e60; border-radius: 8px; color: #fff; background: #176e60; font-weight: 700; cursor: pointer; }
+      button.secondary { color: #176e60; background: #fff; }
+      button:focus-visible { outline: 3px solid #e2a33b; outline-offset: 3px; }
+      .svg-host { overflow: auto; padding: 14px; border-top: 1px solid #d5e1dd; background: #dfe8e4; }
+      .svg-host svg { display: block; width: min(100%, 1200px); height: auto; margin: 0 auto; background: #fff; }
+      code { padding: 2px 5px; border-radius: 4px; background: rgba(255,255,255,.18); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Rendered Image Concordance fixture harness</h1>
+      <p>Deterministic synthetic images for local extraction checks. Everything is rendered in this browser; nothing is uploaded.</p>
+    </header>
+    <main>
+      <div class="notice" role="note">
+        <strong>OCR measurements are pending.</strong> These fixtures only provide repeatable inputs. Their category cells are arbitrary OCR tokens and make no scientific claim.
+      </div>
+      <section id="fixtures" class="fixture-list" aria-label="Rendered fixture scenarios"></section>
+    </main>
+
+    <script type="module">
+      import {
+        renderedImageConcordanceScenarios,
+        renderImageConcordanceFixtureSvg,
+      } from "./rendered-image-concordance-fixtures.mjs";
+
+      const fixtureList = document.querySelector("#fixtures");
+
+      function downloadBlob(blob, fileName) {
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = fileName;
+        document.body.append(anchor);
+        anchor.click();
+        anchor.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      function downloadSvg(fixture, svg) {
+        downloadBlob(new Blob([svg], { type: "image/svg+xml;charset=utf-8" }), `${fixture.id}.svg`);
+      }
+
+      async function exportPng(fixture, svg, button) {
+        button.disabled = true;
+        button.textContent = "Rendering…";
+        const sourceUrl = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml;charset=utf-8" }));
+        try {
+          const image = new Image();
+          image.decoding = "async";
+          image.src = sourceUrl;
+          await image.decode();
+          const canvas = document.createElement("canvas");
+          canvas.width = fixture.width;
+          canvas.height = fixture.height;
+          const context = canvas.getContext("2d", { alpha: false });
+          if (!context) throw new Error("Canvas rendering is unavailable in this browser.");
+          context.fillStyle = "#ffffff";
+          context.fillRect(0, 0, canvas.width, canvas.height);
+          context.drawImage(image, 0, 0, canvas.width, canvas.height);
+          const png = await new Promise((resolve, reject) => canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error("PNG export failed.")), "image/png"));
+          downloadBlob(png, `${fixture.id}.png`);
+        } finally {
+          URL.revokeObjectURL(sourceUrl);
+          button.disabled = false;
+          button.textContent = "Export PNG";
+        }
+      }
+
+      for (const fixture of renderedImageConcordanceScenarios) {
+        const svg = renderImageConcordanceFixtureSvg(fixture);
+        const article = document.createElement("article");
+        const heading = document.createElement("div");
+        heading.className = "fixture-heading";
+        const copy = document.createElement("div");
+        const title = document.createElement("h2");
+        title.textContent = fixture.label;
+        const detail = document.createElement("p");
+        detail.textContent = `${fixture.rowCount} rows · ${fixture.columnGroups} column group${fixture.columnGroups === 1 ? "" : "s"} · ${fixture.width} × ${fixture.height}`;
+        copy.append(title, detail);
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+        const svgButton = document.createElement("button");
+        svgButton.type = "button";
+        svgButton.className = "secondary";
+        svgButton.textContent = "Download SVG";
+        svgButton.addEventListener("click", () => downloadSvg(fixture, svg));
+        const pngButton = document.createElement("button");
+        pngButton.type = "button";
+        pngButton.textContent = "Export PNG";
+        pngButton.addEventListener("click", () => exportPng(fixture, svg, pngButton));
+        actions.append(svgButton, pngButton);
+        heading.append(copy, actions);
+
+        const host = document.createElement("div");
+        host.className = "svg-host";
+        host.innerHTML = svg;
+        article.append(heading, host);
+        fixtureList.append(article);
+      }
+    </script>
+  </body>
+</html>

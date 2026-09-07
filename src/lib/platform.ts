@@ -1,5 +1,6 @@
 import { Capacitor } from "@capacitor/core";
 import { App as CapacitorApp } from "@capacitor/app";
+import { monitorAstUpdates } from "./pwaUpdates";
 
 export type AstPlatform = "web" | "android" | "ios";
 
@@ -35,9 +36,11 @@ export async function initializeNativeShell() {
 
 export function registerAstServiceWorker() {
   if (Capacitor.isNativePlatform() || !("serviceWorker" in navigator)) return;
-  addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js").catch(() => {
+  const register = () => {
+    navigator.serviceWorker.register("/sw.js", { updateViaCache: "none" }).then(monitorAstUpdates).catch(() => {
       // Installability/offline support must never block the web application.
     });
-  }, { once: true });
+  };
+  if (document.readyState === "complete") register();
+  else addEventListener("load", register, { once: true });
 }

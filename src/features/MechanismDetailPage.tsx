@@ -1,3 +1,4 @@
+import { PRODUCTION_ORIGIN } from "../config/production";
 import { useEffect } from "react";
 import type { Gene, Mechanism } from "../data";
 import type { MechanismLiteratureMeta } from "../data/mechanismLiterature";
@@ -6,6 +7,8 @@ import ScientificIssueLink from "../components/ScientificIssueLink";
 import { trackMechanismViewed, trackReferenceViewed } from "../lib/productAnalytics";
 import { APP_VERSION } from "../config/version";
 import ClinicalContextBoundary from "../components/ClinicalContextBoundary";
+import ContentStatus from "../components/ContentStatus";
+import { contentReviewMeta } from "../data/contentReview";
 
 type Source = { id: string; short: string; title: string; owner: string; url: string; note: string };
 
@@ -22,14 +25,14 @@ export default function MechanismDetailPage({ mechanism, meta, genes, sources, o
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.dataset.astMechanism = mechanism.id;
-    script.text = JSON.stringify({ "@context": "https://schema.org", "@type": ["Article", "LearningResource"], headline: mechanism.name, description: mechanism.summary, url: `https://astcompass.com/resistance/mechanisms/${slug}`, isAccessibleForFree: true, educationalUse: ["self study", "professional education"], publisher: { "@type": "Organization", name: "AST Compass", url: "https://astcompass.com/" }, citation: sources.map((source) => source.url) });
+    script.text = JSON.stringify({ "@context": "https://schema.org", "@type": ["Article", "LearningResource"], headline: mechanism.name, description: mechanism.summary, url: `${PRODUCTION_ORIGIN}/resistance/mechanisms/${slug}`, isAccessibleForFree: true, educationalUse: ["self study", "professional education"], publisher: { "@type": "Organization", name: "AST Compass", url: `${PRODUCTION_ORIGIN}/` }, citation: sources.map((source) => source.url) });
     document.head.appendChild(script);
     return () => script.remove();
   }, [mechanism, slug, sources]);
 
   return <article className="mechanism-page">
     <nav className="breadcrumbs" aria-label="Breadcrumb"><a href="/resistance" onClick={(event) => { event.preventDefault(); onNavigate("/resistance"); }}>Mechanisms</a><span aria-hidden="true">/</span><span aria-current="page">{mechanism.name}</span></nav>
-    <header className="topic-hero"><p className="eyebrow">{mechanism.family}</p><h1>{mechanism.name}</h1><p>{mechanism.summary}</p><div className="content-status" aria-label="Scientific content status: Demo"><span className="review-badge demo">DEMO</span><span>Educational content; not validated for clinical use.</span></div></header>
+    <header className="topic-hero"><p className="eyebrow">{mechanism.family}</p><h1>{mechanism.name}</h1><p>{mechanism.summary}</p><ContentStatus meta={contentReviewMeta.resistanceLibrary}/></header>
     <dl className="governance-meta"><div><dt>Standard / guideline</dt><dd>Source specific; see linked literature</dd></div><div><dt>Edition / version</dt><dd>Shown with each applicable source</dd></div><div><dt>Source</dt><dd>{sources.length} linked {sources.length === 1 ? "reference" : "references"} below</dd></div><div><dt>Content status</dt><dd>Draft / educational</dd></div><div><dt>Last reviewed</dt><dd>Not recorded — Draft content</dd></div><div><dt>AST Compass content version</dt><dd>{APP_VERSION}</dd></div></dl>
     <section className="mechanism-overview">
       <div><p className="eyebrow">Laboratory context</p><h2>Interpret the mechanism with the phenotype</h2><p>{meta.laboratoryContext}</p></div>

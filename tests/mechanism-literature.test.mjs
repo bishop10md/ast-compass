@@ -27,7 +27,8 @@ test("every mechanism has literature metadata and a sitemap route", () => {
 });
 
 test("mechanism pages retain scientific limits and source provenance", () => {
-  assert.match(page, /Scientific content status: Demo/);
+  assert.match(page, /<ContentStatus meta=\{contentReviewMeta\.resistanceLibrary\}/);
+  assert.match(page, /Draft \/ educational/);
   assert.match(page, /Mechanism is not category/);
   assert.match(page, /does not generate an MIC/);
   assert.match(page, /source\.url/);

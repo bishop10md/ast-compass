@@ -1,0 +1,11 @@
+import type {AstResultRow} from './concordanceEngine';
+import type {ImageReviewFieldKey, ImageRowReview, ImageReviewMap} from '../components/ImageExtractionWorkspace';
+export const REVIEW_FIELDS: readonly ImageReviewFieldKey[];
+export const INCOMPLETE_REVIEW_MESSAGE: string;
+export function reviewValue(row: AstResultRow, key: ImageReviewFieldKey): string;
+export function isFieldVerified(row: AstResultRow, review: ImageRowReview | undefined, key: ImageReviewFieldKey): boolean;
+export function canConfirmRow(row: AstResultRow, review: ImageRowReview | undefined): boolean;
+export function inspectField(review: ImageRowReview, row: AstResultRow, key: ImageReviewFieldKey): ImageRowReview;
+export function confirmField(review: ImageRowReview, row: AstResultRow, key: ImageReviewFieldKey, verified: boolean): ImageRowReview;
+export function confirmRow(review: ImageRowReview, row: AstResultRow): ImageRowReview;
+export function humanReviewReadiness(rows: AstResultRow[], review: ImageReviewMap, context: {busy: boolean; hasImage: boolean; privacyPassed: boolean; acknowledged: boolean; organismId: string; marker: string; duplicates: boolean; confirmed: boolean}): {ready: boolean; missing: string[]; unverifiedFields: number; rowsNeedingReview: number};

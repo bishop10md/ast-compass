@@ -20,6 +20,25 @@ export type ScientificStandardReference = {
   publicationOrUpdateDate?: string;
 };
 
+/** Future documented human review, not proof supplied by an automated check.
+ * Never bundle private review notes/documents. Public attribution requires consent.
+ * No current record is granted approval merely by adding this optional schema.
+ */
+export type QualifiedReviewProvenance = {
+  contentId: string;
+  contentVersion: string;
+  sources: { sourceId: string; editionOrVersion: string; sectionOrLocator: string }[];
+  reviewer: { identity: string; qualificationOrRole: string; publicAttributionApproved: boolean };
+  reviewedOn: string;
+  approvalEvidenceId: string;
+  independentVerification?: {
+    reviewer: { identity: string; qualificationOrRole: string; publicAttributionApproved: boolean };
+    contentVersion: string;
+    verifiedOn: string;
+    approvalEvidenceId: string;
+  };
+};
+
 export type ScientificChangeHistoryEntry = {
   previousVersion?: string;
   newVersion: string;
@@ -44,6 +63,7 @@ export type ScientificGovernanceRecord = {
   standardOrGuideline?: ScientificStandardReference;
   astCompassContentVersion: string;
   reviewStatus: ContentReviewStatus;
+  reviewProvenance?: QualifiedReviewProvenance;
   lastReviewedDate?: string;
   reviewer?: string;
   reviewerQualificationOrRole?: string;

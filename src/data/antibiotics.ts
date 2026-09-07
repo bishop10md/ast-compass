@@ -1,4 +1,4 @@
-import type { Antibiotic, SusceptibilityDomain } from "./types";
+import type { Antibiotic, CanonicalAntimicrobial, SusceptibilityDomain } from "./types";
 
 const a = (id: string, name: string, className: string, short: string, domains: SusceptibilityDomain[] = ["Bacteria"]): Antibiotic => ({ id, name, className, short, domains });
 
@@ -22,4 +22,71 @@ export const antibiotics: Antibiotic[] = [
   a("anidulafungin", "Anidulafungin", "Echinocandin", "ANI", ["Yeast"]), a("caspofungin", "Caspofungin", "Echinocandin", "CAS", ["Yeast", "Filamentous fungi"]), a("micafungin", "Micafungin", "Echinocandin", "MCF", ["Yeast", "Filamentous fungi"]), a("amphotericin_b", "Amphotericin B", "Polyene antifungal", "AMB", ["Yeast", "Filamentous fungi"]), a("flucytosine", "Flucytosine", "Antimetabolite antifungal", "5FC", ["Yeast"]),
   a("isoniazid", "Isoniazid", "Antimycobacterial", "INH", ["Mycobacteria"]), a("ethambutol", "Ethambutol", "Antimycobacterial", "EMB", ["Mycobacteria"]), a("pyrazinamide", "Pyrazinamide", "Antimycobacterial", "PZA", ["Mycobacteria"]), a("bedaquiline", "Bedaquiline", "Antimycobacterial", "BDQ", ["Mycobacteria"]), a("clofazimine", "Clofazimine", "Antimycobacterial", "CFZ", ["Mycobacteria"]),
 ];
+
+// Keep the legacy list above unchanged for existing scientific engines and saved IDs.
+// New recognition/search interfaces use one canonical object per antimicrobial below.
+const additionalAliases: Record<string, string[]> = {
+  penicillin: ["Penicillin G", "Benzylpenicillin"],
+  amox_clav: ["Amoxicillin/clavulanate", "Amoxicillin and clavulanate", "Amoxicillin-clavulanic acid"],
+  amp_sulb: ["Ampicillin/sulbactam", "Ampicillin and sulbactam"],
+  pip_tazo: ["Piperacillin/tazobactam", "Piperacillin and tazobactam", "PIP/TAZ"],
+  cefoxitin: ["Cefoxitin"],
+  cefuroxime: ["Cefuroxime axetil"],
+  caz_avi: ["Ceftazidime/avibactam", "Ceftazidime and avibactam", "CAZ/AVI"],
+  cef_tol_tazo: ["Ceftolozane/tazobactam", "Ceftolozane and tazobactam", "C/T", "C-T"],
+  mero_vabor: ["Meropenem/vaborbactam", "Meropenem and vaborbactam", "MEM/VAB"],
+  imi_rel: ["Imipenem/cilastatin/relebactam", "Imipenem-relebactam", "Imipenem and cilastatin and relebactam"],
+  trim_sulfa: ["Trimethoprim/sulfamethoxazole", "Trimethoprim and sulfamethoxazole", "TMP/SMX", "TMP-SMX", "Co-trimoxazole", "Cotrimoxazole"],
+  rifampin: ["Rifampicin"],
+  clindamycin: ["clinda_ana", "Clindamycin (anaerobes)"],
+};
+
+const contextNotes: Record<string, string[]> = {
+  penicillin: ["Penicillin G/benzylpenicillin naming does not establish route-specific criteria or substitute for oral penicillin V."],
+  cefoxitin: ["Cefoxitin screening/surrogate interpretation is organism- and method-specific; recognition of the drug does not authorize use of a surrogate threshold."],
+  cefazolin: ["Systemic, urinary, and oral-cephalosporin surrogate contexts must remain distinct; CFZ also occurs as a clofazimine abbreviation in the legacy mycobacterial catalog."],
+  cefuroxime: ["Oral cefuroxime axetil and parenteral cefuroxime require route-specific source review; an alias does not make their criteria interchangeable."],
+  clindamycin: ["The legacy clinda_ana record remains a compatibility view for the anaerobic domain, not a second canonical drug."],
+  clofazimine: ["CFZ is ambiguous without context because it is also used for cefazolin; require an explicit name or a mycobacterial context."],
+  fosfomycin: ["Oral and intravenous formulations and organism/specimen restrictions require separate source review."],
+  tigecycline: ["Do not assume a CLSI M100 breakpoint solely from catalog inclusion; verify the organism and selected authoritative standard."],
+};
+
+/** Alphabetized recognition catalog. No numeric breakpoint or resistance rule is added. */
+export const canonicalAntimicrobials: CanonicalAntimicrobial[] = antibiotics
+  .filter((drug) => drug.id !== "clinda_ana")
+  .map((drug): CanonicalAntimicrobial => ({
+    ...drug,
+    canonicalId: drug.id,
+    displayName: drug.id === "cefoxitin" ? "Cefoxitin" : drug.name,
+    abbreviation: drug.short,
+    drugClass: drug.className,
+    domains: drug.id === "clindamycin" ? ["Bacteria", "Anaerobes"] : [...(drug.domains || ["Bacteria"])],
+    aliases: [...new Set([drug.id, drug.name, drug.short, ...(additionalAliases[drug.id] || [])])],
+    sourceIds: drug.domains?.some((domain) => domain === "Yeast" || domain === "Filamentous fungi")
+      ? [...(drug.domains.includes("Yeast") ? ["ref-clsi-yeast"] : []), ...(drug.domains.includes("Filamentous fungi") ? ["ref-clsi-mold"] : []), "ref-eucast-afst"]
+      : ["ref-fda", "ref-eucast"],
+    reviewStatus: "Draft",
+    breakpointAvailability: "PENDING AUTHORITATIVE SOURCE REVIEW",
+    notes: ["Catalog recognition is not a claim of supported clinical interpretation for every organism, method, route, or standard.", ...(contextNotes[drug.id] || [])],
+  }))
+  .sort((left, right) => left.displayName.localeCompare(right.displayName, "en", { sensitivity: "base" }));
+
+const normalizeAntimicrobialName = (value: string) => value.normalize("NFKC").trim().toLowerCase()
+  .replace(/[\u2010-\u2015]/g, "-").replace(/\s*(?:\band\b|\/)\s*/g, "-")
+  .replace(/[\s_]+/g, "-").replace(/-+/g, "-");
+
+/** Exact aliases only: never silently convert an unknown drug using fuzzy matching. */
+export function findAntimicrobialMatches(query: string, domain?: SusceptibilityDomain): CanonicalAntimicrobial[] {
+  const normalized = normalizeAntimicrobialName(query);
+  if (!normalized) return [];
+  return canonicalAntimicrobials.filter((drug) => (!domain || drug.domains?.includes(domain))
+    && [drug.displayName, ...drug.aliases].some((alias) => normalizeAntimicrobialName(alias) === normalized));
+}
+
+/** Ambiguous abbreviations (notably CFZ) require an explicit domain or full name. */
+export function resolveAntimicrobial(query: string, domain?: SusceptibilityDomain): CanonicalAntimicrobial | undefined {
+  const matches = findAntimicrobialMatches(query, domain);
+  return matches.length === 1 ? matches[0] : undefined;
+}
 

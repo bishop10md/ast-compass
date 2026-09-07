@@ -1,0 +1,917 @@
+{
+  "recordedAt": "2026-09-07T19:53:54.276Z",
+  "disposition": "READY FOR OWNER DEPLOYMENT REVIEW",
+  "productionHead": "b98f8d2ed3386f3cb7583a85d5a3b805ab6baf79",
+  "netlifyDeploy": "6a9ede17b7190f000816b0d1",
+  "branch": "release/ast-compass-rc1",
+  "commitIdentity": "Single local commit containing this evidence; exact ID in handoff.",
+  "pushed": false,
+  "deployed": false,
+  "normalTests": {
+    "passed": 294,
+    "total": 294,
+    "failures": 0,
+    "skipped": 0
+  },
+  "typeScript": "PASS",
+  "productionBuild": "PASS",
+  "buildIndexSha256": "a65ca4b21ea6de520e8ac3c5e584c9db8adc0e6ae7ff146bea53d5591f79589d",
+  "dependencyAudit": {
+    "command": "pnpm audit --prod",
+    "result": "No known vulnerabilities found",
+    "scope": "Production dependency advisories, not penetration testing"
+  },
+  "scientific": {
+    "passed": 10,
+    "checks": [
+      {
+        "name": "Disk direction agrees with the loaded inequalities",
+        "status": "PASS"
+      },
+      {
+        "name": "MRSA marker is explicitly relevant without an unreviewed category",
+        "status": "PASS"
+      },
+      {
+        "name": "Concordance does not attach another species forecast",
+        "status": "PASS"
+      },
+      {
+        "name": "Active phenotype evidence thresholds are reachable",
+        "status": "PASS"
+      },
+      {
+        "name": "SCI-04 safely abstains while paused pending scientific review",
+        "status": "PASS"
+      },
+      {
+        "name": "Combined review claims remain disabled pending documented approval",
+        "status": "PASS"
+      },
+      {
+        "name": "Required coverage does not invent reviewed criteria",
+        "status": "PASS"
+      },
+      {
+        "name": "Unsupported contexts and combinations fail closed",
+        "status": "PASS"
+      },
+      {
+        "name": "Scientific source IDs resolve",
+        "status": "PASS"
+      },
+      {
+        "name": "BCID and Detective scope remains intact",
+        "status": "PASS"
+      }
+    ],
+    "releaseBlocked": false
+  },
+  "humanReview": {
+    "at": "2026-09-07T19:38:40.480Z",
+    "passed": true,
+    "buildSha256": "a65ca4b21ea6de520e8ac3c5e584c9db8adc0e6ae7ff146bea53d5591f79589d",
+    "behavioralTests": 50,
+    "browserAssertions": 43,
+    "checks": [
+      {
+        "name": "phi cannot expose extraction, comparison, or attestation",
+        "passed": true
+      },
+      {
+        "name": "possible cannot expose extraction, comparison, or attestation",
+        "passed": true
+      },
+      {
+        "name": "short cannot expose extraction, comparison, or attestation",
+        "passed": true
+      },
+      {
+        "name": "fail cannot expose extraction, comparison, or attestation",
+        "passed": true
+      },
+      {
+        "name": "clearance alone cannot expose crop or source",
+        "passed": true
+      },
+      {
+        "name": "extraction failure retains editable correction and original image",
+        "passed": true
+      },
+      {
+        "name": "overall checkbox cannot bypass unverified fields",
+        "passed": true
+      },
+      {
+        "name": "DOM-enabled button cannot admit unverified analysis",
+        "passed": true
+      },
+      {
+        "name": "Confirm row cannot bypass unopened fields",
+        "passed": true
+      },
+      {
+        "name": "inspection alone is not confirmation",
+        "passed": true
+      },
+      {
+        "name": "explicitly reviewed row permits analysis",
+        "passed": true
+      },
+      {
+        "name": "MIC operator edit revokes field and overall confirmation",
+        "passed": true
+      },
+      {
+        "name": "added partial row blocks rather than silently disappearing",
+        "passed": true
+      },
+      {
+        "name": "removing excluded row permits remaining verified data",
+        "passed": true
+      },
+      {
+        "name": "missing-table disclosure present",
+        "passed": true
+      },
+      {
+        "name": "source comparison loaded at 320",
+        "passed": true
+      },
+      {
+        "name": "no document overflow at 320",
+        "passed": true
+      },
+      {
+        "name": "small source text can be enlarged at 320",
+        "passed": true
+      },
+      {
+        "name": "source can collapse at 320",
+        "passed": true
+      },
+      {
+        "name": "sticky source toggle stays below navigation at 320",
+        "passed": true
+      },
+      {
+        "name": "source comparison loaded at 390",
+        "passed": true
+      },
+      {
+        "name": "no document overflow at 390",
+        "passed": true
+      },
+      {
+        "name": "small source text can be enlarged at 390",
+        "passed": true
+      },
+      {
+        "name": "source can collapse at 390",
+        "passed": true
+      },
+      {
+        "name": "sticky source toggle stays below navigation at 390",
+        "passed": true
+      },
+      {
+        "name": "source comparison loaded at 768",
+        "passed": true
+      },
+      {
+        "name": "no document overflow at 768",
+        "passed": true
+      },
+      {
+        "name": "small source text can be enlarged at 768",
+        "passed": true
+      },
+      {
+        "name": "source can collapse at 768",
+        "passed": true
+      },
+      {
+        "name": "sticky source toggle stays below navigation at 768",
+        "passed": true
+      },
+      {
+        "name": "source comparison loaded at 1440",
+        "passed": true
+      },
+      {
+        "name": "no document overflow at 1440",
+        "passed": true
+      },
+      {
+        "name": "small source text can be enlarged at 1440",
+        "passed": true
+      },
+      {
+        "name": "source can collapse at 1440",
+        "passed": true
+      },
+      {
+        "name": "revoked PHI attestation hides image and blocks analysis",
+        "passed": true
+      },
+      {
+        "name": "late cancelled OCR cannot clear replacement PHI image",
+        "passed": true
+      },
+      {
+        "name": "reload restores no image or personal history",
+        "passed": true
+      },
+      {
+        "name": "no OCR canary enters browser storage",
+        "passed": true
+      },
+      {
+        "name": "outbound requests contain no image, OCR, or MIC payload",
+        "passed": true
+      },
+      {
+        "name": "real OCR leaves all extracted fields unverified and analysis disabled",
+        "passed": true
+      },
+      {
+        "name": "real OCR source comparison and mobile layout",
+        "passed": true
+      },
+      {
+        "name": "real OCR field edit revokes confirmation",
+        "passed": true
+      },
+      {
+        "name": "real extraction cancellation isolates late work",
+        "passed": true
+      }
+    ],
+    "realOcr": {
+      "rows": 5,
+      "inputSha256": "8fa848f988a9f58e9fec3654c8315f8c344260401a9ad09078666372dc3269e6",
+      "extractionMs": 9659,
+      "accuracyClaim": false
+    },
+    "outboundRequests": 0
+  },
+  "ocrBenchmark": {
+    "at": "2026-09-07T19:44:25.547Z",
+    "classification": "R&D AUTOMATION ACCURACY BENCHMARK — NOT A HUMAN-REVIEW SAFETY FAILURE",
+    "passed": false,
+    "exitCode": 1,
+    "buildSha256": "a65ca4b21ea6de520e8ac3c5e584c9db8adc0e6ae7ff146bea53d5591f79589d",
+    "results": [
+      {
+        "id": "clean-screen-5",
+        "expected": 5,
+        "recovered": 5,
+        "exactDrugs": 5,
+        "exactMic": 4,
+        "exactOperators": 3,
+        "expectedOperators": 4,
+        "exactCategories": 2,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 0,
+        "invented": 0,
+        "duplicate": 0
+      },
+      {
+        "id": "handheld-capture-10",
+        "expected": 10,
+        "recovered": 10,
+        "exactDrugs": 9,
+        "exactMic": 1,
+        "exactOperators": 0,
+        "expectedOperators": 7,
+        "exactCategories": 1,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 1,
+        "invented": 1,
+        "duplicate": 0
+      },
+      {
+        "id": "slight-rotation-skew-10",
+        "expected": 10,
+        "recovered": 9,
+        "exactDrugs": 0,
+        "exactMic": 0,
+        "exactOperators": 0,
+        "expectedOperators": 7,
+        "exactCategories": 0,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 10,
+        "invented": 9,
+        "duplicate": 0
+      },
+      {
+        "id": "low-contrast-10",
+        "expected": 10,
+        "recovered": 0,
+        "exactDrugs": 0,
+        "exactMic": 0,
+        "exactOperators": 0,
+        "expectedOperators": 7,
+        "exactCategories": 0,
+        "passed": true,
+        "acceptanceType": "CONSERVATIVE_ABSTENTION",
+        "missing": 10,
+        "invented": 0,
+        "duplicate": 0
+      },
+      {
+        "id": "small-text-20",
+        "expected": 20,
+        "recovered": 20,
+        "exactDrugs": 5,
+        "exactMic": 1,
+        "exactOperators": 0,
+        "expectedOperators": 14,
+        "exactCategories": 0,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 15,
+        "invented": 15,
+        "duplicate": 0
+      },
+      {
+        "id": "long-report-20",
+        "expected": 20,
+        "recovered": 20,
+        "exactDrugs": 18,
+        "exactMic": 6,
+        "exactOperators": 2,
+        "expectedOperators": 14,
+        "exactCategories": 11,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 2,
+        "invented": 2,
+        "duplicate": 0
+      },
+      {
+        "id": "long-report-30",
+        "expected": 30,
+        "recovered": 30,
+        "exactDrugs": 30,
+        "exactMic": 12,
+        "exactOperators": 6,
+        "expectedOperators": 21,
+        "exactCategories": 21,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 0,
+        "invented": 0,
+        "duplicate": 0
+      },
+      {
+        "id": "long-report-40",
+        "expected": 40,
+        "recovered": 40,
+        "exactDrugs": 38,
+        "exactMic": 19,
+        "exactOperators": 12,
+        "expectedOperators": 28,
+        "exactCategories": 30,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 2,
+        "invented": 2,
+        "duplicate": 0
+      },
+      {
+        "id": "mic-operators-10",
+        "expected": 10,
+        "recovered": 10,
+        "exactDrugs": 10,
+        "exactMic": 6,
+        "exactOperators": 3,
+        "expectedOperators": 7,
+        "exactCategories": 6,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 0,
+        "invented": 0,
+        "duplicate": 0
+      },
+      {
+        "id": "repeated-columns-30",
+        "expected": 30,
+        "recovered": 15,
+        "exactDrugs": 15,
+        "exactMic": 5,
+        "exactOperators": 2,
+        "expectedOperators": 21,
+        "exactCategories": 10,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 15,
+        "invented": 0,
+        "duplicate": 0
+      },
+      {
+        "id": "poor-quality-10",
+        "expected": 10,
+        "recovered": 0,
+        "exactDrugs": 0,
+        "exactMic": 0,
+        "exactOperators": 0,
+        "expectedOperators": 7,
+        "exactCategories": 0,
+        "passed": true,
+        "acceptanceType": "CONSERVATIVE_ABSTENTION",
+        "missing": 10,
+        "invented": 0,
+        "duplicate": 0
+      },
+      {
+        "id": "partial-crop-10",
+        "expected": 10,
+        "recovered": 10,
+        "exactDrugs": 10,
+        "exactMic": 5,
+        "exactOperators": 3,
+        "expectedOperators": 7,
+        "exactCategories": 6,
+        "passed": true,
+        "acceptanceType": "CONSERVATIVE_ABSTENTION",
+        "missing": 0,
+        "invented": 0,
+        "duplicate": 0
+      },
+      {
+        "id": "v3-operators-normal",
+        "expected": 13,
+        "recovered": 13,
+        "exactDrugs": 12,
+        "exactMic": 7,
+        "exactOperators": 2,
+        "expectedOperators": 7,
+        "exactCategories": 8,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 1,
+        "invented": 1,
+        "duplicate": 0
+      },
+      {
+        "id": "v3-operators-small",
+        "expected": 13,
+        "recovered": 0,
+        "exactDrugs": 0,
+        "exactMic": 0,
+        "exactOperators": 0,
+        "expectedOperators": 7,
+        "exactCategories": 0,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 13,
+        "invented": 0,
+        "duplicate": 0
+      },
+      {
+        "id": "v3-operators-blurred",
+        "expected": 13,
+        "recovered": 13,
+        "exactDrugs": 12,
+        "exactMic": 7,
+        "exactOperators": 2,
+        "expectedOperators": 7,
+        "exactCategories": 6,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 1,
+        "invented": 1,
+        "duplicate": 0
+      },
+      {
+        "id": "v3-operators-phone",
+        "expected": 13,
+        "recovered": 12,
+        "exactDrugs": 6,
+        "exactMic": 4,
+        "exactOperators": 1,
+        "expectedOperators": 7,
+        "exactCategories": 3,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 7,
+        "invented": 6,
+        "duplicate": 0
+      },
+      {
+        "id": "v3-operators-contrast",
+        "expected": 13,
+        "recovered": 0,
+        "exactDrugs": 0,
+        "exactMic": 0,
+        "exactOperators": 0,
+        "expectedOperators": 7,
+        "exactCategories": 0,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 13,
+        "invented": 0,
+        "duplicate": 0
+      },
+      {
+        "id": "v3-drugs-23",
+        "expected": 23,
+        "recovered": 23,
+        "exactDrugs": 22,
+        "exactMic": 11,
+        "exactOperators": 4,
+        "expectedOperators": 14,
+        "exactCategories": 16,
+        "passed": false,
+        "acceptanceType": "EXACT_RECONSTRUCTION",
+        "missing": 1,
+        "invented": 1,
+        "duplicate": 0
+      }
+    ],
+    "isolatedCells": {
+      "exact": 74,
+      "total": 115,
+      "oracleGeometryOnly": true,
+      "terminated": true
+    }
+  },
+  "browser": {
+    "at": "2026-09-07T19:38:24.960Z",
+    "passed": true,
+    "version": "152.0.7977.76",
+    "routeCount": 11,
+    "routeWidthChecks": 66,
+    "queries": 7,
+    "multiRowCounts": [
+      1,
+      3,
+      5,
+      10,
+      20
+    ],
+    "errors": [],
+    "physicalDevice": false
+  },
+  "pwa": {
+    "at": "2026-09-07T19:38:58.236Z",
+    "checks": [
+      {
+        "name": "manifest, actual worker registration and browser installability",
+        "status": "PASS"
+      },
+      {
+        "name": "seven offline educational routes render with third parties blocked",
+        "status": "PASS"
+      },
+      {
+        "name": "waiting update preserves current session, signals update, and activates only after closing clients",
+        "status": "PASS"
+      },
+      {
+        "name": "core routes render while all non-first-party browser requests are blocked",
+        "status": "PASS"
+      },
+      {
+        "name": "offline Feedback cannot transmit and preserves input",
+        "status": "PASS"
+      },
+      {
+        "name": "cache inventory excludes private paths, submissions, images and query-bearing entries",
+        "status": "PASS"
+      }
+    ],
+    "failures": [],
+    "cacheVersion": "ast-compass-49fb09410ec0",
+    "physicalDevice": false,
+    "offlineLaneLimitation": "Service-worker fallback with origin network blocked; navigator.onLine remained true in seven-route lane."
+  },
+  "static": {
+    "firstPartyTextFiles": 106,
+    "secretPatternFindings": [],
+    "unsafeInjectionPatterns": [],
+    "forbiddenArtifacts": [],
+    "sitemap": {
+      "count": 36,
+      "unique": 36,
+      "hosts": [
+        "astcompass.com"
+      ]
+    },
+    "build": {
+      "mapFiles": [],
+      "cache": "ast-compass-49fb09410ec0",
+      "precacheUrls": 75,
+      "precacheBytes": 1642590,
+      "missingPrecacheAssets": [],
+      "ocrBytes": 16739359
+    },
+    "limitations": "Heuristic current-file scan only: not git-history scanning, penetration testing, exhaustive secret detection, or PHI OCR of bundled media."
+  },
+  "protectedIntegrity": {
+    "at": "2026-09-07T19:40:15.056Z",
+    "baseline": "b98f8d2ed3386f3cb7583a85d5a3b805ab6baf79",
+    "passed": true,
+    "unchanged": [
+      {
+        "file": "pnpm-lock.yaml",
+        "sha256": "27476cd8313b84c403985d3d5ac3a623d6e9f88b3d428238b6c7d42acd4e6769"
+      },
+      {
+        "file": "public/manifest.webmanifest",
+        "sha256": "3917bf2d8fb41cb92bf2347d0ec7bb0b05e84a4057bd0094fbeb6c444fc23610"
+      },
+      {
+        "file": "src/auth/AuthContext.tsx",
+        "sha256": "5e90a4b534900d564fb24034f4723788baaa40938d2619b136209e012c4cd52e"
+      },
+      {
+        "file": "src/data/astDetectiveQuestions.ts",
+        "sha256": "7da12fa926ed838ca982ca2f89e53167e39a54d25c9c12705ed9a9d6862552e5"
+      },
+      {
+        "file": "src/data/bcid2Panel.ts",
+        "sha256": "b36816d8a3a288b02b6d20ced3f6510a9a83d0d4bc5c607bf5893430c8dce350"
+      },
+      {
+        "file": "src/data/bcidForecasts.ts",
+        "sha256": "4b9fd498941a6a16270a22a955d94e169c34533e2c5cb4cb4cba87b35f5221d0"
+      },
+      {
+        "file": "src/data/breakpoints.ts",
+        "sha256": "e880798aa41d4fcb0c804f5fa673e52f66767f4078069f5e780b5df1e7cc207a"
+      },
+      {
+        "file": "src/data/cases.ts",
+        "sha256": "f6c4a040b5d90a75e58a5567e149eb77a7dcc03543333a7eef9230fc6e6fddfd"
+      },
+      {
+        "file": "src/data/contentReview.ts",
+        "sha256": "8b803a62ea38c418c242bf5ce6cf96008a71b7b7aff6c4852d759b130e24c3b0"
+      },
+      {
+        "file": "src/data/dataChecks.ts",
+        "sha256": "7a6d5a6d3b06a3d4c1c76a25a6ea392e51e00a8bcd133c5044ff13f1c7dda14a"
+      },
+      {
+        "file": "src/data/educationalTopics.ts",
+        "sha256": "52618d8e2dae28bf7e104982e1dc0a3c63843a1637869e7cb687302b621f3194"
+      },
+      {
+        "file": "src/data/genes.ts",
+        "sha256": "5ec4b8ac31bb566bb826118501223f38bb4b90ba8d9ecd11e358190b8ec1fb38"
+      },
+      {
+        "file": "src/data/index.ts",
+        "sha256": "3f426e55749b63552037b116ef1123fc890212fd925c3fa548304d6d68f93969"
+      },
+      {
+        "file": "src/data/intrinsicPatterns.ts",
+        "sha256": "2081bc1bfe8e4435fc7195d579ab07d82123ce60cb8a5ebbbe6fb4dfef8df095"
+      },
+      {
+        "file": "src/data/learningModules.ts",
+        "sha256": "bc58369ecbbe967799f8f8f74db7e5343dc772e33f529c01e9a303fdfd75db68"
+      },
+      {
+        "file": "src/data/mechanismLiterature.ts",
+        "sha256": "494e374d38957c0afefdaf3f884b84e9dac13ff65c6cb2613f8a0e36c70cd65a"
+      },
+      {
+        "file": "src/data/mechanisms.ts",
+        "sha256": "0f2494131e926659c9ed709b9b6ea5d50deee8c92571b8a2b19171778ccd1217"
+      },
+      {
+        "file": "src/data/organisms.ts",
+        "sha256": "5f58599910d21400fb5fa83840913832454e8159f31fe024dcfccab70ef01aab"
+      },
+      {
+        "file": "src/data/references.ts",
+        "sha256": "e7a1dfbd105c4055eb4cd9fc4746f952897b16dd4ba79ed9972459250d3ba425"
+      },
+      {
+        "file": "src/data/standardCatalog.ts",
+        "sha256": "32c6871b5680f76719d0297a5b94acf84544b3059d62192bf97bcf4e62aa35a7"
+      },
+      {
+        "file": "src/features/AccountWorkspace.tsx",
+        "sha256": "ff21519f980be7a0bc68b34b86c8e8e785b2f8256c59ab65d59171d8745f7e22"
+      },
+      {
+        "file": "src/features/LearningCenter.tsx",
+        "sha256": "649dcd277825eadd4aed5374e5f2b51b640893c52fea66b3f9e86f15f3e0057f"
+      },
+      {
+        "file": "src/features/LegalPages.tsx",
+        "sha256": "3dd5251d3e82e96d3316d829edea9ee03a846148713c21735fb3261c0d1a0ea9"
+      },
+      {
+        "file": "src/features/PromoExperience.tsx",
+        "sha256": "db2aad65ad2f37580289e49905f05903852af69c636330274573931342ab6c78"
+      },
+      {
+        "file": "src/features/ast-detective-game-core.d.mts",
+        "sha256": "0e7ae66886ba2f55cdb0510a524343cc3a4ffa94cde4838999913076927f9d41"
+      },
+      {
+        "file": "src/features/ast-detective-game-core.mjs",
+        "sha256": "6c64ed1a7dbfa2d76323bb7d2a3c18c77fcc7101c00dc8ae3445f50e94d96f09"
+      },
+      {
+        "file": "src/features/measurement-core.d.mts",
+        "sha256": "889015e5ddfbb4a63383d07e063ab43491cb827668350bd52673cdc47f1cd8ff"
+      },
+      {
+        "file": "src/features/measurement-core.mjs",
+        "sha256": "7bdb6db08122b973e99b2c9ec44ace68be191ae474f04f76ff72cfce35bbff47"
+      },
+      {
+        "file": "src/features/phi-screening-core.d.mts",
+        "sha256": "9bb6abe4eea19f5104a6ee9630317208d9b1e9aa44c49af122ca1a734fd108af"
+      },
+      {
+        "file": "src/features/phi-screening-core.mjs",
+        "sha256": "4bf11b88bd55479fddfd97e8d12db6b610187d87be2658c2497615ccc63b1002"
+      },
+      {
+        "file": "src/lib/product-analytics-core.d.mts",
+        "sha256": "e4d4606f9cc178c7780635ba6a1ca428b0083a40239193e9e00f1fe1dd418e07"
+      },
+      {
+        "file": "src/lib/product-analytics-core.mjs",
+        "sha256": "94700a5367e9e4016272c20666392af4a53dcbb4235f0772d469024a35fcad02"
+      },
+      {
+        "file": "src/lib/productAnalytics.ts",
+        "sha256": "79a343902fc7d9b7325f6e9a256f9b1d4986be2d00a553d66ff68c8707b4ee54"
+      },
+      {
+        "file": "src/lib/supabase.ts",
+        "sha256": "686f6f8c181c227127787bc0197aa1c5f48a4509351b2a5f757c151b045fdd85"
+      },
+      {
+        "file": "src/services/analysisService.ts",
+        "sha256": "71fb0cc6bfc7c2ffdfb6db15b405cf246a039f21bc2a4bc995b0ee65811b0e21"
+      },
+      {
+        "file": "src/services/authUser.ts",
+        "sha256": "a6d7006169dcd352fd51419ed61ebc671d0da5420ac611024db7f2f181b0da89"
+      },
+      {
+        "file": "src/services/imageService.ts",
+        "sha256": "e30d02c4dd821590bb523c4e0cd721b6155912d91c7ed9d15fb95a702e7d4bb3"
+      },
+      {
+        "file": "src/services/learningService.ts",
+        "sha256": "a536412c63d270da9dab1334ae220bff8a7c55562ef04681ac0ce0014dd6f111"
+      },
+      {
+        "file": "src/services/profileService.ts",
+        "sha256": "e8f9c2af868ec75f855b4d5dbf1ddf8e40c1b5638e00ba762aee59666b95ce2f"
+      },
+      {
+        "file": "supabase/migrations/20260901_private_workspace.sql",
+        "sha256": "221a27d938188d448875ca292390e3cf4139377059451aa093dc630d867ed757"
+      },
+      {
+        "file": "supabase/migrations/20260902_private_feedback.sql",
+        "sha256": "d2ce0e7f90f28cfab9760d5fd8f4358dcb43b249d90f9dd6c59f87627b756291"
+      },
+      {
+        "file": "supabase/migrations/20260906_feedback_governance.sql",
+        "sha256": "98143ff5a7e5c49efb5b227359706c1de3387691ba9ebef963cda4e5295f3efe"
+      }
+    ],
+    "approvedDifferences": [
+      {
+        "file": "src/data/antibiotics.ts",
+        "before": "8de975263cf883a1e7583f66e42ee512575d8c11466f7fcfb22de1c415fc5109",
+        "after": "a0db42cc1104206f6346c386f5a3f050169cb03a73cce41c15bf3df70cec8795"
+      },
+      {
+        "file": "src/data/bcid2Compatibility.ts",
+        "before": "654ae05f905bc29031c708aab7c74f4913b1bbe792dfcab80ac3d121c41007cf",
+        "after": "24d6ce0bc159565b53441289fdeda34aba82841babdaacd447d23a414dfda97f"
+      },
+      {
+        "file": "src/data/bcidCombinedForecasts.ts",
+        "before": "bdd39c5095f9878a95e9a0f875dd7648e788080bd69278ae98186495923b76d7",
+        "after": "4f81c06a8ad32484d322bdaadb97509b91020ac4cb15bdf0ede8f20a06ae0e4c"
+      },
+      {
+        "file": "src/data/rapidDiagnosticTypes.ts",
+        "before": "86b44b554f6d0c832c5c82360854ae6d6324c2c5b235276292bb7a3020042327",
+        "after": "acdb60396f95a63bc1821de2d5e1da13890e4b3ab0a443236c01bebdfe791a9a"
+      },
+      {
+        "file": "src/data/scientificGovernance.ts",
+        "before": "04acb2de20caad070dec41f6005b63d23af7fe4f69e182f2d4e7f63e827ba1b5",
+        "after": "bfec6b7b6a73c3a564291e417e646929bbd094412f8fa1b4f2bccff88c953e79"
+      },
+      {
+        "file": "src/data/types.ts",
+        "before": "2f8687330d205ee87946ba97af27c6628d5fff830d42ae81dd2efbc84fe53bb8",
+        "after": "f5c17e929b52ade18af2336a16cad6f8171a2d624a604e94a936beadf2c744ad"
+      },
+      {
+        "file": "src/features/BcidForecast.tsx",
+        "before": "f26960636c64b08294c9521aa87d9180da0d5ea751211a035a1cd906fb5d328b",
+        "after": "0cc18d17769cfadb82f307b1c19636e97c10035a5714b6ca93dc99fcc6ecd9a2"
+      },
+      {
+        "file": "src/features/BreakpointEngine.tsx",
+        "before": "1721361176b5bcf3cc23d0f042d797a0a3a964caaf2094b0d43eda5a3b6ac4d6",
+        "after": "69528b34a2811ad480a952aedb7dd434d8a43df5d2ea11dac0a6b698d23926b4"
+      },
+      {
+        "file": "src/features/EducationalTopicPage.tsx",
+        "before": "14f438c46f24685e87e09857bb759ad71168e10a0cfa6871c2788119e62ec0c6",
+        "after": "a468795bfae5d2b24445a0300468caefd6c2897c634389ce15064d36da6088ca"
+      },
+      {
+        "file": "src/features/Feedback.tsx",
+        "before": "295c606eb17a2b6c5273ae9d6dd5d932295387ce459cbf79e6d6621180b26b62",
+        "after": "649b8b64c95fa546610c23a8b00b9bf18167b9337478c74e5c76c9eeda669ad6"
+      },
+      {
+        "file": "src/features/ImageConcordanceAnalyzer.tsx",
+        "before": "82e4c3a5ebf51313cc19debc369e55e4901e81c7c110cbbb048bee51c1f1ed28",
+        "after": "7075990521af362df523191bb495d0af75320a803cf79091444b792649b9e51f"
+      },
+      {
+        "file": "src/features/MechanismDetailPage.tsx",
+        "before": "6c5d7804c7d03b56c4f28be4dd873110a971c09478fa681633b929dd5610d311",
+        "after": "6f6b5b8d29f71608464b35bd370e7fb8f3f93b10eadbe518e55d7f066d65eb45"
+      },
+      {
+        "file": "src/features/PhenotypeMechanismAnalyzer.tsx",
+        "before": "69e0b12452265765a8447544f058ba0ca6350019aaa023986c571bf6af88694a",
+        "after": "7da20f7d96054b1d899467ef7048988901cdb9fa7827a94570b2f99d6e733ce5"
+      },
+      {
+        "file": "src/features/PromoPhone.tsx",
+        "before": "d273d05c4dff49a26b2d9919a75bf2d660b939b9fa25acb736da0e80bb608295",
+        "after": "15873df70a4b69a99a4260c25b61fdb4746b7eaf2dbe0eb9bfcc8a3555a6444d"
+      },
+      {
+        "file": "src/features/TrustPage.tsx",
+        "before": "4550e2d1e4c0132dd4c68f89e208c62742cfe0fca44e07c9dd96fdab6d9edc61",
+        "after": "d249c694e1555c1e79516bacc18740319546d51607696c5dfdad6e226f942d60"
+      },
+      {
+        "file": "src/features/concordanceEngine.ts",
+        "before": "984cead7c6fdc8a3e5e5b4f191df0c99f98aa1a4dbae42acbde3fb207dd0209f",
+        "after": "0bac61b7451e59bd111b5296b3212a9adbbda244dba611fc83126a85fb13945e"
+      },
+      {
+        "file": "src/features/phenotypeMechanismEngine.ts",
+        "before": "ca591fed1929f39650f55ec5b5f9cf8840a74f7ed672d430f76f7d74865627ba",
+        "after": "07d6437814bfb87a4ba14c92f30dfe446ce1d9c833163be0a88732710808922d"
+      },
+      {
+        "file": "src/lib/ocr.ts",
+        "before": "ed43c0ffc77d0956ade2c8e3ad584a2b2e050c25e669b5fe4e8f933bcffe5397",
+        "after": "0bc4f588d892cfc94443b9fe243f2ba97761c14fb08bd4d62c65e49a6d17ccdb"
+      },
+      {
+        "file": "src/lib/platform.ts",
+        "before": "983054cf19f626dc038d54bc8ac84533d54019a5dd54353488e91fbdcf9a701d",
+        "after": "523ac78784288243522aa85f7d71c7aa5cf6ddc07adc95dea060ee621abb855f"
+      },
+      {
+        "file": "src/lib/telemetry.ts",
+        "before": "65a78aa9cad6fc1bd85110725df67566213a8f47afaee5cdd99638d1d0ceb532",
+        "after": "d4a281b82cd7414cea96067c3981ef72c242aa37735769541e7e19e82956725a"
+      },
+      {
+        "file": "src/services/feedbackService.ts",
+        "before": "13956ab2e45ff0ba6ea5aa879e2ed7074bbedfd837162649797d2416c834a235",
+        "after": "7308c0c277e465515ea1f55422f043374dc6146cc8f0fc68a2d635ee7f51baeb"
+      }
+    ],
+    "semanticProduction": {
+      "legacyAntibiotics": 73,
+      "unchangedPhenotypeScientificRecords": 8,
+      "quinoloneThreshold": 2
+    }
+  },
+  "developmentPreservation": {
+    "checked": 342,
+    "changed": []
+  },
+  "logSha256": {
+    "work/rc1/tests.log": "6ec3e006a24dab041fb2ebb0283bc23189d6d1381e711a9d414cf0e3ee582e16",
+    "work/rc1/scientific.log": "ed34b6e53ac18887a46ff6be1cf79502d383591b71246e2ace5803194f3ab0d8",
+    "work/rc1/human-review.log": "343c96e1070e27009930a8512515d3e1ea69dfc4206123694faada12f43b7bad",
+    "work/rc1/check.log": "5e419d5756c7f39390f8b5cac48831a2cf6a3983f8bd0916f14fe67ee9087170",
+    "work/rc1/build.log": "a1391347aaf2dcdf5e3fb279001af2ab2b005ba1357b5a3563a574e602914a90",
+    "work/rc1/static.log": "59aa0f50e11cf26b6ccbed5ec70773e64da7a0b137453514a1f97bfd49d58d7e",
+    "work/rc1/pwa.log": "9a44d4774660ddd6da3965fdee49ba27dc6d30629c9247daea2a30015a05f0a5",
+    "work/rc1/browser.log": "168a8caea5958c417fd37f499008649be5b3a51fe85feb8de8f76b639cedd7b6",
+    "work/rc1/ocr-benchmark.log": "6ee578308a9d8f69d2349cd8a8479683341b4bd76226fa47a047350c4ca76ef6"
+  }
+}

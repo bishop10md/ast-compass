@@ -82,7 +82,7 @@ export default function PromoPhone() {
         <div className="phone-screen">
           <div className="dynamic-island" aria-hidden="true"><i/></div>
           <video ref={videoRef} className="phone-recording" src="/promo-phone/scroll-demo.mp4" muted playsInline preload="metadata" aria-label="Real AST Compass website recording with scrolling" onPlay={() => setRunning(true)} onPause={() => setRunning(false)} onEnded={finishVideo}/>
-          {showCta && <div className="phone-final-cta" role="status"><b>AST Compass</b><strong>Think beyond S and R.</strong><span>www.astcompass.com</span><small>Explore it. Try it. Send feedback.</small><em>A compass, not an autopilot.</em></div>}
+          {showCta && <div className="phone-final-cta" role="status"><b>AST Compass</b><strong>Think beyond S and R.</strong><span>astcompass.com</span><small>Explore it. Try it. Send feedback.</small><em>A compass, not an autopilot.</em></div>}
         </div>
       </div>
       {countdown !== null && <div className="phone-countdown" role="status"><span>Recording begins in</span><b>{countdown || "GO"}</b></div>}

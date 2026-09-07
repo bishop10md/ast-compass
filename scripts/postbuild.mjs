@@ -1,5 +1,5 @@
-import { cp, mkdir, readdir, writeFile } from 'node:fs/promises'
-import { createHash } from 'node:crypto'
+import { cp, mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
+import { contentCacheVersion, buildServiceWorker } from './service-worker.mjs'
 await mkdir('dist/server', { recursive: true })
 await mkdir('dist/client', { recursive: true })
 await cp('dist/index.html', 'dist/client/index.html')
@@ -23,28 +23,9 @@ await writeFile('dist/server/index.js', `export default {
   }
 }\n`)
 
-const assetNames = (await readdir('dist/assets')).filter((name) => !/^Promo/i.test(name))
-const precache = ['/index.html', '/offline.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/icon-maskable-512.png', '/apple-touch-icon.png', ...assetNames.map((name) => `/assets/${name}`)]
-const cacheVersion = createHash('sha256').update(precache.join('|')).digest('hex').slice(0, 12)
-await writeFile('dist/sw.js', `const CACHE = 'ast-compass-${cacheVersion}';
-const PRECACHE = ${JSON.stringify(precache)};
-self.addEventListener('install', (event) => event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(PRECACHE)).then(() => self.skipWaiting())));
-self.addEventListener('activate', (event) => event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key.startsWith('ast-compass-') && key !== CACHE).map((key) => caches.delete(key)))).then(() => self.clients.claim())));
-self.addEventListener('fetch', (event) => {
-  const request = event.request;
-  if (request.method !== 'GET') return;
-  const url = new URL(request.url);
-  if (url.origin !== self.location.origin || url.protocol !== 'https:') return;
-  if (request.mode === 'navigate') {
-    event.respondWith(fetch(request).catch(() => caches.match('/index.html')).then((response) => response || caches.match('/offline.html')));
-    return;
-  }
-  if (url.pathname.startsWith('/assets/') || url.pathname.startsWith('/ocr/') || /^\\/(?:icon-|apple-touch-icon|favicon)/.test(url.pathname)) {
-    event.respondWith(caches.match(request).then((cached) => cached || fetch(request).then((response) => {
-      if (response.ok && response.type === 'basic') void caches.open(CACHE).then((cache) => cache.put(request, response.clone()));
-      return response;
-    })));
-  }
-});
-`)
+const assetNames = (await readdir('dist/assets')).filter((name) => !/^Promo/i.test(name)).sort()
+const precache = ['/index.html', '/offline.html', '/manifest.webmanifest', '/favicon.svg', '/icon-192.png', '/icon-512.png', '/icon-maskable-512.png', '/apple-touch-icon.png', ...assetNames.map((name) => `/assets/${name}`)]
+const ocrPaths = ['/ocr/tesseract.min.js', '/ocr/worker.min.js', '/ocr/lang/eng.traineddata.gz', ...['tesseract-core-lstm.wasm.js', 'tesseract-core-lstm.wasm', 'tesseract-core-simd-lstm.wasm.js', 'tesseract-core-simd-lstm.wasm'].map(name => `/ocr/core/${name}`)]
+const cacheVersion = contentCacheVersion(await Promise.all([...precache, ...ocrPaths].map(async path => [path, await readFile(`dist${path}`)])))
+await writeFile('dist/sw.js', buildServiceWorker(cacheVersion, precache, ocrPaths))
 

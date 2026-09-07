@@ -15,6 +15,10 @@
     "ios": "pnpm mobile:sync && cap open ios",
     "report:detective": "node scripts/export-ast-detective-bank.mjs",
     "audit:prod": "pnpm audit --prod",
+    "audit:scientific-release": "node scripts/predeploy-scientific-gate.mjs",
+    "audit:image-extraction": "node scripts/audit-image-extraction.mjs",
+    "audit:image-human-review-safety": "node scripts/audit-image-human-review-safety.mjs",
+    "audit:static-release": "node scripts/predeploy-static-audit.mjs",
     "sbom": "pnpm list --prod --json > sbom.dependencies.json"
   },
   "dependencies": {

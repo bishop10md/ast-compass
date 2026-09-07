@@ -6,7 +6,7 @@ const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf
 
 test("nested Image Concordance and AST Detective routes have unique metadata", () => {
   const app = read("src/App.tsx");
-  assert.match(app, /imageConcordance: \["Image Concordance Analyzer \| AST Compass"/);
+  assert.match(app, /imageConcordance: \["Image-Assisted Concordance \| AST Compass"/);
   assert.match(app, /detective: \["AST Detective \| Microbiology Learning Game"/);
 });
 
@@ -21,7 +21,8 @@ test("Image Concordance review controls wait for extraction or Manual Entry", ()
   const image = read("src/features/ImageConcordanceAnalyzer.tsx");
   assert.match(image, /useState<AstResultRow\[]>\(\[\]\)/);
   assert.match(image, /\(workflow==="manual"\|\|rows\.length>0\)&&<>/);
-  assert.match(image, /setWorkflow\("manual"\);if\(!rows\.length\)setRows\(\[emptyRow\(\)\]\)/);
+  assert.match(image, /setWorkflow\("manual"\);resetAnalysis\(\);if\(!rows\.length\)\{const row=emptyRow\(\);setRows\(\[row\]\)/);
+  assert.match(image, /setImageReview\(\{\[row\.id\]:createManualImageRowReview\(row\)\}\)/);
 });
 
 test("privacy account language remains explicitly conditional", () => {
@@ -45,7 +46,7 @@ test("homepage secondary tools do not duplicate general Concordance", () => {
   const home = app.slice(homeStart, resistanceStart);
   const secondary = home.slice(home.indexOf("const secondary"), home.indexOf("const openExample"));
   assert.doesNotMatch(secondary, /\["Concordance"/);
-  assert.match(secondary, /\["Image Concordance"/);
+  assert.match(secondary, /\["Image-Assisted Concordance"/);
 });
 
 test("heavy image, account, and promotional modules are route-lazy-loaded", () => {

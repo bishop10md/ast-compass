@@ -1,0 +1,970 @@
+{
+  "capturedAt": "2026-09-07T06:02:47.322Z",
+  "head": "147247387eba5ee351089ecaab9f3c6ae2d27200",
+  "meaning": "Pre-SCI-04-owner-decision local snapshot; not scientific validation.",
+  "protectedNormalizedSha256": {
+    "src/data/antibiotics.ts": "a0db42cc1104206f6346c386f5a3f050169cb03a73cce41c15bf3df70cec8795",
+    "src/data/antimicrobialCoverage.ts": "0f13765a65566811cc07183a3655845cec06105bef876ac44e265513620c4a80",
+    "src/data/astDetectiveQuestions.ts": "1016ce12001fe5cab0336e331d67e6b4fd89c063b73337b6d2dadc3d9384e020",
+    "src/data/bcid2Compatibility.ts": "3f7d22252915b9d7901ed933638b37b8a78dd64f0ef26a5aed85400933375ff4",
+    "src/data/bcid2Panel.ts": "c4319a37f7b9298b901ebefeca348b2844a2726339d6988048cefa6254410aa6",
+    "src/data/bcidCombinedForecasts.ts": "4f81c06a8ad32484d322bdaadb97509b91020ac4cb15bdf0ede8f20a06ae0e4c",
+    "src/data/bcidForecasts.ts": "16d8161841acbed2aaae493b03f96ecc3ca60054133b6ab2c389b3e6039e3db4",
+    "src/data/breakpoints.ts": "8b729567f4f5004f94187f58289fe89befce86d8649d265b048db447a7500ec5",
+    "src/data/cases.ts": "376446114616dc6c599649ed88c3502ed545fde27aa8078064349eae02c6b326",
+    "src/data/concordanceRelationships.ts": "6834af61af6906db28cdabac581455b1976107eea56a71043645580622d82f5a",
+    "src/data/contentReview.ts": "2c24b137e24f8f6d71e05c7cf240cc5774ddeed2c90613319e08adb47d7dcad6",
+    "src/data/coverageOptions.ts": "cb6d7b0b8d3d6d703c02afc013d9f5756318fdfd7af8b6105ba780b69c9808da",
+    "src/data/dataChecks.ts": "42fb780e2e9c5c66485c138968007258f22bafea380aaa73510d2bed0396a191",
+    "src/data/educationalTopics.ts": "f0aa808009ac6bcdf62ad0bb84ce7f88bc23cfb90fe80183521e384e43923624",
+    "src/data/genes.ts": "7a7c02e97f5eaeb8c10d716a069ad9b6d4e63515e683c198f87ed4372e3b6dd5",
+    "src/data/index.ts": "ffeb44676ef815ae7ce0b3c8874729734de97f61783380b5607a29f32d4b4c62",
+    "src/data/intrinsicPatterns.ts": "2e373beb76d1ed23f49680a137a0be4dcf6197a0eb89ca1260970583f8d264fe",
+    "src/data/learningModules.ts": "ddf34dcf4273da4c76f2c9147e151555d8ea3dbddf9ba2666977718067de2834",
+    "src/data/mechanismLiterature.ts": "177ddf739d802bcc20faeb26e836293ab56098fb00f43481ef15d2f4087daa3e",
+    "src/data/mechanisms.ts": "c4068948f48422c4d309c30d4467679f6b5a7262d8258dfba694921e8391a65d",
+    "src/data/organismCoverage.ts": "f8a1ee74daf4bffdd1840d4f7db1e2cb7412e73243922560c55940f10a5d639c",
+    "src/data/organisms.ts": "ac00c688c223782374594bea53fcfb6389f2c92b54976ff0066a6e5c97b4209e",
+    "src/data/rapidDiagnosticTypes.ts": "d43bab372448351e77922e7cf43336a4915c72753060166fb89c31bcbedb2bfb",
+    "src/data/references.ts": "7530e3dd6decc4e911b23a25ade0475deeac86a54f478ffa8ff1baff0b25fe48",
+    "src/data/scientificGovernance.ts": "097d9d09829c202132120b7e7f11cc11bfc0776d80fbaf2dfc975b75b93f45e2",
+    "src/data/standardCatalog.ts": "8c366ccb49b23ff41131ed2eb279af563f1c65d3f8cd1c1f391d6af97ffca213",
+    "src/data/types.ts": "58da916915f712deb8f4bd6a96c2c21af1069c8a24f8b8896675daddcd039747",
+    "src/features/BreakpointEngine.tsx": "8ae864f091f9adcbaf7ddeca76c49715a7b9fa1aac5d8b4e5aa3944c42caa963",
+    "src/features/breakpointPredicates.ts": "bd0e20b1f269ef6e4fb27553e1a23afaa75571c23c8e35a23f4c7c23387bd19f",
+    "src/features/concordanceEngine.ts": "a4eb1f500975447f53f65c75e7e2eaa3ae14b3f28068096d3cf29b9ed1c9ebd2",
+    "src/features/coverageConcordance.ts": "a80d29b46d9ba48eef6942a8565cd616d4d74266859f8fc2e910279e1cd121ee",
+    "src/features/phi-screening-core.mjs": "a063aa08ea774c4f5463eceef34aa50c6f9e8d7140013e38f95fcc24912d740a"
+  },
+  "protectedSha256": {
+    "src/data/antibiotics.ts": "0c0afb12e37896484b72806b0b381ac3e0e14de3d219192b72dba109772dc22e",
+    "src/data/antimicrobialCoverage.ts": "0f13765a65566811cc07183a3655845cec06105bef876ac44e265513620c4a80",
+    "src/data/astDetectiveQuestions.ts": "1016ce12001fe5cab0336e331d67e6b4fd89c063b73337b6d2dadc3d9384e020",
+    "src/data/bcid2Compatibility.ts": "3f7d22252915b9d7901ed933638b37b8a78dd64f0ef26a5aed85400933375ff4",
+    "src/data/bcid2Panel.ts": "c4319a37f7b9298b901ebefeca348b2844a2726339d6988048cefa6254410aa6",
+    "src/data/bcidCombinedForecasts.ts": "e59405d27ce0e91db1e406c63f5425c4d59194b8f352b16f092845876b667cfc",
+    "src/data/bcidForecasts.ts": "16d8161841acbed2aaae493b03f96ecc3ca60054133b6ab2c389b3e6039e3db4",
+    "src/data/breakpoints.ts": "e880798aa41d4fcb0c804f5fa673e52f66767f4078069f5e780b5df1e7cc207a",
+    "src/data/cases.ts": "f6c4a040b5d90a75e58a5567e149eb77a7dcc03543333a7eef9230fc6e6fddfd",
+    "src/data/concordanceRelationships.ts": "6834af61af6906db28cdabac581455b1976107eea56a71043645580622d82f5a",
+    "src/data/contentReview.ts": "2c24b137e24f8f6d71e05c7cf240cc5774ddeed2c90613319e08adb47d7dcad6",
+    "src/data/coverageOptions.ts": "cb6d7b0b8d3d6d703c02afc013d9f5756318fdfd7af8b6105ba780b69c9808da",
+    "src/data/dataChecks.ts": "42fb780e2e9c5c66485c138968007258f22bafea380aaa73510d2bed0396a191",
+    "src/data/educationalTopics.ts": "f0aa808009ac6bcdf62ad0bb84ce7f88bc23cfb90fe80183521e384e43923624",
+    "src/data/genes.ts": "5ec4b8ac31bb566bb826118501223f38bb4b90ba8d9ecd11e358190b8ec1fb38",
+    "src/data/index.ts": "3f426e55749b63552037b116ef1123fc890212fd925c3fa548304d6d68f93969",
+    "src/data/intrinsicPatterns.ts": "2081bc1bfe8e4435fc7195d579ab07d82123ce60cb8a5ebbbe6fb4dfef8df095",
+    "src/data/learningModules.ts": "bc58369ecbbe967799f8f8f74db7e5343dc772e33f529c01e9a303fdfd75db68",
+    "src/data/mechanismLiterature.ts": "177ddf739d802bcc20faeb26e836293ab56098fb00f43481ef15d2f4087daa3e",
+    "src/data/mechanisms.ts": "0f2494131e926659c9ed709b9b6ea5d50deee8c92571b8a2b19171778ccd1217",
+    "src/data/organismCoverage.ts": "f8a1ee74daf4bffdd1840d4f7db1e2cb7412e73243922560c55940f10a5d639c",
+    "src/data/organisms.ts": "5f58599910d21400fb5fa83840913832454e8159f31fe024dcfccab70ef01aab",
+    "src/data/rapidDiagnosticTypes.ts": "d43bab372448351e77922e7cf43336a4915c72753060166fb89c31bcbedb2bfb",
+    "src/data/references.ts": "e7a1dfbd105c4055eb4cd9fc4746f952897b16dd4ba79ed9972459250d3ba425",
+    "src/data/scientificGovernance.ts": "097d9d09829c202132120b7e7f11cc11bfc0776d80fbaf2dfc975b75b93f45e2",
+    "src/data/standardCatalog.ts": "32c6871b5680f76719d0297a5b94acf84544b3059d62192bf97bcf4e62aa35a7",
+    "src/data/types.ts": "e72c59527793a5af22cbf80d77f4d9ecb89bd09339783b234cac6aaab5ead473",
+    "src/features/BreakpointEngine.tsx": "69528b34a2811ad480a952aedb7dd434d8a43df5d2ea11dac0a6b698d23926b4",
+    "src/features/breakpointPredicates.ts": "bd0e20b1f269ef6e4fb27553e1a23afaa75571c23c8e35a23f4c7c23387bd19f",
+    "src/features/concordanceEngine.ts": "0bac61b7451e59bd111b5296b3212a9adbbda244dba611fc83126a85fb13945e",
+    "src/features/coverageConcordance.ts": "a80d29b46d9ba48eef6942a8565cd616d4d74266859f8fc2e910279e1cd121ee",
+    "src/features/phi-screening-core.mjs": "7b08eb7fd828965ba3237b6d0a299b3b78b77d56c5fa2e23191d3dfe2d6e322b"
+  },
+  "signatures": [
+    {
+      "id": "esbl-like",
+      "organisms": [
+        "enterobacterales",
+        "ecoli",
+        "shigella",
+        "salmonella",
+        "kpneumo",
+        "koxytoca",
+        "eaerogenes",
+        "ecloacae",
+        "cfreundii",
+        "cdiversus",
+        "smarcescens",
+        "pmirabilis",
+        "providencia",
+        "morganella"
+      ],
+      "mechanismId": "esbl",
+      "candidateMarkerIds": [
+        "CTX-M"
+      ],
+      "expectedPatterns": [
+        {
+          "antimicrobialIds": [
+            "ceftriaxone",
+            "cefotaxime",
+            "ceftazidime"
+          ],
+          "expectation": "resistant",
+          "weight": 2,
+          "label": "Expanded-spectrum cephalosporin resistance"
+        },
+        {
+          "antimicrobialIds": [
+            "ertapenem",
+            "meropenem",
+            "imipenem"
+          ],
+          "expectation": "susceptible",
+          "weight": 2,
+          "label": "Carbapenem activity retained"
+        }
+      ],
+      "contradictoryPatterns": [
+        {
+          "antimicrobialIds": [
+            "ertapenem",
+            "meropenem",
+            "imipenem"
+          ],
+          "expectation": "resistant",
+          "weight": 2,
+          "label": "Carbapenem nonsusceptibility broadens the differential"
+        }
+      ],
+      "minimumEvidence": 2,
+      "alternativeMechanismIds": [
+        "ampc",
+        "serine_carb",
+        "mbl"
+      ],
+      "limitations": [
+        "Phenotypic AST cannot establish that CTX-M is present.",
+        "Other ESBL enzymes, AmpC, permeability changes, or combined mechanisms may produce a similar phenotype."
+      ],
+      "sourceIds": [
+        "ref-clsi",
+        "ref-idsa"
+      ],
+      "reviewStatus": "Draft"
+    },
+    {
+      "id": "ampc-like",
+      "organisms": [
+        "ecloacae",
+        "eaerogenes",
+        "cfreundii",
+        "smarcescens",
+        "morganella",
+        "providencia"
+      ],
+      "mechanismId": "ampc",
+      "expectedPatterns": [
+        {
+          "antimicrobialIds": [
+            "cefoxitin"
+          ],
+          "expectation": "resistant",
+          "weight": 2,
+          "label": "Cephamycin resistance"
+        },
+        {
+          "antimicrobialIds": [
+            "ceftriaxone",
+            "cefotaxime",
+            "ceftazidime"
+          ],
+          "expectation": "resistant",
+          "weight": 2,
+          "label": "Expanded-spectrum cephalosporin resistance"
+        },
+        {
+          "antimicrobialIds": [
+            "meropenem",
+            "imipenem"
+          ],
+          "expectation": "susceptible",
+          "weight": 1,
+          "label": "Carbapenem activity retained"
+        }
+      ],
+      "minimumEvidence": 2,
+      "alternativeMechanismIds": [
+        "esbl",
+        "serine_carb"
+      ],
+      "limitations": [
+        "Chromosomal AmpC expression or derepression may contribute in this organism context.",
+        "Routine BCID panels do not provide a general AmpC marker; phenotype does not establish a specific gene."
+      ],
+      "sourceIds": [
+        "ref-clsi",
+        "ref-idsa"
+      ],
+      "reviewStatus": "Draft"
+    },
+    {
+      "id": "carbapenemase-like",
+      "organisms": [
+        "enterobacterales",
+        "ecoli",
+        "shigella",
+        "salmonella",
+        "kpneumo",
+        "koxytoca",
+        "eaerogenes",
+        "ecloacae",
+        "cfreundii",
+        "cdiversus",
+        "smarcescens",
+        "pmirabilis",
+        "providencia",
+        "morganella",
+        "pseudomonas",
+        "acinetobacter"
+      ],
+      "mechanismId": "serine_carb",
+      "candidateMarkerIds": [
+        "KPC",
+        "NDM",
+        "VIM",
+        "IMP",
+        "OXA-48-like"
+      ],
+      "expectedPatterns": [
+        {
+          "antimicrobialIds": [
+            "ertapenem",
+            "meropenem",
+            "imipenem",
+            "doripenem"
+          ],
+          "expectation": "nonsusceptible",
+          "weight": 2,
+          "label": "Carbapenem nonsusceptibility"
+        },
+        {
+          "antimicrobialIds": [
+            "ceftriaxone",
+            "ceftazidime",
+            "cefepime",
+            "aztreonam"
+          ],
+          "expectation": "resistant",
+          "weight": 1,
+          "label": "Broader beta-lactam resistance"
+        }
+      ],
+      "contradictoryPatterns": [
+        {
+          "antimicrobialIds": [
+            "meropenem",
+            "imipenem"
+          ],
+          "expectation": "susceptible",
+          "weight": 2,
+          "label": "Key carbapenem activity retained"
+        }
+      ],
+      "minimumEvidence": 3,
+      "alternativeMechanismIds": [
+        "mbl",
+        "ampc",
+        "esbl"
+      ],
+      "limitations": [
+        "Phenotypic AST alone generally cannot determine the specific carbapenemase gene.",
+        "ESBL or AmpC combined with permeability loss may mimic a carbapenemase phenotype."
+      ],
+      "sourceIds": [
+        "ref-clsi",
+        "ref-idsa"
+      ],
+      "reviewStatus": "Draft"
+    },
+    {
+      "id": "mbl-like",
+      "organisms": [
+        "enterobacterales",
+        "ecoli",
+        "shigella",
+        "salmonella",
+        "kpneumo",
+        "koxytoca",
+        "eaerogenes",
+        "ecloacae",
+        "cfreundii",
+        "cdiversus",
+        "smarcescens",
+        "pmirabilis",
+        "providencia",
+        "morganella",
+        "pseudomonas",
+        "acinetobacter"
+      ],
+      "mechanismId": "mbl",
+      "candidateMarkerIds": [
+        "NDM",
+        "VIM",
+        "IMP"
+      ],
+      "expectedPatterns": [
+        {
+          "antimicrobialIds": [
+            "meropenem",
+            "imipenem"
+          ],
+          "expectation": "nonsusceptible",
+          "weight": 2,
+          "label": "Carbapenem nonsusceptibility"
+        },
+        {
+          "antimicrobialIds": [
+            "aztreonam"
+          ],
+          "expectation": "susceptible",
+          "weight": 2,
+          "label": "Aztreonam activity retained"
+        }
+      ],
+      "minimumEvidence": 3,
+      "alternativeMechanismIds": [
+        "serine_carb"
+      ],
+      "limitations": [
+        "Co-produced serine beta-lactamases may remove the expected aztreonam distinction.",
+        "Phenotype cannot confidently distinguish NDM, VIM, and IMP."
+      ],
+      "sourceIds": [
+        "ref-clsi",
+        "ref-idsa"
+      ],
+      "reviewStatus": "Draft"
+    },
+    {
+      "id": "mrsa-like",
+      "organisms": [
+        "staph_aureus",
+        "cons",
+        "slugdunensis"
+      ],
+      "mechanismId": "pbp2a",
+      "candidateMarkerIds": [
+        "mecA",
+        "mecC"
+      ],
+      "expectedPatterns": [
+        {
+          "antimicrobialIds": [
+            "cefoxitin",
+            "oxacillin"
+          ],
+          "expectation": "resistant",
+          "weight": 3,
+          "label": "Methicillin-resistance surrogate is resistant"
+        }
+      ],
+      "minimumEvidence": 3,
+      "limitations": [
+        "Phenotype is compatible with altered PBP-mediated resistance but does not establish mecA or mecC.",
+        "Apply organism- and method-specific validated interpretive procedures."
+      ],
+      "sourceIds": [
+        "ref-clsi"
+      ],
+      "reviewStatus": "Draft"
+    },
+    {
+      "id": "vre-like",
+      "organisms": [
+        "efaecalis",
+        "efaecium"
+      ],
+      "mechanismId": "van_target",
+      "candidateMarkerIds": [
+        "vanA",
+        "vanB"
+      ],
+      "expectedPatterns": [
+        {
+          "antimicrobialIds": [
+            "vancomycin"
+          ],
+          "expectation": "resistant",
+          "weight": 3,
+          "label": "Vancomycin resistance"
+        },
+        {
+          "antimicrobialIds": [
+            "teicoplanin"
+          ],
+          "expectation": "resistant",
+          "weight": 1,
+          "label": "Glycopeptide co-resistance"
+        }
+      ],
+      "minimumEvidence": 3,
+      "limitations": [
+        "Phenotype alone does not identify vanA versus vanB.",
+        "Intrinsic and non-panel glycopeptide-resistance mechanisms remain organism dependent."
+      ],
+      "sourceIds": [
+        "ref-clsi"
+      ],
+      "reviewStatus": "Draft"
+    },
+    {
+      "id": "mlsb-like",
+      "organisms": [
+        "staph_aureus",
+        "cons",
+        "slugdunensis",
+        "spneumo",
+        "bhs",
+        "vgs"
+      ],
+      "mechanismId": "mlsb",
+      "expectedPatterns": [
+        {
+          "antimicrobialIds": [
+            "erythromycin"
+          ],
+          "expectation": "resistant",
+          "weight": 2,
+          "label": "Macrolide resistance"
+        },
+        {
+          "antimicrobialIds": [
+            "clindamycin"
+          ],
+          "expectation": "resistant",
+          "weight": 2,
+          "label": "Lincosamide resistance"
+        }
+      ],
+      "minimumEvidence": 3,
+      "limitations": [
+        "Inducible expression may require an appropriate validated phenotypic test.",
+        "Efflux and drug-specific inactivation can create alternative patterns."
+      ],
+      "sourceIds": [
+        "ref-clsi"
+      ],
+      "reviewStatus": "Draft"
+    },
+    {
+      "id": "quinolone-like",
+      "organisms": [
+        "enterobacterales",
+        "ecoli",
+        "shigella",
+        "salmonella",
+        "kpneumo",
+        "koxytoca",
+        "eaerogenes",
+        "ecloacae",
+        "cfreundii",
+        "cdiversus",
+        "smarcescens",
+        "pmirabilis",
+        "providencia",
+        "morganella",
+        "yersinia",
+        "pseudomonas",
+        "acinetobacter",
+        "stenotrophomonas",
+        "burkholderia",
+        "achromobacter",
+        "aeromonas",
+        "vibrio",
+        "pasteurella",
+        "haemophilus",
+        "moraxella",
+        "ngonorrhoeae",
+        "nmeningitidis",
+        "campylobacter",
+        "helicobacter",
+        "staph_aureus",
+        "cons",
+        "slugdunensis",
+        "efaecalis",
+        "efaecium",
+        "spneumo",
+        "bhs",
+        "vgs",
+        "aerococcus",
+        "corynebacterium",
+        "listeria",
+        "bacillus",
+        "bfragilis",
+        "prevotella",
+        "fusobacterium",
+        "clostridium",
+        "cutibacterium",
+        "anaerobic_gpc"
+      ],
+      "mechanismId": "quinolone",
+      "expectedPatterns": [
+        {
+          "antimicrobialIds": [
+            "ciprofloxacin",
+            "levofloxacin",
+            "moxifloxacin",
+            "nalidixic"
+          ],
+          "expectation": "resistant",
+          "weight": 1,
+          "label": "Fluoroquinolone or quinolone resistance"
+        }
+      ],
+      "minimumEvidence": 2,
+      "limitations": [
+        "Multiple target, protection, efflux, and permeability mechanisms can overlap.",
+        "A single resistant fluoroquinolone is insufficient for a gene-level inference."
+      ],
+      "sourceIds": [
+        "ref-clsi",
+        "ref-idsa"
+      ],
+      "reviewStatus": "Draft"
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "esbl",
+      "organismId": "ecoli",
+      "rows": [
+        {
+          "id": "0",
+          "antimicrobialId": "ceftriaxone",
+          "category": "R",
+          "measurement": ""
+        },
+        {
+          "id": "1",
+          "antimicrobialId": "meropenem",
+          "category": "S",
+          "measurement": ""
+        }
+      ],
+      "result": {
+        "organismId": "ecoli",
+        "reviewedRows": 2,
+        "intrinsicFindings": [],
+        "candidates": [
+          {
+            "signatureId": "esbl-like",
+            "mechanismId": "esbl",
+            "mechanismName": "Extended-spectrum β-lactamase",
+            "compatibility": "Compatible",
+            "candidateMarkers": [
+              "CTX-M"
+            ],
+            "supporting": [
+              "Ceftriaxone R — Expanded-spectrum cephalosporin resistance",
+              "Meropenem S — Carbapenem activity retained"
+            ],
+            "against": [],
+            "limitations": [
+              "Phenotypic AST cannot establish that CTX-M is present.",
+              "Other ESBL enzymes, AmpC, permeability changes, or combined mechanisms may produce a similar phenotype."
+            ],
+            "alternativeMechanismIds": [
+              "ampc",
+              "serine_carb",
+              "mbl"
+            ],
+            "sourceIds": [
+              "ref-clsi",
+              "ref-idsa"
+            ],
+            "reviewStatus": "Draft"
+          }
+        ],
+        "insufficient": false,
+        "combinedPossible": false
+      }
+    },
+    {
+      "name": "ampc",
+      "organismId": "ecloacae",
+      "rows": [
+        {
+          "id": "0",
+          "antimicrobialId": "cefoxitin",
+          "category": "R",
+          "measurement": ""
+        },
+        {
+          "id": "1",
+          "antimicrobialId": "ceftriaxone",
+          "category": "R",
+          "measurement": ""
+        },
+        {
+          "id": "2",
+          "antimicrobialId": "meropenem",
+          "category": "S",
+          "measurement": ""
+        }
+      ],
+      "result": {
+        "organismId": "ecloacae",
+        "reviewedRows": 3,
+        "intrinsicFindings": [],
+        "candidates": [
+          {
+            "signatureId": "ampc-like",
+            "mechanismId": "ampc",
+            "mechanismName": "AmpC β-lactamase",
+            "compatibility": "Highly compatible",
+            "candidateMarkers": [],
+            "supporting": [
+              "Cefoxitin screen R — Cephamycin resistance",
+              "Ceftriaxone R — Expanded-spectrum cephalosporin resistance",
+              "Meropenem S — Carbapenem activity retained"
+            ],
+            "against": [],
+            "limitations": [
+              "Chromosomal AmpC expression or derepression may contribute in this organism context.",
+              "Routine BCID panels do not provide a general AmpC marker; phenotype does not establish a specific gene."
+            ],
+            "alternativeMechanismIds": [
+              "esbl",
+              "serine_carb"
+            ],
+            "sourceIds": [
+              "ref-clsi",
+              "ref-idsa"
+            ],
+            "reviewStatus": "Draft"
+          },
+          {
+            "signatureId": "esbl-like",
+            "mechanismId": "esbl",
+            "mechanismName": "Extended-spectrum β-lactamase",
+            "compatibility": "Compatible",
+            "candidateMarkers": [
+              "CTX-M"
+            ],
+            "supporting": [
+              "Ceftriaxone R — Expanded-spectrum cephalosporin resistance",
+              "Meropenem S — Carbapenem activity retained"
+            ],
+            "against": [],
+            "limitations": [
+              "Phenotypic AST cannot establish that CTX-M is present.",
+              "Other ESBL enzymes, AmpC, permeability changes, or combined mechanisms may produce a similar phenotype."
+            ],
+            "alternativeMechanismIds": [
+              "ampc",
+              "serine_carb",
+              "mbl"
+            ],
+            "sourceIds": [
+              "ref-clsi",
+              "ref-idsa"
+            ],
+            "reviewStatus": "Draft"
+          }
+        ],
+        "insufficient": false,
+        "combinedPossible": true
+      }
+    },
+    {
+      "name": "carbapenemase",
+      "organismId": "kpneumo",
+      "rows": [
+        {
+          "id": "0",
+          "antimicrobialId": "meropenem",
+          "category": "R",
+          "measurement": ""
+        },
+        {
+          "id": "1",
+          "antimicrobialId": "cefepime",
+          "category": "R",
+          "measurement": ""
+        }
+      ],
+      "result": {
+        "organismId": "kpneumo",
+        "reviewedRows": 2,
+        "intrinsicFindings": [],
+        "candidates": [
+          {
+            "signatureId": "carbapenemase-like",
+            "mechanismId": "serine_carb",
+            "mechanismName": "Serine carbapenemase",
+            "compatibility": "Compatible",
+            "candidateMarkers": [
+              "KPC",
+              "NDM",
+              "VIM",
+              "IMP",
+              "OXA-48-like"
+            ],
+            "supporting": [
+              "Meropenem R — Carbapenem nonsusceptibility",
+              "Cefepime R — Broader beta-lactam resistance"
+            ],
+            "against": [],
+            "limitations": [
+              "Phenotypic AST alone generally cannot determine the specific carbapenemase gene.",
+              "ESBL or AmpC combined with permeability loss may mimic a carbapenemase phenotype."
+            ],
+            "alternativeMechanismIds": [
+              "mbl",
+              "ampc",
+              "esbl"
+            ],
+            "sourceIds": [
+              "ref-clsi",
+              "ref-idsa"
+            ],
+            "reviewStatus": "Draft"
+          }
+        ],
+        "insufficient": false,
+        "combinedPossible": false
+      }
+    },
+    {
+      "name": "mbl",
+      "organismId": "ecoli",
+      "rows": [
+        {
+          "id": "0",
+          "antimicrobialId": "meropenem",
+          "category": "R",
+          "measurement": ""
+        },
+        {
+          "id": "1",
+          "antimicrobialId": "aztreonam",
+          "category": "S",
+          "measurement": ""
+        }
+      ],
+      "result": {
+        "organismId": "ecoli",
+        "reviewedRows": 2,
+        "intrinsicFindings": [],
+        "candidates": [
+          {
+            "signatureId": "mbl-like",
+            "mechanismId": "mbl",
+            "mechanismName": "Metallo-β-lactamase",
+            "compatibility": "Compatible",
+            "candidateMarkers": [
+              "NDM",
+              "VIM",
+              "IMP"
+            ],
+            "supporting": [
+              "Meropenem R — Carbapenem nonsusceptibility",
+              "Aztreonam S — Aztreonam activity retained"
+            ],
+            "against": [],
+            "limitations": [
+              "Co-produced serine beta-lactamases may remove the expected aztreonam distinction.",
+              "Phenotype cannot confidently distinguish NDM, VIM, and IMP."
+            ],
+            "alternativeMechanismIds": [
+              "serine_carb"
+            ],
+            "sourceIds": [
+              "ref-clsi",
+              "ref-idsa"
+            ],
+            "reviewStatus": "Draft"
+          }
+        ],
+        "insufficient": false,
+        "combinedPossible": false
+      }
+    },
+    {
+      "name": "mrsa",
+      "organismId": "staph_aureus",
+      "rows": [
+        {
+          "id": "0",
+          "antimicrobialId": "oxacillin",
+          "category": "R",
+          "measurement": ""
+        }
+      ],
+      "result": {
+        "organismId": "staph_aureus",
+        "reviewedRows": 1,
+        "intrinsicFindings": [],
+        "candidates": [
+          {
+            "signatureId": "mrsa-like",
+            "mechanismId": "pbp2a",
+            "mechanismName": "Altered PBP2a/PBP2c",
+            "compatibility": "Compatible",
+            "candidateMarkers": [
+              "mecA",
+              "mecC"
+            ],
+            "supporting": [
+              "Oxacillin R — Methicillin-resistance surrogate is resistant"
+            ],
+            "against": [],
+            "limitations": [
+              "Phenotype is compatible with altered PBP-mediated resistance but does not establish mecA or mecC.",
+              "Apply organism- and method-specific validated interpretive procedures."
+            ],
+            "alternativeMechanismIds": [],
+            "sourceIds": [
+              "ref-clsi"
+            ],
+            "reviewStatus": "Draft"
+          }
+        ],
+        "insufficient": false,
+        "combinedPossible": false
+      }
+    },
+    {
+      "name": "vre",
+      "organismId": "efaecium",
+      "rows": [
+        {
+          "id": "0",
+          "antimicrobialId": "vancomycin",
+          "category": "R",
+          "measurement": ""
+        },
+        {
+          "id": "1",
+          "antimicrobialId": "teicoplanin",
+          "category": "R",
+          "measurement": ""
+        }
+      ],
+      "result": {
+        "organismId": "efaecium",
+        "reviewedRows": 2,
+        "intrinsicFindings": [],
+        "candidates": [
+          {
+            "signatureId": "vre-like",
+            "mechanismId": "van_target",
+            "mechanismName": "Vancomycin target alteration",
+            "compatibility": "Compatible",
+            "candidateMarkers": [
+              "vanA",
+              "vanB"
+            ],
+            "supporting": [
+              "Vancomycin R — Vancomycin resistance",
+              "Teicoplanin R — Glycopeptide co-resistance"
+            ],
+            "against": [],
+            "limitations": [
+              "Phenotype alone does not identify vanA versus vanB.",
+              "Intrinsic and non-panel glycopeptide-resistance mechanisms remain organism dependent."
+            ],
+            "alternativeMechanismIds": [],
+            "sourceIds": [
+              "ref-clsi"
+            ],
+            "reviewStatus": "Draft"
+          }
+        ],
+        "insufficient": false,
+        "combinedPossible": false
+      }
+    },
+    {
+      "name": "mlsb",
+      "organismId": "staph_aureus",
+      "rows": [
+        {
+          "id": "0",
+          "antimicrobialId": "erythromycin",
+          "category": "R",
+          "measurement": ""
+        },
+        {
+          "id": "1",
+          "antimicrobialId": "clindamycin",
+          "category": "R",
+          "measurement": ""
+        }
+      ],
+      "result": {
+        "organismId": "staph_aureus",
+        "reviewedRows": 2,
+        "intrinsicFindings": [],
+        "candidates": [
+          {
+            "signatureId": "mlsb-like",
+            "mechanismId": "mlsb",
+            "mechanismName": "MLSB target methylation",
+            "compatibility": "Compatible",
+            "candidateMarkers": [],
+            "supporting": [
+              "Erythromycin R — Macrolide resistance",
+              "Clindamycin R — Lincosamide resistance"
+            ],
+            "against": [],
+            "limitations": [
+              "Inducible expression may require an appropriate validated phenotypic test.",
+              "Efflux and drug-specific inactivation can create alternative patterns."
+            ],
+            "alternativeMechanismIds": [],
+            "sourceIds": [
+              "ref-clsi"
+            ],
+            "reviewStatus": "Draft"
+          }
+        ],
+        "insufficient": false,
+        "combinedPossible": false
+      }
+    },
+    {
+      "name": "intrinsic",
+      "organismId": "kpneumo",
+      "rows": [
+        {
+          "id": "0",
+          "antimicrobialId": "ampicillin",
+          "category": "R",
+          "measurement": ""
+        }
+      ],
+      "result": {
+        "organismId": "kpneumo",
+        "reviewedRows": 1,
+        "intrinsicFindings": [
+          "Ampicillin R is consistent with an expected intrinsic pattern: A chromosomal penicillinase commonly confers intrinsic ampicillin resistance."
+        ],
+        "candidates": [],
+        "insufficient": true,
+        "combinedPossible": false
+      }
+    },
+    {
+      "name": "unrelated",
+      "organismId": "ecoli",
+      "rows": [
+        {
+          "id": "0",
+          "antimicrobialId": "gentamicin",
+          "category": "R",
+          "measurement": ""
+        }
+      ],
+      "result": {
+        "organismId": "ecoli",
+        "reviewedRows": 1,
+        "intrinsicFindings": [],
+        "candidates": [],
+        "insufficient": true,
+        "combinedPossible": false
+      }
+    }
+  ]
+}

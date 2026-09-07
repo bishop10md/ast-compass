@@ -1,0 +1,403 @@
+{
+  "at": "2026-09-07T19:00:03.702Z",
+  "matrix": [
+    {
+      "input": "https://astcompass.com/",
+      "hops": [
+        {
+          "url": "https://astcompass.com/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "https://astcompass.com/breakpoints",
+      "hops": [
+        {
+          "url": "https://astcompass.com/breakpoints",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "https://astcompass.com/concordance",
+      "hops": [
+        {
+          "url": "https://astcompass.com/concordance",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "https://astcompass.com/bcid-forecast",
+      "hops": [
+        {
+          "url": "https://astcompass.com/bcid-forecast",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "https://astcompass.com/learn?topic=ampc",
+      "hops": [
+        {
+          "url": "https://astcompass.com/learn?topic=ampc",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "https://www.astcompass.com/",
+      "hops": [
+        {
+          "url": "https://www.astcompass.com/",
+          "status": 301,
+          "location": "https://astcompass.com/"
+        },
+        {
+          "url": "https://astcompass.com/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "https://www.astcompass.com/breakpoints",
+      "hops": [
+        {
+          "url": "https://www.astcompass.com/breakpoints",
+          "status": 301,
+          "location": "https://astcompass.com/breakpoints"
+        },
+        {
+          "url": "https://astcompass.com/breakpoints",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "https://www.astcompass.com/concordance",
+      "hops": [
+        {
+          "url": "https://www.astcompass.com/concordance",
+          "status": 301,
+          "location": "https://astcompass.com/concordance"
+        },
+        {
+          "url": "https://astcompass.com/concordance",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "https://www.astcompass.com/bcid-forecast",
+      "hops": [
+        {
+          "url": "https://www.astcompass.com/bcid-forecast",
+          "status": 301,
+          "location": "https://astcompass.com/bcid-forecast"
+        },
+        {
+          "url": "https://astcompass.com/bcid-forecast",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "https://www.astcompass.com/learn?topic=ampc",
+      "hops": [
+        {
+          "url": "https://www.astcompass.com/learn?topic=ampc",
+          "status": 301,
+          "location": "https://astcompass.com/learn?topic=ampc"
+        },
+        {
+          "url": "https://astcompass.com/learn?topic=ampc",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "http://astcompass.com/",
+      "hops": [
+        {
+          "url": "http://astcompass.com/",
+          "status": 301,
+          "location": "https://astcompass.com/"
+        },
+        {
+          "url": "https://astcompass.com/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "http://astcompass.com/breakpoints",
+      "hops": [
+        {
+          "url": "http://astcompass.com/breakpoints",
+          "status": 301,
+          "location": "https://astcompass.com/breakpoints"
+        },
+        {
+          "url": "https://astcompass.com/breakpoints",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "http://astcompass.com/concordance",
+      "hops": [
+        {
+          "url": "http://astcompass.com/concordance",
+          "status": 301,
+          "location": "https://astcompass.com/concordance"
+        },
+        {
+          "url": "https://astcompass.com/concordance",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "http://astcompass.com/bcid-forecast",
+      "hops": [
+        {
+          "url": "http://astcompass.com/bcid-forecast",
+          "status": 301,
+          "location": "https://astcompass.com/bcid-forecast"
+        },
+        {
+          "url": "https://astcompass.com/bcid-forecast",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "http://astcompass.com/learn?topic=ampc",
+      "hops": [
+        {
+          "url": "http://astcompass.com/learn?topic=ampc",
+          "status": 301,
+          "location": "https://astcompass.com/learn?topic=ampc"
+        },
+        {
+          "url": "https://astcompass.com/learn?topic=ampc",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "http://www.astcompass.com/",
+      "hops": [
+        {
+          "url": "http://www.astcompass.com/",
+          "status": 301,
+          "location": "https://www.astcompass.com/"
+        },
+        {
+          "url": "https://www.astcompass.com/",
+          "status": 301,
+          "location": "https://astcompass.com/"
+        },
+        {
+          "url": "https://astcompass.com/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "http://www.astcompass.com/breakpoints",
+      "hops": [
+        {
+          "url": "http://www.astcompass.com/breakpoints",
+          "status": 301,
+          "location": "https://www.astcompass.com/breakpoints"
+        },
+        {
+          "url": "https://www.astcompass.com/breakpoints",
+          "status": 301,
+          "location": "https://astcompass.com/breakpoints"
+        },
+        {
+          "url": "https://astcompass.com/breakpoints",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "http://www.astcompass.com/concordance",
+      "hops": [
+        {
+          "url": "http://www.astcompass.com/concordance",
+          "status": 301,
+          "location": "https://www.astcompass.com/concordance"
+        },
+        {
+          "url": "https://www.astcompass.com/concordance",
+          "status": 301,
+          "location": "https://astcompass.com/concordance"
+        },
+        {
+          "url": "https://astcompass.com/concordance",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "http://www.astcompass.com/bcid-forecast",
+      "hops": [
+        {
+          "url": "http://www.astcompass.com/bcid-forecast",
+          "status": 301,
+          "location": "https://www.astcompass.com/bcid-forecast"
+        },
+        {
+          "url": "https://www.astcompass.com/bcid-forecast",
+          "status": 301,
+          "location": "https://astcompass.com/bcid-forecast"
+        },
+        {
+          "url": "https://astcompass.com/bcid-forecast",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input": "http://www.astcompass.com/learn?topic=ampc",
+      "hops": [
+        {
+          "url": "http://www.astcompass.com/learn?topic=ampc",
+          "status": 301,
+          "location": "https://www.astcompass.com/learn?topic=ampc"
+        },
+        {
+          "url": "https://www.astcompass.com/learn?topic=ampc",
+          "status": 301,
+          "location": "https://astcompass.com/learn?topic=ampc"
+        },
+        {
+          "url": "https://astcompass.com/learn?topic=ampc",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "assets": {
+    "/": {
+      "status": 200,
+      "sha256": "5ea0cde14008212f341e6cb5120c242f05babf5cf91cfb7009cd4f54b88664eb",
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' blob: data:; connect-src 'self' https://dfsvprtsdqhjrkciflsk.supabase.co wss://dfsvprtsdqhjrkciflsk.supabase.co https://*.ingest.us.sentry.io https://us.i.posthog.com; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; media-src 'self'",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      },
+      "canonical": "https://astcompass.com/"
+    },
+    "/sitemap.xml": {
+      "status": 200,
+      "sha256": "b1ba6c69653452cd1011279f481ffed95d3a6350d195199026ea4df36c601360",
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' blob: data:; connect-src 'self' https://dfsvprtsdqhjrkciflsk.supabase.co wss://dfsvprtsdqhjrkciflsk.supabase.co https://*.ingest.us.sentry.io https://us.i.posthog.com; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; media-src 'self'",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      },
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url><loc>https://astcompass.com/</loc></url>\n  <url><loc>https://astcompass.com/breakpoints</loc></url>\n  <url><loc>https://astcompass.com/resistance</loc></url>\n  <url><loc>https://astcompass.com/resistance/mechanisms/esbl</loc></url>\n  <url><loc>https://astcompass.com/resistance/mechanisms/ampc</loc></url>\n  <url><loc>https://astcompass.com/resistance/mechanisms/serine-carb</loc></url>\n  <url><loc>https://astcompass.com/resistance/mechanisms/mbl</loc></url>\n  <url><loc>https://astcompass.com/resistance/mechanisms/pbp2a</loc></url>\n  <url><loc>https://astcompass.com/resistance/mechanisms/van-target</loc></url>\n  <url><loc>https://astcompass.com/resistance/mechanisms/mlsb</loc></url>\n  <url><loc>https://astcompass.com/resistance/mechanisms/aminoglycoside</loc></url>\n  <url><loc>https://astcompass.com/resistance/mechanisms/quinolone</loc></url>\n  <url><loc>https://astcompass.com/resistance/mechanisms/polymyxin</loc></url>\n  <url><loc>https://astcompass.com/bcid-forecast</loc></url>\n  <url><loc>https://astcompass.com/concordance</loc></url>\n  <url><loc>https://astcompass.com/learn</loc></url>\n  <url><loc>https://astcompass.com/learn/topics/kpc-resistance-mechanism</loc></url>\n  <url><loc>https://astcompass.com/learn/topics/ctx-m-expected-phenotype</loc></url>\n  <url><loc>https://astcompass.com/learn/topics/meca-pbp2a-interpretation</loc></url>\n  <url><loc>https://astcompass.com/learn/topics/vana-versus-vanb</loc></url>\n  <url><loc>https://astcompass.com/learn/topics/bcid-resistance-markers</loc></url>\n  <url><loc>https://astcompass.com/learn/topics/gene-phenotype-discordance</loc></url>\n  <url><loc>https://astcompass.com/learn/topics/mic-breakpoint-interpretation</loc></url>\n  <url><loc>https://astcompass.com/references</loc></url>\n  <url><loc>https://astcompass.com/privacy</loc></url>\n  <url><loc>https://astcompass.com/terms</loc></url>\n  <url><loc>https://astcompass.com/trust</loc></url>\n  <url><loc>https://astcompass.com/feedback</loc></url>\n  <url><loc>https://astcompass.com/about</loc></url>\n</urlset>\n"
+    },
+    "/robots.txt": {
+      "status": 200,
+      "sha256": "5fc7a1ac75d3d4802dcf03fe8269bc95fde843ebb0b75dcc3a73d2ba0c54978b",
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' blob: data:; connect-src 'self' https://dfsvprtsdqhjrkciflsk.supabase.co wss://dfsvprtsdqhjrkciflsk.supabase.co https://*.ingest.us.sentry.io https://us.i.posthog.com; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; media-src 'self'",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      },
+      "body": "User-agent: *\nAllow: /\n\nSitemap: https://astcompass.com/sitemap.xml\n"
+    },
+    "/manifest.webmanifest": {
+      "status": 200,
+      "sha256": "7701507ebdb90891b4572d0c575f7a36dc93ba66d77167a45f942a435ed7aceb",
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' blob: data:; connect-src 'self' https://dfsvprtsdqhjrkciflsk.supabase.co wss://dfsvprtsdqhjrkciflsk.supabase.co https://*.ingest.us.sentry.io https://us.i.posthog.com; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; media-src 'self'",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      },
+      "body": "{\n  \"id\": \"/\",\n  \"name\": \"AST Compass\",\n  \"short_name\": \"AST Compass\",\n  \"description\": \"Educational antimicrobial susceptibility testing and resistance learning.\",\n  \"start_url\": \"/\",\n  \"scope\": \"/\",\n  \"display\": \"standalone\",\n  \"orientation\": \"any\",\n  \"background_color\": \"#f4f8f6\",\n  \"theme_color\": \"#0b3b3c\",\n  \"categories\": [\"education\", \"medical\", \"reference\"],\n  \"icons\": [\n    { \"src\": \"/icon-192.png\", \"sizes\": \"192x192\", \"type\": \"image/png\", \"purpose\": \"any\" },\n    { \"src\": \"/icon-512.png\", \"sizes\": \"512x512\", \"type\": \"image/png\", \"purpose\": \"any\" },\n    { \"src\": \"/icon-maskable-512.png\", \"sizes\": \"512x512\", \"type\": \"image/png\", \"purpose\": \"maskable\" }\n  ]\n}\n"
+    },
+    "/sw.js": {
+      "status": 200,
+      "sha256": "3c2ddf25fbfa808696667902d46c5378c2cd87c605519a5e24d42874d6c84f09",
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' blob: data:; connect-src 'self' https://dfsvprtsdqhjrkciflsk.supabase.co wss://dfsvprtsdqhjrkciflsk.supabase.co https://*.ingest.us.sentry.io https://us.i.posthog.com; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; media-src 'self'",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      },
+      "body": "const CACHE = 'ast-compass-232ba0973e7b';\nconst PRECACHE = [\"/index.html\",\"/offline.html\",\"/manifest.webmanifest\",\"/icon-192.png\",\"/icon-512.png\",\"/icon-maskable-512.png\",\"/apple-touch-icon.png\",\"/assets/AccountWorkspace-DSFGMK81.js\",\"/assets/ImageConcordanceAnalyzer-CxWPK2h2.js\",\"/assets/dm-sans-latin-400-normal-BwCSEQnW.woff\",\"/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2\",\"/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2\",\"/assets/dm-sans-latin-500-normal-Dr3UlScf.woff\",\"/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2\",\"/assets/dm-sans-latin-600-normal-BmdmIIQ2.woff\",\"/assets/dm-sans-latin-700-normal-CUSSCpQX.woff\",\"/assets/dm-sans-latin-700-normal-DvUfVpUG.woff2\",\"/assets/dm-sans-latin-ext-400-normal-BjWJ59Pq.woff\",\"/assets/dm-sans-latin-ext-400-normal-BtiwyxMk.woff2\",\"/assets/dm-sans-latin-ext-500-normal-BJfUCQsA.woff2\",\"/assets/dm-sans-latin-ext-500-normal-DR84L5F-.woff\",\"/assets/dm-sans-latin-ext-600-normal-4vooXBpG.woff2\",\"/assets/dm-sans-latin-ext-600-normal-DRtaDpgU.woff\",\"/assets/dm-sans-latin-ext-700-normal-BLI3TTWz.woff\",\"/assets/dm-sans-latin-ext-700-normal-CJIcxD6K.woff2\",\"/assets/index-BnaKord2.css\",\"/assets/index-CqoXHLMN.js\",\"/assets/index-DadsaV5l.js\",\"/assets/manrope-cyrillic-500-normal-B1OEZity.woff2\",\"/assets/manrope-cyrillic-500-normal-CNwnNrRC.woff\",\"/assets/manrope-cyrillic-600-normal-DvRl3Mj-.woff2\",\"/assets/manrope-cyrillic-600-normal-It4mZcQk.woff\",\"/assets/manrope-cyrillic-700-normal-7JNVKxyl.woff\",\"/assets/manrope-cyrillic-700-normal-Dw_fZAg2.woff2\",\"/assets/manrope-cyrillic-800-normal-AvdZ5mAV.woff2\",\"/assets/manrope-cyrillic-800-normal-BuEMjQU-.woff\",\"/assets/manrope-greek-500-normal-DyxYGEtJ.woff\",\"/assets/manrope-greek-500-normal-GeMIHyWm.woff2\",\"/assets/manrope-greek-600-normal-BoRV6lzK.woff2\",\"/assets/manrope-greek-600-normal-CF2i9ZRY.woff\",\"/assets/manrope-greek-700-normal-CHUG9PD8.woff2\",\"/assets/manrope-greek-700-normal-DyfsrCpP.woff\",\"/assets/manrope-greek-800-normal-Bw-67qu9.woff\",\"/assets/manrope-greek-800-normal-CDvU698_.woff2\",\"/assets/manrope-latin-500-normal-BYYD-dBL.woff2\",\"/assets/manrope-latin-500-normal-DMZssgOp.woff\",\"/assets/manrope-latin-600-normal-4f0koTD-.woff2\",\"/assets/manrope-latin-600-normal-BqgrALkZ.woff\",\"/assets/manrope-latin-700-normal-BZp_XxE4.woff2\",\"/assets/manrope-latin-700-normal-DGRFkw-m.woff\",\"/assets/manrope-latin-800-normal-BfWYOv1c.woff2\",\"/assets/manrope-latin-800-normal-uHUdIJgA.woff\",\"/assets/manrope-latin-ext-500-normal-EtoS1VaI.woff\",\"/assets/manrope-latin-ext-500-normal-dm74KBQw.woff2\",\"/assets/manrope-latin-ext-600-normal-_gBojHdJ.woff2\",\"/assets/manrope-latin-ext-600-normal-u5Pl7hTU.woff\",\"/assets/manrope-latin-ext-700-normal-DYOwVNan.woff2\",\"/assets/manrope-latin-ext-700-normal-eVCcYqtJ.woff\",\"/assets/manrope-latin-ext-800-normal-BQAQsuQc.woff\",\"/assets/manrope-latin-ext-800-normal-DdFx7KEb.woff2\",\"/assets/manrope-vietnamese-500-normal-DCXiE_xi.woff2\",\"/assets/manrope-vietnamese-500-normal-DaZ8i3XM.woff\",\"/assets/manrope-vietnamese-600-normal-C1J5PCl_.woff2\",\"/assets/manrope-vietnamese-600-normal-lA7a_7Ok.woff\",\"/assets/manrope-vietnamese-700-normal-CUqMx5-1.woff2\",\"/assets/manrope-vietnamese-700-normal-pt65Fn2Z.woff\",\"/assets/manrope-vietnamese-800-normal-ClPWri-A.woff2\",\"/assets/manrope-vietnamese-800-normal-bvg7iBCV.woff\",\"/assets/web-PDQ_wMrt.js\"];\nself.addEventListener('install', (event) => event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(PRECACHE)).then(() => self.skipWaiting())));\nself.addEventListener('activate', (event) => event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key.startsWith('ast-compass-') && key !== CACHE).map((key) => caches.delete(key)))).then(() => self.clients.claim())));\nself.addEventListener('fetch', (event) => {\n  const request = event.request;\n  if (request.method !== 'GET') return;\n  const url = new URL(request.url);\n  if (url.origin !== self.location.origin || url.protocol !== 'https:') return;\n  if (request.mode === 'navigate') {\n    event.respondWith(fetch(request).catch(() => caches.match('/index.html')).then((response) => response || caches.match('/offline.html')));\n    return;\n  }\n  if (url.pathname.startsWith('/assets/') || url.pathname.startsWith('/ocr/') || /^\\/(?:icon-|apple-touch-icon|favicon)/.test(url.pathname)) {\n    event.respondWith(caches.match(request).then((cached) => cached || fetch(request).then((response) => {\n      if (response.ok && response.type === 'basic') void caches.open(CACHE).then((cache) => cache.put(request, response.clone()));\n      return response;\n    })));\n  }\n});\n"
+    }
+  },
+  "sitemapUrls": [
+    "https://astcompass.com/",
+    "https://astcompass.com/breakpoints",
+    "https://astcompass.com/resistance",
+    "https://astcompass.com/resistance/mechanisms/esbl",
+    "https://astcompass.com/resistance/mechanisms/ampc",
+    "https://astcompass.com/resistance/mechanisms/serine-carb",
+    "https://astcompass.com/resistance/mechanisms/mbl",
+    "https://astcompass.com/resistance/mechanisms/pbp2a",
+    "https://astcompass.com/resistance/mechanisms/van-target",
+    "https://astcompass.com/resistance/mechanisms/mlsb",
+    "https://astcompass.com/resistance/mechanisms/aminoglycoside",
+    "https://astcompass.com/resistance/mechanisms/quinolone",
+    "https://astcompass.com/resistance/mechanisms/polymyxin",
+    "https://astcompass.com/bcid-forecast",
+    "https://astcompass.com/concordance",
+    "https://astcompass.com/learn",
+    "https://astcompass.com/learn/topics/kpc-resistance-mechanism",
+    "https://astcompass.com/learn/topics/ctx-m-expected-phenotype",
+    "https://astcompass.com/learn/topics/meca-pbp2a-interpretation",
+    "https://astcompass.com/learn/topics/vana-versus-vanb",
+    "https://astcompass.com/learn/topics/bcid-resistance-markers",
+    "https://astcompass.com/learn/topics/gene-phenotype-discordance",
+    "https://astcompass.com/learn/topics/mic-breakpoint-interpretation",
+    "https://astcompass.com/references",
+    "https://astcompass.com/privacy",
+    "https://astcompass.com/terms",
+    "https://astcompass.com/trust",
+    "https://astcompass.com/feedback",
+    "https://astcompass.com/about"
+  ]
+}

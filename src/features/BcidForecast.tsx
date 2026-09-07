@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { assessBcidPairs, bcid2Panel, bcidForecasts, contentReviewMeta, getCombinedForecast, getCompatibilityRule, getMarkersForOrganism, getOrganismsForMarker, isCompatibleBcidPair, mechanisms, references, type BcidPanelTarget, type BcidResistanceMarker, type ForecastPrediction } from "../data";
 import SearchableSelect from "../components/SearchableSelect";
 import Disclosure from "../components/Disclosure";
+import ContentStatus from "../components/ContentStatus";
 import { sortAlphabetically, type SearchOption } from "../utils/search";
 import { useAuth } from "../auth/AuthContext";
 import { saveBcidForecast } from "../services/analysisService";
@@ -22,10 +23,10 @@ const optionForMarker = (marker: BcidResistanceMarker, context?: string, conditi
 function forecastsFor(target: BcidPanelTarget, marker: BcidResistanceMarker) {
   const exact = bcidForecasts.filter((row) => row.organism === target.name && row.markerLabel === marker.label);
   if (exact.length) return exact;
-  const group = bcidForecasts.filter((row) => row.organismGroup === target.name && row.markerLabel === marker.label);
+  const group = bcidForecasts.filter((row) => !row.organism && row.organismGroup === target.name && row.markerLabel === marker.label);
   if (group.length) return group;
   const parent = target.parentId ? targetById(target.parentId) : undefined;
-  return bcidForecasts.filter((row) => row.organismGroup === parent?.name && row.markerLabel === marker.label);
+  return bcidForecasts.filter((row) => !row.organism && row.organismGroup === parent?.name && row.markerLabel === marker.label);
 }
 
 export default function BcidForecast() {
@@ -53,7 +54,7 @@ export default function BcidForecast() {
   const changeMarkers = (ids: string[]) => { setHasInteracted(true); setMarkerIds(ids); if (ids.length) setMarkerMode("detected"); if (startWith === "marker" && ids.length) { const allowed = new Set(ids.flatMap((id) => getOrganismsForMarker(id, showAdvanced))); setOrganismIds((current) => current.filter((id) => allowed.has(id))); } };
 
   return <>
-    <div className="bcid-page-head"><div><p className="eyebrow">Signature AST Compass feature</p><h1>BCID Resistance Forecast</h1><p>From molecular resistance marker to anticipated phenotype while AST is pending.</p><div className="content-status"><span className="review-badge demo">{contentReviewMeta.bcidForecast.status.toUpperCase()}</span><span>Educational forecasting content; not validated for clinical use.</span></div></div><div className="bcid-metadata"><b>BCID FORECAST SCOPE</b><strong>26 bacterial organisms</strong><span>10 AMR markers</span><small>Reference scope based on publicly available BIOFIRE BCID2 panel information. Yeast identification organisms excluded from this resistance-focused workflow.</small></div></div>
+    <div className="bcid-page-head"><div><p className="eyebrow">Signature AST Compass feature</p><h1>BCID Resistance Forecast</h1><p>From molecular resistance marker to anticipated phenotype while AST is pending.</p><ContentStatus meta={contentReviewMeta.bcidForecast}/></div><div className="bcid-metadata"><b>BCID FORECAST SCOPE</b><strong>26 bacterial organisms</strong><span>10 AMR markers</span><small>Reference scope based on publicly available BIOFIRE BCID2 panel information. Yeast identification organisms excluded from this resistance-focused workflow.</small></div></div>
     <div className="preast-banner"><b>PRE-AST EXPECTATION ONLY</b><span>A detected molecular marker is not equivalent to a phenotypic susceptibility result. AST Compass is a compass, not an autopilot.</span></div>
     {multiplex && <div className="attribution-warning multiplex-top"><b>MULTIPLEX ATTRIBUTION CAUTION</b><p>Multiple organisms and/or resistance markers were detected. Do not assume that every marker belongs to every detected organism.</p><span>Review compatibility and confirm the final phenotype using culture, additional testing, validated AST, and laboratory policy.</span></div>}
     <div className="bcid-workflow"><aside className="panel bcid-input">

@@ -83,7 +83,7 @@ export default function TrustPage() {
 
       <section aria-labelledby="security">
         <h2 id="security">Security</h2>
-        <p>The public application is served over HTTPS from www.astcompass.com using Netlify. Supabase supports private feedback and retained future account architecture. Optional error and aggregate usage telemetry may be blocked without preventing core educational pages from opening.</p>
+        <p>The public application is served over HTTPS from astcompass.com using Netlify. Supabase supports private feedback and retained future account architecture. Optional error and aggregate usage telemetry may be blocked without preventing core educational pages from opening.</p>
         <p>Public accounts are currently disabled. Current Chrome, Edge, Firefox, and Safari versions are the intended browser targets. Browsers without optional privacy-screening APIs receive a clearly labeled degraded state; the PHI gate is not silently bypassed.</p>
         <p>AST Compass does not claim third-party certification, penetration testing, HIPAA compliance, hospital approval, FDA approval, or clinical validation.</p>
       </section>

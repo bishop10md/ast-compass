@@ -1,0 +1,1401 @@
+{
+  "at": "2026-09-07T18:59:58.787Z",
+  "productionHead": "b98f8d2ed3386f3cb7583a85d5a3b805ab6baf79",
+  "developmentHead": "147247387eba5ee351089ecaab9f3c6ae2d27200",
+  "netlifyDeploy": "6a9ede17b7190f000816b0d1",
+  "netlifyEvidence": "Connected Netlify dashboard read September 7, 2026: Published main@b98f8d2; auto publishing is on. No provider settings changed.",
+  "productionVersion": "0.4.5",
+  "protected": {
+    "pnpm-lock.yaml": "27476cd8313b84c403985d3d5ac3a623d6e9f88b3d428238b6c7d42acd4e6769",
+    "public/manifest.webmanifest": "3917bf2d8fb41cb92bf2347d0ec7bb0b05e84a4057bd0094fbeb6c444fc23610",
+    "src/auth/AuthContext.tsx": "5e90a4b534900d564fb24034f4723788baaa40938d2619b136209e012c4cd52e",
+    "src/data/antibiotics.ts": "8de975263cf883a1e7583f66e42ee512575d8c11466f7fcfb22de1c415fc5109",
+    "src/data/astDetectiveQuestions.ts": "7da12fa926ed838ca982ca2f89e53167e39a54d25c9c12705ed9a9d6862552e5",
+    "src/data/bcid2Compatibility.ts": "654ae05f905bc29031c708aab7c74f4913b1bbe792dfcab80ac3d121c41007cf",
+    "src/data/bcid2Panel.ts": "b36816d8a3a288b02b6d20ced3f6510a9a83d0d4bc5c607bf5893430c8dce350",
+    "src/data/bcidCombinedForecasts.ts": "bdd39c5095f9878a95e9a0f875dd7648e788080bd69278ae98186495923b76d7",
+    "src/data/bcidForecasts.ts": "4b9fd498941a6a16270a22a955d94e169c34533e2c5cb4cb4cba87b35f5221d0",
+    "src/data/breakpoints.ts": "e880798aa41d4fcb0c804f5fa673e52f66767f4078069f5e780b5df1e7cc207a",
+    "src/data/cases.ts": "f6c4a040b5d90a75e58a5567e149eb77a7dcc03543333a7eef9230fc6e6fddfd",
+    "src/data/contentReview.ts": "8b803a62ea38c418c242bf5ce6cf96008a71b7b7aff6c4852d759b130e24c3b0",
+    "src/data/dataChecks.ts": "7a6d5a6d3b06a3d4c1c76a25a6ea392e51e00a8bcd133c5044ff13f1c7dda14a",
+    "src/data/educationalTopics.ts": "52618d8e2dae28bf7e104982e1dc0a3c63843a1637869e7cb687302b621f3194",
+    "src/data/genes.ts": "5ec4b8ac31bb566bb826118501223f38bb4b90ba8d9ecd11e358190b8ec1fb38",
+    "src/data/index.ts": "3f426e55749b63552037b116ef1123fc890212fd925c3fa548304d6d68f93969",
+    "src/data/intrinsicPatterns.ts": "2081bc1bfe8e4435fc7195d579ab07d82123ce60cb8a5ebbbe6fb4dfef8df095",
+    "src/data/learningModules.ts": "bc58369ecbbe967799f8f8f74db7e5343dc772e33f529c01e9a303fdfd75db68",
+    "src/data/mechanismLiterature.ts": "494e374d38957c0afefdaf3f884b84e9dac13ff65c6cb2613f8a0e36c70cd65a",
+    "src/data/mechanisms.ts": "0f2494131e926659c9ed709b9b6ea5d50deee8c92571b8a2b19171778ccd1217",
+    "src/data/organisms.ts": "5f58599910d21400fb5fa83840913832454e8159f31fe024dcfccab70ef01aab",
+    "src/data/rapidDiagnosticTypes.ts": "86b44b554f6d0c832c5c82360854ae6d6324c2c5b235276292bb7a3020042327",
+    "src/data/references.ts": "e7a1dfbd105c4055eb4cd9fc4746f952897b16dd4ba79ed9972459250d3ba425",
+    "src/data/scientificGovernance.ts": "04acb2de20caad070dec41f6005b63d23af7fe4f69e182f2d4e7f63e827ba1b5",
+    "src/data/standardCatalog.ts": "32c6871b5680f76719d0297a5b94acf84544b3059d62192bf97bcf4e62aa35a7",
+    "src/data/types.ts": "2f8687330d205ee87946ba97af27c6628d5fff830d42ae81dd2efbc84fe53bb8",
+    "src/features/AccountWorkspace.tsx": "ff21519f980be7a0bc68b34b86c8e8e785b2f8256c59ab65d59171d8745f7e22",
+    "src/features/BcidForecast.tsx": "f26960636c64b08294c9521aa87d9180da0d5ea751211a035a1cd906fb5d328b",
+    "src/features/BreakpointEngine.tsx": "1721361176b5bcf3cc23d0f042d797a0a3a964caaf2094b0d43eda5a3b6ac4d6",
+    "src/features/EducationalTopicPage.tsx": "14f438c46f24685e87e09857bb759ad71168e10a0cfa6871c2788119e62ec0c6",
+    "src/features/Feedback.tsx": "295c606eb17a2b6c5273ae9d6dd5d932295387ce459cbf79e6d6621180b26b62",
+    "src/features/ImageConcordanceAnalyzer.tsx": "82e4c3a5ebf51313cc19debc369e55e4901e81c7c110cbbb048bee51c1f1ed28",
+    "src/features/LearningCenter.tsx": "649dcd277825eadd4aed5374e5f2b51b640893c52fea66b3f9e86f15f3e0057f",
+    "src/features/LegalPages.tsx": "3dd5251d3e82e96d3316d829edea9ee03a846148713c21735fb3261c0d1a0ea9",
+    "src/features/MechanismDetailPage.tsx": "6c5d7804c7d03b56c4f28be4dd873110a971c09478fa681633b929dd5610d311",
+    "src/features/PhenotypeMechanismAnalyzer.tsx": "69e0b12452265765a8447544f058ba0ca6350019aaa023986c571bf6af88694a",
+    "src/features/PromoExperience.tsx": "db2aad65ad2f37580289e49905f05903852af69c636330274573931342ab6c78",
+    "src/features/PromoPhone.tsx": "d273d05c4dff49a26b2d9919a75bf2d660b939b9fa25acb736da0e80bb608295",
+    "src/features/TrustPage.tsx": "4550e2d1e4c0132dd4c68f89e208c62742cfe0fca44e07c9dd96fdab6d9edc61",
+    "src/features/ast-detective-game-core.d.mts": "0e7ae66886ba2f55cdb0510a524343cc3a4ffa94cde4838999913076927f9d41",
+    "src/features/ast-detective-game-core.mjs": "6c64ed1a7dbfa2d76323bb7d2a3c18c77fcc7101c00dc8ae3445f50e94d96f09",
+    "src/features/concordanceEngine.ts": "984cead7c6fdc8a3e5e5b4f191df0c99f98aa1a4dbae42acbde3fb207dd0209f",
+    "src/features/measurement-core.d.mts": "889015e5ddfbb4a63383d07e063ab43491cb827668350bd52673cdc47f1cd8ff",
+    "src/features/measurement-core.mjs": "7bdb6db08122b973e99b2c9ec44ace68be191ae474f04f76ff72cfce35bbff47",
+    "src/features/phenotypeMechanismEngine.ts": "ca591fed1929f39650f55ec5b5f9cf8840a74f7ed672d430f76f7d74865627ba",
+    "src/features/phi-screening-core.d.mts": "9bb6abe4eea19f5104a6ee9630317208d9b1e9aa44c49af122ca1a734fd108af",
+    "src/features/phi-screening-core.mjs": "4bf11b88bd55479fddfd97e8d12db6b610187d87be2658c2497615ccc63b1002",
+    "src/lib/ocr.ts": "ed43c0ffc77d0956ade2c8e3ad584a2b2e050c25e669b5fe4e8f933bcffe5397",
+    "src/lib/platform.ts": "983054cf19f626dc038d54bc8ac84533d54019a5dd54353488e91fbdcf9a701d",
+    "src/lib/product-analytics-core.d.mts": "e4d4606f9cc178c7780635ba6a1ca428b0083a40239193e9e00f1fe1dd418e07",
+    "src/lib/product-analytics-core.mjs": "94700a5367e9e4016272c20666392af4a53dcbb4235f0772d469024a35fcad02",
+    "src/lib/productAnalytics.ts": "79a343902fc7d9b7325f6e9a256f9b1d4986be2d00a553d66ff68c8707b4ee54",
+    "src/lib/supabase.ts": "686f6f8c181c227127787bc0197aa1c5f48a4509351b2a5f757c151b045fdd85",
+    "src/lib/telemetry.ts": "65a78aa9cad6fc1bd85110725df67566213a8f47afaee5cdd99638d1d0ceb532",
+    "src/services/analysisService.ts": "71fb0cc6bfc7c2ffdfb6db15b405cf246a039f21bc2a4bc995b0ee65811b0e21",
+    "src/services/authUser.ts": "a6d7006169dcd352fd51419ed61ebc671d0da5420ac611024db7f2f181b0da89",
+    "src/services/feedbackService.ts": "13956ab2e45ff0ba6ea5aa879e2ed7074bbedfd837162649797d2416c834a235",
+    "src/services/imageService.ts": "e30d02c4dd821590bb523c4e0cd721b6155912d91c7ed9d15fb95a702e7d4bb3",
+    "src/services/learningService.ts": "a536412c63d270da9dab1334ae220bff8a7c55562ef04681ac0ce0014dd6f111",
+    "src/services/profileService.ts": "e8f9c2af868ec75f855b4d5dbf1ddf8e40c1b5638e00ba762aee59666b95ce2f",
+    "supabase/migrations/20260901_private_workspace.sql": "221a27d938188d448875ca292390e3cf4139377059451aa093dc630d867ed757",
+    "supabase/migrations/20260902_private_feedback.sql": "d2ce0e7f90f28cfab9760d5fd8f4358dcb43b249d90f9dd6c59f87627b756291",
+    "supabase/migrations/20260906_feedback_governance.sql": "98143ff5a7e5c49efb5b227359706c1de3387691ba9ebef963cda4e5295f3efe"
+  },
+  "development": {
+    ".env.example": "fb82b42d6dcefab8bca024b8a4c7e3b84f28fa25de52bca154ce20df968eaa3e",
+    ".github/workflows/ci.yml": "fe81b457e7f61d1c2cb836a24664823322dd8ebc2e5d0fed7f7572dfa7523e2c",
+    ".gitignore": "23095256f34665b8a3c116496a978ee7c0659a24a939e89e826ac0d29a39e362",
+    ".openai/hosting.json": "74db1e998fd6c8d33f2def2bf14de016377869c474251976add68854ca5603b5",
+    "APP_STORE_PRIVACY_CHECKLIST.md": "2722c1785c6c6bdc71e377547f6b0e99a007c769be5c984b088e5ed4dd34d0f8",
+    "APP_STORE_RELEASE_CHECKLIST.md": "42a10f0978477eebcbb7a509f97e533451f238d243ef82eb2fb1655f8a9cbe11",
+    "AST_COMPASS_ENTERPRISE_ALLOWLIST.md": "a7b32e6acc9b8e5a95c2af68c6c96d7b65f54cde8a0938e6921accab1c649a4d",
+    "AST_COMPASS_ENTERPRISE_SECURITY_OVERVIEW.md": "7f7cbfd36d8814d0378041c3423b37a081693b913b7d6a38932d75b1e8e041be",
+    "AST_DETECTIVE_100_QUESTION_REPORT.md": "b709c54e178e35057a921f3ed0e552e6a7eba5c18aec707f6938895ff3f8ed46",
+    "AST_DETECTIVE_QUESTION_REVIEW.md": "05a683b147a5552877dbd6c9a190657e5970f449b7d2d80bf87733c0704b2cdf",
+    "AST_DETECTIVE_REVIEW_EXPORT.csv": "0c3124cb0b8b5915e515d710128d9a99f4b33061b9769d650c7ba77f9ba571f4",
+    "AST_DETECTIVE_V1_REPORT.md": "d392208764677a7a92297887cbe1e51f77d3d41f4e7dcc14e6db6cc52e8bf7fd",
+    "BCID_CONCORDANCE_USER_FEEDBACK_UPDATE.md": "7144da08729243f13c57561193dd061c712b7765f772a4d7ef8f99f907150b7d",
+    "BRAND_GUIDE.md": "b87249552cece192308077b181566de674b20743f257d80d53ed39f71b3ec252",
+    "DOMAIN_REPUTATION_REVIEW_PACKET.md": "f3cb89ee63c0c8b3b3ac221ce23931be16465040b213e467c2daed3469d3676e",
+    "ENTERPRISE_NETWORK_DEPENDENCY_MAP.md": "19bfe5c54f148b65c88c57c2db5d72b923e46056718f1580bd43579af9b1962f",
+    "ENTERPRISE_NETWORK_READINESS_AUDIT.md": "f81b56d59460c6c25cc9d3e53d5e672e30a6bb3d0a1745ee4d272d1fd537a3af",
+    "IMAGE_CONCORDANCE_UPLOAD_DEBUG_REPORT.md": "ff7e20dffc2b8121f03b95d78c9b3d3f5eef9b23b88acc4384eb0f184358181c",
+    "M45_EXPANSION_PLAN.md": "0c653fa30e3598b580629bbcedfc47eade2b1b6c163fe98301f423e07be0508f",
+    "MOBILE_APP_READINESS_AUDIT.md": "c1a8f04f93e6230cccf7825709df98db5befa2d76fca15d6864193fe7612f7fc",
+    "MOBILE_ARCHITECTURE.md": "54495d1156aaf53dad215b142758659c7a451772ae379e80dfcbd283bdc2945b",
+    "MOBILE_BUILD_GUIDE.md": "46adcfe8c71db4113586f5d9ba4baafe1eaab168fc7499160600a13db8d1bfd3",
+    "PHI_SERVER_GATE_PLAN.md": "2910bf1f9017a5bb7c7eeadf50b3e389d4d8f5803510fa9eada9277cb00c4109",
+    "PRODUCT_ANALYTICS_DASHBOARD.md": "080b7bd6bb025423fd1f3f0519fc9e05157fd1ba825011bc8df565c06a0c8fef",
+    "PROFESSIONAL_READINESS_AUDIT.md": "e803992d5a5d1655bb65cd70612a5d54f007de05a6d79597ce4f70551e5610a0",
+    "PROFESSIONAL_READINESS_REMEDIATION.md": "3c633801e225725adf8d9013343822d6682809974896c4db3733eee7ca3ac2a5",
+    "PROMO_VIDEO_GUIDE.md": "794aed645f624a5378de13a80af78947a5e7fff3102f6e5e3b40f00672ce153b",
+    "README.md": "4e1218013f3c883b289d5cff2f1c134db323e07046f122d3e18be7eab9451ae6",
+    "REMEDIATION_TEST_REPORT.md": "1768070ed8e2dbecbf9bdc59aa3518048f7527d699cd22807792086dfa7f77c4",
+    "SCIENTIFIC_COVERAGE_ROADMAP.md": "1a3ead9b0cfc8cb719083e1ce7a80aa9ecf1eeaa4f020cb6d5f4a88e212f67d5",
+    "SCIENTIFIC_GOVERNANCE.md": "c0629c3270ea2671ada2294729ba35aff3f180945252892c85c2703edcd1169f",
+    "SCIENTIFIC_TRUST_UPDATE_REPORT.md": "f23bdcff0bff163f7d081f195f966c475e501518a95d1029ba1f9f142e52b299",
+    "SECURITY_SETUP.md": "3128a61e6b60d90107c038f229b315f2b3277da320382861481e657b494e2762",
+    "USER_FEEDBACK_LOG.md": "c9346cfd5e6269ae9854465c05ba2bab6b51de4e7988349e445f1761e4c8b380",
+    "android/.gitignore": "ea24a4cba0d4b98d59a0f0eca3ca4efbf0715d849db7a8c2c7b52e409f053677",
+    "android/app/.gitignore": "99c54e51ee601a60fbde8016b2cbf717483bc2e92773be86c9247d02a7fa6ea4",
+    "android/app/build.gradle": "268794040a95e17fd58d66873017d968a2fa795ae094abc48b3e3f0a14dd6cc5",
+    "android/app/capacitor.build.gradle": "47e2308de17888afa42c3a6975626c50ef2fc0abbaf4c7da862eb32d567c3105",
+    "android/app/proguard-rules.pro": "1cf8c57e8f79c250b0af9c1a5a4edad71a5c348a79ab70243b6bae086c150ad2",
+    "android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java": "ff50b4c110a7434312f9af54171f9e8523b015836f707c9b387b76d4c38a97f8",
+    "android/app/src/main/AndroidManifest.xml": "133ec6ac29dece8aa3d7399a9179e272809b0ece2ea71b44e38a08a419d5f9b3",
+    "android/app/src/main/java/com/astcompass/app/MainActivity.java": "654ed65b64f15354df873bf14f10871d2d6a2c047344420343740cb5f971268b",
+    "android/app/src/main/res/drawable-land-hdpi/splash.png": "35f57ca958bfe4412bd3ef11b747308fc22f03fa1b80f27ecb6acabc67166cba",
+    "android/app/src/main/res/drawable-land-mdpi/splash.png": "8200a3d0f0f519435827bde0c460cb9b7cb6173a2b0225dd05cb1bebdff60b96",
+    "android/app/src/main/res/drawable-land-xhdpi/splash.png": "0dbeb118a5ad25bbebfa73d3b0ea44567ef590fae88261395263d8d3910a2606",
+    "android/app/src/main/res/drawable-land-xxhdpi/splash.png": "70f0a6ccc1dd787c62109ed9cb5cebe9c77d6fd1b6a0f200828f7dc58cb2b8f8",
+    "android/app/src/main/res/drawable-land-xxxhdpi/splash.png": "bfca222986f6406ef6dd628d443e998c57a697697090f0b9316cfdc1c69291ec",
+    "android/app/src/main/res/drawable-port-hdpi/splash.png": "85216b66767f55428bfdfb3df17ac484a993e29a33673b9935a630e14550df61",
+    "android/app/src/main/res/drawable-port-mdpi/splash.png": "a1e88ebfaa87ea45519239433c8765dd479b82e755d0b62b2199016c46abdc23",
+    "android/app/src/main/res/drawable-port-xhdpi/splash.png": "4a604a65d2662da6291909d13905da1aedbc7497d669a4acf08dfdfee15a773d",
+    "android/app/src/main/res/drawable-port-xxhdpi/splash.png": "0c318e242edbc132b778f4f6ed18c7f71aa19633fcc6ac514de9fb1087ead8d4",
+    "android/app/src/main/res/drawable-port-xxxhdpi/splash.png": "acdc54d3235b281b649d0ff408f8c934693061af37472cb4ba53db6888c38e8f",
+    "android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml": "a8514094f754b099d3e55ce1d6e0b2de79db418b2eeacb0fc2a6bb0bfadef221",
+    "android/app/src/main/res/drawable/ic_launcher_background.xml": "718ba51adf166bb55c3e9936bb8199a0148457f7f0191aaa2f37a94f3159d6ec",
+    "android/app/src/main/res/drawable/splash.png": "8200a3d0f0f519435827bde0c460cb9b7cb6173a2b0225dd05cb1bebdff60b96",
+    "android/app/src/main/res/layout/activity_main.xml": "5d770feb791313b947020cbfc57e5c733c556dac5e9e49261a1190e527073253",
+    "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c",
+    "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c",
+    "android/app/src/main/res/mipmap-hdpi/ic_launcher.png": "08e6a29ba3d572e19afacc5b4995ed2e482effd4febeeda35b52e4b4e75ff525",
+    "android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png": "aab19f5bb2685964f30619f3073716440d71b5bf7465c60e68a7f779d66f11f9",
+    "android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png": "08e6a29ba3d572e19afacc5b4995ed2e482effd4febeeda35b52e4b4e75ff525",
+    "android/app/src/main/res/mipmap-mdpi/ic_launcher.png": "1c3e5f289db046148dcc13690d5856b2ad0d3c292662863e8055737293fc75e0",
+    "android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png": "ba41c9e5c0e1c2a77a1c284b015c6a9fd7c47fea1b64d05f20d3297d3f2b4557",
+    "android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png": "1c3e5f289db046148dcc13690d5856b2ad0d3c292662863e8055737293fc75e0",
+    "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png": "79b6816f3cc85f72c31264b0d7aa1ad2f7eeb446e1c41fcbc063f4324182afde",
+    "android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png": "3fe71f7e68a5499eebde891449b13e2d86ecc847e00ff5d3c7f626de7f7d3c7e",
+    "android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png": "79b6816f3cc85f72c31264b0d7aa1ad2f7eeb446e1c41fcbc063f4324182afde",
+    "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png": "31f6259fd12f8a2b8630c7cc88e0d1164eebbf144bca9fa8d482fb2db5b04f50",
+    "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png": "55b6304d66b77e13fa3ae1d769119978e1a7ed76093a3de909434e60d88238f2",
+    "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png": "31f6259fd12f8a2b8630c7cc88e0d1164eebbf144bca9fa8d482fb2db5b04f50",
+    "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png": "7f9ca42cb43b6f5104d39068058ed417b064e3c6017617345c45b7e81ef9be4f",
+    "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png": "1db6f8849253319dd8cdc7ac6131f38c730760d77ac0cfa81c577c24bff70a6b",
+    "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png": "7f9ca42cb43b6f5104d39068058ed417b064e3c6017617345c45b7e81ef9be4f",
+    "android/app/src/main/res/values/ic_launcher_background.xml": "cd40bafe618ff506f4088778b135cb4faa15f25e0c9b475e22d730c74b7be115",
+    "android/app/src/main/res/values/strings.xml": "857bcc4e980ed4b81f9deb01a70478e2c91b291224e8b2be616d1f1499c72d8e",
+    "android/app/src/main/res/values/styles.xml": "18ebba36575e9461347ee67361b23caf095f158ee85dbefe1b83a4669ba5bd6c",
+    "android/app/src/main/res/xml/file_paths.xml": "a46ed43ef65c90cb6778f4581decf3556e3f0055aad8f36d69dae16f9a0e99aa",
+    "android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java": "d4045ae8fac1f0807e6b24eb34e68409a9a235df9d1a3f896fb8c9a49424363d",
+    "android/build.gradle": "46ade7db7afeb8049ccea59fce83095dca736ceb8c9acd79cc944e988c3357d9",
+    "android/capacitor.settings.gradle": "b139fb4ac25733e1a5841cd290259d6bb3149203809542f799f05a3e149fb178",
+    "android/gradle.properties": "3bab15c5b8bc4c2f4b6cf525497d15ad4abca53a460e6dd2eb0f0135817d31e6",
+    "android/gradle/wrapper/gradle-wrapper.jar": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+    "android/gradle/wrapper/gradle-wrapper.properties": "9a479a85aa879bb55284fc16d0de5b81a745c3854f4e2d88c42e7debaf007435",
+    "android/gradlew": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409",
+    "android/gradlew.bat": "1d297e00bd21de3ace22b4d7f2de1f9dfa858883d66bbf7c1ccbecccec8f4f3b",
+    "android/settings.gradle": "6ce098d15ebd69b44c4ecd786bca1bdc366340d2459b2af4d7bb0ab317aa9669",
+    "android/variables.gradle": "83d502c9ed8fcf1dd4791482067abeedbebae49fafe9cd14a8a1f5891deb0d88",
+    "assets/icon.png": "c19a633abada2754951270d651a0821b1f13e93f85ffd62bc7d16e93206df69c",
+    "capacitor.config.ts": "56007c14a40835efa08289b27d86459a8233520f35129119f0ec7b97d4b8f99a",
+    "docs/MONITORING_SETUP.md": "62338a837e226782e5b8e53abaf3ac91391e34b00689e96a387907bcdcf811f3",
+    "index.html": "3049028e4237810ead5acb4d163740d66cb40bdd68385f04cc562914784efc3c",
+    "ios/.gitignore": "2b7132a9943d2622e51e656897ca5162f56b121b40b423dedce1fbc699dba88a",
+    "ios/App/App.xcodeproj/project.pbxproj": "067654d8c5c9d17055dd1fa4f68fa13ae5bcec0d7ab179547f8cac48770a0f44",
+    "ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist": "dfa0f9bb85b95ccba9c6811adadf8cb407fb5d52088e89db83ebc308ec448542",
+    "ios/App/App/AppDelegate.swift": "481e2ad8672b14acbd3e3df65acdc6d046526ae542b7bec903cf842fc68d9e49",
+    "ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png": "425f5a756d3e474b09021542e553dc513dbbcf010a83167310f5b32bb7da47a7",
+    "ios/App/App/Assets.xcassets/AppIcon.appiconset/Contents.json": "5c09bec6eede599b14fa9e4c44b03e7febebc930615a0cd70f02981c09dfe48a",
+    "ios/App/App/Assets.xcassets/Contents.json": "972ec1fd42325872438eb085ac29e94f51c10788ec18ec5549439950866c541d",
+    "ios/App/App/Assets.xcassets/Splash.imageset/Contents.json": "041481917eb249533ac6dd63d283bc6190b2d0642a93deda11b2ed0f6f7b605a",
+    "ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png": "88f6f2112342a69700eab274bdafc20c065645a81e5e823ecd234ee8fc1bea1d",
+    "ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png": "88f6f2112342a69700eab274bdafc20c065645a81e5e823ecd234ee8fc1bea1d",
+    "ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png": "88f6f2112342a69700eab274bdafc20c065645a81e5e823ecd234ee8fc1bea1d",
+    "ios/App/App/Base.lproj/LaunchScreen.storyboard": "87a42e842164d75f39cca56a2cf743652f4d8e858f2eba12ae21a8ddcd9a21c6",
+    "ios/App/App/Base.lproj/Main.storyboard": "7b7dc7acc67134bfaa80e5ce9c9068ba53db5369b9b70248aa7439fc2b09daae",
+    "ios/App/App/Info.plist": "f73eb3fe94e8f625be9d01375703948201b09f87e0f8dfc8693698de769cec39",
+    "ios/App/App/SceneDelegate.swift": "738b9b96bb71d34d80cd8c1183cf7f8f6f2e789c64e46fb5fe6777a35ae12dfd",
+    "ios/App/CapApp-SPM/.gitignore": "4b958e2b4dd57319aadef2551153c74b9cb5ffe9f89d6e3e491122a94913f016",
+    "ios/App/CapApp-SPM/Package.swift": "3b07ef23e6b162f72de5a255eb152e9a0d0bf0656083b9c02c944b007fc30ad0",
+    "ios/App/CapApp-SPM/README.md": "42c535861f4a866e35f85764ed6af1ea046d6a409bf9852ecb00e5d292a1626e",
+    "ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift": "70bf9dafddc35e3877dfb133a996f5be7ccd1e132897a98fdbf4869ff605ece9",
+    "ios/debug.xcconfig": "4838938a72b913b99cfda54a43bbe73f05893071dc6e3702b0adc44794b64272",
+    "netlify.toml": "c8b486125db84491ca024f1ec2d481b39c716f240f701c2d6b5c3d1642920e1b",
+    "package.json": "20c41ab0cc6a102943fb771c46c69f472e3c523afbf2231a9eb4ea0c0f6ac78a",
+    "pnpm-lock.yaml": "7c7e48bcae97c291fd3c477a4e91c25a7109967b5f5785cf01cba33b2075a2e0",
+    "pnpm-workspace.yaml": "e9ad28109570816b3c256e2cce3cdfc5ac119e2a6bcb7ad31f62562c63404a9e",
+    "public/.well-known/security.txt": "12c627321732ba091c0fcca1c34bb4588b2afac21d6c36ab49dd353424873480",
+    "public/_redirects": "09abab8547456ca6b8da17c2f4bce0f1901ef8867d0393cefd5fcb11820c672a",
+    "public/apple-touch-icon.png": "96a130b4a1f86e21353b7bf3a72932e14819c54a44c5bf193bc826ef2c569597",
+    "public/favicon.svg": "cc6c97ae195b0eb7c684effb475f31fd9394ab8797107eae434c8856e0bbec50",
+    "public/icon-192.png": "c6bf2ef0520f9ad80d88e17953d92976efe984e5d1f1a3d8b69613ac6c0b725d",
+    "public/icon-512.png": "cd90376b61a24b09fa86e175524d3a0409f2feb747dce2acc82a2afb21a7e1e3",
+    "public/icon-maskable-512.png": "9314355fe065c25d6c21fe7560b1cf822941ddc6ccb2ee441787bffaaf321040",
+    "public/manifest.webmanifest": "7701507ebdb90891b4572d0c575f7a36dc93ba66d77167a45f942a435ed7aceb",
+    "public/offline.html": "427f3e3761a69364b523400882cc484cc544ad26bea7dbb16f5106d8b1d6bbfa",
+    "public/promo-phone/bcid.jpeg": "dff3be9d9e66f582c4269a5fc7a7d19a8378e9d3aed47c1fe7596ec7abab62f6",
+    "public/promo-phone/breakpoints.jpeg": "0479cbfd2cd3cbe8c9ad967b8c81abc44e2063aaee8f8896e5d51e169fe0a383",
+    "public/promo-phone/home.png": "3f3f4c746bafb6c5b22019aea2107ea89433639fa7544936423d2625b5759e51",
+    "public/promo-phone/learn.jpeg": "619ea6f06b2769c543272a3d9ad4222d1b46917db58de18880e137d742cc59df",
+    "public/promo-phone/mechanism.jpeg": "d4075e98734a668993951284632e1d513d921335c903a4bd855ee403b0491642",
+    "public/promo-phone/resistance.jpeg": "aad15afd2af825db8e129da6f7e9c81f948c66a658c01479961815f8a5eafc9b",
+    "public/promo-phone/scroll-demo.mp4": "d8af86d9af5b35a81d1c12e7f353ba2294aa71eff4ad8a9eb434732350aab5b3",
+    "public/robots.txt": "5fc7a1ac75d3d4802dcf03fe8269bc95fde843ebb0b75dcc3a73d2ba0c54978b",
+    "public/sitemap.xml": "bccc0bb85807ab38da01ee6a7eac5ce9a3d9770da21c1b11f64211a8312744b2",
+    "public/social-mark.svg": "986ed8abb18ddf1fbbfa29febc7da1872d7dbd7db5f03eb69ad4694795ee1558",
+    "scripts/export-ast-detective-bank.mjs": "852aa67ef0dfb0c1615c3bd02af46d649bd1ee87dedce4e524cde6177db65d49",
+    "scripts/postbuild.mjs": "885074c490c57e39f9896c711034253a3640b09b3728da82d7e5f3351b00c59a",
+    "scripts/rls-adversarial-harness.mjs": "258cec6beec95ef4d4008a5f966d32c50ff5231d30b6b26b45c40602c37cd0c7",
+    "src/App.tsx": "d4eaf0b722604047bf4abce510cc3c6bb7ddf240d755b9611b5ab45c5db10f27",
+    "src/assets/brand/ast-compass-icon.svg": "ee84b434d3ad07ff1b90a095f4cf8be542b9baf59d972eb30fd818f74ef84c53",
+    "src/assets/brand/ast-compass-logo.svg": "b8b0e5253e9794ee5c08e3e3cf2932111ac24c04892b24d74b34cc139d53f352",
+    "src/auth/AuthContext.tsx": "c48145b662a0f8991f8a29b55678f448069d917b49adc6ad47eb4af9796c62fa",
+    "src/components/ASTCompassLogo.tsx": "a09fc6aaeae5e3f0f60d68df48cf5ec703285154f556742bc18d48b46a4809a2",
+    "src/components/ASTObservationList.tsx": "e78c737ad60a3d8784d49f49a845f72d2d937675ee138c2bdf30effe87ffbf86",
+    "src/components/AppErrorBoundary.tsx": "de365dd202c27a40773b6602c63b004d503fa8d821c06dc96310fb7ceac77f2a",
+    "src/components/ClinicalContextBoundary.tsx": "e90e2ec0e48acc33a067ab8b7924098a84ad2e95d2f04c2e7b57cbb9f5bf712c",
+    "src/components/Disclosure.tsx": "7efa6c9aaba3253d0d041f767898acd8d8058299bed9b3d3a57bfdeb0c9bec7c",
+    "src/components/IllustrativePhenotypeCard.tsx": "2cdb34d87df5f5aa810ce185cfc8f79bd80bfd8a2fd3bd26e46ef4cb923996b4",
+    "src/components/NetworkStatus.tsx": "8c4bdeaff8347eb9e128cdd84ea98d584bba9f42de3444a35822ab394ba686bd",
+    "src/components/SatisfactionPrompt.tsx": "d1b76aba722fd735268255ebf2efb62e1fb05c77bd38a7be47e376024b051951",
+    "src/components/ScientificIssueLink.tsx": "79d7f2d1e2f933c0e97cc4fe69e9d2fec8631842b92f11477298d28505ef648e",
+    "src/components/SearchableSelect.tsx": "aa478d1809b619a4ed93935baf61cef207f50c52fe5e3172dc9acd8bb96e787b",
+    "src/concordance.css": "7dd2be819166eafa6cdfe99e2f721836556c9a52e7f6c60a6cd7f8c9d17ea029",
+    "src/config/features.ts": "2118dccbaf5ab1f8a15427928c1be2c25c19af673cce7e8e0bedac79a74c83d7",
+    "src/config/version.ts": "5446ebd92c1fbd93725eb54cd506c2b4d7b75dba1b332a2756356bdbd1f3b141",
+    "src/data/antibiotics.ts": "0c0afb12e37896484b72806b0b381ac3e0e14de3d219192b72dba109772dc22e",
+    "src/data/astDetectiveQuestions.ts": "1016ce12001fe5cab0336e331d67e6b4fd89c063b73337b6d2dadc3d9384e020",
+    "src/data/bcid2Compatibility.ts": "3f7d22252915b9d7901ed933638b37b8a78dd64f0ef26a5aed85400933375ff4",
+    "src/data/bcid2Panel.ts": "c4319a37f7b9298b901ebefeca348b2844a2726339d6988048cefa6254410aa6",
+    "src/data/bcidCombinedForecasts.ts": "e59405d27ce0e91db1e406c63f5425c4d59194b8f352b16f092845876b667cfc",
+    "src/data/bcidForecasts.ts": "16d8161841acbed2aaae493b03f96ecc3ca60054133b6ab2c389b3e6039e3db4",
+    "src/data/breakpoints.ts": "e880798aa41d4fcb0c804f5fa673e52f66767f4078069f5e780b5df1e7cc207a",
+    "src/data/cases.ts": "f6c4a040b5d90a75e58a5567e149eb77a7dcc03543333a7eef9230fc6e6fddfd",
+    "src/data/contentReview.ts": "2c24b137e24f8f6d71e05c7cf240cc5774ddeed2c90613319e08adb47d7dcad6",
+    "src/data/dataChecks.ts": "42fb780e2e9c5c66485c138968007258f22bafea380aaa73510d2bed0396a191",
+    "src/data/educationalTopics.ts": "f0aa808009ac6bcdf62ad0bb84ce7f88bc23cfb90fe80183521e384e43923624",
+    "src/data/genes.ts": "5ec4b8ac31bb566bb826118501223f38bb4b90ba8d9ecd11e358190b8ec1fb38",
+    "src/data/index.ts": "3f426e55749b63552037b116ef1123fc890212fd925c3fa548304d6d68f93969",
+    "src/data/intrinsicPatterns.ts": "2081bc1bfe8e4435fc7195d579ab07d82123ce60cb8a5ebbbe6fb4dfef8df095",
+    "src/data/learningModules.ts": "bc58369ecbbe967799f8f8f74db7e5343dc772e33f529c01e9a303fdfd75db68",
+    "src/data/mechanismLiterature.ts": "177ddf739d802bcc20faeb26e836293ab56098fb00f43481ef15d2f4087daa3e",
+    "src/data/mechanisms.ts": "0f2494131e926659c9ed709b9b6ea5d50deee8c92571b8a2b19171778ccd1217",
+    "src/data/organisms.ts": "5f58599910d21400fb5fa83840913832454e8159f31fe024dcfccab70ef01aab",
+    "src/data/rapidDiagnosticTypes.ts": "d43bab372448351e77922e7cf43336a4915c72753060166fb89c31bcbedb2bfb",
+    "src/data/references.ts": "e7a1dfbd105c4055eb4cd9fc4746f952897b16dd4ba79ed9972459250d3ba425",
+    "src/data/scientificGovernance.ts": "097d9d09829c202132120b7e7f11cc11bfc0776d80fbaf2dfc975b75b93f45e2",
+    "src/data/standardCatalog.ts": "32c6871b5680f76719d0297a5b94acf84544b3059d62192bf97bcf4e62aa35a7",
+    "src/data/types.ts": "e72c59527793a5af22cbf80d77f4d9ecb89bd09339783b234cac6aaab5ead473",
+    "src/features/AccountWorkspace.tsx": "7adbc760f7a680b7f9761dc2f3b2c6997ed2273a7b5f83826c773bf5e5289625",
+    "src/features/BcidForecast.tsx": "c43f1ce01da91e44d8422dac2bc7ea6d1a95f339c67963a8f2840bde5fd3cc02",
+    "src/features/BreakpointEngine.tsx": "69528b34a2811ad480a952aedb7dd434d8a43df5d2ea11dac0a6b698d23926b4",
+    "src/features/EducationalTopicPage.tsx": "7d40ac5ba1e80d8413a72f6480c1d527a05c3146e48f411db3852318c60d7b5c",
+    "src/features/Feedback.tsx": "8b61f8c6d4ac0c92e5451fce327b4cde1cdba795e5ed7a242985332e9f5fa3d9",
+    "src/features/ImageConcordanceAnalyzer.tsx": "7075990521af362df523191bb495d0af75320a803cf79091444b792649b9e51f",
+    "src/features/LearningCenter.tsx": "649dcd277825eadd4aed5374e5f2b51b640893c52fea66b3f9e86f15f3e0057f",
+    "src/features/LegalPages.tsx": "3857c61f22e7fb01cfc8018956611df316883b78f64eddebd05a373fb6200106",
+    "src/features/MechanismDetailPage.tsx": "44737084904e971c6c84f4b4f8f71b59198747ed6de7aed1912f26ef26d5517b",
+    "src/features/PhenotypeMechanismAnalyzer.tsx": "7da20f7d96054b1d899467ef7048988901cdb9fa7827a94570b2f99d6e733ce5",
+    "src/features/PromoExperience.tsx": "85953cddd4252f036eb978822fc5b3f675777b2790f6a51b325ccda0ef7a7f96",
+    "src/features/PromoPhone.tsx": "be040b9c95934b4ae2c12c39bd22bfb8f9a1b52a8f297c64626d277c28e9efe6",
+    "src/features/TrustPage.tsx": "458ff307a1a3b91bf44e0309168fa29d312405d8ca9a838949185edc609c6e0e",
+    "src/features/ast-detective-game-core.d.mts": "32f100c5e37296453cd25feec61a5bc7883e9973d4bd52724812993cbdef74fa",
+    "src/features/ast-detective-game-core.mjs": "ab69e37c17b633e37d9c81f89ae6cf9cc75938d1889aa5a79361afae1718e484",
+    "src/features/concordanceEngine.ts": "0bac61b7451e59bd111b5296b3212a9adbbda244dba611fc83126a85fb13945e",
+    "src/features/image-concordance-extraction-core.d.mts": "281d15b34f0563872987fcbf4f1a78530e3c5ac456365acaa6f212cbf417bcbc",
+    "src/features/image-concordance-extraction-core.mjs": "c0fa28729a2199a3d73b14bab6adbfc6ddc7c7fb6a41240e6e5a1820f1e7eefd",
+    "src/features/measurement-core.d.mts": "889015e5ddfbb4a63383d07e063ab43491cb827668350bd52673cdc47f1cd8ff",
+    "src/features/measurement-core.mjs": "7bdb6db08122b973e99b2c9ec44ace68be191ae474f04f76ff72cfce35bbff47",
+    "src/features/phenotypeMechanismEngine.ts": "909a013853e0a0f47d3196d8f59e4fee852bf39fe8af3d0e6f1fc13b55b1a235",
+    "src/features/phi-screening-core.d.mts": "9bb6abe4eea19f5104a6ee9630317208d9b1e9aa44c49af122ca1a734fd108af",
+    "src/features/phi-screening-core.mjs": "7b08eb7fd828965ba3237b6d0a299b3b78b77d56c5fa2e23191d3dfe2d6e322b",
+    "src/lib/ocr.ts": "dfd89be3787273e4a5d886b456704bc92a60b8293efde3121cc763d7a6937fbe",
+    "src/lib/platform.ts": "8f7680c7a6e75985783586dfd3b3522379962c01c0c9050b15b423c75f8787a6",
+    "src/lib/product-analytics-core.d.mts": "4664d5ff629048742e612db30d044666a0d9ef01b9ea1a2b1fbdd2ea68653f27",
+    "src/lib/product-analytics-core.mjs": "935240d8cd1e0f41ddbec687a6161a1d1511a09ae6bf3c64bf95129e7b78c359",
+    "src/lib/productAnalytics.ts": "c5b397059d9bcc9441813cc2278be5f8f2039ea891d7b6337232a40e42b21a5c",
+    "src/lib/supabase.ts": "686f6f8c181c227127787bc0197aa1c5f48a4509351b2a5f757c151b045fdd85",
+    "src/lib/telemetry.ts": "9cdef920d50e1d0f08d871411331af01f70aeb425dfe1a331bb184d89eac6fe5",
+    "src/main.tsx": "d522cc177b20f7c23363b8b51fcf80d59ac19efd15e65a86e68f0e426a22c8a6",
+    "src/phenotype.css": "a20b57a4fb83ca52c9418fb4f09711834ef140064a196b665bbbf8ca6365656b",
+    "src/promo-phone.css": "b4764a8432a1bae5e9e46319321336dc4b8fc8868b59929bb377ffe678e41b1e",
+    "src/promo.css": "43c6f04bb8df57f293ae96555f1a049ea6202066c3f169e22b77820957bb0de5",
+    "src/security/image-validation-core.d.mts": "8e5177b28fdc717e7642c1b2cd1683eec97882252cfa181729e03f8091bcd468",
+    "src/security/image-validation-core.mjs": "e26f9537221a3b94f8b05f96a7fccd49fbf24f14a3e00ae6c9ad9570f6814342",
+    "src/security/phiServerGate.ts": "94759c34082dc3db24fbb9a59071fca9ffae599013e0130d6a10860a29279ddc",
+    "src/services/analysisService.ts": "e5f5230f371d7dbbf1e30c0950942d8b8c5f4c8cd8e3bc87dc86a438d37cd947",
+    "src/services/authUser.ts": "a6d7006169dcd352fd51419ed61ebc671d0da5420ac611024db7f2f181b0da89",
+    "src/services/feedbackService.ts": "9fb3d3072763c5866f218fc4447a68b865d43a8c7cf4a09c4771ea36b1b1922c",
+    "src/services/imageService.ts": "a852578ad0321de49bc9d5c9fb4300858eb742444c5169e23ec8d2ab93502dae",
+    "src/services/learningService.ts": "a536412c63d270da9dab1334ae220bff8a7c55562ef04681ac0ce0014dd6f111",
+    "src/services/profileService.ts": "e8f9c2af868ec75f855b4d5dbf1ddf8e40c1b5638e00ba762aee59666b95ce2f",
+    "src/styles.css": "4d0119cf584b4eeb4f04ae706984c612ffa06380500c1a25656dd50f25ea5a85",
+    "src/utils/search-core.d.mts": "58f6de8000bf7e3ff333c1951b48dc1975129b61fff293df9632dc8f172c4d66",
+    "src/utils/search-core.mjs": "eb23467fae39696ad9dcbbdd2ca47f08bb74330f40806a1fa3fdcf2199bf80fd",
+    "src/utils/search.ts": "da074b8a2e6c7e383b72be813d910c865b1b8dd8ea0de57d98754e1c4c92c3ef",
+    "src/vite-env.d.ts": "424faf9241dd699dda995b367ed36665732da1e6ec1f33b2fd40394488ecac92",
+    "supabase/migrations/20260901_private_workspace.sql": "221a27d938188d448875ca292390e3cf4139377059451aa093dc630d867ed757",
+    "supabase/migrations/20260902_private_feedback.sql": "d2ce0e7f90f28cfab9760d5fd8f4358dcb43b249d90f9dd6c59f87627b756291",
+    "supabase/migrations/20260906_feedback_governance.sql": "456e8294b5c5cfb03fd092f570f77576e43d0db22ded012cb58932517367d2ac",
+    "tests/account-feature-flag.test.mjs": "cd76599ea64876cf4e9e464841d7dfbe1f44e304105e0b74ca8639e6d3933866",
+    "tests/ast-detective-bank.test.mjs": "479f1a76f9f7b63e0a4246547b1ce4d16c78d288b2d8f822c379c0265a1223f4",
+    "tests/ast-detective-game.test.mjs": "c3dd9b9982419c8dc29a38a2d1dfbfe6d7224ae8c1e510bed67b2d2c41970401",
+    "tests/bcid-concordance-user-feedback.test.mjs": "c4f0c399aebc278b1e6657cbe89ba2e26da3a20ba8ea2747f25d4ca5f6bf2887",
+    "tests/educational-topics.test.mjs": "18f4aa5d832a05e76c0cdf95382de62ef9f250c2938a5739597884b53b6bd49b",
+    "tests/enterprise-network-security.test.mjs": "366291ea488f02df970a9733b49daff2ec93dfd2346feaa32367b6abe175ff22",
+    "tests/image-concordance-extraction-core.test.mjs": "1b631cf74862c11fbe62d35c55ae901c7dda2ec99d8367f30dcd26dbb6d55f6c",
+    "tests/legal-pages.test.mjs": "846d71c850e894e3d7e9f604a70fc1a823a9a4d9f7173bb8a37498a1997fd825",
+    "tests/lookup-and-image-concordance.test.mjs": "fbe895914ecd926ee7c9e5c94cbdc6778ef43a2120dbd79acb77211b54aac0ab",
+    "tests/mechanism-literature.test.mjs": "1eab77e43e0fbd6f6f6db4dea23c837c984b8389a83c7f560d0dee68bb91776f",
+    "tests/mobile-app-readiness.test.mjs": "12ea88c949bc4949c3c36d96439712c296b621cf9378ef37723e1e1b7cfafaea",
+    "tests/phenotype-mechanism.test.mjs": "4493928b64da88bb41d9fcb50bd195f232c5b37b046d13c00d6c51e9905fa8ce",
+    "tests/product-analytics.test.mjs": "01b680b1e534982ba03940e7fb6a8c75f563f15eb4e13a6afbe678226c77ccfb",
+    "tests/professional-readiness.test.mjs": "33e9e6f3f237d0aa9bea7d2fad72f59799e355d05fb6203022934957e5d978fe",
+    "tests/promo.test.mjs": "6c4a125e5dbb4a7c2f812c72c30d886e23bbdaf43bf19c0a5257040eae97404a",
+    "tests/references-terminology.test.mjs": "39834b6f91821846060f48b30e2296b70dbde8858dddeda061ca1a45a4b56fb5",
+    "tests/scientific-governance.test.mjs": "3a377a3554285811803c5ce2d39172cafcfa779e58c96d7ff74cedac61793285",
+    "tests/scientific-trust-update.test.mjs": "2ae9befa08dc1c53c746e7326faf5a8be4f15ed7f7817fdb7c64a2e080b09aa5",
+    "tests/september-audit-remediation.test.mjs": "7b342477f3720f6d7bfc9d46acbe4954c11bd2c03ab75634b65a10a6a2602a02",
+    "tests/telemetry.test.mjs": "55cc2e55538c5c922650b7c3658fab0e8f62a7ece0215ba299c9fc68a45e622c",
+    "tests/www-primary-domain.test.mjs": null,
+    "tsconfig.app.json": "c687e40a5b6e42bf1a77d2c48576aae980e711a20ad29e68cc1eac2dfc450731",
+    "tsconfig.json": "4fe7e4d2adb3ead71e5d1de04ccada9516bc90fd46324505255b241ec0ddafa5",
+    "tsconfig.node.json": "1145e6cf97eb3062384b1f6540c7b2e8314f5e33b4c15cb11bd706c583cb5aea",
+    "vite.config.mjs": "185f4bf2f782d17307639a0312184209c11ae16d89665ee395a03734471bfa54",
+    "ANTIMICROBIAL_COVERAGE_AUDIT.md": "77d45421b8f6b029b2250e79f7a8e51c1f1a85a8f421470275627e80966e4f31",
+    "AST_COMPASS_COVERAGE_EXPANSION_REPORT.md": "2c1c03ff2ae8ff96d14cb9ebbb69ea92b4645e5e72b95f8d55fc1c36de740311",
+    "AST_COMPASS_FULL_PREDEPLOY_AUDIT.md": "16652e6a3da8417ef5a07ad8358d1f983d9b474df134a80f2c952ad66d7949de",
+    "CANONICAL_DOMAIN_AUDIT.md": "72b6b1319c1358b4fb5146ab4a22911f9d4b52bb6fecef0814df2271d2499445",
+    "DEV_TOOLING_YALLIST_RCA.md": "e08fd098448560d161e73fa060b51ecf1b3a8ea69a2c435ef8159f79b716d4a4",
+    "ENTERPRISE_NETWORK_RECHECK.md": "cafc4ebe63fbb445f6dbcd36273db916b91ff5a6979427cfee7aeb3066e48a2a",
+    "IMAGE_ASSISTED_PRODUCTION_MODE.md": "bbeb237771ecd9bca8ef47c309fd62654578f312b0b788931562687355ce640c",
+    "IMAGE_CONCORDANCE_ACCURACY_UPGRADE.md": "b57e9edbb35cfe0e368ef3a2fc896c954bd2c9c0e383209623cc716158a4622d",
+    "IMAGE_EXTRACTION_BENCHMARK.md": "b31328d459ea308a91398ef3fe64d73ab92b944e1eee9bfac97a0103d9987801",
+    "IMAGE_EXTRACTION_BENCHMARK_V2.md": "61258321c15aaa7b34b2c601a4695e21b4414d43e673eeeb7fc844904e29f7a8",
+    "IMAGE_EXTRACTION_REMEDIATION_REPORT.md": "20c3dabdc4db63e75ed4c07237ddc28c99e9b2bfd69cd6092460be025f2d8ae6",
+    "IMAGE_EXTRACTION_ROOT_CAUSE.md": "dbdfe046499b42b80df4574bbf77ee066d2fd8c927772189eed0916b9c348ef6",
+    "IMAGE_OCR_V3_CELL_AWARE_REPORT.md": "b2ed672e775b75213e559d222dda1ba48ae53b944ba9097595eaf1a3b7bddf80",
+    "IMAGE_WORKFLOW_ACCEPTANCE.md": "6170f29fd2ad8baa7cd1135bfbd202e748142493efc3b798993edab70e5c3c59",
+    "NETLIFY_CANONICAL_DOMAIN_AUDIT.md": "86d7d0cb4d7c386ba164a60e820ec7d6a196eff77dff41b4a0fa12bcb1eecfac",
+    "NETLIFY_CANONICAL_DOMAIN_REMEDIATION.md": "7570eb242d0735b5196828c29caec42996467a3f3e0dac99fbba510cb6a4a944",
+    "NON_SCIENTIFIC_RELEASE_REMEDIATION.md": "5750fc726a5a9b8af9d01e8c05a6e7c1b03fb025812a92b99ca8914bdca58e38",
+    "ORGANISM_COVERAGE_AUDIT.md": "20bdd0e0a0a4c36f21a642d1db607a7399fdbb559de12e4e178c86a57b783092",
+    "PREDEPLOY_BASELINE.md": "05aeac3b5a59eb853d8bb8e5f6377bef1b093562975367ef8b23e8a2eed3ea87",
+    "PWA_DEVICE_ACCEPTANCE.md": "1a6fa163522d47a54e92ff5a0d124309933a746bc6b4dc13bc88145a47254cfb",
+    "SCIENTIFIC_RELEASE_BLOCKERS.md": "54fcd3bbc4287ee0f82a956bfc64ccc3ebec82e5500e2781fb58d7db4195e364",
+    "SCIENTIFIC_REMEDIATION_REPORT.md": "8eb50274d3948b76296e90a8adebc01cf5e698de68bf689e73b91e21e508d994",
+    "SCI_04_OWNER_DECISION.md": "c5dceb79d26df6010e971f56b5a0ebd4b0a2b549c56ca83f63a07259ee92a8a2",
+    "SCI_04_QUINOLONE_OWNER_REVIEW.md": "188e7364e634f396eb97dba5d45a4348cf5dad30e2903e26ab49132f20f07dbe",
+    "docs/COVERAGE_INFERENCE_SAFETY_AUDIT.md": "8f5f59730577611d6d905786e8585e34b11c4e1d3efecf65c2d150c700e08560",
+    "docs/DEMO_LABEL_AUDIT.md": "21279caefe75f08a28a276a1621602da64f2fd16cfee2c8c51b1dcf55fe1fc3e",
+    "docs/IMAGE_CONCORDANCE_RENDERED_FIXTURE_HARNESS.md": "862608673ddc6b02ba14fc93e364359a85e18a5d78de35993c9adbdf36ea439e",
+    "scripts/audit-canonical-domain.mjs": "b8245a783651b094db0584b20e608839fb0c403c4533addae4864f231fb331e8",
+    "scripts/audit-image-cells-v3.mjs": "806fcf1e267867c34e770a6a383dd6a652bed83e549d5b564d53044b6f6a0bd1",
+    "scripts/audit-image-extraction.mjs": "2e1e0beaccc0e687348f73ec5f0076dae594e9ad33cdf8726936d8ee81afacea",
+    "scripts/audit-image-human-review-safety.mjs": "d69b0761e28aacfc816f4f725d75e346e182f8c89871fb797b7ebfdcb0e2c476",
+    "scripts/audit-module-loader.mjs": "f07504e27a91ac070c2ce58a8343249218624563e56e26e814212752275e2cb9",
+    "scripts/audit-production-science.mjs": "e548807941563052c68b1bf644a052de36001a8a510f87d82e30c3ceb3fcf384",
+    "scripts/generate-image-ocr-v3-fixtures.mjs": "c8688536b00e8f00aa47a054205675e9c59df99850d288880baeb039a23523ee",
+    "scripts/image-extraction-diagnostics.mjs": "11a6a3de6880ff3e40b698c664fad28192cababe8b19780efb23a608f9bd62da",
+    "scripts/infra-browser-acceptance.mjs": "884c295b422bff1a83db7e66a52d3fd95ff315e01b0a9abf62262d95805e4b03",
+    "scripts/infra-dev-acceptance.mjs": "67e016994e58b0d4f6c686603569aa9396520cbd4c663fdc1bf105be6f5a4973",
+    "scripts/infra-domain-inventory.mjs": "f6d0ff34571fd37e9d3cbe81468f1a06f5fcc6749afd0aa695cc1c60080349a4",
+    "scripts/ocr-v3-integrity.mjs": "786dfc00a38a01c0b84fda18e6a2db2bd4decad1cd80495b48478ba843457397",
+    "scripts/phenotype-availability-gate.mjs": "0282e8e8b03c34bb4edd73b29cd664fedf5791a2861011cdf4ddc0f8fda50ddb",
+    "scripts/predeploy-scientific-gate.mjs": "b6c9720beb6aa303489703c1f11a7897a3deaed58e4032f68a9e1002c47235a1",
+    "scripts/predeploy-static-audit.mjs": "b8f3943e8441a0ddccffda21a40893a85c26c1ab3fe0f7e3007095284dcdba84",
+    "scripts/service-worker.mjs": "2e66518c385886489dd2d1c2eed94eb1dabfb7b322f56dfe1cbda152f392621d",
+    "src/components/ContentStatus.tsx": "bead866987e9ce4f5633b38d530c4b9c3ee59fc9516cf922ecf3262c554b2140",
+    "src/components/ExtractionSourceReview.tsx": "0bea258d6b2cddea4802dc6e71b6380cc187613f4df0e040a01eb6bb2a7b9f76",
+    "src/components/ImageExtractionWorkspace.tsx": "26ee1a126d8d7089097c46fc6131ac199fc3b92b959f992cd255463a847cf3d3",
+    "src/components/PhenotypeInferenceNotices.tsx": "b707415609e5154b6d75cc5aa338c0cd7cd304cf17f115f9f8d52b85c582acef",
+    "src/config/production.ts": "8c57a6055c25def311d9a3f37aad5d2334bcfc47075100ad562c276772ce628b",
+    "src/coverage.css": "3661879f836b6857ef24b497b5695913a080ea981c81ff76c1cdf16f99cad564",
+    "src/data/antimicrobialCoverage.ts": "0f13765a65566811cc07183a3655845cec06105bef876ac44e265513620c4a80",
+    "src/data/concordanceRelationships.ts": "6834af61af6906db28cdabac581455b1976107eea56a71043645580622d82f5a",
+    "src/data/coverageOptions.ts": "cb6d7b0b8d3d6d703c02afc013d9f5756318fdfd7af8b6105ba780b69c9808da",
+    "src/data/organismCoverage.ts": "f8a1ee74daf4bffdd1840d4f7db1e2cb7412e73243922560c55940f10a5d639c",
+    "src/features/CoverageDirectory.tsx": "83d13ad5a9b4bc0ea88059382f6b33ac38fa7c8b2ecf8e59d5f2375885024c42",
+    "src/features/breakpointPredicates.ts": "bd0e20b1f269ef6e4fb27553e1a23afaa75571c23c8e35a23f4c7c23387bd19f",
+    "src/features/coverageConcordance.ts": "a80d29b46d9ba48eef6942a8565cd616d4d74266859f8fc2e910279e1cd121ee",
+    "src/features/image-concordance-cell-core.d.mts": "5027e9e14981427f7522dfcb377f2992c5471222180010ddc929c8104bd9a2b4",
+    "src/features/image-concordance-cell-core.mjs": "e5b4d1e4c7e556c68f9c364c22aeffcf3b14d455d4a658c95ada063b7b61bcd9",
+    "src/features/image-concordance-cell-ocr.ts": "d0ad7298a3ee1ca72c170e320ca7110295f70340960a3854b094d014b1290fd1",
+    "src/features/image-concordance-image.ts": "514f71d9ff5207bd63aa3f36a835fd888e2dec800495aefca5b7b2540bbb589b",
+    "src/features/image-human-review.d.mts": "b35f40123d61a1d2c4ef0fcb7b51ebc156dc685642391034c283ef5b289bab04",
+    "src/features/image-human-review.mjs": "ad356ce5e7292c0dabbee89476fcb8d7e77fadc45f7fcd618aaea7a353c80769",
+    "src/features/phenotypeCoverage.ts": "35532a237ac98402e5cd03845b3c8b42538ff3c1af90de56ee3e52e89d1b5868",
+    "src/lib/pwaUpdates.ts": "1c8a33e6a41e4a78dd8a3652ddae4579eafb2bc39f70ad43ee42ecf61a0af345",
+    "tests/antimicrobial-coverage.test.mjs": "55aa4e708d1e73a81880168f391af05c7935dc679b53de72f26a52bb660f8ddc",
+    "tests/canonical-domain.test.mjs": "62faade73a739f43cb2defc850a4b0e55d0727d8bb432c650673149daa3eb7a3",
+    "tests/coverage-concordance.test.mjs": "1b5dcbb2e42debd45903c3c46456176e0909f44c92ccce75b08d01add8f967a1",
+    "tests/coverage-interface.test.mjs": "87bf592346a55c2326ca7e9dc1d1fb1c0d9c33e35a8e2680339813863512b3fc",
+    "tests/dev-tooling.test.mjs": "859498cfd37fe2a926e6d372b18e670043459e7af5e5abdb188c669d02387de6",
+    "tests/feedback-network.test.mjs": "4df572aa64387427d2c4e96a6d4fd0286888f11c5523ab63d09fbdea77f6e62c",
+    "tests/fixtures/image-concordance-fixtures.mjs": "a925e96392387d8f277c9d22e28b544bb79cf5d939af73688de1fd6a516d56b6",
+    "tests/fixtures/image-ocr-v3-fixtures.mjs": "444fbcb20969da9a9613c61da9beec23578882071c02402a76c163f2234b85a0",
+    "tests/fixtures/rendered-image-concordance-fixtures.mjs": "11a46f7b9941eff66b3d17018b105e62a4ca0ee3bb7b989f052a88181b8b3a5e",
+    "tests/fixtures/rendered-image-concordance-runner.html": "0f806044bfceb8cbf9b4218804d8ce921dece3f1adf7f7ad620b920e53e5f9a2",
+    "tests/fixtures/sci-04-owner-baseline.json": "55bffadb154a562e3a36b8e2bcf4396ac992f6e4cc346af4e9af15d01f2b9178",
+    "tests/image-concordance-fixtures.test.mjs": "d481e41314b8ef5e587c61b12554bc40bd1257259a1f4ce7c376743ad0b6e251",
+    "tests/image-concordance-rendered-fixtures.test.mjs": "d46f430ffc00427ecd4a164e660825ffb434f05fe3d559ce0e7c68db405ca189",
+    "tests/image-concordance-runtime-contract.test.mjs": "714c8449dcf79b1c91806171c4bca9c1257f9b7385375ad5ab4d515b6fd9ca0a",
+    "tests/image-extraction-v2.test.mjs": "affe230e1db1ebb234c4a9ca5367baed86a2cd2ee89e0256bb24c64bdef24309",
+    "tests/image-human-review.test.mjs": "be8780cb5ae62c1b3afd595d176c4c8e4128e256fa7f2c6f87a26a732e325c81",
+    "tests/image-ocr-v3.test.mjs": "09a89f0548cbc66463648d525f4bfea5d23cc2c2123eb6683ddb545810b1d60f",
+    "tests/organism-coverage.test.mjs": "7a418f58517289b57eeafa7195db627a5e2ada0ce31da78642978a7fd53e4e31",
+    "tests/phenotype-coverage.test.mjs": "7348d0107baff4c069fa61ed67456a7c995fabecd615dde84042106b05841da3",
+    "tests/predeploy-pwa.test.mjs": "cd5d026e31d5f10d9e88623abbf715e6b4216bd0ce2a8be54955c3d9859795a0",
+    "tests/predeploy-routing.test.mjs": "5421bce79dd326abb64d634db6674658bcd19520cb74bfd4840f4e83660be59d",
+    "tests/predeploy-security.test.mjs": "fd554d848f583d90625674c4cb7cd1b776c4c38e739fec0de501e2ac32a05721",
+    "tests/pwa-updates.test.mjs": "b2ab8961075478747c98288ef5653bb3675f01fbffa505015115ea10c13f908e",
+    "tests/sci-04-abstention.test.mjs": "1ee22502868d58e123a62c48daa75a848aed0b2f0cc9524b86ceeb01cf5a52c2",
+    "tests/scientific-remediation.test.mjs": "c6bfb3e63ee8c98ecd732db386878c970279e64fef50ff617d4fd340ff09ea59"
+  },
+  "differences": [
+    "ANTIMICROBIAL_COVERAGE_AUDIT.md",
+    "AST_COMPASS_COVERAGE_EXPANSION_REPORT.md",
+    "AST_COMPASS_ENTERPRISE_ALLOWLIST.md",
+    "AST_COMPASS_ENTERPRISE_SECURITY_OVERVIEW.md",
+    "AST_COMPASS_FULL_PREDEPLOY_AUDIT.md",
+    "CANONICAL_DOMAIN_AUDIT.md",
+    "DEV_TOOLING_YALLIST_RCA.md",
+    "DOMAIN_REPUTATION_REVIEW_PACKET.md",
+    "ENTERPRISE_NETWORK_DEPENDENCY_MAP.md",
+    "ENTERPRISE_NETWORK_RECHECK.md",
+    "IMAGE_ASSISTED_PRODUCTION_MODE.md",
+    "IMAGE_CONCORDANCE_ACCURACY_UPGRADE.md",
+    "IMAGE_EXTRACTION_BENCHMARK.md",
+    "IMAGE_EXTRACTION_BENCHMARK_V2.md",
+    "IMAGE_EXTRACTION_REMEDIATION_REPORT.md",
+    "IMAGE_EXTRACTION_ROOT_CAUSE.md",
+    "IMAGE_OCR_V3_CELL_AWARE_REPORT.md",
+    "IMAGE_WORKFLOW_ACCEPTANCE.md",
+    "MOBILE_ARCHITECTURE.md",
+    "NETLIFY_CANONICAL_DOMAIN_AUDIT.md",
+    "NETLIFY_CANONICAL_DOMAIN_REMEDIATION.md",
+    "NON_SCIENTIFIC_RELEASE_REMEDIATION.md",
+    "ORGANISM_COVERAGE_AUDIT.md",
+    "PREDEPLOY_BASELINE.md",
+    "PROMO_VIDEO_GUIDE.md",
+    "PWA_DEVICE_ACCEPTANCE.md",
+    "SCIENTIFIC_RELEASE_BLOCKERS.md",
+    "SCIENTIFIC_REMEDIATION_REPORT.md",
+    "SCI_04_OWNER_DECISION.md",
+    "SCI_04_QUINOLONE_OWNER_REVIEW.md",
+    "SECURITY_SETUP.md",
+    "docs/COVERAGE_INFERENCE_SAFETY_AUDIT.md",
+    "docs/DEMO_LABEL_AUDIT.md",
+    "docs/IMAGE_CONCORDANCE_RENDERED_FIXTURE_HARNESS.md",
+    "docs/MONITORING_SETUP.md",
+    "netlify.toml",
+    "package.json",
+    "public/_redirects",
+    "public/offline.html",
+    "public/sitemap.xml",
+    "public/social-mark.svg",
+    "scripts/audit-canonical-domain.mjs",
+    "scripts/audit-image-cells-v3.mjs",
+    "scripts/audit-image-extraction.mjs",
+    "scripts/audit-image-human-review-safety.mjs",
+    "scripts/audit-module-loader.mjs",
+    "scripts/audit-production-science.mjs",
+    "scripts/generate-image-ocr-v3-fixtures.mjs",
+    "scripts/image-extraction-diagnostics.mjs",
+    "scripts/infra-browser-acceptance.mjs",
+    "scripts/infra-dev-acceptance.mjs",
+    "scripts/infra-domain-inventory.mjs",
+    "scripts/ocr-v3-integrity.mjs",
+    "scripts/phenotype-availability-gate.mjs",
+    "scripts/postbuild.mjs",
+    "scripts/predeploy-scientific-gate.mjs",
+    "scripts/predeploy-static-audit.mjs",
+    "scripts/service-worker.mjs",
+    "src/App.tsx",
+    "src/components/ASTObservationList.tsx",
+    "src/components/ContentStatus.tsx",
+    "src/components/ExtractionSourceReview.tsx",
+    "src/components/ImageExtractionWorkspace.tsx",
+    "src/components/NetworkStatus.tsx",
+    "src/components/PhenotypeInferenceNotices.tsx",
+    "src/concordance.css",
+    "src/config/production.ts",
+    "src/coverage.css",
+    "src/data/antibiotics.ts",
+    "src/data/antimicrobialCoverage.ts",
+    "src/data/bcid2Compatibility.ts",
+    "src/data/bcidCombinedForecasts.ts",
+    "src/data/concordanceRelationships.ts",
+    "src/data/coverageOptions.ts",
+    "src/data/organismCoverage.ts",
+    "src/data/rapidDiagnosticTypes.ts",
+    "src/data/scientificGovernance.ts",
+    "src/data/types.ts",
+    "src/features/BcidForecast.tsx",
+    "src/features/BreakpointEngine.tsx",
+    "src/features/CoverageDirectory.tsx",
+    "src/features/EducationalTopicPage.tsx",
+    "src/features/Feedback.tsx",
+    "src/features/ImageConcordanceAnalyzer.tsx",
+    "src/features/MechanismDetailPage.tsx",
+    "src/features/PhenotypeMechanismAnalyzer.tsx",
+    "src/features/PromoPhone.tsx",
+    "src/features/TrustPage.tsx",
+    "src/features/breakpointPredicates.ts",
+    "src/features/concordanceEngine.ts",
+    "src/features/coverageConcordance.ts",
+    "src/features/image-concordance-cell-core.d.mts",
+    "src/features/image-concordance-cell-core.mjs",
+    "src/features/image-concordance-cell-ocr.ts",
+    "src/features/image-concordance-extraction-core.d.mts",
+    "src/features/image-concordance-extraction-core.mjs",
+    "src/features/image-concordance-image.ts",
+    "src/features/image-human-review.d.mts",
+    "src/features/image-human-review.mjs",
+    "src/features/phenotypeCoverage.ts",
+    "src/features/phenotypeMechanismEngine.ts",
+    "src/lib/ocr.ts",
+    "src/lib/platform.ts",
+    "src/lib/pwaUpdates.ts",
+    "src/lib/telemetry.ts",
+    "src/services/feedbackService.ts",
+    "src/styles.css",
+    "tests/antimicrobial-coverage.test.mjs",
+    "tests/canonical-domain.test.mjs",
+    "tests/coverage-concordance.test.mjs",
+    "tests/coverage-interface.test.mjs",
+    "tests/dev-tooling.test.mjs",
+    "tests/feedback-network.test.mjs",
+    "tests/fixtures/image-concordance-fixtures.mjs",
+    "tests/fixtures/image-ocr-v3-fixtures.mjs",
+    "tests/fixtures/rendered-image-concordance-fixtures.mjs",
+    "tests/fixtures/rendered-image-concordance-runner.html",
+    "tests/fixtures/sci-04-owner-baseline.json",
+    "tests/image-concordance-extraction-core.test.mjs",
+    "tests/image-concordance-fixtures.test.mjs",
+    "tests/image-concordance-rendered-fixtures.test.mjs",
+    "tests/image-concordance-runtime-contract.test.mjs",
+    "tests/image-extraction-v2.test.mjs",
+    "tests/image-human-review.test.mjs",
+    "tests/image-ocr-v3.test.mjs",
+    "tests/lookup-and-image-concordance.test.mjs",
+    "tests/mechanism-literature.test.mjs",
+    "tests/mobile-app-readiness.test.mjs",
+    "tests/organism-coverage.test.mjs",
+    "tests/phenotype-coverage.test.mjs",
+    "tests/predeploy-pwa.test.mjs",
+    "tests/predeploy-routing.test.mjs",
+    "tests/predeploy-security.test.mjs",
+    "tests/pwa-updates.test.mjs",
+    "tests/sci-04-abstention.test.mjs",
+    "tests/scientific-remediation.test.mjs",
+    "tests/september-audit-remediation.test.mjs",
+    "tests/telemetry.test.mjs",
+    "tests/www-primary-domain.test.mjs",
+    "vite.config.mjs"
+  ],
+  "entries": [
+    {
+      "file": "ANTIMICROBIAL_COVERAGE_AUDIT.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "77d45421b8f6b029b2250e79f7a8e51c1f1a85a8f421470275627e80966e4f31"
+    },
+    {
+      "file": "AST_COMPASS_COVERAGE_EXPANSION_REPORT.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "2c1c03ff2ae8ff96d14cb9ebbb69ea92b4645e5e72b95f8d55fc1c36de740311"
+    },
+    {
+      "file": "AST_COMPASS_ENTERPRISE_ALLOWLIST.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "a7b32e6acc9b8e5a95c2af68c6c96d7b65f54cde8a0938e6921accab1c649a4d"
+    },
+    {
+      "file": "AST_COMPASS_ENTERPRISE_SECURITY_OVERVIEW.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "7f7cbfd36d8814d0378041c3423b37a081693b913b7d6a38932d75b1e8e041be"
+    },
+    {
+      "file": "AST_COMPASS_FULL_PREDEPLOY_AUDIT.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "16652e6a3da8417ef5a07ad8358d1f983d9b474df134a80f2c952ad66d7949de"
+    },
+    {
+      "file": "CANONICAL_DOMAIN_AUDIT.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "72b6b1319c1358b4fb5146ab4a22911f9d4b52bb6fecef0814df2271d2499445"
+    },
+    {
+      "file": "DEV_TOOLING_YALLIST_RCA.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "e08fd098448560d161e73fa060b51ecf1b3a8ea69a2c435ef8159f79b716d4a4"
+    },
+    {
+      "file": "DOMAIN_REPUTATION_REVIEW_PACKET.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "f3cb89ee63c0c8b3b3ac221ce23931be16465040b213e467c2daed3469d3676e"
+    },
+    {
+      "file": "ENTERPRISE_NETWORK_DEPENDENCY_MAP.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "19bfe5c54f148b65c88c57c2db5d72b923e46056718f1580bd43579af9b1962f"
+    },
+    {
+      "file": "ENTERPRISE_NETWORK_RECHECK.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "cafc4ebe63fbb445f6dbcd36273db916b91ff5a6979427cfee7aeb3066e48a2a"
+    },
+    {
+      "file": "IMAGE_ASSISTED_PRODUCTION_MODE.md",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Owner-approved workflow/Option C decision documentation only; historical test results are not RC1 acceptance.",
+      "developmentSha256": "bbeb237771ecd9bca8ef47c309fd62654578f312b0b788931562687355ce640c"
+    },
+    {
+      "file": "IMAGE_CONCORDANCE_ACCURACY_UPGRADE.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "b57e9edbb35cfe0e368ef3a2fc896c954bd2c9c0e383209623cc716158a4622d"
+    },
+    {
+      "file": "IMAGE_EXTRACTION_BENCHMARK.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "b31328d459ea308a91398ef3fe64d73ab92b944e1eee9bfac97a0103d9987801"
+    },
+    {
+      "file": "IMAGE_EXTRACTION_BENCHMARK_V2.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "61258321c15aaa7b34b2c601a4695e21b4414d43e673eeeb7fc844904e29f7a8"
+    },
+    {
+      "file": "IMAGE_EXTRACTION_REMEDIATION_REPORT.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "20c3dabdc4db63e75ed4c07237ddc28c99e9b2bfd69cd6092460be025f2d8ae6"
+    },
+    {
+      "file": "IMAGE_EXTRACTION_ROOT_CAUSE.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "dbdfe046499b42b80df4574bbf77ee066d2fd8c927772189eed0916b9c348ef6"
+    },
+    {
+      "file": "IMAGE_OCR_V3_CELL_AWARE_REPORT.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "b2ed672e775b75213e559d222dda1ba48ae53b944ba9097595eaf1a3b7bddf80"
+    },
+    {
+      "file": "IMAGE_WORKFLOW_ACCEPTANCE.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "6170f29fd2ad8baa7cd1135bfbd202e748142493efc3b798993edab70e5c3c59"
+    },
+    {
+      "file": "MOBILE_ARCHITECTURE.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "54495d1156aaf53dad215b142758659c7a451772ae379e80dfcbd283bdc2945b"
+    },
+    {
+      "file": "NETLIFY_CANONICAL_DOMAIN_AUDIT.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "86d7d0cb4d7c386ba164a60e820ec7d6a196eff77dff41b4a0fa12bcb1eecfac"
+    },
+    {
+      "file": "NETLIFY_CANONICAL_DOMAIN_REMEDIATION.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "7570eb242d0735b5196828c29caec42996467a3f3e0dac99fbba510cb6a4a944"
+    },
+    {
+      "file": "NON_SCIENTIFIC_RELEASE_REMEDIATION.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "5750fc726a5a9b8af9d01e8c05a6e7c1b03fb025812a92b99ca8914bdca58e38"
+    },
+    {
+      "file": "ORGANISM_COVERAGE_AUDIT.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "20bdd0e0a0a4c36f21a642d1db607a7399fdbb559de12e4e178c86a57b783092"
+    },
+    {
+      "file": "PREDEPLOY_BASELINE.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "05aeac3b5a59eb853d8bb8e5f6377bef1b093562975367ef8b23e8a2eed3ea87"
+    },
+    {
+      "file": "PROMO_VIDEO_GUIDE.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "794aed645f624a5378de13a80af78947a5e7fff3102f6e5e3b40f00672ce153b"
+    },
+    {
+      "file": "PWA_DEVICE_ACCEPTANCE.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "1a6fa163522d47a54e92ff5a0d124309933a746bc6b4dc13bc88145a47254cfb"
+    },
+    {
+      "file": "SCIENTIFIC_RELEASE_BLOCKERS.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "54fcd3bbc4287ee0f82a956bfc64ccc3ebec82e5500e2781fb58d7db4195e364"
+    },
+    {
+      "file": "SCIENTIFIC_REMEDIATION_REPORT.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "8eb50274d3948b76296e90a8adebc01cf5e698de68bf689e73b91e21e508d994"
+    },
+    {
+      "file": "SCI_04_OWNER_DECISION.md",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Owner-approved workflow/Option C decision documentation only; historical test results are not RC1 acceptance.",
+      "developmentSha256": "c5dceb79d26df6010e971f56b5a0ebd4b0a2b549c56ca83f63a07259ee92a8a2"
+    },
+    {
+      "file": "SCI_04_QUINOLONE_OWNER_REVIEW.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "188e7364e634f396eb97dba5d45a4348cf5dad30e2903e26ab49132f20f07dbe"
+    },
+    {
+      "file": "SECURITY_SETUP.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "3128a61e6b60d90107c038f229b315f2b3277da320382861481e657b494e2762"
+    },
+    {
+      "file": "docs/COVERAGE_INFERENCE_SAFETY_AUDIT.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "8f5f59730577611d6d905786e8585e34b11c4e1d3efecf65c2d150c700e08560"
+    },
+    {
+      "file": "docs/DEMO_LABEL_AUDIT.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "21279caefe75f08a28a276a1621602da64f2fd16cfee2c8c51b1dcf55fe1fc3e"
+    },
+    {
+      "file": "docs/IMAGE_CONCORDANCE_RENDERED_FIXTURE_HARNESS.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "862608673ddc6b02ba14fc93e364359a85e18a5d78de35993c9adbdf36ea439e"
+    },
+    {
+      "file": "docs/MONITORING_SETUP.md",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "62338a837e226782e5b8e53abaf3ac91391e34b00689e96a387907bcdcf811f3"
+    },
+    {
+      "file": "netlify.toml",
+      "classification": "APPROVED FOR RC1",
+      "handling": "PARTIAL: OCR cache revalidation header only. Exclude four redundant host-redirect blocks; preserve production domain topology.",
+      "developmentSha256": "c8b486125db84491ca024f1ec2d481b39c716f240f701c2d6b5c3d1642920e1b"
+    },
+    {
+      "file": "package.json",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "20c41ab0cc6a102943fb771c46c69f472e3c523afbf2231a9eb4ea0c0f6ac78a"
+    },
+    {
+      "file": "public/_redirects",
+      "classification": "EXCLUDE FROM RC1",
+      "handling": "Retain production file; provider-owned canonical transition already complete. Added host rules are obsolete.",
+      "developmentSha256": "09abab8547456ca6b8da17c2f4bce0f1901ef8867d0393cefd5fcb11820c672a"
+    },
+    {
+      "file": "public/offline.html",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "427f3e3761a69364b523400882cc484cc544ad26bea7dbb16f5106d8b1d6bbfa"
+    },
+    {
+      "file": "public/sitemap.xml",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Previously audited missing-public-workflow regression: six existing public workflows plus admitted coverage directory; apex only, no new content pages.",
+      "developmentSha256": "bccc0bb85807ab38da01ee6a7eac5ce9a3d9770da21c1b11f64211a8312744b2"
+    },
+    {
+      "file": "public/social-mark.svg",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing artwork/promo literal canonical-origin correction only; no new asset or redesign.",
+      "developmentSha256": "986ed8abb18ddf1fbbfa29febc7da1872d7dbd7db5f03eb69ad4694795ee1558"
+    },
+    {
+      "file": "scripts/audit-canonical-domain.mjs",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "b8245a783651b094db0584b20e608839fb0c403c4533addae4864f231fb331e8"
+    },
+    {
+      "file": "scripts/audit-image-cells-v3.mjs",
+      "classification": "RESEARCH ONLY",
+      "handling": "Retain existing V3 benchmark dependencies in scripts/tests ONLY because RC1 requires the strict benchmark; excluded from public/dist/runtime. Not V4.",
+      "developmentSha256": "806fcf1e267867c34e770a6a383dd6a652bed83e549d5b564d53044b6f6a0bd1"
+    },
+    {
+      "file": "scripts/audit-image-extraction.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Required local gates, diagnostic harness or safe PWA build tooling; no deployment action.",
+      "developmentSha256": "2e1e0beaccc0e687348f73ec5f0076dae594e9ad33cdf8726936d8ee81afacea"
+    },
+    {
+      "file": "scripts/audit-image-human-review-safety.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Required local gates, diagnostic harness or safe PWA build tooling; no deployment action.",
+      "developmentSha256": "d69b0761e28aacfc816f4f725d75e346e182f8c89871fb797b7ebfdcb0e2c476"
+    },
+    {
+      "file": "scripts/audit-module-loader.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Required local gates, diagnostic harness or safe PWA build tooling; no deployment action.",
+      "developmentSha256": "f07504e27a91ac070c2ce58a8343249218624563e56e26e814212752275e2cb9"
+    },
+    {
+      "file": "scripts/audit-production-science.mjs",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "e548807941563052c68b1bf644a052de36001a8a510f87d82e30c3ceb3fcf384"
+    },
+    {
+      "file": "scripts/generate-image-ocr-v3-fixtures.mjs",
+      "classification": "RESEARCH ONLY",
+      "handling": "Retain existing V3 benchmark dependencies in scripts/tests ONLY because RC1 requires the strict benchmark; excluded from public/dist/runtime. Not V4.",
+      "developmentSha256": "c8688536b00e8f00aa47a054205675e9c59df99850d288880baeb039a23523ee"
+    },
+    {
+      "file": "scripts/image-extraction-diagnostics.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Required local gates, diagnostic harness or safe PWA build tooling; no deployment action.",
+      "developmentSha256": "11a6a3de6880ff3e40b698c664fad28192cababe8b19780efb23a608f9bd62da"
+    },
+    {
+      "file": "scripts/infra-browser-acceptance.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Required local gates, diagnostic harness or safe PWA build tooling; no deployment action.",
+      "developmentSha256": "884c295b422bff1a83db7e66a52d3fd95ff315e01b0a9abf62262d95805e4b03"
+    },
+    {
+      "file": "scripts/infra-dev-acceptance.mjs",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "67e016994e58b0d4f6c686603569aa9396520cbd4c663fdc1bf105be6f5a4973"
+    },
+    {
+      "file": "scripts/infra-domain-inventory.mjs",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "f6d0ff34571fd37e9d3cbe81468f1a06f5fcc6749afd0aa695cc1c60080349a4"
+    },
+    {
+      "file": "scripts/ocr-v3-integrity.mjs",
+      "classification": "HISTORICAL/AUDIT ONLY",
+      "handling": "Do not integrate. Old evidence/domain prose may be stale; RC1 reports replace current acceptance claims.",
+      "developmentSha256": "786dfc00a38a01c0b84fda18e6a2db2bd4decad1cd80495b48478ba843457397"
+    },
+    {
+      "file": "scripts/phenotype-availability-gate.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Required local gates, diagnostic harness or safe PWA build tooling; no deployment action.",
+      "developmentSha256": "0282e8e8b03c34bb4edd73b29cd664fedf5791a2861011cdf4ddc0f8fda50ddb"
+    },
+    {
+      "file": "scripts/postbuild.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Required local gates, diagnostic harness or safe PWA build tooling; no deployment action.",
+      "developmentSha256": "885074c490c57e39f9896c711034253a3640b09b3728da82d7e5f3351b00c59a"
+    },
+    {
+      "file": "scripts/predeploy-scientific-gate.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Required local gates, diagnostic harness or safe PWA build tooling; no deployment action.",
+      "developmentSha256": "b6c9720beb6aa303489703c1f11a7897a3deaed58e4032f68a9e1002c47235a1"
+    },
+    {
+      "file": "scripts/predeploy-static-audit.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Required local gates, diagnostic harness or safe PWA build tooling; no deployment action.",
+      "developmentSha256": "b8f3943e8441a0ddccffda21a40893a85c26c1ab3fe0f7e3007095284dcdba84"
+    },
+    {
+      "file": "scripts/service-worker.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Required local gates, diagnostic harness or safe PWA build tooling; no deployment action.",
+      "developmentSha256": "2e66518c385886489dd2d1c2eed94eb1dabfb7b322f56dfe1cbda152f392621d"
+    },
+    {
+      "file": "src/App.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Atomic approved coverage/search, human-review labels, status cleanup, route-state/a11y fixes. Existing-workflow missing metadata is an audited regression; no new SEO content. Preserve historical changelog.",
+      "developmentSha256": "d4eaf0b722604047bf4abce510cc3c6bb7ddf240d755b9611b5ab45c5db10f27"
+    },
+    {
+      "file": "src/components/ASTObservationList.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "e78c737ad60a3d8784d49f49a845f72d2d937675ee138c2bdf30effe87ffbf86"
+    },
+    {
+      "file": "src/components/ContentStatus.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "bead866987e9ce4f5633b38d530c4b9c3ee59fc9516cf922ecf3262c554b2140"
+    },
+    {
+      "file": "src/components/ExtractionSourceReview.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "0bea258d6b2cddea4802dc6e71b6380cc187613f4df0e040a01eb6bb2a7b9f76"
+    },
+    {
+      "file": "src/components/ImageExtractionWorkspace.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "26ee1a126d8d7089097c46fc6131ac199fc3b92b959f992cd255463a847cf3d3"
+    },
+    {
+      "file": "src/components/NetworkStatus.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "8c4bdeaff8347eb9e128cdd84ea98d584bba9f42de3444a35822ab394ba686bd"
+    },
+    {
+      "file": "src/components/PhenotypeInferenceNotices.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "b707415609e5154b6d75cc5aa338c0cd7cd304cf17f115f9f8d52b85c582acef"
+    },
+    {
+      "file": "src/concordance.css",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "7dd2be819166eafa6cdfe99e2f721836556c9a52e7f6c60a6cd7f8c9d17ea029"
+    },
+    {
+      "file": "src/config/production.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "8c57a6055c25def311d9a3f37aad5d2334bcfc47075100ad562c276772ce628b"
+    },
+    {
+      "file": "src/coverage.css",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "3661879f836b6857ef24b497b5695913a080ea981c81ff76c1cdf16f99cad564"
+    },
+    {
+      "file": "src/data/antibiotics.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "0c0afb12e37896484b72806b0b381ac3e0e14de3d219192b72dba109772dc22e"
+    },
+    {
+      "file": "src/data/antimicrobialCoverage.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "0f13765a65566811cc07183a3655845cec06105bef876ac44e265513620c4a80"
+    },
+    {
+      "file": "src/data/bcid2Compatibility.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "3f7d22252915b9d7901ed933638b37b8a78dd64f0ef26a5aed85400933375ff4"
+    },
+    {
+      "file": "src/data/bcidCombinedForecasts.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "e59405d27ce0e91db1e406c63f5425c4d59194b8f352b16f092845876b667cfc"
+    },
+    {
+      "file": "src/data/concordanceRelationships.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "6834af61af6906db28cdabac581455b1976107eea56a71043645580622d82f5a"
+    },
+    {
+      "file": "src/data/coverageOptions.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "cb6d7b0b8d3d6d703c02afc013d9f5756318fdfd7af8b6105ba780b69c9808da"
+    },
+    {
+      "file": "src/data/organismCoverage.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "f8a1ee74daf4bffdd1840d4f7db1e2cb7412e73243922560c55940f10a5d639c"
+    },
+    {
+      "file": "src/data/rapidDiagnosticTypes.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "d43bab372448351e77922e7cf43336a4915c72753060166fb89c31bcbedb2bfb"
+    },
+    {
+      "file": "src/data/scientificGovernance.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "097d9d09829c202132120b7e7f11cc11bfc0776d80fbaf2dfc975b75b93f45e2"
+    },
+    {
+      "file": "src/data/types.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "e72c59527793a5af22cbf80d77f4d9ecb89bd09339783b234cac6aaab5ead473"
+    },
+    {
+      "file": "src/features/BcidForecast.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "c43f1ce01da91e44d8422dac2bc7ea6d1a95f339c67963a8f2840bde5fd3cc02"
+    },
+    {
+      "file": "src/features/BreakpointEngine.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "69528b34a2811ad480a952aedb7dd434d8a43df5d2ea11dac0a6b698d23926b4"
+    },
+    {
+      "file": "src/features/CoverageDirectory.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "83d13ad5a9b4bc0ea88059382f6b33ac38fa7c8b2ecf8e59d5f2375885024c42"
+    },
+    {
+      "file": "src/features/EducationalTopicPage.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "7d40ac5ba1e80d8413a72f6480c1d527a05c3146e48f411db3852318c60d7b5c"
+    },
+    {
+      "file": "src/features/Feedback.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "8b61f8c6d4ac0c92e5451fce327b4cde1cdba795e5ed7a242985332e9f5fa3d9"
+    },
+    {
+      "file": "src/features/ImageConcordanceAnalyzer.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "7075990521af362df523191bb495d0af75320a803cf79091444b792649b9e51f"
+    },
+    {
+      "file": "src/features/MechanismDetailPage.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "44737084904e971c6c84f4b4f8f71b59198747ed6de7aed1912f26ef26d5517b"
+    },
+    {
+      "file": "src/features/PhenotypeMechanismAnalyzer.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "7da20f7d96054b1d899467ef7048988901cdb9fa7827a94570b2f99d6e733ce5"
+    },
+    {
+      "file": "src/features/PromoPhone.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing artwork/promo literal canonical-origin correction only; no new asset or redesign.",
+      "developmentSha256": "be040b9c95934b4ae2c12c39bd22bfb8f9a1b52a8f297c64626d277c28e9efe6"
+    },
+    {
+      "file": "src/features/TrustPage.tsx",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "458ff307a1a3b91bf44e0309168fa29d312405d8ca9a838949185edc609c6e0e"
+    },
+    {
+      "file": "src/features/breakpointPredicates.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "bd0e20b1f269ef6e4fb27553e1a23afaa75571c23c8e35a23f4c7c23387bd19f"
+    },
+    {
+      "file": "src/features/concordanceEngine.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "0bac61b7451e59bd111b5296b3212a9adbbda244dba611fc83126a85fb13945e"
+    },
+    {
+      "file": "src/features/coverageConcordance.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "a80d29b46d9ba48eef6942a8565cd616d4d74266859f8fc2e910279e1cd121ee"
+    },
+    {
+      "file": "src/features/image-concordance-cell-core.d.mts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "5027e9e14981427f7522dfcb377f2992c5471222180010ddc929c8104bd9a2b4"
+    },
+    {
+      "file": "src/features/image-concordance-cell-core.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "e5b4d1e4c7e556c68f9c364c22aeffcf3b14d455d4a658c95ada063b7b61bcd9"
+    },
+    {
+      "file": "src/features/image-concordance-cell-ocr.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "d0ad7298a3ee1ca72c170e320ca7110295f70340960a3854b094d014b1290fd1"
+    },
+    {
+      "file": "src/features/image-concordance-extraction-core.d.mts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "281d15b34f0563872987fcbf4f1a78530e3c5ac456365acaa6f212cbf417bcbc"
+    },
+    {
+      "file": "src/features/image-concordance-extraction-core.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "c0fa28729a2199a3d73b14bab6adbfc6ddc7c7fb6a41240e6e5a1820f1e7eefd"
+    },
+    {
+      "file": "src/features/image-concordance-image.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "514f71d9ff5207bd63aa3f36a835fd888e2dec800495aefca5b7b2540bbb589b"
+    },
+    {
+      "file": "src/features/image-human-review.d.mts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "b35f40123d61a1d2c4ef0fcb7b51ebc156dc685642391034c283ef5b289bab04"
+    },
+    {
+      "file": "src/features/image-human-review.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "ad356ce5e7292c0dabbee89476fcb8d7e77fadc45f7fcd618aaea7a353c80769"
+    },
+    {
+      "file": "src/features/phenotypeCoverage.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "35532a237ac98402e5cd03845b3c8b42538ff3c1af90de56ee3e52e89d1b5868"
+    },
+    {
+      "file": "src/features/phenotypeMechanismEngine.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Reviewed selective SCI-01/02/03/GOV-01/SCI-04 or approved source-bounded recognition coverage; no numerical table/primary scientific corpus replacement.",
+      "developmentSha256": "909a013853e0a0f47d3196d8f59e4fee852bf39fe8af3d0e6f1fc13b55b1a235"
+    },
+    {
+      "file": "src/lib/ocr.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "dfd89be3787273e4a5d886b456704bc92a60b8293efde3121cc763d7a6937fbe"
+    },
+    {
+      "file": "src/lib/platform.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "8f7680c7a6e75985783586dfd3b3522379962c01c0c9050b15b423c75f8787a6"
+    },
+    {
+      "file": "src/lib/pwaUpdates.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "1c8a33e6a41e4a78dd8a3652ddae4579eafb2bc39f70ad43ee42ecf61a0af345"
+    },
+    {
+      "file": "src/lib/telemetry.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "9cdef920d50e1d0f08d871411331af01f70aeb425dfe1a331bb184d89eac6fe5"
+    },
+    {
+      "file": "src/services/feedbackService.ts",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "9fb3d3072763c5866f218fc4447a68b865d43a8c7cf4a09c4771ea36b1b1922c"
+    },
+    {
+      "file": "src/styles.css",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "4d0119cf584b4eeb4f04ae706984c612ffa06380500c1a25656dd50f25ea5a85"
+    },
+    {
+      "file": "tests/antimicrobial-coverage.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "55aa4e708d1e73a81880168f391af05c7935dc679b53de72f26a52bb660f8ddc"
+    },
+    {
+      "file": "tests/canonical-domain.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "PARTIAL: apex metadata tests; replace obsolete five-forced-host assertion with production provider-owned topology contract.",
+      "developmentSha256": "62faade73a739f43cb2defc850a4b0e55d0727d8bb432c650673149daa3eb7a3"
+    },
+    {
+      "file": "tests/coverage-concordance.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "1b5dcbb2e42debd45903c3c46456176e0909f44c92ccce75b08d01add8f967a1"
+    },
+    {
+      "file": "tests/coverage-interface.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "87bf592346a55c2326ca7e9dc1d1fb1c0d9c33e35a8e2680339813863512b3fc"
+    },
+    {
+      "file": "tests/dev-tooling.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "859498cfd37fe2a926e6d372b18e670043459e7af5e5abdb188c669d02387de6"
+    },
+    {
+      "file": "tests/feedback-network.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "4df572aa64387427d2c4e96a6d4fd0286888f11c5523ab63d09fbdea77f6e62c"
+    },
+    {
+      "file": "tests/fixtures/image-concordance-fixtures.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "a925e96392387d8f277c9d22e28b544bb79cf5d939af73688de1fd6a516d56b6"
+    },
+    {
+      "file": "tests/fixtures/image-ocr-v3-fixtures.mjs",
+      "classification": "RESEARCH ONLY",
+      "handling": "Retain existing V3 benchmark dependencies in scripts/tests ONLY because RC1 requires the strict benchmark; excluded from public/dist/runtime. Not V4.",
+      "developmentSha256": "444fbcb20969da9a9613c61da9beec23578882071c02402a76c163f2234b85a0"
+    },
+    {
+      "file": "tests/fixtures/rendered-image-concordance-fixtures.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "11a46f7b9941eff66b3d17018b105e62a4ca0ee3bb7b989f052a88181b8b3a5e"
+    },
+    {
+      "file": "tests/fixtures/rendered-image-concordance-runner.html",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "0f806044bfceb8cbf9b4218804d8ce921dece3f1adf7f7ad620b920e53e5f9a2"
+    },
+    {
+      "file": "tests/fixtures/sci-04-owner-baseline.json",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "55bffadb154a562e3a36b8e2bcf4396ac992f6e4cc346af4e9af15d01f2b9178"
+    },
+    {
+      "file": "tests/image-concordance-extraction-core.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "1b631cf74862c11fbe62d35c55ae901c7dda2ec99d8367f30dcd26dbb6d55f6c"
+    },
+    {
+      "file": "tests/image-concordance-fixtures.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "d481e41314b8ef5e587c61b12554bc40bd1257259a1f4ce7c376743ad0b6e251"
+    },
+    {
+      "file": "tests/image-concordance-rendered-fixtures.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "d46f430ffc00427ecd4a164e660825ffb434f05fe3d559ce0e7c68db405ca189"
+    },
+    {
+      "file": "tests/image-concordance-runtime-contract.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "714c8449dcf79b1c91806171c4bca9c1257f9b7385375ad5ab4d515b6fd9ca0a"
+    },
+    {
+      "file": "tests/image-extraction-v2.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "affe230e1db1ebb234c4a9ca5367baed86a2cd2ee89e0256bb24c64bdef24309"
+    },
+    {
+      "file": "tests/image-human-review.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "be8780cb5ae62c1b3afd595d176c4c8e4128e256fa7f2c6f87a26a732e325c81"
+    },
+    {
+      "file": "tests/image-ocr-v3.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "09a89f0548cbc66463648d525f4bfea5d23cc2c2123eb6683ddb545810b1d60f"
+    },
+    {
+      "file": "tests/lookup-and-image-concordance.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "fbe895914ecd926ee7c9e5c94cbdc6778ef43a2120dbd79acb77211b54aac0ab"
+    },
+    {
+      "file": "tests/mechanism-literature.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "1eab77e43e0fbd6f6f6db4dea23c837c984b8389a83c7f560d0dee68bb91776f"
+    },
+    {
+      "file": "tests/mobile-app-readiness.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "12ea88c949bc4949c3c36d96439712c296b621cf9378ef37723e1e1b7cfafaea"
+    },
+    {
+      "file": "tests/organism-coverage.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "7a418f58517289b57eeafa7195db627a5e2ada0ce31da78642978a7fd53e4e31"
+    },
+    {
+      "file": "tests/phenotype-coverage.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "7348d0107baff4c069fa61ed67456a7c995fabecd615dde84042106b05841da3"
+    },
+    {
+      "file": "tests/predeploy-pwa.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "cd5d026e31d5f10d9e88623abbf715e6b4216bd0ce2a8be54955c3d9859795a0"
+    },
+    {
+      "file": "tests/predeploy-routing.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "5421bce79dd326abb64d634db6674658bcd19520cb74bfd4840f4e83660be59d"
+    },
+    {
+      "file": "tests/predeploy-security.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "fd554d848f583d90625674c4cb7cd1b776c4c38e739fec0de501e2ac32a05721"
+    },
+    {
+      "file": "tests/pwa-updates.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "b2ab8961075478747c98288ef5653bb3675f01fbffa505015115ea10c13f908e"
+    },
+    {
+      "file": "tests/sci-04-abstention.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "1ee22502868d58e123a62c48daa75a848aed0b2f0cc9524b86ceeb01cf5a52c2"
+    },
+    {
+      "file": "tests/scientific-remediation.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "c6bfb3e63ee8c98ecd732db386878c970279e64fef50ff617d4fd340ff09ea59"
+    },
+    {
+      "file": "tests/september-audit-remediation.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "7b342477f3720f6d7bfc9d46acbe4954c11bd2c03ab75634b65a10a6a2602a02"
+    },
+    {
+      "file": "tests/telemetry.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Existing regression suite/synthetic fixtures for admitted work. No V4 model or research assets.",
+      "developmentSha256": "55cc2e55538c5c922650b7c3658fab0e8f62a7ece0215ba299c9fc68a45e622c"
+    },
+    {
+      "file": "tests/www-primary-domain.test.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Rename/consolidate into canonical-domain.test.mjs; preserve its existing apex/no-host-rule assertions.",
+      "developmentSha256": null
+    },
+    {
+      "file": "vite.config.mjs",
+      "classification": "APPROVED FOR RC1",
+      "handling": "Approved product/image-review, privacy/timeout/PWA/routing/a11y safety slice; no new scientific inference or dependencies.",
+      "developmentSha256": "185f4bf2f782d17307639a0312184209c11ae16d89665ee395a03734471bfa54"
+    }
+  ]
+}

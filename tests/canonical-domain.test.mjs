@@ -10,7 +10,9 @@ test("astcompass.com is canonical across runtime and static metadata", () => {
   const sitemap = read("public/sitemap.xml");
   const robots = read("public/robots.txt");
   assert.match(app, /const canonicalPath = selectedTopic/);
-  assert.match(app, /https:\/\/astcompass\.com\$\{canonicalPath\}/);
+  assert.match(read("src/config/production.ts"), /PRODUCTION_ORIGIN = "https:\/\/astcompass\.com"/);
+  assert.match(app, /canonical\.href = `\$\{PRODUCTION_ORIGIN\}\$\{canonicalPath\}`/);
+  assert.ok(app.includes('"property=og:url", `${PRODUCTION_ORIGIN}${canonicalPath}`'));
   assert.match(html, /rel="canonical" href="https:\/\/astcompass\.com\/"/);
   assert.doesNotMatch(sitemap, /<loc>https:\/\/www\.astcompass\.com/);
   assert.match(sitemap, /<loc>https:\/\/astcompass\.com\//);

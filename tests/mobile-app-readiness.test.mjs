@@ -24,12 +24,12 @@ test("document declares installability and safe-area viewport", () => {
 });
 
 test("service worker is versioned and excludes private/network submissions", () => {
-  const build = read("scripts/postbuild.mjs");
+  const build = read("scripts/service-worker.mjs");
   assert.match(build, /createHash/);
   assert.match(build, /request\.method !== 'GET'/);
   assert.match(build, /url\.origin !== self\.location\.origin/);
   assert.match(build, /request\.mode === 'navigate'/);
-  assert.match(build, /startsWith\('\/assets\/'\)/);
+  assert.match(build, /STATIC_PATHS.has\(url.pathname\)/);
   assert.doesNotMatch(build, /supabase\.co/);
   assert.doesNotMatch(build, /cache\.put\([^\n]*(feedback|auth|upload)/i);
   assert.match(read("netlify.toml"), /for = "\/sw\.js"[\s\S]*no-cache/);

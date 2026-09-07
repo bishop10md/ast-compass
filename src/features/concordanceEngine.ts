@@ -2,6 +2,8 @@ import { antibiotics, bcidForecasts, genes, mechanisms, organisms } from "../dat
 import type { BcidForecast } from "../data/types";
 import { normalizeSearch, sortAlphabetically } from "../utils/search";
 import { parseMeasurement } from "./measurement-core.mjs";
+import { resolveAntimicrobial } from "../data/antibiotics";
+import { matchingConcordanceRelationships } from "../data/concordanceRelationships";
 
 export type AstCategory = "S" | "I" | "R" | "SDD" | "NS" | "Unknown";
 export type ConcordanceCategory = "Concordant" | "Potentially concordant" | "Discordant" | "Cannot infer" | "Not relevant" | "Investigate";
@@ -23,46 +25,31 @@ export interface ConcordanceResult extends AstResultRow {
   rationale: string;
   troubleshooting: string[];
   forecast?: BcidForecast;
+  relevance?: "recognized";
+  pendingSourceReview?: boolean;
 }
 
 export const organismOptions = sortAlphabetically(organisms, (item) => item.name).map((item) => ({ value: item.id, label: item.name, aliases: item.aliases, description: item.group }));
 export const antimicrobialOptions = sortAlphabetically(antibiotics, (item) => item.name).map((item) => ({ value: item.name, label: item.name, aliases: [item.id, item.short], description: item.className }));
 export const markerOptions = sortAlphabetically([...new Map(bcidForecasts.map((item) => [item.markerLabel, item])).values()], (item) => item.markerLabel).map((item) => ({ value: item.markerLabel, label: item.markerLabel, aliases: genes.find((gene) => gene.id === item.geneId)?.aliases || [], description: mechanisms.find((mechanism) => mechanism.id === item.mechanismId)?.name }));
 
-const classLinked = (forecast: BcidForecast, antimicrobial: string) => {
-  const drug = antibiotics.find((item) => normalizeSearch(item.name) === normalizeSearch(antimicrobial) || normalizeSearch(item.short) === normalizeSearch(antimicrobial));
-  const haystack = normalizeSearch(`${forecast.antimicrobialClass} ${forecast.drugOrClass}`);
-  const candidates = [drug?.name, drug?.className, drug?.short, antimicrobial].filter(Boolean).map((item) => normalizeSearch(item!));
-  if (candidates.some((candidate) => candidate.length > 3 && haystack.includes(candidate))) return true;
-  if (drug && normalizeSearch(drug.className).includes("beta lactam") && haystack.includes("beta lactam")) return true;
-  if (drug && normalizeSearch(drug.className).includes("cephalosporin") && haystack.includes("cephalosporin")) return true;
-  if (drug && normalizeSearch(drug.className).includes("carbapenem") && haystack.includes("carbapenem")) return true;
-  return false;
-};
-
-const contextFits = (forecast: BcidForecast, organismId: string) => {
-  const organism = organisms.find((item) => item.id === organismId);
-  if (!organism) return false;
-  const context = normalizeSearch(`${organism.name} ${organism.group}`);
-  return [forecast.organism, forecast.organismGroup].filter(Boolean).some((item) => context.includes(normalizeSearch(item!)) || normalizeSearch(item!).includes(normalizeSearch(organism.group)));
-};
-
 export function analyzeConcordance(organismId: string, marker: string, rows: AstResultRow[]): ConcordanceResult[] {
-  const markerForecasts = bcidForecasts.filter((forecast) => normalizeSearch(forecast.markerLabel) === normalizeSearch(marker));
-  const contextual = markerForecasts.filter((forecast) => contextFits(forecast, organismId));
-  const forecasts = contextual.length ? contextual : markerForecasts;
   return rows.map((row) => {
-    const relevant = forecasts.filter((forecast) => classLinked(forecast, row.antimicrobial));
+    const drug = resolveAntimicrobial(row.antimicrobial);
+    const matches = drug ? matchingConcordanceRelationships(organismId, marker, drug.id) : [];
+    const base = { ...row, troubleshooting: ["Confirm organism identification and marker-to-organism association.", "Review the complete AST pattern, test method, and current laboratory policy."] };
+    if (matches.length !== 1) return { ...base, assessment: "Cannot infer" as const, rationale: matches.length ? "More than one equally specific relationship is authored. Source review is required; no array-order fallback is used." : "No explicit organism–marker–antimicrobial relationship is available. No other species, drug class or marker-wide forecast is substituted." };
+    const { relationship, forecast } = matches[0];
+    if (relationship.use === "relevance-only") return { ...base, relevance: "recognized" as const, pendingSourceReview: true, assessment: "Cannot infer" as const, rationale: relationship.caveat!, troubleshooting: [...base.troubleshooting, forecast.exceptions] };
+    if (!["S", "I", "R", "SDD", "NS"].includes(row.category)) return { ...base, assessment: "Cannot infer" as const, rationale: "A confirmed observed AST category is required; an unknown category is not evidence of concordance." };
+    const relevant = [forecast];
     const resistant = row.category === "R" || row.category === "NS";
     const susceptible = row.category === "S";
-    const uncertain = row.category === "I" || row.category === "SDD" || row.category === "Unknown";
+    const uncertain = row.category === "I" || row.category === "SDD";
     const strong = relevant.find((forecast) => forecast.prediction === "Resistance strongly expected");
     const retained = relevant.find((forecast) => forecast.prediction === "Activity may be retained");
     const cannot = relevant.find((forecast) => forecast.prediction === "Cannot infer");
     const caution = relevant.find((forecast) => forecast.prediction === "Mechanism-dependent caution");
-    const base = { ...row, troubleshooting: ["Confirm organism identification and marker-to-organism association.", "Review the complete AST pattern, test method, and current laboratory policy."] };
-    if (!forecasts.length) return { ...base, assessment: "Cannot infer" as const, rationale: `AST Compass has no marker forecast for ${marker} in this organism context.` };
-    if (!relevant.length) return { ...base, assessment: "Not relevant" as const, rationale: `${marker} does not directly predict this antimicrobial result; unrelated or additional mechanisms may be present.` };
     if (strong && resistant) return { ...base, assessment: "Concordant" as const, rationale: `The observed nonsusceptible category is consistent with the usual ${marker} resistance expectation, but does not prove causation.`, forecast: strong };
     if (strong && susceptible) return { ...base, assessment: "Discordant" as const, rationale: `The susceptible result differs from the usual ${marker} expectation and needs review before any conclusion.`, forecast: strong, troubleshooting: [...base.troubleshooting, "Check extraction/transcription, marker expression, mixed culture, and repeat/confirmatory-test policy."] };
     if (retained && susceptible) return { ...base, assessment: "Concordant" as const, rationale: `Activity may be retained for this marker–drug pairing; the observed susceptible category is plausible but still requires validated AST.`, forecast: retained };
