@@ -17,10 +17,12 @@ test("www.astcompass.com is canonical across runtime and static metadata", () =>
   assert.match(robots, /Sitemap: https:\/\/www\.astcompass\.com\/sitemap\.xml/);
 });
 
-test("bare and Netlify hosts permanently redirect to the www primary domain", () => {
+test("transition leaves apex/www forwarding to Netlify while retaining the Netlify-host redirect", () => {
   const redirects = read("public/_redirects");
   const netlify = read("netlify.toml");
-  assert.match(redirects, /https:\/\/astcompass\.com\/\* https:\/\/www\.astcompass\.com\/:splat 301!/);
+  assert.doesNotMatch(redirects, /^https?:\/\/(?:www\.)?astcompass\.com\/\*/m);
   assert.match(redirects, /https:\/\/astcompass\.netlify\.app\/\* https:\/\/www\.astcompass\.com\/:splat 301!/);
-  assert.match(netlify, /from = "https:\/\/astcompass\.com\/\*"[\s\S]*?to = "https:\/\/www\.astcompass\.com\/:splat"/);
+  assert.doesNotMatch(netlify, /from = "https?:\/\/(?:www\.)?astcompass\.com\/\*"/);
+  assert.match(netlify, /from = "https:\/\/astcompass\.netlify\.app\/\*"[\s\S]*?to = "https:\/\/www\.astcompass\.com\/:splat"/);
+  assert.match(redirects, /\/\* \/index\.html 200/);
 });
