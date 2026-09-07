@@ -90,9 +90,9 @@ export default function App() {
     setMeta('meta[name="description"]', "name=description", description);
     setMeta('meta[property="og:title"]', "property=og:title", title);
     setMeta('meta[property="og:description"]', "property=og:description", description);
-    setMeta('meta[property="og:url"]', "property=og:url", `https://www.astcompass.com${canonicalPath}`);
+    setMeta('meta[property="og:url"]', "property=og:url", `https://astcompass.com${canonicalPath}`);
     setMeta('meta[name="robots"]', "name=robots", page === "notFound" || page === "promo" || page === "promoPhone" ? "noindex,follow" : "index,follow");
-    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]'); if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); } canonical.href = `https://www.astcompass.com${canonicalPath}`;
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]'); if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); } canonical.href = `https://astcompass.com${canonicalPath}`;
   }, [page, selectedMechanism, selectedTopic]);
   useEffect(() => { const f = (e: KeyboardEvent) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); setSearchOpen(true); } }; addEventListener("keydown", f); return () => removeEventListener("keydown", f); }, []);
   useEffect(() => { if (!searchOpen) return; const modal = document.querySelector<HTMLElement>(".search-modal"); modal?.querySelector<HTMLInputElement>("input")?.focus(); const trap = (event: KeyboardEvent) => { if (event.key === "Escape") { event.preventDefault(); closeSearch(); return; } if (event.key !== "Tab" || !modal) return; const focusable = [...modal.querySelectorAll<HTMLElement>('button:not([disabled]),input:not([disabled]),a[href],[tabindex]:not([tabindex="-1"])')]; if (!focusable.length) return; const first = focusable[0], last = focusable[focusable.length - 1]; if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); } }; addEventListener("keydown", trap); return () => removeEventListener("keydown", trap); }, [searchOpen]);

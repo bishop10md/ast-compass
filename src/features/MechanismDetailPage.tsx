@@ -22,7 +22,7 @@ export default function MechanismDetailPage({ mechanism, meta, genes, sources, o
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.dataset.astMechanism = mechanism.id;
-    script.text = JSON.stringify({ "@context": "https://schema.org", "@type": ["Article", "LearningResource"], headline: mechanism.name, description: mechanism.summary, url: `https://www.astcompass.com/resistance/mechanisms/${slug}`, isAccessibleForFree: true, educationalUse: ["self study", "professional education"], publisher: { "@type": "Organization", name: "AST Compass", url: "https://www.astcompass.com/" }, citation: sources.map((source) => source.url) });
+    script.text = JSON.stringify({ "@context": "https://schema.org", "@type": ["Article", "LearningResource"], headline: mechanism.name, description: mechanism.summary, url: `https://astcompass.com/resistance/mechanisms/${slug}`, isAccessibleForFree: true, educationalUse: ["self study", "professional education"], publisher: { "@type": "Organization", name: "AST Compass", url: "https://astcompass.com/" }, citation: sources.map((source) => source.url) });
     document.head.appendChild(script);
     return () => script.remove();
   }, [mechanism, slug, sources]);

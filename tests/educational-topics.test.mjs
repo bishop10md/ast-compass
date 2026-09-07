@@ -21,7 +21,7 @@ const slugs = [
 test("seven distinct, indexable educational guides are defined", () => {
   for (const slug of slugs) {
     assert.match(topicSource, new RegExp(`slug: ["']${slug}["']`));
-    assert.match(sitemap, new RegExp(`https://www\\.astcompass\\.com/learn/topics/${slug}`));
+    assert.match(sitemap, new RegExp(`https://astcompass\\.com/learn/topics/${slug}`));
   }
   assert.equal((topicSource.match(/slug: "/g) || []).length, 7);
 });

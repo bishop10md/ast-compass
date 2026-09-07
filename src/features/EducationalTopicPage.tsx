@@ -20,10 +20,10 @@ export default function EducationalTopicPage({ topic, sources, relatedTopics, on
       "@type": ["Article", "LearningResource"],
       headline: topic.title,
       description: topic.description,
-      url: `https://www.astcompass.com/learn/topics/${topic.slug}`,
+      url: `https://astcompass.com/learn/topics/${topic.slug}`,
       isAccessibleForFree: true,
       educationalUse: ["self study", "professional education"],
-      publisher: { "@type": "Organization", name: "AST Compass", url: "https://www.astcompass.com/" },
+      publisher: { "@type": "Organization", name: "AST Compass", url: "https://astcompass.com/" },
       citation: sources.map((source) => source.url),
       about: topic.aliases,
     });
