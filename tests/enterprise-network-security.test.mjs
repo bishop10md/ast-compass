@@ -33,6 +33,7 @@ test("image validator accepts genuine signatures and rejects spoofed files", asy
 
 test("unused public AI endpoint is removed and trust artifacts exist", () => {
   assert.equal(existsSync(new URL("../netlify/functions/science-assistant.mjs", import.meta.url)), false);
+  assert.match(read("public/.well-known/security.txt"), /Contact: mailto:support@astcompass\.com/);
   assert.match(read("public/.well-known/security.txt"), /Contact: https:\/\/astcompass\.com\/feedback/);
   assert.match(read("src/features/TrustPage.tsx"), /No-PHI policy/);
 });

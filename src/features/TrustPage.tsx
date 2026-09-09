@@ -9,6 +9,7 @@ import {
 } from "../data";
 import ScientificIssueLink from "../components/ScientificIssueLink";
 import { trackReferenceViewed } from "../lib/productAnalytics";
+import ContactChannels from "../components/ContactChannels";
 
 const statusClass = (status: "Demo" | "Reviewed" | "Verified") => status === "Demo" ? "demo" : status.toLowerCase();
 
@@ -90,7 +91,8 @@ export default function TrustPage() {
 
       <section aria-labelledby="report-issue">
         <h2 id="report-issue">Report an Issue</h2>
-        <p>Report a suspected scientific error, outdated source, privacy concern, or security issue through Feedback. Scientific reports can include this page route, its non-patient content ID, and the AST Compass application version; they must not include patient data, image content, MIC tables, or private analysis content.</p>
+        <p>Report a suspected scientific error or outdated source to the scientific-review mailbox. Send access, privacy, or security concerns to support. The Feedback form remains available for structured reports. Reports may identify the page route, a non-patient content ID, and the AST Compass application version; they must not include patient data, image content, MIC tables, or private analysis content.</p>
+        <ContactChannels channels={["review", "support"]} title="Issue-reporting contacts" compact/>
         <ScientificIssueLink contentId="trust-center"/>
       </section>
     </div>
