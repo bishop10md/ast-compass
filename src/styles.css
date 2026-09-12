@@ -92,3 +92,56 @@ body{min-width:0}
 .workspace-grid .filter-panel input, .workspace-grid .filter-panel select { min-width: 0; max-width: 100%; }
 .workspace-grid .isolate-simulator { min-width: 0; }
 .workspace-grid .result-title { flex-wrap: wrap; gap: 8px; }
+
+/* Responsive desktop composition: use wide screens without disturbing tablet/mobile rules. */
+:root {
+  --desktop-content-max: 1400px;
+  --desktop-gutter: clamp(28px, 2.3vw, 40px);
+}
+@media (min-width: 1200px) {
+  .app > header {
+    padding-right: max(var(--desktop-gutter), calc((100% - var(--desktop-content-max)) / 2), var(--safe-right));
+    padding-left: max(var(--desktop-gutter), calc((100% - var(--desktop-content-max)) / 2), var(--safe-left));
+    gap: clamp(18px, 1.5vw, 28px);
+  }
+  .app > main {
+    max-width: calc(var(--desktop-content-max) + (2 * var(--desktop-gutter)));
+    padding-right: max(var(--desktop-gutter), var(--safe-right));
+    padding-left: max(var(--desktop-gutter), var(--safe-left));
+  }
+  .app > footer {
+    padding-right: max(var(--desktop-gutter), calc((100% - var(--desktop-content-max)) / 2), var(--safe-right));
+    padding-left: max(var(--desktop-gutter), calc((100% - var(--desktop-content-max)) / 2), var(--safe-left));
+  }
+  .app > header .brand { min-width: clamp(220px, 16vw, 245px); }
+  .app > header nav > a {
+    padding-right: clamp(7px, .55vw, 10px);
+    padding-left: clamp(7px, .55vw, 10px);
+    font-size: clamp(12px, .76vw, 13px);
+  }
+  .page-head { max-width: 900px; }
+  .page-head > p:last-child { max-width: 78ch; }
+  .clarity-hero {
+    grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr);
+    gap: clamp(42px, 4vw, 68px);
+    padding: clamp(42px, 3vw, 54px) clamp(16px, 2.3vw, 34px) clamp(36px, 2.6vw, 46px);
+  }
+  .clarity-hero h1 { font-size: clamp(52px, 4.45vw, 72px); }
+  .clarity-note { width: 100%; max-width: 440px; justify-self: end; }
+  .primary-starts { padding: 30px 0 52px; }
+  .section { padding-top: clamp(64px, 5vw, 78px); }
+  .secondary-tools { padding: 62px 0; }
+  .workspace-grid, .concordance-grid { grid-template-columns: minmax(310px, 340px) minmax(0, 1fr); }
+  .gene-layout { grid-template-columns: minmax(340px, 380px) minmax(0, 1fr); }
+  .bcid-workflow { grid-template-columns: minmax(350px, 390px) minmax(0, 1fr); }
+  .feedback-form { max-width: 980px; }
+  .about-story, .rapid-context { max-width: 980px; }
+  .creator-panel > p { max-width: 75ch; }
+}
+@media (min-width: 1536px) {
+  .tool-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .mechanism-library > div:last-child { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .guide-library > div:last-child { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .reference-list.compact { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .audience-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
