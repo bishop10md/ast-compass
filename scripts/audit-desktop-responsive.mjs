@@ -37,7 +37,7 @@ await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const origin = `http://127.0.0.1:${server.address().port}`;
 
 const browser = await chromium.launch({ headless: true, channel: 'chrome' });
-const routes = ['/', '/breakpoints', '/bcid-forecast', '/concordance', '/concordance/image', '/resistance', '/learn', '/learn/detective', '/references', '/about', '/feedback'];
+const routes = ['/', '/breakpoints', '/breakpoints?astMethod=MIC_AUTOMATED', '/breakpoints?astMethod=MIC_GRADIENT', '/breakpoints?astMethod=DISK_DIFFUSION', '/bcid-forecast', '/concordance', '/concordance/image', '/resistance', '/learn', '/learn/detective', '/references', '/about', '/feedback'];
 const viewports = [
   [320, 720], [375, 812], [390, 844], [430, 932], [768, 1024], [1024, 768],
   [1280, 720], [1366, 768], [1440, 900], [1536, 864], [1600, 900], [1680, 1050],

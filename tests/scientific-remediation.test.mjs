@@ -8,6 +8,7 @@ import ts from 'typescript';
 const require = createRequire(import.meta.url), React = require('react'), { renderToStaticMarkup } = require('react-dom/server');
 const load = createAuditLoader();
 const data = load('src/data/index.ts'), predicates = load('src/features/breakpointPredicates.ts');
+const breakpointMethods = load('src/features/breakpointMethods.ts');
 const bp = load('src/features/BreakpointEngine.tsx', 'export { scaleFor, interpretMic, interpretMeasurement, CriteriaScale };');
 const engine = load('src/features/concordanceEngine.ts'), coverage = load('src/features/coverageConcordance.ts');
 const ledger = load('src/data/concordanceRelationships.ts');
@@ -33,9 +34,9 @@ function functionSource(file, name) {
 }
 function renderBreakpointState(values, previousContext, records = data.breakpoints) {
   let i = 0; const updates = [], effects = [];
-  const hooks = { useState: initial => { const slot = i++; return [values[slot] ?? initial, value => updates.push([slot, value])]; }, useMemo: fn => fn(), useRef: current => ({ current: previousContext ?? current }), useEffect: fn => effects.push(fn) };
+  const hooks = { useState: initial => { const slot = i++, fallback = typeof initial === 'function' ? initial() : initial; return [values[slot] ?? fallback, value => updates.push([slot, value])]; }, useMemo: fn => fn(), useRef: current => ({ current: previousContext ?? current }), useEffect: fn => effects.push(fn) };
   const stubSelect = ({ label }) => React.createElement('span', null, label);
-  const component = compileSource(read('src/features/BreakpointEngine.tsx'), {}, { react: hooks, '../data': { ...data, breakpoints: records }, '../utils/search': load('src/utils/search.ts'), '../components/SearchableSelect': { default: stubSelect }, './breakpointPredicates': predicates });
+  const component = compileSource(read('src/features/BreakpointEngine.tsx'), {}, { react: hooks, '../data': { ...data, breakpoints: records }, '../utils/search': load('src/utils/search.ts'), '../components/SearchableSelect': { default: stubSelect }, '../components/AstMethodLearningVisual': { default: () => null }, './breakpointPredicates': predicates, './breakpointMethods': breakpointMethods });
   const html = renderToStaticMarkup(component.default());
   return { html, updates, effects };
 }
@@ -104,8 +105,8 @@ test('SCI01: rendered source-scale preserves operators and omits an invented Int
   assert.match(html, /≥ 22/); assert.match(html, /≤ 21/); assert.doesNotMatch(html, /I \/ SDD/);
   assert.match(html, /No intermediate category/);
   const source = read('src/features/BreakpointEngine.tsx');
-  for (const text of ['Zone diameter (mm)', 'Disk diffusion teaching result', 'Manual zone diameter entry', 'Disk content:']) assert.ok(source.includes(text));
-  assert.match(source, /scale\?\.method === "MIC" && <div className="isolate-simulator"/);
+  for (const text of ['Zone diameter', 'Unit: {methodDefinition.unit}', 'Disk diffusion teaching result', 'Manual zone diameter entry', 'Disk potency/content:']) assert.ok(source.includes(text));
+  assert.match(source, /methodDefinition\.allowsTeachingSimulation && scale\?\.method === "MIC" && <div className="isolate-simulator"/);
   assert.match(source, /scale\.method !== "MIC"/);
   assert.match(source, /previousMeasurementContext\.current !== measurementContext/);
   assert.match(source, /setMic\(""\)/);
@@ -113,20 +114,20 @@ test('SCI01: rendered source-scale preserves operators and omits an invented Int
 });
 
 test('SCI01: actual component cannot render stale wrong-unit measurements or a simulator for ambiguous criteria', () => {
-  const diskValues = ['Bacteria', 'CLSI', 'staph_aureus', 'cefoxitin', '5', 'typical', 'Manual MIC entry'];
-  const transition = renderBreakpointState(diskValues, 'MIC:µg/mL');
-  assert.match(transition.html, /Zone diameter \(mm\)/); assert.match(transition.html, /value=""/);
+  const diskValues = ['Bacteria', 'CLSI', 'staph_aureus', 'cefoxitin', '5', 'typical', 'Manual MIC entry', 'DISK_DIFFUSION', '='];
+  const transition = renderBreakpointState(diskValues, breakpointMethods.measurementContextFor('MIC_BROTH', 'µg/mL'));
+  assert.match(transition.html, /Zone diameter/); assert.match(transition.html, /Unit: mm/); assert.match(transition.html, /value=""/);
   assert.doesNotMatch(transition.html, /The entered zone diameter|Generate two-fold MIC|Generated teaching interpretation/);
   for (const effect of transition.effects) effect();
   assert.ok(transition.updates.some(([slot, value]) => slot === 4 && value === ''));
-  const confirmedDisk = renderBreakpointState([...diskValues.slice(0, 4), '20', ...diskValues.slice(5)], 'Disk:mm').html;
+  const confirmedDisk = renderBreakpointState([...diskValues.slice(0, 4), '20', ...diskValues.slice(5)], breakpointMethods.measurementContextFor('DISK_DIFFUSION', 'mm')).html;
   assert.match(confirmedDisk, /The entered zone diameter \(20 mm\)/); assert.match(confirmedDisk, /<h3>Resistant<\/h3>/);
-  const micTransition = renderBreakpointState(['Bacteria', 'CLSI', 'ecoli', 'ceftriaxone', '20'], 'Disk:mm').html;
+  const micTransition = renderBreakpointState(['Bacteria', 'CLSI', 'ecoli', 'ceftriaxone', '20'], breakpointMethods.measurementContextFor('DISK_DIFFUSION', 'mm')).html;
   assert.doesNotMatch(micTransition, /The entered MIC|Generated teaching interpretation/); assert.match(micTransition, /value=""/);
   const ambiguous = renderBreakpointState(diskValues, undefined, [...data.breakpoints, { ...record('bp4'), id: 'fixture-duplicate' }]).html;
   assert.match(ambiguous, /Ambiguous loaded breakpoint records/); assert.match(ambiguous, /no record or simulation is selected automatically/);
   assert.doesNotMatch(ambiguous, /Generate two-fold MIC|no mapped antimicrobial options|Generated teaching interpretation/);
-  assert.match(ambiguous, /disabled=""/);
+  assert.match(ambiguous, /Method\/source selection needs review/);
 });
 
 test('SCI02: exact mec relationships are relevant-only across aliases, categories and optional MIC operators', () => {

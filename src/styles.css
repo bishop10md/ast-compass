@@ -145,3 +145,43 @@ body{min-width:0}
   .reference-list.compact { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .audience-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+
+/* Method-aware Breakpoint Explorer: reviewable architecture, not new scientific criteria. */
+.method-selector{display:grid;gap:12px;margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.method-selector label{margin:0}
+.method-review-status{display:inline-flex;width:max-content;max-width:100%;padding:6px 10px;border:1px solid #d6a04d;border-radius:99px;background:#fff5df;color:#805715;font-size:10px;font-weight:900;letter-spacing:.05em;text-transform:uppercase}
+.method-selector details{padding:12px 14px;border:1px solid var(--line);border-radius:9px;background:#f5f9f7}
+.method-selector summary{color:var(--green);font-size:12px;font-weight:800;cursor:pointer}
+.method-selector details p{margin:10px 0 0;color:var(--muted);font-size:12px;line-height:1.55}
+.method-selector details small{display:block;margin-top:9px;color:#805715;font-weight:700;line-height:1.45}
+.reviewer-callout{margin:0;padding:12px;border-left:3px solid var(--green);background:#edf6f2;color:#526666;font-size:11px;line-height:1.55}
+.reviewer-callout a{display:inline-block;color:var(--green);font-weight:800}
+.measurement-entry{display:grid;grid-template-columns:minmax(90px,.35fr) minmax(0,1fr);gap:10px;align-items:end}
+.measurement-entry>label{margin-bottom:20px}
+.measurement-entry>label:only-child{grid-column:1/-1}
+.measurement-unit{display:block;color:var(--muted);font-size:10px;font-weight:500}
+.operator-review-note{margin:-8px 0 20px;padding:11px;border-radius:8px;background:#fff5df;color:#685d4c;font-size:11px;line-height:1.5}
+.method-comparison,.method-learning{margin-top:24px;padding:28px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.method-comparison>div:first-child{max-width:760px}
+.method-comparison h2,.method-learning h2{margin:0;font:700 30px Manrope}
+.method-comparison>div:first-child>p:last-child,.method-learning header p{color:var(--muted);line-height:1.6}
+.method-comparison-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:22px}
+.method-comparison-grid article{min-width:0;padding:18px;border:1px solid var(--line);border-radius:11px;background:#f5f9f7}
+.method-comparison-grid h3{margin:0 0 14px;font:700 15px/1.35 Manrope}
+.method-comparison-grid dl{display:grid;gap:8px;margin:0}
+.method-comparison-grid dl>div{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #d9e6e1;padding-top:8px}
+.method-comparison-grid dt{color:var(--muted);font-size:10px}
+.method-comparison-grid dd{margin:0;text-align:right;font-size:11px;font-weight:800}
+.method-learning>header{display:flex;align-items:flex-start;justify-content:space-between;gap:22px}
+.method-learning>header>div{max-width:760px}
+.method-learning>header>span{flex:0 0 auto;padding:7px 10px;border:1px solid #d6a04d;border-radius:7px;background:#fff5df;color:#805715;font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+.method-learning-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:28px;align-items:center;margin-top:20px}
+.method-learning figure{min-width:0;margin:0;padding:16px;border-radius:13px;background:#f5f9f7}
+.ast-method-diagram{display:block;width:100%;height:auto;max-height:390px}
+.method-learning figcaption{margin-top:10px;color:var(--muted);font-size:10px;line-height:1.5}
+.method-learning ol{display:grid;gap:11px;margin:0;padding:0;list-style:none;counter-reset:none}
+.method-learning li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:11px;align-items:start;padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.method-learning li>span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;font-weight:900}
+.method-learning li p{margin:3px 0 0;color:#526666;font-size:12px;line-height:1.55}
+@media(max-width:1000px){.method-comparison-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.method-learning-layout{grid-template-columns:1fr}.method-learning>header{flex-direction:column}.method-learning>header>span{flex:none}}
+@media(max-width:560px){.method-comparison,.method-learning{padding:20px}.method-comparison-grid{grid-template-columns:1fr}.measurement-entry{grid-template-columns:1fr}.measurement-entry>label{margin-bottom:0}.method-learning h2,.method-comparison h2{font-size:25px}.method-learning figure{padding:8px}.ast-method-diagram text{font-size:14px}.method-review-status{width:100%;border-radius:8px;line-height:1.4}}

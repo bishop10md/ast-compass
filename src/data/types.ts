@@ -23,6 +23,33 @@ export interface BreakpointSourceIdentity {
   sourceId: string;
 }
 
+export type AstMethodId = "MIC_BROTH" | "MIC_AUTOMATED" | "MIC_GRADIENT" | "DISK_DIFFUSION";
+export type BreakpointMeasurementType = "MIC" | "Zone diameter";
+export type ScientificRecordReviewStatus = "Draft" | "Reviewed" | "Verified";
+
+/**
+ * Non-destructive target schema for future method-specific breakpoint records.
+ * The legacy Breakpoint shape remains intact until source-governed data can be
+ * migrated record by record. No method may borrow another method's criteria.
+ */
+export interface MethodAwareBreakpointRecord {
+  id: string;
+  standard: Standard;
+  organismId: string;
+  antibioticId: string;
+  method: AstMethodId;
+  measurementType: BreakpointMeasurementType;
+  unit: "µg/mL" | "mg/L" | "mm";
+  susceptibleBreakpoint: string;
+  intermediateBreakpoint: string | null;
+  resistantBreakpoint: string;
+  source: BreakpointSourceIdentity;
+  sourceVersion: string;
+  reviewStatus: ScientificRecordReviewStatus;
+  notes: string[];
+  diskPotency?: string;
+}
+
 export interface Organism {
   id: string;
   name: string;
