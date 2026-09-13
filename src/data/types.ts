@@ -1,3 +1,5 @@
+import type { QualifiedReviewProvenance } from "./scientificGovernance";
+
 export type Standard = "CLSI" | "EUCAST" | "FDA";
 export type ReviewStatus = "Draft" | "Reviewed" | "Validated" | "Retired";
 
@@ -26,6 +28,16 @@ export interface BreakpointSourceIdentity {
 export type AstMethodId = "MIC_BROTH" | "MIC_AUTOMATED" | "MIC_GRADIENT" | "DISK_DIFFUSION";
 export type BreakpointMeasurementType = "MIC" | "Zone diameter";
 export type ScientificRecordReviewStatus = "Draft" | "Reviewed" | "Verified";
+
+/** Explicit applicability review is separate from the breakpoint's own status.
+ * Provenance contentId is `${record.id}:${method}` and contentVersion is the
+ * record version reviewed. Adding this schema grants no existing record review.
+ */
+export interface BreakpointMethodApplicability {
+  method: "MIC_AUTOMATED" | "MIC_GRADIENT";
+  reviewStatus: "Draft" | "Reviewed";
+  reviewProvenance?: QualifiedReviewProvenance;
+}
 
 /**
  * Non-destructive target schema for future method-specific breakpoint records.
@@ -107,6 +119,7 @@ export interface Breakpoint {
   version: string;
   effectiveDate: string;
   method: "MIC" | "Disk";
+  methodApplicability?: BreakpointMethodApplicability[];
   unit: string;
   diskContent?: string;
   susceptible: string;

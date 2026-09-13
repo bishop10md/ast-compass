@@ -1,7 +1,7 @@
 # AST Compass AST Method Expansion Audit
 
 Date: September 13, 2026
-Status: **AST METHOD EXPANSION READY FOR OWNER REVIEW**
+Status: **AST METHOD EXPANSION FINALIZED FOR EXPERT REVIEW**
 Deployment: **Not deployed**
 
 ## Executive summary
@@ -17,11 +17,18 @@ The default remains Broth microdilution / MIC. Existing numerical breakpoint rec
 
 Original responsive learning diagrams were added for all four method states, with dedicated agar-plate visuals for gradient diffusion and disk diffusion. They contain accessible titles/descriptions and are labeled as educational overviews rather than clinical instructions.
 
+The final scientific-scope cleanup removes automatic inheritance of generic MIC criteria by Automated MIC and Gradient diffusion. Neither method can display criteria or assign a category without an explicit, documented review of applicability to the selected method. None of the nine current breakpoint records has such an approval. Both methods therefore display exactly:
+
+> MIC result · Method-specific applicability under expert review
+
+All four method choices, diagrams, explanations, comparison, and reviewer-feedback links remain available.
+
 ## Baseline and scope
 
 - Source workspace: `ast-compass-rc1-configured`
 - Source branch before isolation: `codex/desktop-responsive-release-candidate`
 - Clean source commit: `5247e1eb9c320269fda35ea2a14355d1a0960c60`
+- Approved method-expansion baseline before this cleanup: `5e65db5016b92939208e388b0d90c25ee3f4a1f0`
 - Implementation branch: `codex/method-aware-breakpoint-expansion`
 - Application version: `0.4.5` (unchanged)
 - Production deployment: none
@@ -32,8 +39,8 @@ Original responsive learning diagrams were added for all four method states, wit
 | Method | Result type | Entry unit | Current interpretation behavior |
 |---|---|---:|---|
 | Broth microdilution / MIC | MIC | µg/mL | Existing MIC teaching behavior remains available and is the default. |
-| Automated MIC | MIC | µg/mL | Uses an existing loaded MIC teaching record when one is present; no instrument correction or platform-specific rule is introduced. Otherwise fails closed. |
-| Gradient diffusion / Etest | MIC | µg/mL | Uses an existing loaded MIC teaching record when one is present; no separate Etest breakpoint table or equivalence rule is introduced. Otherwise fails closed. |
+| Automated MIC | MIC | µg/mL | No criteria or category until the selected record explicitly documents reviewed Automated MIC applicability. All current selections remain under expert review. |
+| Gradient diffusion / Etest | MIC | µg/mL | No criteria or category until the selected record explicitly documents reviewed Gradient diffusion applicability. All current selections remain under expert review. |
 | Disk diffusion / Kirby-Bauer | Zone diameter | mm | Uses only an explicitly loaded disk record. Never uses MIC data or MIC simulation. |
 
 MIC entry exposes `<`, `≤`, `>`, `≥`, and `=` as distinct operators. The pre-existing exact numeric (`=`) interpretation behavior is unchanged. Because no owner-approved operator-aware inference rule exists in the current dataset, a non-equality operator/value is preserved visibly but fails closed without assigning a category.
@@ -88,6 +95,19 @@ The type layer now defines a future `MethodAwareBreakpointRecord` capable of car
 
 Supported method identifiers are `MIC_BROTH`, `MIC_AUTOMATED`, `MIC_GRADIENT`, and `DISK_DIFFUSION`. The legacy `Breakpoint` records were not migrated or mutated.
 
+### Reviewed method applicability
+
+The legacy type now has optional `methodApplicability` metadata. No entry was added to the actual breakpoint dataset. An admission entry must identify the selected Automated or Gradient method and have `reviewStatus: Reviewed`, with the existing qualified-review provenance structure:
+
+- Exact record-and-method content ID (`record.id:method`) and matching record version
+- Documented reviewer identity and qualification/role
+- Review date and approval-evidence ID
+- Resolvable source IDs, source editions/versions, and source locators
+
+Absent, Draft, incomplete, wrong-method, wrong-record, wrong-version, or duplicate applicability entries are rejected before criteria selection. A generic breakpoint review label does not grant method applicability. Broth and disk admission retain their original record-type filters. Numerical parsing, interpretation, and simulation functions are unchanged.
+
+This checks the completeness and scope of authored review metadata; it does not perform scientific review or establish that a source supports a method. Future approvals must be supplied through qualified owner/source review. Test-only synthetic provenance exercises the contract and is excluded from the production build.
+
 ## Scientific separation and fail-closed behavior
 
 - MIC and disk filtering occurs before a record can be selected.
@@ -97,7 +117,8 @@ Supported method identifiers are `MIC_BROTH`, `MIC_AUTOMATED`, `MIC_GRADIENT`, a
 - Duplicate method-specific records remain ambiguous and do not produce an interpretation.
 - Unavailable, malformed, overlapping, or unsupported records remain fail-closed.
 - No intermediate category is created when the loaded record has none.
-- Automated MIC and gradient diffusion are not claimed to be interchangeable with reference broth microdilution; their limitations remain visibly attached.
+- Automated MIC and Gradient diffusion have no current admitted records. Entering a numeric MIC does not expose generic broth criteria, generate a category, or activate a simulation.
+- Shared MIC units do not establish method applicability. Both pending states retain the educational visuals and method-specific limitations.
 
 ## Functional versus draft
 
@@ -108,6 +129,7 @@ Supported method identifiers are `MIC_BROTH`, `MIC_AUTOMATED`, `MIC_GRADIENT`, a
 - Correct display units
 - Separate disk-record admission
 - Missing-disk fail-closed state
+- Missing-reviewed-applicability fail-closed states for Automated and Gradient MIC
 - Existing exact-value MIC interpretation
 - Existing disk-direction interpretation
 - Method switching/reset behavior
@@ -131,23 +153,28 @@ No citation was added, duplicated, or fabricated. Existing loaded records contin
 
 | Gate | Result |
 |---|---|
-| Application tests | PASS — 304/304 |
-| Focused method-expansion tests | PASS — 8/8 (included in application total) |
+| Application tests | PASS — 311/311 |
+| Focused method-expansion tests | PASS — 13/13 plus 2 new actual-component regression tests (included in application total) |
 | Scientific release gate | PASS — 10/10; releaseBlocked=false |
-| Image-Assisted human-review safety | PASS — 50/50 |
 | TypeScript | PASS |
 | Production build | PASS |
 | Static release audit | PASS — no secret patterns, unsafe injection patterns, source maps, forbidden artifacts, or missing precache assets |
-| RC1 browser regression | PASS — 11 routes, 66 viewport-route checks, 7 searches, 1/3/5/10/20-row Concordance checks |
 | Responsive matrix | PASS — 280 checks, 0 overflow, 0 nav wraps, 0 console errors, 0 failed first-party requests |
-| Method screenshot geometry | PASS — MIC, gradient, disk desktop, and disk mobile; no horizontal overflow |
+| Method screenshot geometry and behavior | PASS — all four desktop methods, comparison, disk mobile, and automated mobile; no horizontal overflow; pending methods never display criteria/categories |
 
 The responsive matrix includes the default, automated, gradient, and disk Breakpoint states at mobile, tablet, desktop, Windows 125% scaling, and 90/100/110/125% browser-zoom equivalents.
+
+The final cleanup reran the six requested gates. Commands used the existing installed tools directly: `node --test tests/*.test.mjs`, `node scripts/predeploy-scientific-gate.mjs`, `tsc -b --pretty false`, the package build sequence (`tsc -b`, `vite build --config vite.config.mjs --configLoader runner`, `node scripts/postbuild.mjs`), `node scripts/audit-desktop-responsive.mjs after`, and `node scripts/predeploy-static-audit.mjs`. These match the package scripts without invoking dependency reinstallation through the shared node_modules junction.
+
+The previous 50/50 Image-Assisted safety and RC1 browser results belong to baseline commit `5e65db5`; those separate audits were not rerun for this cleanup. Image/OCR/PHI sources and behavior were outside the change and remain unchanged. The current application and scientific suites passed. Responsive results are browser emulation, including Windows scaling/zoom equivalents, rather than new physical-device acceptance.
+
+The build retains a non-blocking large-chunk warning (largest listed chunk: 578.73 kB minified). No bundle/refactoring change was made as part of this scientific-scope cleanup. The static audit confirms 36 unique apex-domain sitemap URLs, no forbidden artifacts or source maps, and a complete generated precache.
 
 ## Regression assessment
 
 - Existing MIC numerical behavior: unchanged for existing numeric inputs
 - Existing disk predicates and boundaries: unchanged
+- All four educational diagrams and the approved responsive stylesheet: unchanged against `5e65db5`
 - Mobile regression: none detected
 - Tablet regression: none detected
 - Desktop responsive regression: none detected
@@ -157,25 +184,33 @@ The responsive matrix includes the default, automated, gradient, and disk Breakp
 ## Visual evidence
 
 - [Broth MIC desktop](work/ast-method-expansion/screenshots/breakpoint-mic-desktop.png)
+- [Automated MIC desktop](work/ast-method-expansion/screenshots/breakpoint-automated-desktop.png)
 - [Gradient diffusion desktop](work/ast-method-expansion/screenshots/breakpoint-gradient-desktop.png)
 - [Disk diffusion desktop](work/ast-method-expansion/screenshots/breakpoint-disk-desktop.png)
 - [Disk diffusion mobile](work/ast-method-expansion/screenshots/breakpoint-disk-mobile.png)
+- [Automated MIC mobile](work/ast-method-expansion/screenshots/breakpoint-automated-mobile.png)
 - [Compare AST Methods panel](work/ast-method-expansion/screenshots/compare-ast-methods-desktop.png)
 - [Screenshot receipt](work/ast-method-expansion/screenshots/receipt.json)
 - [Responsive matrix receipt](work/desktop-responsive/after/results.json)
+- [Final application test log](work/ast-method-expansion/final-application-tests.log)
+- [Final scientific gate](work/ast-method-expansion/final-scientific-gate.json)
+- [Final build log](work/ast-method-expansion/final-build.log)
+- [Final static audit](work/ast-method-expansion/final-static-audit.json)
 
 Screenshots were generated locally from the production build with synthetic/demo selections. They are not production captures and contain no patient data.
 
 ## Remaining owner/expert-review items
 
 1. Review the terminology and prominence of the four method choices.
-2. Decide whether shared MIC teaching criteria are an acceptable interim educational representation for automated and gradient methods, or whether those methods should always show method-specific unavailable until explicit reviewed applicability metadata exists.
+2. Review method applicability and its sources before considering any future Automated or Gradient admission entries. The owner's interim decision is implemented: no generic MIC inheritance.
 3. Review the original diagrams and step wording for scientific clarity and appropriate educational scope.
 4. Determine whether operator-aware MIC interpretation should remain disabled or receive a separately sourced, owner-approved scientific design.
 5. Add authoritative method-specific disk records, disk potency, and method references only through governed scientific review.
 
 ## Final disposition
 
-**AST METHOD EXPANSION READY FOR OWNER REVIEW**
+**AST METHOD EXPANSION FINALIZED FOR EXPERT REVIEW**
 
 No deployment was performed.
+
+The finalized local candidate is awaiting owner approval. This status reflects completion of the requested scope and software checks; no method applicability or clinical validation has been granted.

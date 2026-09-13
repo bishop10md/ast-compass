@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import http from 'node:http';
 import { createRequire } from 'node:module';
+import assert from 'node:assert/strict';
 
 const req = process.env.AST_AUDIT_PLAYWRIGHT
   ? createRequire(path.join(process.env.AST_AUDIT_PLAYWRIGHT, 'package.json'))
@@ -43,7 +44,16 @@ async function capture(name, viewport, method, configure) {
   await page.getByRole('heading', { name: 'Breakpoint Engine' }).waitFor();
   if (configure) await configure(page);
   await page.locator('.method-learning').waitFor();
-  const geometry = await page.evaluate(() => ({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth, method: document.querySelector('#ast-method')?.value, resultType: document.querySelector('.directory-stats>div:last-child b')?.textContent, unit: document.querySelector('.measurement-unit')?.textContent, visualTitle: document.querySelector('.ast-method-diagram title')?.textContent }));
+  const pendingReview = method === 'MIC_AUTOMATED' || method === 'MIC_GRADIENT';
+  if (pendingReview) {
+    await page.getByRole('heading', { name: 'MIC result · Method-specific applicability under expert review', exact: true }).waitFor();
+    assert.equal(await page.locator('.breakpoint-scale, .mic-answer, .isolate-simulator').count(), 0, `${method} cannot render generic MIC interpretation`);
+    await page.locator('#ast-measurement').fill('4');
+    assert.equal(await page.locator('.breakpoint-scale, .mic-answer').count(), 0, `${method} must stay pending after MIC entry`);
+  }
+  const geometry = await page.evaluate(() => ({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth, method: document.querySelector('#ast-method')?.value, resultType: document.querySelector('.directory-stats>div:last-child b')?.textContent, unit: document.querySelector('.measurement-unit')?.textContent, visualTitle: document.querySelector('.ast-method-diagram title')?.textContent, resultHeading: document.querySelector('.result-panel h2, .no-breakpoint h2')?.textContent, criteriaVisible: !!document.querySelector('.breakpoint-scale'), category: document.querySelector('.mic-answer h3')?.textContent || null }));
+  if (method === 'MIC_BROTH') assert.equal(geometry.category, 'Resistant', 'Existing default broth MIC result');
+  if (method === 'DISK_DIFFUSION') assert.equal(geometry.criteriaVisible, true, 'Explicit disk record remains available');
   receipt.checks.push({ name, ...geometry, pass: geometry.scrollWidth <= geometry.width + 1 });
   const file = path.join(out, `${name}.png`);
   await page.evaluate(() => scrollTo(0, 0));
@@ -59,6 +69,7 @@ async function capture(name, viewport, method, configure) {
 
 try {
   await capture('breakpoint-mic-desktop', { width: 1440, height: 900 }, 'MIC_BROTH');
+  await capture('breakpoint-automated-desktop', { width: 1440, height: 900 }, 'MIC_AUTOMATED');
   await capture('breakpoint-gradient-desktop', { width: 1440, height: 900 }, 'MIC_GRADIENT');
   await capture('breakpoint-disk-desktop', { width: 1440, height: 900 }, 'DISK_DIFFUSION', async page => {
     await selectSearchable(page, 'Organism', 'Staphylococcus aureus');
@@ -68,6 +79,7 @@ try {
     await selectSearchable(page, 'Organism', 'Staphylococcus aureus');
     await selectSearchable(page, 'Applicable antimicrobial', 'Cefoxitin');
   });
+  await capture('breakpoint-automated-mobile', { width: 390, height: 844 }, 'MIC_AUTOMATED');
   receipt.passed = receipt.checks.every(check => check.pass) && receipt.errors.length === 0;
   console.log(JSON.stringify({ passed: receipt.passed, screenshots: receipt.screenshots.length, checks: receipt.checks, errors: receipt.errors }, null, 2));
   if (!receipt.passed) process.exitCode = 1;

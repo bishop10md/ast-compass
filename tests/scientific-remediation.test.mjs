@@ -130,6 +130,28 @@ test('SCI01: actual component cannot render stale wrong-unit measurements or a s
   assert.match(ambiguous, /Method\/source selection needs review/);
 });
 
+test('method cleanup: actual automated/gradient UI retains education and withholds generic MIC criteria', () => {
+  for (const method of ['MIC_AUTOMATED', 'MIC_GRADIENT']) {
+    const { html } = renderBreakpointState(['Bacteria', 'CLSI', 'ecoli', 'ceftriaxone', '5', 'typical', 'Manual MIC entry', method, '=']);
+    assert.match(html, /MIC result · Method-specific applicability under expert review/);
+    assert.match(html, /No breakpoint criteria or category are assigned/);
+    assert.doesNotMatch(html, /class="breakpoint-scale"|Generated teaching interpretation|MIC interpretation simulation|Generate two-fold MIC|<h3>Resistant<\/h3>/);
+    for (const text of ['AST Method', 'About this method', 'Compare AST Methods', 'Provide method feedback', 'Unit: µg/mL']) assert.ok(html.includes(text), text);
+  }
+});
+
+test('method cleanup: actual broth default and absent-record simulation retain their categories', () => {
+  const initial = renderBreakpointState([]).html;
+  assert.match(initial, /MIC interpretation simulation/);
+  assert.match(initial, /Generated teaching interpretation/);
+  assert.match(initial, /<h3>Resistant<\/h3>/);
+  assert.match(initial, /The entered MIC \(5 µg\/mL\)/);
+  const simulation = renderBreakpointState(['Bacteria', 'CLSI', 'ecoli', 'ciprofloxacin', '0.5']).html;
+  assert.match(simulation, /Organism–drug simulation profile/);
+  assert.match(simulation, /<h3>Intermediate \/ SDD<\/h3>/);
+  assert.match(simulation, /Generate two-fold MIC/);
+});
+
 test('SCI02: exact mec relationships are relevant-only across aliases, categories and optional MIC operators', () => {
   for (const [organism, marker] of [['staph_aureus', 'mecA/C and MREJ (MRSA)'], ['cons', 'mecA/C']]) {
     for (const drug of ['Oxacillin', 'OXA', 'Cefoxitin', 'FOX']) for (const category of ['S', 'I', 'R', 'SDD', 'NS', 'Unknown']) for (const measurement of ['', '<1', '<=1', '≤1', '=2', '>8', '>=4', '≥4']) {

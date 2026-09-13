@@ -40,6 +40,63 @@ test('disk selection can never consume an MIC record and missing disk data fails
   assert.match(engineSource, /does not reuse or convert an MIC breakpoint/);
 });
 
+// Test-only review documentation exercises admission; it does not review or
+// promote any bundled record, source, numerical value, or method in the app.
+function syntheticApplicability(record, method) {
+  return {
+    method, reviewStatus: 'Reviewed',
+    reviewProvenance: {
+      contentId: `${record.id}:${method}`, contentVersion: record.version,
+      sources: [{ sourceId: record.sourceId, editionOrVersion: 'Synthetic review fixture', sectionOrLocator: 'Synthetic applicability test' }],
+      reviewer: { identity: 'Synthetic reviewer', qualificationOrRole: 'Test fixture only', publicAttributionApproved: false },
+      reviewedOn: '2026-09-13', approvalEvidenceId: 'synthetic-test-only',
+    },
+  };
+}
+
+for (const method of ['MIC_AUTOMATED', 'MIC_GRADIENT']) {
+  test(`${method}: generic MIC records and generic Reviewed labels cannot grant applicability`, () => {
+    assert.deepEqual(methods.recordsForAstMethod(data.breakpoints, method), []);
+    const genericReviewed = data.breakpoints.map(record => ({ ...record, meta: { ...record.meta, status: 'Reviewed' } }));
+    assert.deepEqual(methods.recordsForAstMethod(genericReviewed, method), []);
+    assert.equal(methods.astMethodDefinition(method).allowsTeachingSimulation, false);
+  });
+
+  test(`${method}: only an explicit same-method, same-record review with complete provenance permits admission`, () => {
+    const record = data.breakpoints.find(record => record.id === 'bp-ecoli-cro');
+    const grant = syntheticApplicability(record, method);
+    const admitted = { ...record, methodApplicability: [grant] };
+    assert.deepEqual(methods.recordsForAstMethod([admitted], method), [admitted]);
+    const other = method === 'MIC_AUTOMATED' ? 'MIC_GRADIENT' : 'MIC_AUTOMATED';
+    assert.deepEqual(methods.recordsForAstMethod([admitted], other), []);
+    for (const entry of [
+      { ...grant, reviewStatus: 'Draft' },
+      { ...grant, reviewProvenance: undefined },
+      { ...grant, reviewProvenance: { ...grant.reviewProvenance, contentId: 'another-record' } },
+      { ...grant, reviewProvenance: { ...grant.reviewProvenance, contentVersion: 'another-version' } },
+      { ...grant, reviewProvenance: { ...grant.reviewProvenance, sources: [] } },
+      { ...grant, reviewProvenance: { ...grant.reviewProvenance, sources: [{ sourceId: 'unresolved-source', editionOrVersion: 'Test', sectionOrLocator: 'Test' }] } },
+      { ...grant, reviewProvenance: { ...grant.reviewProvenance, sources: [{ sourceId: record.sourceId, editionOrVersion: '', sectionOrLocator: '' }] } },
+      { ...grant, reviewProvenance: { ...grant.reviewProvenance, reviewer: { identity: '', qualificationOrRole: '', publicAttributionApproved: false } } },
+      { ...grant, reviewProvenance: { ...grant.reviewProvenance, reviewedOn: 'Pending review' } },
+      { ...grant, reviewProvenance: { ...grant.reviewProvenance, approvalEvidenceId: '' } },
+    ]) assert.deepEqual(methods.recordsForAstMethod([{ ...record, methodApplicability: [entry] }], method), []);
+    assert.deepEqual(methods.recordsForAstMethod([{ ...record, methodApplicability: [grant, grant] }], method), []);
+    assert.deepEqual(methods.recordsForAstMethod([{ ...admitted, method: 'Disk' }], method), []);
+  });
+}
+
+test('broth and disk keep their exact existing record sets regardless of new applicability metadata', () => {
+  for (const [method, legacy] of [['MIC_BROTH', 'MIC'], ['DISK_DIFFUSION', 'Disk']]) {
+    const expected = data.breakpoints.filter(record => record.method === legacy);
+    assert.deepEqual(methods.recordsForAstMethod(data.breakpoints, method), expected);
+  }
+  const mic = data.breakpoints.find(record => record.id === 'bp-ecoli-cro');
+  const withGrant = { ...mic, methodApplicability: [syntheticApplicability(mic, 'MIC_AUTOMATED')] };
+  assert.deepEqual(methods.recordsForAstMethod([withGrant], 'DISK_DIFFUSION'), []);
+  assert.deepEqual(methods.recordsForAstMethod([withGrant], 'MIC_BROTH'), [withGrant]);
+});
+
 test('all MIC operators remain distinct and non-equality operators fail closed in the draft UI', () => {
   for (const operator of ['<', '≤', '>', '≥', '=']) assert.match(engineSource, new RegExp(`value=["']${operator.replace(/[<>]/g, '\\$&')}["']`));
   assert.match(engineSource, /micOperator === "="/);
