@@ -149,6 +149,12 @@ body{min-width:0}
 /* Method-aware Breakpoint Explorer: reviewable architecture, not new scientific criteria. */
 .method-selector{display:grid;gap:12px;margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--line)}
 .method-selector label{margin:0}
+.method-entry-help{padding:14px;border:1px solid #bfd8ce;border-radius:10px;background:#edf6f2}
+.method-entry-help h3{margin:0;font:800 14px/1.4 Manrope}
+.method-entry-help p{margin:8px 0;color:#3e5955;font-size:12px;line-height:1.6}
+.method-entry-help small{display:block;color:#665329;font-size:10px;line-height:1.5}
+.reviewer-method-context{display:block;margin-top:5px;font-weight:700}
+.method-teaching-secondary{font-size:13px}
 .method-review-status{display:inline-flex;width:max-content;max-width:100%;padding:6px 10px;border:1px solid #d6a04d;border-radius:99px;background:#fff5df;color:#805715;font-size:10px;font-weight:900;letter-spacing:.05em;text-transform:uppercase}
 .method-selector details{padding:12px 14px;border:1px solid var(--line);border-radius:9px;background:#f5f9f7}
 .method-selector summary{color:var(--green);font-size:12px;font-weight:800;cursor:pointer}
@@ -172,6 +178,9 @@ body{min-width:0}
 .method-comparison-grid dl>div{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #d9e6e1;padding-top:8px}
 .method-comparison-grid dt{color:var(--muted);font-size:10px}
 .method-comparison-grid dd{margin:0;text-align:right;font-size:11px;font-weight:800}
+.method-measurement-comparison{margin-top:20px;padding:16px 18px;border:1px solid var(--line);border-radius:10px;background:#f5f9f7}
+.method-measurement-comparison summary{display:list-item;padding:6px 0;min-height:28px;color:var(--green);font-weight:800;line-height:1.5;cursor:pointer}
+.method-measurement-comparison p{max-width:82ch;margin:12px 0 0;line-height:1.65;color:#405a57;font-size:14px}
 .method-learning>header{display:flex;align-items:flex-start;justify-content:space-between;gap:22px}
 .method-learning>header>div{max-width:760px}
 .method-learning>header>span{flex:0 0 auto;padding:7px 10px;border:1px solid #d6a04d;border-radius:7px;background:#fff5df;color:#805715;font-size:9px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
@@ -179,6 +188,23 @@ body{min-width:0}
 .method-learning figure{min-width:0;margin:0;padding:16px;border-radius:13px;background:#f5f9f7}
 .ast-method-diagram{display:block;width:100%;height:auto;max-height:390px}
 .method-learning figcaption{margin-top:10px;color:var(--muted);font-size:10px;line-height:1.5}
+.method-diagram-explorer{min-width:0}
+.method-diagram-canvas{position:relative}
+.method-diagram-highlight{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.method-diagram-instructions{margin:14px 0 10px;font-size:12px;line-height:1.55;color:#405a57}
+.method-hotspot-labels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.method-hotspot-button{display:flex;align-items:center;gap:9px;min-height:48px;padding:9px 11px;border:1px solid #91b0a6;border-radius:9px;background:#fff;color:#173f39;font:700 13px/1.4 Manrope;text-align:left;cursor:pointer;overflow-wrap:anywhere}
+.method-hotspot-button>span{display:grid;place-items:center;flex:0 0 24px;height:24px;border-radius:50%;border:1px solid #527f70;font-size:12px}
+.method-hotspot-button[aria-expanded=true]{border:2px solid #173f39;padding:8px 10px;background:#e0f0e8}
+.method-hotspot-button[aria-expanded=true]>span{background:#173f39;color:#fff}
+.method-hotspot-button:focus-visible,.method-hotspot-detail button:focus-visible,.method-measurement-comparison summary:focus-visible{outline:3px solid #9b4a12;outline-offset:3px}
+.method-hotspot-detail{margin-top:12px;padding:15px;border:1px solid #91b0a6;border-radius:10px;background:#fff;color:#173f39;overflow-wrap:anywhere}
+.method-hotspot-detail[hidden]{display:none}
+.method-hotspot-detail>div{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.method-hotspot-detail h3{margin:10px 0 0;font:800 15px/1.4 Manrope}
+.method-hotspot-detail p{margin:8px 0 0;font-size:14px;line-height:1.65;color:#405a57}
+.method-hotspot-detail button{min-width:66px;min-height:44px;flex:0 0 auto;padding:8px;border:1px solid #91b0a6;border-radius:7px;background:#f5f9f7;color:#173f39;font-weight:700;cursor:pointer}
+@media(max-width:560px){.method-hotspot-labels{grid-template-columns:1fr}.method-hotspot-button{font-size:14px}.method-hotspot-detail{padding:12px}.method-diagram-instructions{font-size:13px}}
 .method-learning ol{display:grid;gap:11px;margin:0;padding:0;list-style:none;counter-reset:none}
 .method-learning li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:11px;align-items:start;padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff}
 .method-learning li>span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;font-weight:900}

@@ -36,8 +36,8 @@ test('disk selection can never consume an MIC record and missing disk data fails
   assert.ok(diskRecords.length > 0);
   assert.ok(diskRecords.every(record => record.method === 'Disk'));
   assert.equal(predicates.matchingBreakpointRecords(diskRecords, 'CLSI', 'ecoli', 'ceftriaxone').length, 0);
-  assert.match(engineSource, /Method-specific disk-diffusion breakpoint not yet available/);
-  assert.match(engineSource, /does not reuse or convert an MIC breakpoint/);
+  assert.match(engineSource, /Method-specific breakpoint not available/);
+  assert.match(engineSource, /does not substitute an MIC breakpoint for a disk-diffusion breakpoint/);
 });
 
 // Test-only review documentation exercises admission; it does not review or

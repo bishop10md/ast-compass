@@ -1,5 +1,6 @@
 import type { AstMethodId } from "../data";
 import { astMethodDefinition } from "../features/breakpointMethods";
+import MethodDiagramExplorer from "./MethodDiagramExplorer";
 
 function DiskDiffusionDiagram() {
   return <svg className="ast-method-diagram" viewBox="0 0 560 330" role="img" aria-labelledby="disk-diagram-title disk-diagram-desc">
@@ -39,7 +40,7 @@ function GradientDiffusionDiagram() {
     <desc id="gradient-diagram-desc">A stylized agar plate with a concentration-gradient strip, an elliptical inhibition area, and a marked read point where the ellipse edge intersects the strip scale.</desc>
     <circle cx="225" cy="165" r="137" fill="#f2d8a5" stroke="#173f39" strokeWidth="5"/>
     <circle cx="225" cy="165" r="126" fill="#e6c47f" stroke="#fff7df" strokeWidth="2"/>
-    <path d="M224 45C132 62 112 122 122 172c10 64 53 104 102 112 49-8 92-48 102-112 10-50-10-110-102-127Z" fill="#f8fbf7" fillOpacity=".9" stroke="#176b5b" strokeWidth="3"/>
+    <path d="M225 45C166 45 120 72 120 115C120 155 158 186 211 193L239 193C292 186 330 155 330 115C330 72 284 45 225 45Z" fill="#f8fbf7" fillOpacity=".9" stroke="#176b5b" strokeWidth="3"/>
     <rect x="211" y="59" width="28" height="212" rx="6" fill="#fff" stroke="#173f39" strokeWidth="3"/>
     <g stroke="#647778" strokeWidth="1">
       <path d="M211 82h11M211 104h8M211 126h11M211 148h8M211 170h11M211 192h8M211 214h11M211 236h8M211 258h11"/>
@@ -47,7 +48,7 @@ function GradientDiffusionDiagram() {
     <g fill="#526666" fontFamily="system-ui, sans-serif" fontSize="8">
       <text x="224" y="85">32</text><text x="224" y="129">8</text><text x="224" y="173">2</text><text x="224" y="217">.5</text><text x="224" y="261">.12</text>
     </g>
-    <circle cx="225" cy="193" r="7" fill="#b64b46"/>
+    <circle cx="239" cy="193" r="7" fill="#b64b46"/>
     <g fill="#173234" fontFamily="system-ui, sans-serif">
       <text x="370" y="88" fontSize="18" fontWeight="700">Gradient strip</text>
       <path d="M363 94L242 105" stroke="#173234" strokeWidth="2"/>
@@ -55,7 +56,7 @@ function GradientDiffusionDiagram() {
       <path d="M363 164L307 151" stroke="#173234" strokeWidth="2"/>
       <text x="370" y="226" fontSize="18" fontWeight="700">MIC read point</text>
       <text x="370" y="251" fontSize="16">ellipse–scale intersection</text>
-      <path d="M363 231L234 195" stroke="#b64b46" strokeWidth="2"/>
+      <path d="M363 231L247 195" stroke="#b64b46" strokeWidth="2"/>
     </g>
   </svg>;
 }
@@ -101,6 +102,6 @@ export default function AstMethodLearningVisual({ method }: { method: AstMethodI
   const definition = astMethodDefinition(method);
   return <section className="method-learning" aria-labelledby="method-learning-title">
     <header><div><p className="eyebrow">Method learning visual</p><h2 id="method-learning-title">How this AST method works</h2><p>{definition.label} produces a <strong>{definition.measurementType}</strong> result reported in <strong>{definition.unit}</strong>.</p></div><span>Educational overview · not clinical instructions</span></header>
-    <div className="method-learning-layout"><figure>{method === "DISK_DIFFUSION" ? <DiskDiffusionDiagram/> : method === "MIC_GRADIENT" ? <GradientDiffusionDiagram/> : <MicMethodDiagram automated={method === "MIC_AUTOMATED"}/>}<figcaption>Original AST Compass educational diagram. Consult the current standard, manufacturer instructions where applicable, and validated laboratory procedure.</figcaption></figure><ol>{steps[method].map((step, index) => <li key={step}><span>{index + 1}</span><p>{step}</p></li>)}</ol></div>
+    <div className="method-learning-layout"><figure><MethodDiagramExplorer key={method} method={method}>{method === "DISK_DIFFUSION" ? <DiskDiffusionDiagram/> : method === "MIC_GRADIENT" ? <GradientDiffusionDiagram/> : <MicMethodDiagram automated={method === "MIC_AUTOMATED"}/>}</MethodDiagramExplorer><figcaption>Original AST Compass educational diagram. Consult the current standard, manufacturer instructions where applicable, and validated laboratory procedure.</figcaption></figure><ol>{steps[method].map((step, index) => <li key={step}><span>{index + 1}</span><p>{step}</p></li>)}</ol></div>
   </section>;
 }

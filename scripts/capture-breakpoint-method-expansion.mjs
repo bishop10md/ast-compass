@@ -46,7 +46,7 @@ async function capture(name, viewport, method, configure) {
   await page.locator('.method-learning').waitFor();
   const pendingReview = method === 'MIC_AUTOMATED' || method === 'MIC_GRADIENT';
   if (pendingReview) {
-    await page.getByRole('heading', { name: 'MIC result · Method-specific applicability under expert review', exact: true }).waitFor();
+    await page.getByRole('heading', { name: 'Method-specific applicability under expert review', exact: true }).waitFor();
     assert.equal(await page.locator('.breakpoint-scale, .mic-answer, .isolate-simulator').count(), 0, `${method} cannot render generic MIC interpretation`);
     await page.locator('#ast-measurement').fill('4');
     assert.equal(await page.locator('.breakpoint-scale, .mic-answer').count(), 0, `${method} must stay pending after MIC entry`);
