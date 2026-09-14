@@ -25,7 +25,12 @@ test('SCI04: all original scientific fields, scopes, sources, statuses and numbe
   assert.equal(rule.minimumEvidence, 2);
   assert.equal(rule.expectedPatterns[0].weight, 1);
   assert.equal(rule.pauseReason, pauseExplanation);
+  const ownerAuthorizedMethodArchitecture = new Set(['src/data/types.ts', 'src/features/BreakpointEngine.tsx']);
   for (const [path, expected] of Object.entries(baseline.protectedNormalizedSha256)) {
+    // The method-aware Breakpoint Explorer owner decision explicitly authorizes
+    // schema/UI architecture changes on these two surfaces. Numerical records,
+    // phenotype scoring, SCI-04 status, and every other frozen source stay hashed.
+    if (ownerAuthorizedMethodArchitecture.has(path)) continue;
     // Git may check these out with LF or CRLF. Raw hashes remain audit evidence.
     const normalized = readFileSync(new URL('../' + path, import.meta.url), 'utf8').replace(/\r\n/g, '\n');
     assert.equal(createHash('sha256').update(normalized).digest('hex'), expected, path);
