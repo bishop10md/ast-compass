@@ -1,3 +1,5 @@
+import type { QualifiedReviewProvenance } from "./scientificGovernance";
+
 export type Standard = "CLSI" | "EUCAST" | "FDA";
 export type ReviewStatus = "Draft" | "Reviewed" | "Validated" | "Retired";
 
@@ -21,6 +23,43 @@ export interface BreakpointSourceIdentity {
   editionOrVersion: string;
   publicationOrUpdateDate?: string;
   sourceId: string;
+}
+
+export type AstMethodId = "MIC_BROTH" | "MIC_AUTOMATED" | "MIC_GRADIENT" | "DISK_DIFFUSION";
+export type BreakpointMeasurementType = "MIC" | "Zone diameter";
+export type ScientificRecordReviewStatus = "Draft" | "Reviewed" | "Verified";
+
+/** Explicit applicability review is separate from the breakpoint's own status.
+ * Provenance contentId is `${record.id}:${method}` and contentVersion is the
+ * record version reviewed. Adding this schema grants no existing record review.
+ */
+export interface BreakpointMethodApplicability {
+  method: "MIC_AUTOMATED" | "MIC_GRADIENT";
+  reviewStatus: "Draft" | "Reviewed";
+  reviewProvenance?: QualifiedReviewProvenance;
+}
+
+/**
+ * Non-destructive target schema for future method-specific breakpoint records.
+ * The legacy Breakpoint shape remains intact until source-governed data can be
+ * migrated record by record. No method may borrow another method's criteria.
+ */
+export interface MethodAwareBreakpointRecord {
+  id: string;
+  standard: Standard;
+  organismId: string;
+  antibioticId: string;
+  method: AstMethodId;
+  measurementType: BreakpointMeasurementType;
+  unit: "µg/mL" | "mg/L" | "mm";
+  susceptibleBreakpoint: string;
+  intermediateBreakpoint: string | null;
+  resistantBreakpoint: string;
+  source: BreakpointSourceIdentity;
+  sourceVersion: string;
+  reviewStatus: ScientificRecordReviewStatus;
+  notes: string[];
+  diskPotency?: string;
 }
 
 export interface Organism {
@@ -80,6 +119,7 @@ export interface Breakpoint {
   version: string;
   effectiveDate: string;
   method: "MIC" | "Disk";
+  methodApplicability?: BreakpointMethodApplicability[];
   unit: string;
   diskContent?: string;
   susceptible: string;
